@@ -1,13 +1,15 @@
 library(haven)
+library(readr)
 library(dplyr)
+library(lme4)
 
-# Pew 2007
+# Level 1 Data: Pew 2007 Religious Landscape Survey
 p2007 <- read_sav("data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
 p2007fips <- read_sav("data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
 
-p2007x <- cbind(p2007, p2007fips[, 2]) %>% transmute(
+p2007x <- cbind(p2007, p2007fips$fips) %>% transmute(
   resp = psraid,
-  fips2 = fips,
+  fips2 = as.numeric(fips),
   state = as.numeric(state),
   rej_merit = ifelse(q5c<=2, q5c-1, NA),
   income = ifelse(income<=9, income, NA), # 1 to 9
@@ -18,41 +20,98 @@ p2007x <- cbind(p2007, p2007fips[, 2]) %>% transmute(
   ideo = 6 - ifelse(ideo<=5, ideo, NA), # 1 to 5
   attend = 7 - ifelse(q20<=6, q20, NA)) %>%  # 1 to 6
 rename(fips = fips2)
-
-p2007x <- data.frame(
-    resp = p2007$psraid,
-    #    fips = p2007$qfips,
-    state = as.numeric(p2007$state),
-    rej_merit = ifelse(p2007$q5c<=2, p2007$q5c-1, NA),
-    income = ifelse(p2007$income<=9, p2007$income, NA), # 1 to 9
-    educ = ifelse(p2007$educ<=7, p2007$educ, NA), # 1 to 7
-    age = ifelse(p2007$age<99, p2007$age, NA),
-    male = ifelse(p2007$sex==1, 1, 0),
-    white = ifelse(p2007$race==1 & p2007$hisp!=1, 1, 0),
-    #    union = ifelse(p2007$labor<=3, 1, ifelse(p2007$labor==4, 0, NA)), # not asked this survey
-    ideo = 6 - ifelse(p2007$ideo<=5, p2007$ideo, NA), # 1 to 5
-    attend = 7 - ifelse(p2007$q20<=6, p2007$q20, NA) # 1 to 6
-)
-p2007x$partyid <- mapvalues(p2007$party, 
+p2007x$partyid <- plyr::mapvalues(p2007$party, 
                             from = c(1:5, 9), 
                             to = c(5, 1, 3, 3, 3, NA))
 p2007x$partyid[p2007$partyln==1] <- 4
 p2007x$partyid[p2007$partyln==2] <- 2
 
-# p2007x$unemp <- ifelse(p2007$employ==3 & p2007$employ2==4, 1, 0) # not asked this survey
-# p2007x$unemp[p2007$employ==9 | p2007$employ2==9] <- NA
+# Level 2 data:
+fips_cnty <- read_csv("https://raw.githubusercontent.com/raypereda/fips-county-codes/master/lib/national.txt", 
+                      col_types="ccccc") 
+names(fips_cnty) <- tolower(gsub(" ", "_", names(fips_cnty)))
+fips_cnty$fips <- as.numeric(do.call(paste0, c(fips_cnty[, c(2,3)])))
+fips_cnty$county <- tolower(gsub(" County| Parish", "", fips_cnty$county_name))
+fips_cnty$county <- gsub(" ", "", fips_cnty$county)
 
-p2007x$year <- 2007
-p2007x.w <- p2007x[p2007x$white==1, -c(8)]
+bush04 <- read_tsv("http://bactra.org/election/vote-counts-with-NE-aggregated")
+bush04$perc_bush04 <- with(bush04, Bush/(Bush+Kerry+Nader))
+names(bush04) <- tolower(names(bush04))
+bush04$county <- tolower(gsub(" County| Parish", "", bush04$county))
+bush04$county <- gsub("saint", "st.", bush04$county)
+bush04$county <- gsub(" ", "", bush04$county)
+bush04$county[(bush04$state=="LA"|bush04$state=="MS") & bush04$county=="jeffdavis"] <- "jeffersondavis"
+bush04$county[(bush04$state=="ME") & bush04$county=="linc"] <- "lincoln"
+bush04$county[(bush04$state=="ME") & bush04$county=="andr"] <- "androscoggin"
+bush04$county[(bush04$state=="ME") & bush04$county=="pen-s"] <- "penobscot"
+bush04$county[(bush04$state=="ME") & bush04$county=="som-s"] <- "somerset"
+bush04$county[(bush04$state=="ME") & bush04$county=="oxf-s"] <- "oxford"
+bush04$county[(bush04$state=="MA") & bush04$county=="hamd"] <- "hamden"
+bush04$county[(bush04$state=="MA") & bush04$county=="esse"] <- "essex"
+bush04$county[(bush04$state=="MA") & bush04$county=="hams"] <- "hampshire"
+bush04$county[(bush04$state=="NH") & bush04$county=="graf"] <- "grafton"
+bush04$county[(bush04$state=="NY") & bush04$county=="manhattan"] <- "newyork"
+bush04$county[(bush04$state=="NY") & bush04$county=="statenisland"] <- "richmond"
+bush04$county[(bush04$state=="NY") & bush04$county=="brooklyn"] <- "kings"
+bush04$county[(bush04$state=="VT") & bush04$county=="fran"] <- "franklin"
+bush04$county[(bush04$state=="VT") & bush04$county=="wins"] <- "windsor"
+bush04$county[(bush04$state=="VT") & bush04$county=="addi"] <- "addison"
+bush04$county[(bush04$state=="VT") & bush04$county=="gris"] <- "grandisle"
+bush04$county[(bush04$state=="VT") & bush04$county=="oran"] <- "orange"
+bush04$county[(bush04$state=="VA") & bush04$county=="manassas"] <- "manassascity"
+bush04$county[(bush04$state=="VA") & bush04$county=="norton"] <- "nortoncity"
 
-t1m1.07.flat <- glm(formula = rej_merit~income+
+
+bush04_cnty <- left_join(bush04, fips_cnty)
+missing <- bush04_cnty[is.na(bush04_cnty$fips), 1:8] # election results still without fips due to county name inconsistencies
+bush04_cnty <- bush04_cnty[!is.na(bush04_cnty$fips), ] # keep only results that already have fips
+remaining <- anti_join(fips_cnty, bush04) %>% arrange(state) # fips without election results
+
+missing$county0 <- missing$county # move county names to a tempvar
+missing$county <- NA
+
+states <- unique(missing$state)
+states <- states[states != "AK"] # nothing to be done with Alaska election results--no breakdown in data
+for(i in 1:length(states)) {
+  t.rem <- remaining$county[remaining$state==states[i]] # fips without election results, one state at a time
+  missing$county[missing$state==states[i]] <- lapply(missing$county0[missing$state==states[i]], function (ii) agrep(ii, t.rem, value=T, max.distance=.2)) # find matches to county name by state
+}
+missing$county <- unlist(lapply(missing$county, function(ii) ii[1])) # use closest match to county name
+missing <- left_join(missing, fips_cnty) # now merge; some results still without fips in Maine, otherwise good
+missing$county0 <- NULL # drop tempvar
+
+bush04_cnty %<>% rbind(missing) %>% select(fips, perc_bush04)
+
+acs0509 <- read_csv("data/acs0509-counties.csv") # this throws warnings; they are irrelevant
+names(acs0509) <- tolower(names(acs0509))
+acs0509 <- mutate(acs0509,
+                  fips = as.numeric(gsub("05000US", "", geoid)),
+                  gini_cnty = b19083_001e,
+                  income_cnty = b19013_001e/10000,
+                  black_cnty = b02001_003e/b02001_001e,
+                  pop_cnty = b02001_001e/10000)
+cnty_data <- select(acs0509, fips:pop_cnty) %>% left_join(bush04_cnty)
+write_csv(cnty_data, "data/cnty_data.csv")
+
+p2007x <- merge(p2007x, cnty_data)
+
+p2007x_w <- p2007x %>% filter(white==1) %>% select(-white)
+
+
+m1_flat <- glm(formula = rej_merit~income+
                         educ+age+male+partyid+ideo+attend,
-                    data=p2007x.w, family=binomial(link="logit"))
+                    data=p2007x_w, family=binomial(link="logit"))
 
-t1m1.07.x <- glmer(formula = rej_merit~income+
+m1 <- glmer(formula = rej_merit~income+
                        educ+age+male+partyid+ideo+attend+
                        (1+income|state),
-                   data=p2007x.w, family=binomial(link="logit"))
+                   data=p2007x_w, family=binomial(link="logit"))
+
+m2 <- glmer(formula = rej_merit~gini_cnty+income+gini_cnty:income+
+              income_cnty+black_cnty+perc_bush04+pop_cnty+
+              educ+age+male+partyid+ideo+attend+
+              (1+income|fips),
+            data=p2007x_w, family=binomial(link="logit"))
 
 # compare with other datasets
 # t1m1.06.x <- glmer(formula = rej_merit~income+
