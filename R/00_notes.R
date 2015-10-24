@@ -7,7 +7,7 @@ library(lme4)
 p2007 <- read_sav("data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
 p2007fips <- read_sav("data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
 
-p2007x <- cbind(p2007, p2007fips$fips) %>% transmute(
+p2007x <- merge(p2007, p2007fips) %>% transmute(
   resp = psraid,
   fips2 = as.numeric(fips),
   state = as.numeric(state),
@@ -110,6 +110,12 @@ m1 <- glmer(formula = rej_merit~income+
 m2 <- glmer(formula = rej_merit~gini_cnty+income+gini_cnty:income+
               income_cnty+black_cnty+perc_bush04+pop_cnty+
               educ+age+male+partyid+ideo+attend+
+              (1+income|fips),
+            data=p2007x_w, family=binomial(link="logit"))
+
+m2a <- glmer(formula = rej_merit~gini_cnty+income+gini_cnty:income+
+              income_cnty+black_cnty+perc_bush04+pop_cnty+
+              educ+age+male+
               (1+income|fips),
             data=p2007x_w, family=binomial(link="logit"))
 
