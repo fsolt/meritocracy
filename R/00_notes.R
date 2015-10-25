@@ -1,4 +1,5 @@
 library(haven)
+library(readxl)
 library(readr)
 library(dplyr)
 library(lme4)
@@ -33,6 +34,17 @@ names(fips_cnty) <- tolower(gsub(" ", "_", names(fips_cnty)))
 fips_cnty$fips <- as.numeric(do.call(paste0, c(fips_cnty[, c(2,3)])))
 fips_cnty$county <- tolower(gsub(" County| Parish", "", fips_cnty$county_name))
 fips_cnty$county <- gsub(" ", "", fips_cnty$county)
+
+cz <- read_dta("Equality of Opportunity Project/replicate/clean_public_data/crosswalks/county_2000.dta") %>% 
+  select(fips = county_id, cz)
+
+tmp <- tempfile(fileext = ".xls")
+download.file("http://www.equality-of-opportunity.org/images/preferred_measures.xls", destfile = tmp, mode = "wb")
+cz_data <- read_excel(tmp)
+
+
+
+
 
 bush04 <- read_tsv("http://bactra.org/election/vote-counts-with-NE-aggregated")
 bush04$perc_bush04 <- with(bush04, Bush/(Bush+Kerry+Nader))
@@ -130,6 +142,17 @@ m2a <- glmer(formula = rej_merit~gini_cnty+income+gini_cnty:income+
 #                        (1|state),
 #                    data=p2005x.w, family=binomial(link="logit"))
 
+
+
+cz <- read_dta("Equality of Opportunity Project/replicate/clean_public_data/crosswalks/county_2000.dta")
+
+
+
+
+
+
+
+
 # Cross-national
 ga12 <- read_sav("Pew/Pew Research Global Attitudes Project Spring 2012 Dataset for web/Pew Research Global Attitudes Project Spring 2012 Dataset for web.sav")
 names(ga12) <- tolower(names(ga12))
@@ -152,4 +175,7 @@ cn$country <- row.names(cn)
 ga12x <- left_join(ga12x, cn)
 
 # Get county & CZ mobility data
+
+
+
 # see Steele 2015
