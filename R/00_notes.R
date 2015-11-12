@@ -38,12 +38,15 @@ fips_cnty$county <- gsub(" ", "", fips_cnty$county)
 cz <- read_dta("Equality of Opportunity Project/replicate/clean_public_data/crosswalks/county_2000.dta") %>% 
   select(fips = county_id, cz)
 
-tmp <- tempfile(fileext = ".xls")
-download.file("http://www.equality-of-opportunity.org/images/preferred_measures.xls", destfile = tmp, mode = "wb")
-cz_data <- read_excel(tmp)
-
-
-
+download.file("http://www.equality-of-opportunity.org/images/online_data_tables.xls", "data/eq_of_opp_online_data.xls")
+cz_data <- read_excel("data/eq_of_opp_online_data.xls", 
+                      sheet = "Online Data Table 5", 
+                      skip = 49,
+                      col_types = c("numeric", "text", "text", rep("numeric", 32))) %>% 
+  filter(!is.na(CZ)) %>% 
+  select(cz = CZ,
+         p_c5p1 = `P(Child in Q5 | Parent in Q1), 80-85 Cohort`) %>% 
+  right_join(cz)
 
 
 bush04 <- read_tsv("http://bactra.org/election/vote-counts-with-NE-aggregated")
@@ -92,7 +95,8 @@ missing$county <- unlist(lapply(missing$county, function(ii) ii[1])) # use close
 missing <- left_join(missing, fips_cnty) # now merge; some results still without fips in Maine, otherwise good
 missing$county0 <- NULL # drop tempvar
 
-bush04_cnty %<>% rbind(missing) %>% select(fips, perc_bush04)
+bush04_cnty %<>% rbind(missing) 
+cz_data2 %>% left_join(cz_data, bush04_cnty)
 
 acs0509 <- read_csv("data/acs0509-counties.csv") # this throws warnings; they are irrelevant
 names(acs0509) <- tolower(names(acs0509))
