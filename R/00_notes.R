@@ -96,7 +96,7 @@ missing <- left_join(missing, fips_cnty) # now merge; some results still without
 missing$county0 <- NULL # drop tempvar
 
 bush04_cnty %<>% rbind(missing) 
-cz_data2 %>% left_join(cz_data, bush04_cnty)
+cz_data2 <- left_join(cz_data, bush04_cnty)
 
 acs0509 <- read_csv("data/acs0509-counties.csv") # this throws warnings; they are irrelevant
 names(acs0509) <- tolower(names(acs0509))
