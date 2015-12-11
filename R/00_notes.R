@@ -2,6 +2,7 @@ library(haven)
 library(readxl)
 library(readr)
 library(dplyr)
+library(magrittr)
 library(lme4)
 
 # Level 1 Data: Pew 2007 Religious Landscape Survey
@@ -97,6 +98,8 @@ missing$county0 <- NULL # drop tempvar
 
 bush04_cnty %<>% rbind(missing) 
 cz_data2 <- left_join(cz_data, bush04_cnty)
+
+#HERE: will need to merge cz_data2 with the acs data
 
 acs0509 <- read_csv("data/acs0509-counties.csv") # this throws warnings; they are irrelevant
 names(acs0509) <- tolower(names(acs0509))
