@@ -4,6 +4,7 @@ library(readr)
 library(dplyr)
 library(magrittr)
 library(lme4)
+library(interplot)
 
 # Commuting Zones
 if (!file.exists("data/cw_cty00_cz.csv")) {
@@ -18,7 +19,7 @@ cz <- read_csv("data/cw_cty00_cz.csv") %>%
   select(fips = county_id,
          cz = cz)
 
-### Individual-Level Data: Pew 2007 Religious Landscape Survey
+# Individual-Level Data: Pew 2007 Religious Landscape Survey
 p2007 <- read_sav("data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
 p2007fips <- read_sav("data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
 
@@ -32,14 +33,14 @@ p2007x <- merge(p2007, p2007fips) %>% transmute(
   age = ifelse(age<99, age, NA),
   male = ifelse(sex==1, 1, 0),
   white = ifelse(race==1 & hisp!=1, 1, 0),
-  ideo = 6 - ifelse(ideo<=5, ideo, NA), # 1 to 5
+  ideo_con = 6 - ifelse(ideo<=5, ideo, NA), # 1 to 5
   attend = 7 - ifelse(q20<=6, q20, NA)) %>%  # 1 to 6
 rename(fips = fips2)
-p2007x$partyid <- plyr::mapvalues(p2007$party, 
+p2007x$partyid_rep <- plyr::mapvalues(p2007$party, 
                             from = c(1:5, 9), 
                             to = c(5, 1, 3, 3, 3, NA))
-p2007x$partyid[p2007$partyln==1] <- 4
-p2007x$partyid[p2007$partyln==2] <- 2
+p2007x$partyid_rep[p2007$partyln==1] <- 4
+p2007x$partyid_rep[p2007$partyln==2] <- 2
 
 p2007x %<>% left_join(cz, by="fips") 
 
@@ -101,7 +102,7 @@ bush04_cnty %<>% rbind(missing)
 
 cz_bush04 <- left_join(bush04_cnty, cz, by="fips") %>% 
   group_by(cz) %>% 
-  summarize(bush04 = sum(bush)/sum(bush+kerry+nader))
+  summarize(bush04_cz = sum(bush)/sum(bush+kerry+nader))
 
 # Equality of Opportunity
 if (!file.exists("data/eq_of_opp_online_data.xls")) {
@@ -115,9 +116,9 @@ cz_eo <- read_excel("data/eq_of_opp_online_data.xls",
                                     rep("numeric", 32))) %>% 
   filter(!is.na(CZ)) %>% 
   select(cz = CZ,
-         am = `AM, 80-82 Cohort`,
-         rm = `RM, 80-82 Cohort`,
-         p_c5p1 = `P(Child in Q5 | Parent in Q1), 80-85 Cohort`) 
+         am_cz = `AM, 80-82 Cohort`,
+         rm_cz = `RM, 80-82 Cohort`,
+         p_c5p1_cz = `P(Child in Q5 | Parent in Q1), 80-85 Cohort`) 
 
 cz_other <- read_excel("data/eq_of_opp_online_data.xls", 
                           sheet = "Online Data Table 8", 
@@ -129,7 +130,7 @@ cz_other <- read_excel("data/eq_of_opp_online_data.xls",
          gini_cz = Gini,
          income_cz = `Household Income per capita`/10000,
          black_cz = `Frac. Black`,
-         pop_cz = `Census 2000 population`,
+         pop_cz = `Census 2000 population`/100000,
          seg_race_cz = `Racial Segregation`,
          seg_inc_cz = `Income Segregation`,
          seg_pov_cz = `Segregation of Poverty (<p25)`,
@@ -138,61 +139,54 @@ cz_other <- read_excel("data/eq_of_opp_online_data.xls",
 cz_all <- left_join(cz_eo, cz_bush04, by="cz") %>% 
   left_join(cz_other, by="cz")
 
-#HERE: will need to merge cz_data2 with the acs data
 
-acs0509 <- read_csv("data/acs0509-counties.csv") # this throws warnings; they are irrelevant
-names(acs0509) <- tolower(names(acs0509))
-acs0509 <- mutate(acs0509,
-                  fips = as.numeric(gsub("05000US", "", geoid)),
-                  gini_cz = b19083_001e,
-                  income_cnty = b19013_001e/10000,
-                  black_cnty = b02001_003e/b02001_001e,
-                  pop_cnty = b02001_001e/10000)
-cnty_data <- select(acs0509, fips:pop_cnty) %>% left_join(bush04_cnty)
-write_csv(cnty_data, "data/cnty_data.csv")
+# Merge data
+p2007x1 <- left_join(p2007x, cz_all, by="cz")
 
-p2007x <- merge(p2007x, cnty_data)
-
-p2007x_w <- p2007x %>% filter(white==1) %>% select(-white)
+p2007x1_w <- p2007x1 %>% filter(white==1) %>% select(-white)
 
 
-m1_flat <- glm(formula = rej_merit~income+
-                        educ+age+male+partyid+ideo+attend,
-                    data=p2007x_w, family=binomial(link="logit"))
+m1_flat <- glm(formula = rej_merit~income+gini_cz+income:gini_cz+
+                 educ+age+male+partyid_rep+ideo_con+attend+
+                 income_cz+black_cz+bush04_cz+pop_cz,
+                    data=p2007x1_w, family=binomial(link="logit"))
 
-m1 <- glmer(formula = rej_merit~income+
-                       educ+age+male+partyid+ideo+attend+
-                       (1+income|state),
-                   data=p2007x_w, family=binomial(link="logit"))
+m1 <- glmer(formula = rej_merit~income+gini_cz+income:gini_cz+
+              educ+age+male+partyid_rep+ideo_con+attend+
+              income_cz+black_cz+bush04_cz+pop_cz+
+              (1+income|cz),
+            data=p2007x1_w, family=binomial(link="logit"))
 
-m2 <- glmer(formula = rej_merit~gini_cnty+income+gini_cnty:income+
-              income_cnty+black_cnty+perc_bush04+pop_cnty+
-              educ+age+male+partyid+ideo+attend+
-              (1+income|fips),
-            data=p2007x_w, family=binomial(link="logit"))
+interplot(m1, "gini_cz", "income")
 
-m2a <- glmer(formula = rej_merit~gini_cnty+income+gini_cnty:income+
-              income_cnty+black_cnty+perc_bush04+pop_cnty+
-              educ+age+male+
-              (1+income|fips),
-            data=p2007x_w, family=binomial(link="logit"))
+m2 <- glmer(formula = rej_merit~income+rm_cz+income:rm_cz+
+              educ+age+male+partyid_rep+ideo_con+attend+
+              gini_cz+income_cz+black_cz+bush04_cz+pop_cz+
+              (1+income|cz),
+            data=p2007x1_w, family=binomial(link="logit"))
 
-# compare with other datasets
-# t1m1.06.x <- glmer(formula = rej_merit~income+
-#                        educ+age+male+partyid+ideo+attend+
-#                        (1|state),
-#                    data=p2006x.w, family=binomial(link="logit"))
-# 
-# t1m1.05.x <- glmer(formula = rej_merit~income+
-#                        educ+age+male+partyid+ideo+attend+
-#                        (1|state),
-#                    data=p2005x.w, family=binomial(link="logit"))
+interplot(m2, "rm_cz", "income")
 
+m3 <- glmer(formula = rej_merit~income+rm_cz+income:rm_cz+
+              educ+age+male+partyid_rep+ideo_con+attend+
+              gini_cz+income_cz+black_cz+bush04_cz+pop_cz+
+              seg_race_cz + seg_inc_cz + 
+              (1+income|cz),
+            data=p2007x1_w, family=binomial(link="logit"))
 
+m4 <- glmer(formula = rej_merit~income+rm_cz+income:rm_cz+
+              educ+age+male+partyid_rep+ideo_con+attend+
+              gini_cz+income_cz+black_cz+bush04_cz+pop_cz+
+              seg_race_cz + seg_pov_cz + seg_aff_cz + 
+              (1+income|cz),
+            data=p2007x1_w, family=binomial(link="logit"))
 
-cz <- read_dta("Equality of Opportunity Project/replicate/clean_public_data/crosswalks/county_2000.dta")
-
-
+m5 <- glmer(formula = rej_merit~income+rm_cz+
+              educ+age+male+partyid_rep+ideo_con+attend+
+              gini_cz+income_cz+black_cz+bush04_cz+pop_cz+
+              seg_race_cz + seg_inc_cz + seg_inc_cz:gini_cz+ 
+              (1+income|cz),
+            data=p2007x1_w, family=binomial(link="logit"))
 
 
 
@@ -219,9 +213,5 @@ ga12x <- data.frame(
 cn <- data.frame(cc = attr(ga12$country, "labels"))
 cn$country <- row.names(cn)
 ga12x <- left_join(ga12x, cn)
-
-# Get county & CZ mobility data
-
-
 
 # see Steele 2015
