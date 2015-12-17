@@ -23,19 +23,19 @@ cz <- read_csv("data/cw_cty00_cz.csv") %>%
 p2007 <- read_sav("data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
 p2007fips <- read_sav("data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
 
-p2007x <- merge(p2007, p2007fips) %>% transmute(
-  resp = psraid,
-  fips2 = as.numeric(fips),
-  state = as.numeric(state),
-  rej_merit = ifelse(q5c<=2, q5c-1, NA),
-  income = ifelse(income<=9, income, NA), # 1 to 9
-  educ = ifelse(educ<=7, educ, NA), # 1 to 7
-  age = ifelse(age<99, age, NA),
-  male = ifelse(sex==1, 1, 0),
-  white = ifelse(race==1 & hisp!=1, 1, 0),
-  ideo_con = 6 - ifelse(ideo<=5, ideo, NA), # 1 to 5
-  attend = 7 - ifelse(q20<=6, q20, NA)) %>%  # 1 to 6
-rename(fips = fips2)
+p2007x <- merge(p2007, p2007fips) %>% 
+  transmute(resp = psraid,
+            fips2 = as.numeric(fips),
+            state = as.numeric(state),
+            rej_merit = ifelse(q5c<=2, q5c-1, NA),
+            income = ifelse(income<=9, income, NA), # 1 to 9
+            educ = ifelse(educ<=7, educ, NA), # 1 to 7
+            age = ifelse(age<99, age, NA),
+            male = ifelse(sex==1, 1, 0),
+            white = ifelse(race==1 & hisp!=1, 1, 0),
+            ideo_con = 6 - ifelse(ideo<=5, ideo, NA), # 1 to 5
+            attend = 7 - ifelse(q20<=6, q20, NA)) %>%  # 1 to 6
+  rename(fips = fips2)
 p2007x$partyid_rep <- plyr::mapvalues(p2007$party, 
                             from = c(1:5, 9), 
                             to = c(5, 1, 3, 3, 3, NA))
