@@ -1,10 +1,11 @@
 library(haven)
 library(readxl)
 library(readr)
-library(dplyr)
-library(magrittr)
 library(lme4)
+library(magrittr)
 library(interplot)
+library(dplyr)
+
 
 # Commuting Zones
 if (!file.exists("data/cw_cty00_cz.csv")) {
@@ -16,7 +17,7 @@ if (!file.exists("data/cw_cty00_cz.csv")) {
 }
 
 cz <- read_csv("data/cw_cty00_cz.csv") %>% 
-  select(fips = county_id,
+  transmute(fips = county_id,
          cz = cz)
 
 # Individual-Level Data: Pew 2007 Religious Landscape Survey
@@ -115,7 +116,7 @@ cz_eo <- read_excel("data/eq_of_opp_online_data.xls",
                     col_types = c("numeric", "text", "text", 
                                   rep("numeric", 32))) %>% 
   filter(!is.na(CZ)) %>% 
-  select(cz = CZ,
+  transmute(cz = CZ,
          am_cz = `AM, 80-82 Cohort`,
          rm_cz = `RM, 80-82 Cohort`,
          p_c5p1_cz = `P(Child in Q5 | Parent in Q1), 80-85 Cohort`) 
