@@ -6,4 +6,7 @@
 *.log
 *.out
 *.sty
+*.tex
+*.blg
+*.thm
 .DS_Store
