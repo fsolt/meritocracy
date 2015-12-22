@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+
+\usepackage{graphicx}        % Enable graphics commands
+\usepackage{lscape}		% Enable landscape with \begin{landscape} until \end{landscape}
+\usepackage{natbib}			% Enable citation commands \citep{}, \citet{}, etc.
+\bibpunct{(}{)}{;}{a}{}{,}		% Formatting for in-text citations
+\usepackage{setspace}		% Enable double-spacing with \begin{spacing}{2} until \end{spacing}.
+\usepackage[utf8]{inputenc} 	% Enable utf8 characters, i.e., accents without coding--just type them in.
+\usepackage[english]{babel}	% English hyphenation and alphabetization.  Other languages available.
+\usepackage{dcolumn}        % For decimal-aligned stargazer/texreg output.
+\usepackage[colorlinks=true, urlcolor=blue, citecolor=black, linkcolor=black]{hyperref} % Include hyperlinks with the \url and \href commands.
+\setlength{\tabcolsep}{1pt}	% Make tables slightly narrower by reducing space between columns.
+\usepackage{afterpage}
+\usepackage{hanging}
+\usepackage{fullpage}
+
+\usepackage{ntheorem}
+\newtheorem{hyp}{Hypothesis} 
+
+\renewcommand\floatpagefraction{.9}	% These commands allow larger tables and graphics to fit
+\renewcommand\topfraction{.9}		% on a page when default settings would complain.
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+\newcommand{\R}{\textsf{R}~}        %This creates the command \R to typeset the name R correctly.
+\mathchardef\mhyphen="2D            %Math-mode hyphen
+
+%\usepackage[left=1in, right=1in]{geometry}	%Turn footnotes into endnotes (commented out).
+%\renewcommand{\footnotesize}{\normalsize}	
+%\usepackage{endnotes}
+%\renewcommand{\footnote}{\endnote}
+%\renewcommand{\section}{\subsection}
+
+\begin{document}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance=TRUE,
+cache=FALSE,
+message=FALSE
+)
+@
+
+
+\title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States}
+\author{
+    Frederick Solt\\
+    \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+}
+\date{}				
+\maketitle
+
+\begin{abstract}
+How does the context in which people live affect their belief in their ability to get ahead through hard work?  In a prominent recent study, \citet{Newman2015} argue that higher levels of local income inequality lead people to become more likely to reject the dominant U.S. ideology of meritocracy, but the results of this reseach are not reproducible and so the question remains open.  The present work brings more and better data as well as an improved specification to examine how, if at all, local contexts shape Americans' beliefs that people can get ahead if they are willing to work hard.  Although there is no evidence at all that local income inequality affects beliefs in meritocracy among those of any income, rejection of the claim that one can get ahead if one is willing to work hard is substantially more common where local levels of intergenerational mobility are lower. 
+\end{abstract}
+
+\newpage
+%\begin{spacing}{2}
+
+
+\bibliographystyle{ajps}
+\bibliography{FSLibrary}
+\end{document}
