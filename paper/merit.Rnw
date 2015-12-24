@@ -73,6 +73,7 @@ library(interplot)
 library(dotwhisker)
 library(dplyr)
 library(mi)
+library(mitools)
 
 ### Data Set-Up
 # Commuting Zones Identification Data
@@ -187,7 +188,6 @@ cz_eo <- read_excel("data/eq_of_opp_online_data.xls",
                                   rep("numeric", 32))) %>% 
   filter(!is.na(CZ)) %>% 
   transmute(cz = CZ,
-         am_cz = `AM, 80-82 Cohort`,
          rm_cz = `RM, 80-82 Cohort`,
          p_c5p1_cz = `P(Child in Q5 | Parent in Q1), 80-85 Cohort`) 
 
@@ -214,11 +214,48 @@ cz_all <- left_join(cz_eo, cz_bush04, by="cz") %>%
 # Merge Data
 p2007x1 <- left_join(p2007x, cz_all, by="cz")
 
-p2007x1_w <- p2007x1 %>% filter(white==1) %>% select(-white)
+p2007x1_w <- p2007x1 %>%
+  filter(white==1) %>% 
+  select(-white) %>% 
+  filter(!is.na(rm_cz)) # 24 obs from 16 very small CZ without mobility data
+@
+
+<<label=impute, echo=F, results='hide'>>==
+# Multiply impute missing values with mi
+p1x_w_mi <- missing_data.frame(p2007x1_w)
+p1x_w_mi <- change_type(p1x_w_mi, y = "resp", to = "irrelevant")
+p1x_w_mi <- change_type(p1x_w_mi, y = "fips", to = "irrelevant")
+p1x_w_mi <- change_type(p1x_w_mi, y = "state", to = "irrelevant")
+p1x_w_mi <- change_type(p1x_w_mi, y = "income", to = "ordered-categorical")
+p1x_w_mi <- change_type(p1x_w_mi, y = "educ", to = "ordered-categorical")
+p1x_w_mi <- change_type(p1x_w_mi, y = "attend", to = "ordered-categorical")
+
+ptm <- proc.time()
+p1x_w_im <- mi(p1x_w_mi, n.chains=8, n.iter=30, seed=324, max.minutes=60)
+proc.time() - ptm
+
+Rhats(p1x_w_im)
+
+p1x_w_mi_list <- complete(p1x_w_im, m = 10)
+p1x_w_mi_list2 <- imputationList(p1x_w_mi_list)
 
 @
 
 <<label=models, echo=F, results='hide'>>==
+
+m3_mi <- with(p1x_w_mi_list2, 
+                glmer(formula = rej_merit ~ rm_cz + gini_cz +
+                        income + educ + age + male + 
+                        partyid_rep + ideo_con + attend +
+                        income_cz + black_cz + bush04_cz + pop_cz +
+                        (1+income|cz),
+                      family=binomial(link="logit")))
+m3_mi_fe <- MIextract(m3_mi, fun=fixef) # https://books_google_com/books?id=EbLrQrBGid8C&pg=PA384
+m3_mi_vars <- MIextract(m3_mi, fun=vcov)
+m3_mi_vars2 <- list()
+m3_mi_vars2 <- lapply(m3_mi_vars, as.matrix)
+m3_mi_res <- MIcombine(m3_mi_fe, m3_mi_vars2)
+summary(m3_mi_res)
 
 # Inequality (No Relative Mobility, No Interaction)
 m0 <- glmer(formula = rej_merit ~ gini_cz +
