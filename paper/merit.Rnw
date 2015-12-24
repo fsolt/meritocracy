@@ -70,6 +70,7 @@ library(readr)
 library(lme4)
 library(magrittr)
 library(interplot)
+library(dotwhisker)
 library(dplyr)
 
 ### Data Set-Up
@@ -216,52 +217,79 @@ p2007x1_w <- p2007x1 %>% filter(white==1) %>% select(-white)
 <<label=models, echo=F, results='hide'>>==
 
 # Inequality (No Relative Mobility, No Interaction)
-m0 <- glmer(formula = rej_merit~income + gini_cz +
-              educ + age + male + partyid_rep + ideo_con + attend +
+m0 <- glmer(formula = rej_merit ~ gini_cz +
+              income + educ + age + male + partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
 
 # Inequality by Income (No Relative Mobility)
-m1 <- glmer(formula = rej_merit~income + gini_cz + income:gini_cz+
-              educ + age + male + partyid_rep + ideo_con + attend +
+m1 <- glmer(formula = rej_merit ~ gini_cz + income:gini_cz +
+              income + educ + age + male + partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
 interplot(m1, "gini_cz", "income")
 
 # Inequality by Income (With Relative Mobility)
-m2 <- glmer(formula = rej_merit~income + rm_cz + gini_cz + income:gini_cz+
-              educ + age + male + partyid_rep + ideo_con + attend +
+m2 <- glmer(formula = rej_merit ~ rm_cz + gini_cz + income:gini_cz +
+              income + educ + age + male + partyid_rep + ideo_con + attend +
+              income_cz + black_cz + bush04_cz + pop_cz +
+              (1+income|cz),
+            data=p2007x1_w, family=binomial(link="logit"))
+interplot(m2, "gini_cz", "income")
+
+# Inequality and Relative Mobility (No Interaction)
+m3 <- glmer(formula = rej_merit ~ rm_cz + gini_cz +
+              income + educ + age + male + partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
 
-interplot(m2, "rm_cz", "income")
+format_results <- function(m, model = "Model") {
+  m_df <- tidy(m) %>% 
+    filter(term != "(Intercept)") %>% 
+    filter(group != "cz") %>% 
+    mutate(model = model)
+  return(m_df)
+}
+
+m123_df <- rbind(format_results(m1, "Model 1"),
+                 format_results(m2, "Model 2"),
+                 format_results(m3, "Model 3"))
+
+dwplot(m123_df)
+@
 
 
-m3 <- glmer(formula = rej_merit~income+rm_cz+income:rm_cz+
-              educ+age+male+partyid_rep+ideo_con+attend+
-              gini_cz+income_cz+black_cz+bush04_cz+pop_cz+
+<<label=app_models, echo=F, results='hide'>>==
+inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
+				  "$50-75k", "$75-100k", "$100-150k", ">$150k")
+
+# m3 Plus Race- and Income-Segregation Controls
+m3a <- glmer(formula = rej_merit ~ rm_cz + gini_cz +
+              income + educ + age + male + partyid_rep + ideo_con + attend +
+              income_cz + black_cz + bush04_cz + pop_cz +
               seg_race_cz + seg_inc_cz + 
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
 
-m4 <- glmer(formula = rej_merit~income+rm_cz+income:rm_cz+
-              educ+age+male+partyid_rep+ideo_con+attend+
-              gini_cz+income_cz+black_cz+bush04_cz+pop_cz+
-              seg_race_cz + seg_pov_cz + seg_aff_cz + 
+# m3 Plus Mobility by Income Interaction
+m3b <- glmer(formula = rej_merit ~ rm_cz + rm_cz:income + gini_cz +
+              income + educ + age + male + partyid_rep + ideo_con + attend +
+              income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
 
-m5 <- glmer(formula = rej_merit~income+rm_cz+
-              educ+age+male+partyid_rep+ideo_con+attend+
-              gini_cz+income_cz+black_cz+bush04_cz+pop_cz+
-              seg_race_cz + seg_inc_cz + seg_inc_cz:gini_cz+ 
-              (1+income|cz),
-            data=p2007x1_w, family=binomial(link="logit"))
+p_m3b <- interplot(m3b, "rm_cz", "income") +
+  scale_x_discrete(limits = inc_labels) + 
+  labs(x = "Family Income", y = "Relative Intergenerational Mobility") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed")
+ggsave(p_m3b, "figures/m3b.pdf")
+
+
 @
-
 
 \bibliographystyle{ajps}
 \bibliography{FSLibrary}
