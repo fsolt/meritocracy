@@ -72,6 +72,7 @@ library(magrittr)
 library(interplot)
 library(dotwhisker)
 library(dplyr)
+library(mi)
 
 ### Data Set-Up
 # Commuting Zones Identification Data
@@ -85,7 +86,9 @@ if (!file.exists("../data/cw_cty00_cz.csv")) {
 
 cz <- read_csv("../data/cw_cty00_cz.csv") %>% 
   transmute(fips = county_id,
-         cz = cz)
+         cz = cz) %>% 
+  rbind(c(8014, 28900)) %>% # Broomfield County, CO (see http://www.ddorn.net/data/FIPS_County_Code_Changes.pdf)
+  arrange(fips)
 
 # Individual-Level Data: Pew 2007 Religious Landscape Survey
 p2007 <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
@@ -208,10 +211,11 @@ cz_all <- left_join(cz_eo, cz_bush04, by="cz") %>%
   left_join(cz_other, by="cz")
 
 
-# Merge Above Data
+# Merge Data
 p2007x1 <- left_join(p2007x, cz_all, by="cz")
 
 p2007x1_w <- p2007x1 %>% filter(white==1) %>% select(-white)
+
 @
 
 <<label=models, echo=F, results='hide'>>==
