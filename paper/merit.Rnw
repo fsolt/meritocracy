@@ -56,7 +56,7 @@ message=FALSE
 \maketitle
 
 \begin{abstract}
-How does the context in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  In a prominent recent study, \citet{Newman2015} argue that higher levels of local income inequality lead people to become more likely to reject the dominant U.S. ideology of meritocracy, but the this reseach suffers from many flaws and its results are not reproducible, leaving the question open.  The present work brings more and better data as well as an improved specification to examine how, if at all, local contexts shape Americans' beliefs that people can get ahead if they are willing to work hard.  Although there is no evidence at all that local income inequality affects beliefs in meritocracy among those of any income, rejection of the claim that one can get ahead if one is willing to work hard is substantially more common where local levels of intergenerational mobility are lower. 
+How does the context in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  In a prominent recent study, \citet{Newman2015} argue that higher levels of local income inequality lead people to become more likely to reject the dominant U.S. ideology of meritocracy, but the this reseach suffers from many flaws and its results are not reproducible, leaving the question open.  The present work brings more and better data as well as an improved specification to examine how, if at all, local contexts shape Americans' beliefs that people can get ahead if they are willing to work hard.   
 \end{abstract}
 
 \newpage
@@ -81,8 +81,8 @@ if (!file.exists("../data/cw_cty00_cz.csv")) {
   temp <- tempfile(fileext = ".zip")
   download.file("http://www.equality-of-opportunity.org/images/crosswalks.zip", temp)
   cw <- read_dta(unzip(temp, "cw_cty00_cz.dta"))
-  unlink(temp)
-  write_csv(cw, "data/cw_cty00_cz.csv")
+  unlink(c(temp, "cw_cty00_cz.dta"))
+  write_csv(cw,"../data/cw_cty00_cz.csv")
 }
 
 cz <- read_csv("../data/cw_cty00_cz.csv") %>% 
@@ -99,12 +99,18 @@ p2007x <- merge(p2007, p2007fips) %>%
   transmute(resp = psraid,
             fips2 = as.numeric(fips),
             state = as.numeric(state),
+            merit = ifelse(q5c<=2, 2-q5c, NA),
             rej_merit = ifelse(q5c<=2, q5c-1, NA),
             income = ifelse(income<=9, income, NA), # 1 to 9
+            income_c = income - median(income, na.rm = TRUE),
             educ = ifelse(educ<=7, educ, NA), # 1 to 7
             age = ifelse(age<99, age, NA),
             male = ifelse(sex==1, 1, 0),
-            white = ifelse(race==1 & hisp!=1, 1, 0),
+            latino = ifelse(hisp<=2, (hisp==1)+0, NA),
+            white = ifelse(race<=4, (race==1 & latino!=1)+0, 0),
+            black = ifelse(race<=4, (race==2)+0, NA),
+            asian = ifelse(race<=4, (race==3)+0, NA),
+            other_race = ifelse(race<=4, (race==4)+0, NA),
             ideo_con = 6 - ifelse(ideo<=5, ideo, NA), # 1 to 5
             attend = 7 - ifelse(q20<=6, q20, NA)) %>%  # 1 to 6
   rename(fips = fips2)
@@ -189,6 +195,7 @@ cz_eo <- read_excel("data/eq_of_opp_online_data.xls",
   filter(!is.na(CZ)) %>% 
   transmute(cz = CZ,
          rm_cz = `RM, 80-82 Cohort`,
+         rm_cz_c = rm_cz - median(rm_cz),
          p_c5p1_cz = `P(Child in Q5 | Parent in Q1), 80-85 Cohort`) 
 
 cz_other <- read_excel("data/eq_of_opp_online_data.xls", 
@@ -199,9 +206,10 @@ cz_other <- read_excel("data/eq_of_opp_online_data.xls",
   filter(!CZ==-1) %>% 
   transmute(cz = CZ,
             gini_cz = Gini,
+            gini_cz_c = gini_cz - median(gini_cz),
             income_cz = `Household Income per capita`/10000,
             black_cz = `Frac. Black`,
-            pop_cz = `Census 2000 population`/100000,
+            pop_cz = `Census 2000 population`/1000000,
             seg_race_cz = `Racial Segregation`,
             seg_inc_cz = `Income Segregation`,
             seg_pov_cz = `Segregation of Poverty (<p25)`,
@@ -214,81 +222,95 @@ cz_all <- left_join(cz_eo, cz_bush04, by="cz") %>%
 # Merge Data
 p2007x1 <- left_join(p2007x, cz_all, by="cz")
 
-p2007x1_w <- p2007x1 %>%
-  filter(white==1) %>% 
-  select(-white) %>% 
-  filter(!is.na(rm_cz)) # 24 obs from 16 very small CZ without mobility data
 @
 
 <<label=impute, echo=F, results='hide'>>==
-# Multiply impute missing values with mi
-p1x_w_mi <- missing_data.frame(p2007x1_w)
-p1x_w_mi <- change_type(p1x_w_mi, y = "resp", to = "irrelevant")
-p1x_w_mi <- change_type(p1x_w_mi, y = "fips", to = "irrelevant")
-p1x_w_mi <- change_type(p1x_w_mi, y = "state", to = "irrelevant")
-p1x_w_mi <- change_type(p1x_w_mi, y = "income", to = "ordered-categorical")
-p1x_w_mi <- change_type(p1x_w_mi, y = "educ", to = "ordered-categorical")
-p1x_w_mi <- change_type(p1x_w_mi, y = "attend", to = "ordered-categorical")
+Multiply impute missing values with mi
+p1x_mi <- missing_data.frame(p2007x1)
+p1x_mi <- change_type(p1x_w_mi, y = "resp", to = "irrelevant")
+p1x_mi <- change_type(p1x_w_mi, y = "fips", to = "irrelevant")
+p1x_mi <- change_type(p1x_w_mi, y = "state", to = "irrelevant")
+p1x_mi <- change_type(p1x_w_mi, y = "income", to = "ordered-categorical")
+p1x_mi <- change_type(p1x_w_mi, y = "educ", to = "ordered-categorical")
+p1x_mi <- change_type(p1x_w_mi, y = "attend", to = "ordered-categorical")
 
-ptm <- proc.time()
-p1x_w_im <- mi(p1x_w_mi, n.chains=8, n.iter=30, seed=324, max.minutes=60)
-proc.time() - ptm
+# ptm <- proc.time()
+# p1x_im <- mi(p1x_mi, n.chains=4, n.iter=60, seed=324, max.minutes=60)
+# proc.time() - ptm
+# 
+# Rhats(p1x_im)
+# 
+# p1x_w_mi_list <- complete(p1x_w_im, m = 10)
+# p1x_w_mi_list2 <- imputationList(p1x_w_mi_list)
 
-Rhats(p1x_w_im)
-
-p1x_w_mi_list <- complete(p1x_w_im, m = 10)
-p1x_w_mi_list2 <- imputationList(p1x_w_mi_list)
-
+# m3_mi <- with(p1x_w_mi_list2, 
+#                 glmer(formula = rej_merit ~ rm_cz + gini_cz +
+#                         income + educ + age + male + 
+#                         partyid_rep + ideo_con + attend +
+#                         income_cz + black_cz + bush04_cz + pop_cz +
+#                         (1+income|cz),
+#                       family=binomial(link="logit")))
+# m3_mi_fe <- MIextract(m3_mi, fun=fixef) # https://books_google_com/books?id=EbLrQrBGid8C&pg=PA384
+# m3_mi_vars <- MIextract(m3_mi, fun=vcov)
+# m3_mi_vars2 <- list()
+# m3_mi_vars2 <- lapply(m3_mi_vars, as.matrix)
+# m3_mi_res <- MIcombine(m3_mi_fe, m3_mi_vars2)
+# summary(m3_mi_res)
 @
 
 <<label=models, echo=F, results='hide'>>==
 
-m3_mi <- with(p1x_w_mi_list2, 
-                glmer(formula = rej_merit ~ rm_cz + gini_cz +
-                        income + educ + age + male + 
-                        partyid_rep + ideo_con + attend +
-                        income_cz + black_cz + bush04_cz + pop_cz +
-                        (1+income|cz),
-                      family=binomial(link="logit")))
-m3_mi_fe <- MIextract(m3_mi, fun=fixef) # https://books_google_com/books?id=EbLrQrBGid8C&pg=PA384
-m3_mi_vars <- MIextract(m3_mi, fun=vcov)
-m3_mi_vars2 <- list()
-m3_mi_vars2 <- lapply(m3_mi_vars, as.matrix)
-m3_mi_res <- MIcombine(m3_mi_fe, m3_mi_vars2)
-summary(m3_mi_res)
-
 # Inequality (No Relative Mobility, No Interaction)
-m0 <- glmer(formula = rej_merit ~ gini_cz +
-              income + educ + age + male + partyid_rep + ideo_con + attend +
+m0 <- glmer(formula = merit ~ gini_cz_c +
+              income_c + educ + age + male +
+              partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
 
 # Inequality by Income (No Relative Mobility)
-m1 <- glmer(formula = rej_merit ~ gini_cz + income:gini_cz +
-              income + educ + age + male + partyid_rep + ideo_con + attend +
+m1 <- glmer(formula = merit ~ gini_cz_c + income_c:gini_cz_c +
+              income_c + educ + age + male +
+              partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
-interplot(m1, "gini_cz", "income")
+
+inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
+				  "$50-75k", "$75-100k", "$100-150k", ">$150k")
+
+p_m1 <- interplot(m1, "gini_cz", "income") +
+  scale_x_discrete(limits = inc_labels) + 
+  labs(x = "Family Income", y = "Local Income Inequality") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed")
+ggsave(p_m1, "figures/m1.pdf")
 
 # Inequality by Income (With Relative Mobility)
-m2 <- glmer(formula = rej_merit ~ rm_cz + gini_cz + income:gini_cz +
-              income + educ + age + male + partyid_rep + ideo_con + attend +
+m2 <- glmer(formula = merit ~ rm_cz + gini_cz_c + income_c:gini_cz_c +
+              income_c + educ + age + male +
+              partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
-interplot(m2, "gini_cz", "income")
+
+p_m2 <- interplot(m2, "gini_cz_c", "income_c") +
+  scale_x_discrete(limits = inc_labels) + 
+  labs(x = "Family Income", y = "Local Income Inequality") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed")
+ggsave("figures/m2.pdf", p_m2)
 
 # Inequality and Relative Mobility (No Interaction)
-m3 <- glmer(formula = rej_merit ~ rm_cz + gini_cz +
-              income + educ + age + male + partyid_rep + ideo_con + attend +
+m3 <- glmer(formula = merit ~ rm_cz + gini_cz_c +
+              income_c + educ + age + male +
+              partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
 
 format_results <- function(m, model = "Model") {
-  m_df <- tidy(m) %>% 
+  m_df <- broom::tidy(m) %>% 
     filter(term != "(Intercept)") %>% 
     filter(group != "cz") %>% 
     mutate(model = model)
@@ -297,18 +319,41 @@ format_results <- function(m, model = "Model") {
 
 m123_df <- rbind(format_results(m1, "Model 1"),
                  format_results(m2, "Model 2"),
-                 format_results(m3, "Model 3"))
+                 format_results(m3, "Model 3")) %>%
+  by_2sd(p2007x1_w)
 
-dwplot(m123_df)
+ordered_vars <- c("rm_cz", "gini_cz_c", "gini_cz_c:income_c", "income_c",
+                  "educ", "age", "male",
+                  "partyid_rep", "ideo_con", "attend",
+                  "income_cz", "black_cz", "bush04_cz", "pop_cz")
+
+dwplot(m123_df, order_vars = ordered_vars) +
+     relabel_y_axis(c("Relative Mobility", 
+                      "Income Inequality", "Income Inequality x Income",
+                      "Income", "Education", "Age", "Male",
+                      "Republican Party ID", "Conservative Ideology",
+                      "Church Attendance", 
+                      "Income/Capita", "Percent Black",
+                      "Bush Vote, 2004", "Population")) +
+     theme_bw() + xlab("Coefficient Estimate") + ylab("") +
+     geom_vline(xintercept = 0, colour = "grey60", linetype = 2) +
+     ggtitle("Predicting Belief in Meritocracy") +
+     theme(plot.title = element_text(face="bold"),
+           legend.justification=c(1, 0), legend.position=c(1, 0),
+           legend.background = element_rect(colour="grey80"),
+           legend.title = element_blank())
 @
 
 
 <<label=app_models, echo=F, results='hide'>>==
-inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
-				  "$50-75k", "$75-100k", "$100-150k", ">$150k")
+p2007x1_w <- p2007x1 %>%
+  filter(white==1) %>% 
+  select(-white) %>% 
+  filter(!is.na(rm_cz)) # 24 obs from 16 very small CZ without mobility data
+
 
 # m3 Plus Race- and Income-Segregation Controls
-m3a <- glmer(formula = rej_merit ~ rm_cz + gini_cz +
+m3a <- glmer(formula = merit ~ rm_cz + gini_cz +
               income + educ + age + male + partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               seg_race_cz + seg_inc_cz + 
@@ -316,8 +361,9 @@ m3a <- glmer(formula = rej_merit ~ rm_cz + gini_cz +
             data=p2007x1_w, family=binomial(link="logit"))
 
 # m3 Plus Mobility by Income Interaction
-m3b <- glmer(formula = rej_merit ~ rm_cz + rm_cz:income + gini_cz +
-              income + educ + age + male + partyid_rep + ideo_con + attend +
+m3b <- glmer(formula = merit ~ rm_cz + rm_cz:income + gini_cz +
+              income + educ + age + male +
+              partyid_rep + ideo_con + attend +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1_w, family=binomial(link="logit"))
@@ -330,6 +376,46 @@ p_m3b <- interplot(m3b, "rm_cz", "income") +
 ggsave(p_m3b, "figures/m3b.pdf")
 
 
+m3c <- glmer(formula = merit ~ rm_cz + gini_cz +
+               income + educ + age + male +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               (1+income|cz),
+            data=p2007x1_w, family=binomial(link="logit"))
+
+m3d <- glmer(formula = merit ~ gini_cz*income + rm_cz + 
+               educ + age + male + white +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               (1+income|cz),
+            data=p2007x1, family=binomial(link="logit"))
+
+m3e <- glmer(formula = merit ~ gini_cz*income + rm_cz + 
+               educ + age + male + white +
+               partyid_rep + ideo_con + attend +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               (1+income|cz),
+            data=p2007x1, family=binomial(link="logit"))
+
+m3f <- glmer(formula = merit ~ gini_cz*income + rm_cz + 
+               educ + age + male + latino + black + asian + other_race +
+               partyid_rep + ideo_con + attend +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               (1+income|cz),
+            data=p2007x1, family=binomial(link="logit"))
+
+m3g <- glmer(formula = merit ~ gini_cz*income + 
+               educ + age + male + latino + black + asian + other_race +
+               partyid_rep + ideo_con + attend +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               (1+income|cz),
+            data=p2007x1, family=binomial(link="logit"))
+
+m3h <- glmer(formula = merit ~ gini_cz*income + rm_cz +
+               educ + age + male + latino + black + asian + other_race +
+               partyid_rep + ideo_con + attend +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               seg_race_cz + seg_inc_cz +
+               (1+income|cz),
+            data=p2007x1, family=binomial(link="logit"))
 @
 
 \bibliographystyle{ajps}
