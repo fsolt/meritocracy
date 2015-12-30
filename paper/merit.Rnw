@@ -37,6 +37,11 @@
 
 \begin{document}
 
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(concordance=TRUE, cache=FALSE, warning=FALSE, message=FALSE, echo=FALSE, results='hide')
+@
+
 \title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States}
 \author{
     Frederick Solt\\
@@ -59,7 +64,7 @@ The influence of the economic inequality on political attitudes has become a top
 
 \citep{Kelly2010}
 
-<<label=setup, echo=FALSE, results='hide', warning=FALSE, message=FALSE>>==
+<<label=setup>>==
 library(haven)
 library(readxl)
 library(readr)
@@ -219,7 +224,7 @@ p2007x1 <- left_join(p2007x, cz_all, by="cz")
 @
 
 
-<<label=models, echo=F, results='hide'>>==
+<<label=models>>==
 
 # Inequality (No Relative Mobility, No Interaction)
 # gini and income centered for dotwhisker plot (just shifts intercept)
@@ -240,18 +245,6 @@ m2 <- glmer(formula = merit ~ gini_cz*income +
             data=p2007x1,
             family=binomial(link="logit"))
 
-inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
-                "$50-75k", "$75-100k", "$100-150k", ">$150k")
-
-m2_gini <- interplot(m2, "gini_cz", "income") +
-  scale_x_discrete(labels = inc_labels) + 
-  coord_cartesian(ylim = c(-1.1, 2.1)) +
-  labs(x = "Family Income", y = "Coefficient of Income Inequality") +
-  theme_bw() +
-  geom_hline(yintercept = 0, colour = "grey80", linetype = "dashed") +
-  ggtitle("Model 2")
-
-
 # Inequality by Income With Relative Mobility
 m3 <- glmer(formula = merit ~ gini_cz*income + rm_cz +
               educ + age + male + noncitizen +
@@ -259,51 +252,9 @@ m3 <- glmer(formula = merit ~ gini_cz*income + rm_cz +
               income_cz + black_cz + bush04_cz + pop_cz +
               (1+income|cz),
             data=p2007x1, family=binomial(link="logit"))
+@
 
-m3_gini <- interplot(m3, "gini_cz", "income") +
-  scale_x_discrete(limits = inc_labels) + 
-  coord_cartesian(ylim = c(-1.1, 2.1)) +
-  labs(x = "Family Income", y = "") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
-  ggtitle("Model 3")
-
-multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
-  require(grid)
-  
-  # Make a list from the ... arguments and plotlist
-  plots <- c(list(...), plotlist)
-  
-  numPlots = length(plots)
-  
-  # If layout is NULL, then use 'cols' to determine layout
-  if (is.null(layout)) {
-    # Make the panel
-    # ncol: Number of columns of plots
-    # nrow: Number of rows needed, calculated from # of cols
-    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
-                     ncol = cols, nrow = ceiling(numPlots/cols))
-  }
-  
-  if (numPlots==1) {
-    print(plots[[1]])
-    
-  } else {
-    # Set up the page
-    grid.newpage()
-    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
-    
-    # Make each plot, in the correct location
-    for (i in 1:numPlots) {
-      # Get the i,j matrix positions of the regions that contain this subplot
-      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
-      
-      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
-                                      layout.pos.col = matchidx$col))
-    }
-  }
-}
-
+<<label=dw_plot>>=
 format_results <- function(m, model = "Model") {
   m_df <- broom::tidy(m) %>% 
     filter(term != "(Intercept)") %>% 
@@ -361,25 +312,72 @@ dev.off()
   \end{footnotesize}
 \end{figure}
 
+<<label=inter_plots, cache=FALSE>>=
+inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
+                "$50-75k", "$75-100k", "$100-150k", ">$150k")
 
-<<label=m23_gini, echo=F, fig=T, include=F, width = 12, height = 5>>=
+m2_gini <- interplot(m2, "gini_cz", "income") +
+  scale_x_discrete(labels = inc_labels) + 
+  coord_cartesian(ylim = c(-1.1, 2.1)) +
+  labs(x = "Family Income", y = "Coefficient of Income Inequality") +
+  theme_bw() +
+  geom_hline(yintercept = 0, colour = "grey80", linetype = "dashed") +
+  ggtitle("Model 2") +
+  theme(axis.text.x = element_text(angle=80, vjust=0.6))
+
+m3_gini <- interplot(m3, "gini_cz", "income") +
+  scale_x_discrete(limits = inc_labels) + 
+  coord_cartesian(ylim = c(-1.1, 2.1)) +
+  labs(x = "Family Income", y = "") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
+  ggtitle("Model 3") +
+  theme(axis.text.x = element_text(angle=80, vjust=0.6))
+
+@
+
+<<label=m23_gini, fig.width=5.5, fig.height=5.5>>=
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  require(grid)
+  
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+  
+  numPlots = length(plots)
+  
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+  
+  if (numPlots==1) {
+    print(plots[[1]])
+    
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+    
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+      
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+
 multiplot(m2_gini, m3_gini, layout = matrix(c(1, 2), nrow=1))
 @
 
-\begin{figure}[!hbtp] 
-  \caption{Effects of Income Inequality on Beliefs in Meritocracy}
-  \label{F:reg_plot}
-  \begin{center}
-    \includegraphics[width=6in]{merit-m23_gini.pdf}
-  \end{center}
-  \begin{footnotesize}
-  \begin{tabular}{p{.2in} p{5.8in}}
-  & \emph{Note}: The dots represent estimated logit coefficients for income inequality; the whiskers represent the 95\% confidence intervals of these estimates.
-  \end{tabular}
-  \end{footnotesize}
-\end{figure}
 
-<<label=predprob, echo=F, results='hide'>>==
+<<label=predprob, echo=F, results='hide', include=FALSE>>==
 pred_probs <- function(m, var1, var2, var2_vals,
                        times = 20, sims = 1000) {
   m_sims <- arm::sim(m, sims)
@@ -451,7 +449,7 @@ ggplot(m2_pp, aes(x = gini_cz, y = est, group = income)) +
   geom_text(aes(.5, 80, label=">$150k", color="9")) +
   scale_colour_manual(values = c("red", "blue", "darkgreen")) +
   scale_fill_manual(values = c("red", "blue", "darkgreen"))
-ggsave("figures/m2_pp.pdf", width = 5, height = 7)
+ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
 
 @
 
@@ -460,7 +458,7 @@ ggsave("figures/m2_pp.pdf", width = 5, height = 7)
   \caption{Predicted Probability of Belief in Meritocracy by Income and Level of Inequality}
   \label{F:pp_plot}
   \begin{center}
-    \includegraphics[width=6in]{"figures/m2_pp.pdf"}
+    \includegraphics[width=5.5in]{figures/m2_pp.pdf}
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.2in} p{5.8in}}
@@ -469,6 +467,157 @@ ggsave("figures/m2_pp.pdf", width = 5, height = 7)
   \end{footnotesize}
 \end{figure}
 
+\appendix
+<<label=app_models, eval=FALSE>>==
+# Inequality (No Relative Mobility, No Interaction)
+m1a <- glmer(formula = merit ~ gini_cz + income +
+              educ + age + male + noncitizen +
+              latino + black + asian + other_min +
+              partyid_rep + ideo_con + attend +
+              income_cz + black_cz + bush04_cz + pop_cz +
+              (1+income|cz),
+            data=p2007x1, family=binomial(link="logit"))
+
+# Inequality by Income (No Relative Mobility)
+m2a <- glmer(formula = merit ~ gini_cz*income +
+              educ + age + male + noncitizen +
+              latino + black + asian + other_min +
+              partyid_rep + ideo_con + attend +
+              income_cz + black_cz + bush04_cz + pop_cz +
+              (1+income|cz),
+            data=p2007x1, family=binomial(link="logit"))
+
+inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
+                "$50-75k", "$75-100k", "$100-150k", ">$150k")
+
+interplot(m2a, "gini_cz", "income") +
+  scale_x_discrete(labels = inc_labels) + 
+  labs(x = "Family Income", y = "Local Income Inequality") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed")
+ggsave("figures/m2a_gini.pdf")
+
+# Inequality by Income With Relative Mobility
+m3a <- glmer(formula = merit ~ gini_cz*income + rm_cz +
+              educ + age + male + noncitizen +
+              latino + black + asian + other_min +
+              partyid_rep + ideo_con + attend +
+              income_cz + black_cz + bush04_cz + pop_cz +
+              (1+income|cz),
+            data=p2007x1, family=binomial(link="logit"))
+
+interplot(m3a, "gini_cz", "income") +
+  scale_x_discrete(limits = inc_labels) + 
+  labs(x = "Family Income", y = "Local Income Inequality") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed")
+ggsave("figures/m3a_gini.pdf")
+
+m123a_df <- rbind(format_results(m1a, "Model A1"),
+                 format_results(m2a, "Model A2"),
+                 format_results(m3a, "Model A3")) %>%
+  by_2sd(p2007x1)
+
+ordered_vars <- c("gini_cz", "gini_cz:income", "income", "rm_cz",
+                  "age", "educ", "male",
+                  "latino", "black", "asian", 
+                  "other_min", "noncitizen",
+                  "partyid_rep", "ideo_con", "attend",
+                  "income_cz", "black_cz", "bush04_cz", "pop_cz")
+
+pa <- dwplot(m123a_df, order_vars = ordered_vars) +
+     relabel_y_axis(c("Income Inequality", "Income Inequality x Income",
+                      "Income", "Relative Mobility",
+                      "Education", "Age", "Male",
+                      "Latino", "Black", "Asian", 
+                      "Other Minority", "Noncitizen",
+                      "Republican Party ID", "Conservative Ideology",
+                      "Church Attendance", 
+                      "Income/Capita", "Percent Black",
+                      "Bush Vote, 2004", "Population")) +
+     theme_bw() + xlab("Coefficient Estimate") + ylab("") +
+     geom_vline(xintercept = 0, colour = "grey60", linetype = 2) +
+     theme(plot.title = element_text(face="bold"),
+           legend.justification=c(1, 0), legend.position=c(1, 0),
+           legend.background = element_rect(colour="grey80"),
+           legend.title = element_blank())
+
+two_brackets_a <- list(c("Individual Controls", "age", "attend"), c("CZ Controls", "income_cz", "pop_cz"))
+
+m123a <- pa %>% add_brackets(two_brackets_a)
+
+pdf("m123a.pdf")
+grid.draw(m123a)
+dev.off()
+
+
+# # m3 Plus Race- and Income-Segregation Controls
+# m3ab <- glmer(formula = merit ~ gini_cz*income + rm_cz +
+#                educ + age + male + latino + black + asian + other_race +
+#                partyid_rep + ideo_con + attend +
+#                income_cz + black_cz + bush04_cz + pop_cz +
+#                seg_race_cz + seg_inc_cz +
+#                (1+income|cz),
+#             data=p2007x1, family=binomial(link="logit"))
+# 
+# # m3 Plus Mobility by Income Interaction
+# m3b <- glmer(formula = merit ~ rm_cz*income + gini_cz +
+#                educ + age + male + latino + black + asian + other_race +
+#                partyid_rep + ideo_con + attend +
+#                income_cz + black_cz + bush04_cz + pop_cz +
+#                seg_race_cz + seg_inc_cz +
+#                (1+income|cz),
+#             data=p2007x1, family=binomial(link="logit"))
+# 
+# p_m3b <- interplot(m3b, "rm_cz", "income") +
+#   scale_x_discrete(limits = inc_labels) + 
+#   labs(x = "Family Income", y = "Relative Intergenerational Mobility") +
+#   theme_bw() +
+#   geom_hline(yintercept=0, colour="grey80", linetype="dashed")
+# ggsave(p_m3b, "figures/m3b.pdf")
+# 
+# 
+# m3c <- glmer(formula = merit ~ rm_cz + gini_cz +
+#                income + educ + age + male +
+#                income_cz + black_cz + bush04_cz + pop_cz +
+#                (1+income|cz),
+#             data=p2007x1_w, family=binomial(link="logit"))
+# 
+# m3d <- glmer(formula = merit ~ gini_cz*income + rm_cz + 
+#                educ + age + male + white +
+#                income_cz + black_cz + bush04_cz + pop_cz +
+#                (1+income|cz),
+#             data=p2007x1, family=binomial(link="logit"))
+# 
+# m3e <- glmer(formula = merit ~ gini_cz*income + rm_cz + 
+#                educ + age + male + white +
+#                partyid_rep + ideo_con + attend +
+#                income_cz + black_cz + bush04_cz + pop_cz +
+#                (1+income|cz),
+#             data=p2007x1, family=binomial(link="logit"))
+# 
+# m3f <- glmer(formula = merit ~ gini_cz*income + rm_cz + 
+#                educ + age + male + latino + black + asian + other_race +
+#                partyid_rep + ideo_con + attend +
+#                income_cz + black_cz + bush04_cz + pop_cz +
+#                (1+income|cz),
+#             data=p2007x1, family=binomial(link="logit"))
+# 
+# m3g <- glmer(formula = merit ~ gini_cz*income + 
+#                educ + age + male + latino + black + asian + other_race +
+#                partyid_rep + ideo_con + attend +
+#                income_cz + black_cz + bush04_cz + pop_cz +
+#                (1+income|cz),
+#             data=p2007x1, family=binomial(link="logit"))
+# 
+# m3h <- glmer(formula = merit ~ gini_cz*income + rm_cz +
+#                educ + age + male + latino + black + asian + other_race +
+#                partyid_rep + ideo_con + attend +
+#                income_cz + black_cz + bush04_cz + pop_cz +
+#                seg_race_cz + seg_inc_cz +
+#                (1+income|cz),
+#             data=p2007x1, family=binomial(link="logit"))
+@
 
 
 \clearpage
