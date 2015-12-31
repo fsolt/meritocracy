@@ -55,7 +55,7 @@ How does the context in which people live affect their belief in meritocracy, th
 \end{abstract}
 
 \newpage
-%\begin{spacing}{2}
+\begin{spacing}{2}
 
 \section*{Economic Inequality and Political Attitudes}
 Conflict 
@@ -65,17 +65,19 @@ Conflict
 \citep{Kelly2010}
 
 \section*{Data and Method}
-To test the hypotheses provided by these to contending theories requires data both on individuals' belief in meritocracy and on the economic characteristics of the contexts in which they live.  Individual-level data are drawn from the U.S. Religious Landscape Survey conducted by the Pew Forum on Religion and Public Life in 2007.
+To test the hypotheses provided by these to contending theories requires data both on individuals' belief in meritocracy and on the economic conditions of the contexts in which they live.  The contextual unit of analysis used here is the commuting zone (CZ).  CZs are aggregations of counties meant to represent the scale of local economic relationships both in metropolitan areas and across the rural United States.  They are therefore preferable to the arbitrary borders imposed by counties; they were, in fact, explicitly designed to represent where people actually live and work and overcome the unrealistic assumption that counties are economically meaningful units  \citep{Tolbert1996}.
 
-The contextual unit of analysis used here is the commuting zone (CZ).  CZs are aggregations of counties meant to represent the scale of local economic relationships both in metropolitan areas and across the rural United States.  They are therefore preferable to the arbitrary borders imposed by counties; indeed, they were explicitly designed to overcome the unrealistic assumption that counties are economically meaningful units and to represent where people actually live and work \citep[see][]{Tolbert1996}.
+Income inequality is measured using the Gini coefficient of the distribution of total family income within commuting zones for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States whose names appear on any tax form.\footnote{\doublespacing This measure is not perfect.  Its welfare definition is income after government transfers but before taxes.  Because much redistribution occurs through the tax code, an after-tax measure would be preferable; unfortunately, virtually no data on the distribution of income at any geographic scale below the national level is available for the United States \citet[see, e.g.,][420]{Kelly2012}.  Further, it examines differences in incomes across families, which means those without children are excluded.  It is based on tax records, so it suffers from potential underreporting, particularly among those with very high incomes, though because the topcode for incomes is \$10 million dollars, the downward bias is likely smaller than that found in similar Census data which is topcoded at considerably lower amounts.  Finally, it measures inequality about a decade before the Pew survey; though income distributions change only quite slowly over time, one might wish it were more temporally proximate.  Despite these shortcomings, it remains the best data available on income inequality within commuting zones.}  Within the sample examined here, this variable ranges from a low of .21 to a high of .85; the median value across individual respondents in the sample is .46.
 
-Income inequality is measured using the Gini coefficient of the distribution of total family income within commuting zones for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States whose names appear on any tax form.\footnote{This measure is not perfect.  Its welfare definition is income after government transfers but before taxes.  Because much redistribution occurs through the tax code, an after-tax measure would be preferable; unfortunately, virtually no data on the distribution of income at any geographic scale below the national level is available for the United States \citet[see, e.g.,][420]{Kelly2012}.  Further, it examines differences in incomes across families, which means those without children are excluded.  It is based on tax records, so it suffers from potential underreporting, particularly among those with very high incomes, though because the topcode for incomes is \$10 million dollars, the downward bias is likely smaller than that found in similar Census data which is topcoded at considerably lower amounts.  Finally, it measures inequality about a decade before the Pew survey; though income distributions change only quite slowly over time, one might wish it were more temporally proximate.  Despite these shortcomings, it remains the best data available on income inequality within commuting zones.}  Within the sample examined here, this variable ranges from a low of .21 to a high of .85; the median value across individual respondents in the sample is .46.
+For economic mobility, I use Chetty et al.'s (\citeyear[1554]{Chetty2014}) data on relative intergenerational mobility, which provides the best available information of the extent to which ``a person's chances of success depend little on his or her family background.''  It is measured as the relationship, in each CZ, between parents' rank in the national income distribution when their children were in their late teens and the rank of those children when they are approximately age 30.  The median respondent lives in a CZ with a score of .34 on this variable, that is, a 10 percentile increase in parents' incomes is associated with only a 3.4 percentile increase in childrens' incomes.  Economic mobility ranges from .07 to .51 in this dataset.  
 
-For economic mobility, I use Chetty et al.'s (\citeyear[1554]{Chetty2014}) data on relative intergenerational mobility, which they contend provide the best available information of the extent to which ``a person's chances of success depend little on his or her family background.''  It is measured as the relationship, in each CZ, between parents' rank in the national income distribution when their children were in their late teens and the rank of those children when they are approximately age 30.  The median respondent lives in a CZ with a score of .34 on this variable, that is, a 10 percentile increase in parents' incomes is associated with only a 3.4 percentile increase in childrens' incomes.  Economic mobility ranges from .07 to .51 in this dataset.  
+Individual-level data are drawn from the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007.  The RLS surveyed over 35,000 individuals and was designed to provide a particularly fine-grained picture of geographic variation in attitudes and beliefs across the continental United States; it is therefore superior to the much smaller Pew surveys previously used to address the question examined here.  Respondents were asked which of the following two statements came closest to their own view: ``Most people who want to get ahead can make it if they’re willing to work hard'' and ``Hard work and determination are no guarantee of success for most people.'' Those who chose the first statement were coded 1 and others coded 0, yielding a dichotomous variable of belief in meritocracy.  In these data, 67\% of respondents ascribed to this core element of the dominant U.S. ideology.  The entire sample is analyzed, rather than only the subset of white non-Latino respondents, so as to make use of all of the available data, although \citet[330]{Newman2015} note that this should be expected to bias the results toward the expectations of the conflict theory.
+
+The other individual-level variable implicated in these theories is income.  The RLS asked respondents to identify their total family income in the previous year on a nine-point scale ranging from less than $10,000 to over $150,000, with the median respondent reporting an income of $50,000 to $75,000.
 
 A number of other factors might help explain people's beliefs in meritocracy.  At the contextual level, I follow \citet{Newman2015} in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  At the individual level, the analyses include demographic controls for age, education, sex, race, and citizenship.
 
-What is \emph{not} included in these models is perhaps equally worthy of comment.  Although measures of party identification, ideology, and church attendance are often reflexively added to analyses, they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.  In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.  Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{On the powerful relationship between rising income inequality and greater religiosity, for example, \citet[see][]{Solt2011a, Solt2014b}.}  For the insistent, models including these variables can be found in the appendix.  They do not evince substantially different patterns, although as one would expect the estimated coefficients for income inequality are somewhat attentuated.
+What is \emph{not} included in these models is perhaps equally worthy of comment.  Although measures of party identification, ideology, and church attendance are often reflexively added to analyses, they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.  In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.  Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{\doublespacing On the powerful relationship between rising income inequality and greater religiosity, for example, \citet[see][]{Solt2011a, Solt2014b}.}  For the insistent, models including these variables can be found in the appendix.  They do not evince substantially different patterns, although as one would expect the estimated coefficients for income inequality are somewhat attentuated.
 
 The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs.  Because both the conflict and relative power theories suggest that the effect of the context income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included.  For individual $i$ in commuting zone $j$, then, the model of the logged odds of believing in meritocracy can be expressed as:
 
@@ -85,7 +87,7 @@ The models are estimated using multilevel logistic regression of individuals nes
 Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamma_{01}Inequality_{j}  \nonumber\\
  & &{}+ \gamma_{11}Inequality_{j} \times Income_{ij}
  \nonumber\\
- & &{} + r_{1j}Income_{ij} + u_{0j}
+ & &{} + r_{1j}Income_{ij} + u_{ij}
  \nonumber
  \end{eqnarray}
 }
@@ -93,6 +95,8 @@ Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamma_{01}Inequality_
 The conflict theory argues that lower-income individuals will become disillusioned with the dominant ideology of meritocracy where inequality is greater but that higher-income individuals will become more likely to uphold it. This yields the predictions that $\gamma_{01}$, the coefficient of income inequality, will be negative and $\gamma_{11}$, the coefficient of the interaction term, will be positive. Relative power theory maintains that lower-income individuals will be especially more likely to be instilled with the belief in meritocracy in contexts of higher inequality, but that higher-income individuals' beliefs will be less sensitive to this aspect of context.  Its predictions, then, are just the opposite of those of the conflict theory: that $\gamma_{01}$ will be positive and $\gamma_{11}$ will be negative.
 
 \section*{Analysis and Results}
+
+Despite significant effort, I have yet to succeed in getting these models to run using multiple imputations of the missing data: \texttt{glmer} is choking when passed even one of the imputed datasets.  My choices appear to be down to either exporting all of the imputed data frames to HLM, running them each separately there, and reimporting the results to \R and then combining them with Rubin's Rules, or setting up a Bayesian analysis using Stan.  (I'm leaning toward the latter.)  Neither is a trivial exercise, though, so I have reluctantly proceeded with pairwise deletion, reducing the sample by about a fifth, with much of the losses due to missing income data.  Results should therefore be considered VERY PRELIMINARY; I'm not even going to write them up.  With that warning in mind, feel free to check out the pretty plots. \emph{If} they hold up when the missing data are taken into account, the results provide support for the relative power theory. Again: \emph{if}.
 
 <<label=setup>>==
 library(haven)
@@ -128,14 +132,14 @@ p2007x <- merge(p2007, p2007fips) %>%
   transmute(resp = psraid,
             fips2 = as.numeric(fips),
             state = as.numeric(state),
-            merit = ifelse(q5c<=2, 2-q5c, NA),
+            merit = (q5c==1)+0,
             income = ifelse(income<=9, income, NA), # 1 to 9
             income_c = income - median(income, na.rm = TRUE),
             educ = ifelse(educ<=7, educ, NA), # 1 to 7
             age = ifelse(age<99, age, NA),
             male = ifelse(sex==1, 1, 0),
             latino = ifelse(hisp<=2, (hisp==1)+0, NA),
-            white = ifelse(race<=4, (race==1 & latino!=1)+0, 0),
+            white = ifelse(race<=4, (race==1 & latino!=1)+0, NA),
             black = ifelse(race<=4, (race==2)+0, NA),
             asian = ifelse(race<=4, (race==3)+0, NA),
             other_min = ifelse(race<=4, (race==4)+0, NA),
@@ -224,8 +228,7 @@ cz_eo <- read_excel("../data/eq_of_opp_online_data.xls",
                                   rep("numeric", 32))) %>% 
   filter(!is.na(CZ)) %>% 
   transmute(cz = CZ,
-         rm_cz = `RM, 80-82 Cohort`,
-         rm_cz_c = rm_cz - median(rm_cz)) 
+         rm_cz = `RM, 80-82 Cohort`) 
 
 cz_other <- read_excel("../data/eq_of_opp_online_data.xls", 
                        sheet = "Online Data Table 8", 
@@ -235,7 +238,6 @@ cz_other <- read_excel("../data/eq_of_opp_online_data.xls",
   filter(!CZ==-1) %>% 
   transmute(cz = CZ,
             gini_cz = Gini,
-            gini_cz_c = gini_cz - median(gini_cz),
             income_cz = `Household Income per capita`/10000,
             black_cz = `Frac. Black`,
             pop_cz = `Census 2000 population`/1000000,
@@ -327,6 +329,7 @@ grid.draw(m123)
 dev.off()
 
 @
+\end{spacing}
 
 \begin{figure}[!hbtp] 
   \caption{Predicting Belief in Meritocracy}
@@ -336,7 +339,7 @@ dev.off()
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Note}: The dots represent estimated change in the logged odds of believing in meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 27,756 individual respondents living in 689 commuting zones.
+  & \emph{Note}: The dots represent estimated change in the logged odds of believing in meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,633 individual respondents living in 691 commuting zones.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
@@ -353,7 +356,7 @@ inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
 
 m2_gini1 <- m2_gini +
   scale_x_discrete(labels = inc_labels) + 
-  coord_cartesian(ylim = c(-1.1, 2.1)) +
+  coord_cartesian(ylim = c(-1, 2)) +
   labs(x = "Family Income", y = "Coefficient of Income Inequality") +
   theme_bw() +
   geom_hline(yintercept = 0, colour = "grey80", linetype = "dashed") +
@@ -362,7 +365,7 @@ m2_gini1 <- m2_gini +
 
 m3_gini1 <- m3_gini +
   scale_x_discrete(limits = inc_labels) + 
-  coord_cartesian(ylim = c(-1.1, 2.1)) +
+  coord_cartesian(ylim = c(-1, 2)) +
   labs(x = "Family Income", y = "") +
   theme_bw() +
   geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
@@ -488,9 +491,9 @@ ggplot(m2_pp, aes(x = gini_cz, y = est, group = income)) +
   xlab("Income Inequality") + ylab("Probability of Belief in Meritocracy") +
   theme_bw() + theme(legend.position="none") +
   theme(plot.title = element_text(face="bold")) +
-  geom_text(aes(.3, 45, label="<$10k", color="1")) +
-  geom_text(aes(.4, 64, label="$40-50k", color="5")) +
-  geom_text(aes(.5, 80, label=">$150k", color="9")) +
+  geom_text(aes(.3, 43, label="<$10k", color="1")) +
+  geom_text(aes(.4, 62, label="$40-50k", color="5")) +
+  geom_text(aes(.48, 77.8, label=">$150k", color="9")) +
   scale_colour_manual(values = c("red", "blue", "darkgreen")) +
   scale_fill_manual(values = c("red", "blue", "darkgreen"))
 ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
