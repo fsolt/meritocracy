@@ -42,12 +42,12 @@ library(knitr)
 opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE, results='hide')
 @
 
-\title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States}
+\title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States\thanks{Prepared for the Annual Meeting of the Southern Political Science Association, San Juan, PR, January 7-9, 2016.  The most recent version of this paper can be found \href{https://github.com/fsolt/meritocracy/blob/master/paper/merit.pdf}{here on Github}.}}
 \author{
     Frederick Solt\\
     \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
 }
-\date{}				
+\date{\today}				
 \maketitle
 
 \begin{abstract}
@@ -74,9 +74,22 @@ For economic mobility, I use Chetty et al.'s (\citeyear[1554]{Chetty2014}) data 
 
 A number of other factors might help explain people's beliefs in meritocracy.  At the contextual level, I follow \citet{Newman2015} in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  At the individual level, the analyses include demographic controls for age, education, sex, race, and citizenship.
 
-What is \emph{not} included in these models is perhaps equally worthy of comment.  Although measures of party identification, ideology, and church attendance are often reflexively added to analyses, they are inappropriate in an analysis of the relationship between income inequality and meritocratic beliefs.  In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just this sort of attitudinal variable.  Controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{On the powerful relationship between rising income inequality and greater religiosity, for example, \citet[see][]{Solt2011a, Solt2014b}.}
+What is \emph{not} included in these models is perhaps equally worthy of comment.  Although measures of party identification, ideology, and church attendance are often reflexively added to analyses, they are inappropriate in an analysis of the relationship between income inequality and meritocratic beliefs.  In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.  Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{On the powerful relationship between rising income inequality and greater religiosity, for example, \citet[see][]{Solt2011a, Solt2014b}.}  For the insistent, models including these variables---along with  can be found in the appendix.  They do not evince substantially different patterns, although as one would expect the estimated coefficients for income inequality are somewhat attentuated.
 
+The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs.  Because both the conflict and relative power theories suggest that the effect of the context income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included.  For individual $i$ in commuting zone $j$, then, the model can be expressed as:
 
+{\setlength\arraycolsep{2pt} 
+\begin{eqnarray}
+\label{E:mixed}
+Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamma_{01}Inequality_{j}  \nonumber\\
+ & &{}+ \gamma_{11}Inequality_{j} \times Income_{ij}
+ \nonumber\\
+ & &{} + r_{1j}Income_{ij} + u_{0j}
+ \nonumber
+ \end{eqnarray}
+}
+
+The conflict theory argues that lower-income individuals will become disillusioned with the dominant ideology of meritocracy where inequality is greater but that higher-income individuals will become more likely to uphold it. This, then, yields the predictions that $\gamma_{01}$, the coefficient of income inequality, will be negative and $\gamma_{11}$, the coefficient of the interaction term, will be positive. Relative power theory maintains that lower-income individuals will be especially more likely to be instilled with the belief in meritocracy in contexts of higher inequality, but that higher-income individuals' beliefs will be less sensitive to this aspect of context.  Its predictions therefore are just the opposite of the conflict theory: that $\gamma_{01}$ will be positive and $\gamma_{11}$ will be negative.
 
 \section*{Analysis and Results}
 
@@ -318,10 +331,10 @@ dev.off()
   \caption{Predicting Belief in Meritocracy}
   \label{F:reg_plot}
   \begin{center}
-    \includegraphics[width=6in]{figures/m123.pdf}
+    \includegraphics[width=5.5in]{figures/m123.pdf}
   \end{center}
   \begin{footnotesize}
-  \begin{tabular}{p{.2in} p{5.8in}}
+  \begin{tabular}{p{.3in} p{5.6in}}
   & \emph{Note}: The dots represent estimated change in the logged odds of believing in meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 27,756 individual respondents living in 689 commuting zones.
   \end{tabular}
   \end{footnotesize}
@@ -401,7 +414,7 @@ multiplot(m2_gini1, m3_gini1, layout = matrix(c(1, 2), nrow=1))
 @
   \end{center}
   \begin{footnotesize}
-  \begin{tabular}{p{.2in} p{5.8in}}
+  \begin{tabular}{p{.3in} p{5.6in}}
   & \emph{Source}: Analyses presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In both models, these estimates are positive and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
   \end{tabular}
   \end{footnotesize}
@@ -491,7 +504,7 @@ ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
     \includegraphics[width=5.5in]{figures/m2_pp.pdf}
   \end{center}
   \begin{footnotesize}
-  \begin{tabular}{p{.2in} p{5.8in}}
+  \begin{tabular}{p{.3in} p{5.6in}}
   & \emph{Source}: Analyses presented in Figure~\ref{F:reg_plot}.  Solid lines represent predicted probabilities and shaded regions represent the 95\% confidence intervals of these predictions.  The predicted probabilities were generated by fixing all other variables at their median values.
   \end{tabular}
   \end{footnotesize}
@@ -524,20 +537,6 @@ interplot(m2a, "gini_cz", "income") +
   theme_bw() +
   geom_hline(yintercept=0, colour="grey80", linetype="dashed")
 ggsave("figures/m2a_gini.pdf")
-
-m2b <- glmer(formula = merit ~ gini_cz*income +
-              educ + age + male + noncitizen +
-              latino + black + asian + other_min +
-              income_cz + black_cz + pop_cz +
-              (1+income|cz),
-            data=p2007x1, family=binomial(link="logit"))
-
-interplot(m2b, "gini_cz", "income") +
-  scale_x_discrete(labels = inc_labels) + 
-  labs(x = "Family Income", y = "Local Income Inequality") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed")
-ggsave("figures/m2b_gini.pdf")
 
 # Inequality by Income With Relative Mobility
 m3a <- glmer(formula = merit ~ gini_cz*income + rm_cz +
@@ -592,7 +591,6 @@ m123a <- pa %>% add_brackets(two_brackets_a)
 pdf("m123a.pdf")
 grid.draw(m123a)
 dev.off()
-
 
 # # m3 Plus Race- and Income-Segregation Controls
 # m3ab <- glmer(formula = merit ~ gini_cz*income + rm_cz +
