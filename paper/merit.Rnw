@@ -42,7 +42,7 @@ library(knitr)
 opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE, results='hide')
 @
 
-\title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States\thanks{Prepared for the Annual Meeting of the Southern Political Science Association, San Juan, PR, January 7-9, 2016.  The most recent version of this paper can be found \href{https://github.com/fsolt/meritocracy/blob/master/paper/merit.pdf}{here on Github}.}}
+\title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States\thanks{Prepared for the Annual Meeting of the Southern Political Science Association, San Juan, PR, January 7-9, 2016.  The most recent version of this paper can be found \href{https://github.com/fsolt/meritocracy/blob/master/paper/merit.pdf}{on Github here}.}}
 \author{
     Frederick Solt\\
     \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
@@ -57,21 +57,20 @@ How does the context in which people live affect their belief in meritocracy, th
 \newpage
 \begin{spacing}{2}
 
-Meritocracy---that idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.][21-23]{Hochschild1995}.  How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States over the past three-and-half decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.  Not surprisingly, this and related questions regarding the relationship between economic inequality and political attitudes and beliefs have recently attracted considerable scholarly attention. 
+Meritocracy---that idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.][21-23]{Hochschild1995}.  How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States over the past three-and-half decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.  Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late. 
 
 In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce rather than challenge the status quo,  \citet{Newman2015} advanced the argument that inequality in the United States  activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
 
-However, due to misinterpretation of the interaction term in its model \citep[see, e.g.,][]{Brambor2006}, the article's empirical results do not support its conclusion, and efforts to replicate its analyses revealed a number of additional severe problems, from unjustifiably pooling incomparable observations to errors in merging together contextual and survey data to neglecting available data that does not support the hypothesis \citep{Solt2016a}.  That work's sanguine conclusion, that mere exposure to high levels of inequality stimulates a rejection of meritocracy (and so should generate increased demand for redistribution) among those with lower incomes, then, cannot be accepted without further investigation. 
+However, due to misinterpretation of the interaction term in the paper's model \citep[see, e.g.,][]{Brambor2006}, its empirical results do not support its conclusions, and efforts to replicate its analyses revealed a number of additional severe problems, from unjustifiably pooling incomparable observations to errors in merging together contextual and survey data to neglecting available data that do not support the preferred hypotheses \citep[see][]{Solt2016a}.  The sanguine conclusion reached by \citet{Newman2015}, that mere exposure to high levels of inequality stimulates a rejection of meritocracy (and so should generate increased demand for redistribution) among those with lower incomes, then, cannot be accepted without further investigation. 
+
+\section*{Economic Inequality and Meritocracy}
+The relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory.  As mentioned above, \citet{Newman2015} advocate the conflict theory.  Based on the rational-actor perspective, this theory maintains that, for lower-income individuals, being confronted with high levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' \citep[327]{Newman2015}.\footnote{\doublespacing Intriguingly, they interpret this response to a psychological need to protect self-esteem in the face of personal deficiencies without considering the possiblity that it may instead reflect a cognitive recognition of the greater difficulty of advancing in a more sharply stratified society \citep[329]{Newman2015}.  It would appear that those authors' own belief in meritocracy remains unquestioned.}  Greater class consciousness, and increased  demand for redistribution, then follows. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid the guilt and shame that their more obviously privileged position could prompt while simultaneously and self-interestedly protecting this position by becoming even more likely to believe in the importance of individual effort in the distribution of economic rewards.
+
+The relative power theory starts with the proposition that money is a political resource: that is, that it can be used to influence others.  Therefore, the theory contends, where the rich are richer relative to the poor, they will also be more powerful relative to the poor \citep{Goodin1980}.  With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides high-income people with more resources to spread their views in the public sphere, while depriving poorer people to a greater degree of the resources to resist these efforts.  Their greater relative powerlessness leads to ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.  Patterns of religiosity \citep[see][]{Solt2011a, Solt2014b} and respect for authority \citep{Solt2012} have been found to provide support for this theory, and the finding of \citet{Kelly2010} that public opinion in the United States has shifted against redistributive policies when inequality increased is also consistent.
+
+Relative power theory, in short, can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the implausible premise that social structures are self-negating \citep[37]{Huber2012}.
 
 
-Activated class conflict theory
-
-\citet{Newman2015} 
-
-
-Relative power theory
-
-\citep{Kelly2010}
 
 \section*{Data and Method}
 To test the hypotheses provided by these to contending theories requires data both on individuals' belief in meritocracy and on the economic conditions of the contexts in which they live.  The contextual unit of analysis used here is the commuting zone (CZ).  CZs are aggregations of counties meant to represent the scale of local economic relationships both in metropolitan areas and across the rural United States.  They are therefore preferable to the arbitrary borders imposed by counties; they were, in fact, explicitly designed to represent where people actually live and work and overcome the unrealistic assumption that counties are economically meaningful units  \citep{Tolbert1996}.
@@ -89,7 +88,6 @@ A number of other factors might help explain people's beliefs in meritocracy.  A
 What is \emph{not} included in these models is perhaps equally worthy of comment.  Although measures of party identification, ideology, and church attendance are often reflexively added to analyses, they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.  In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.  Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{\doublespacing On the powerful relationship between rising income inequality and greater religiosity, for example, \citet[see][]{Solt2011a, Solt2014b}.}  For the insistent, models including these variables can be found in the appendix.  They do not evince substantially different patterns, although as one would expect the estimated coefficients for income inequality are somewhat attentuated.
 
 The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs.  Because both the conflict and relative power theories suggest that the effect of the context income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included.  For individual $i$ in commuting zone $j$, then, the model of the logged odds of believing in meritocracy can be expressed as:
-
 {\setlength\arraycolsep{2pt} 
 \begin{eqnarray}
 \label{E:mixed}
@@ -100,12 +98,12 @@ Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamma_{01}Inequality_
  \nonumber
  \end{eqnarray}
 }
-
 The conflict theory argues that lower-income individuals will become disillusioned with the dominant ideology of meritocracy where inequality is greater but that higher-income individuals will become more likely to uphold it. This yields the predictions that $\gamma_{01}$, the coefficient of income inequality, will be negative and $\gamma_{11}$, the coefficient of the interaction term, will be positive. Relative power theory maintains that lower-income individuals will be especially more likely to be instilled with the belief in meritocracy in contexts of higher inequality, but that higher-income individuals' beliefs will be less sensitive to this aspect of context.  Its predictions, then, are just the opposite of those of the conflict theory: that $\gamma_{01}$ will be positive and $\gamma_{11}$ will be negative.
 
+\newpage
 \section*{Analysis and Results}
 
-Despite significant effort, I have yet to succeed in getting these models to run using multiple imputations of the missing data: \texttt{glmer} is choking when passed even one of the imputed datasets.  My choices appear to be down to either exporting all of the imputed data frames to HLM, running them each separately there, and reimporting the results to \R and then combining them with Rubin's Rules, or setting up a Bayesian analysis using Stan.  (I'm leaning toward the latter.)  Neither is a trivial exercise, though, so I have reluctantly proceeded with pairwise deletion, reducing the sample by about a fifth, with much of the losses due to missing income data.  Results should therefore be considered VERY PRELIMINARY; I'm not even going to write them up.  With that warning in mind, feel free to check out the pretty plots. \emph{If} they hold up when the missing data are taken into account, the results provide support for the relative power theory. Again: \emph{if}.
+Despite significant effort, I have yet to succeed in getting these models to run using multiple imputations of the missing data: no matter what I've tried, \texttt{glmer} chokes when passed even one of the imputed datasets.  My choices appear to be down to either exporting all of the imputed data frames to HLM, running them each separately there, and reimporting the results to \R and then combining them with Rubin's Rules, or setting up a Bayesian analysis using Stan.  (I'm leaning toward the latter.)  Neither is a trivial exercise, though, so I have reluctantly proceeded with pairwise deletion, reducing the sample by about a fifth, with much of the losses due to missing income data.  Results should therefore be considered VERY PRELIMINARY; I'm not even going to write them up.  With that warning in mind, feel free to check out the pretty plots. \emph{If} they hold up when the missing data are adequately taken into account, the results would provide support for the relative power theory. Again: \emph{if}.
 
 <<label=setup>>==
 library(haven)
@@ -673,11 +671,13 @@ dev.off()
 #             data=p2007x1, family=binomial(link="logit"))
 @
 
-
+\begin{spacing}{2}
 \clearpage
 \pagebreak
 \newpage
 \bibliographystyle{ajps}
 \bibliography{FSLibrary}
+
+\end{spacing}
 
 \end{document}
