@@ -9,4 +9,6 @@
 *.tex
 *.blg
 *.thm
+*.nav
+*.toc
 .DS_Store
