@@ -1,0 +1,214 @@
+\makeatletter\let\ifGm@compatii\relax\makeatother
+\documentclass{beamer}
+\mode<presentation>
+
+\def\urltilda{\kern -.15em\lower .7ex\hbox{\~{}}\kern .04em}
+
+\usetheme{Warsaw1}
+\usecolortheme{beaver}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{fancyvrb}
+\setbeamercovered{highly dynamic}
+
+
+\title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States}
+\author[Frederick Solt]{Frederick Solt\\ University of Iowa}
+\date{Inequality Mini-Conference\\ SPSA 2016}
+
+\begin{document}
+
+\section*{Introduction}
+
+\frame{\titlepage}
+
+%\subsection{The Idea}
+
+\frame{
+   \frametitle{A Looming Question}
+	\vspace{-.15in}
+	\begin{itemize}
+		\item What's the Relationship Between Economic Inequality and Democracy?
+		\pause
+		\item Inequality: Self-Correcting or Self-Reinforcing?
+		\pause
+            \begin{itemize}
+                \item Meltzer-Richard or Benabou?
+                \pause
+                \item Unequal Representation?
+                \pause
+                \item Participation: Energized or Demobilized?
+                \pause
+            \end{itemize}
+	\end{itemize}
+}
+
+\section{A Problematic Contribution}
+\frame{
+  \frametitle{Newman, Johnston, and Lown 2015}
+  \begin{columns}
+   \begin{column}{0.5\textwidth}
+       \begin{itemize}
+         \item Belief in Meritocracy
+         \pause
+         \item Activated Conflict Theory
+         \pause
+           \begin{itemize}
+             \item High inequality activates class consciousness
+             \pause
+             \item Poor less likely to believe in meritocracy
+             \pause
+             \item Rich \emph{more} likely to believe in meritocracy
+             \pause
+           \end{itemize}
+         \end{itemize}
+    \end{column} 
+  
+    \begin{column}{0.5\textwidth}
+    \vspace{-.25in}
+      \begin{center}
+ %       \includegraphics[width=1.1\textwidth]{NJL.pdf}
+      \end{center}
+    \end{column}
+  \end{columns}
+}
+
+\frame{
+  \frametitle{Newman, Johnston, and Lown 2015}
+  \begin{columns}
+   \begin{column}{0.5\textwidth}
+       \begin{itemize}
+         \item Belief in Meritocracy
+         \item Activated Conflict Theory
+           \begin{itemize}
+             \item High inequality activates class consciousness
+             \item Poor less likely to believe in meritocracy
+             \item Rich \emph{more} likely to believe in meritocracy
+           \end{itemize}
+         \end{itemize}
+    \end{column} 
+  
+    \begin{column}{0.5\textwidth}
+    \vspace{-.25in}
+      \begin{center}
+        \includegraphics[width=1.1\textwidth]{NJL.pdf}
+      \end{center}
+    \end{column}
+  \end{columns}
+}
+
+\frame{
+  \frametitle{Newman, Johnston, and Lown 2015}
+  \begin{columns}
+   \begin{column}{0.5\textwidth}
+       \begin{itemize}
+         \item Belief in Meritocracy
+         \item Activated Conflict Theory
+           \begin{itemize}
+             \item High inequality activates class consciousness
+             \item Poor less likely to believe in meritocracy
+             \item Rich \emph{more} likely to believe in meritocracy
+           \end{itemize}
+         \end{itemize}
+    \end{column} 
+  
+    \begin{column}{0.5\textwidth}
+    \vspace{-.25in}
+      \begin{center}
+        \includegraphics[width=1.1\textwidth]{NJL.pdf}
+      \end{center}
+    \end{column}
+  \end{columns}
+}
+
+\frame{
+	\frametitle{Misinterpreted Interaction Terms}
+	\vspace{-.1in}
+	\begin{figure}[hbtp] 
+		\includegraphics[width=2.2in]{../figures/m2_pp.pdf}
+	\end{figure}
+}
+
+
+
+\section{Research Design}
+\frame{
+  \frametitle{Data}
+  \begin{columns}[t]
+      \begin{column}{0.5\textwidth}
+        Individual-Level Data\\
+        \pause
+        \begin{itemize}
+          \item Religious Landscape Survey\\
+          \pause
+          \item $> 35,000$ respondents\\
+          \pause
+          \item `Most people who want to get ahead can make it if they're willing to work hard'
+          \item plus income and controls
+          \end{itemize}
+    \end{column} 
+  
+    \begin{column}{0.5\textwidth}
+      Contextual Data\\
+      \pause
+      \begin{itemize}
+          \item Commuting Zones\\
+          \pause
+          \item Equality of Opportunity Project\\
+          \pause
+          \item Income Inequality\\
+          \pause
+          \item Relative Mobility\\
+      \end{itemize}
+    \end{column}
+  \end{columns}
+}
+
+\section*{PRELIMINARY Results}
+
+\frame{
+	\frametitle{Predicting Belief in Meritocracy}
+	\vspace{-.1in}
+	\begin{figure}[hbtp] 
+		\includegraphics[width=2.9in]{../figures/m123.pdf}
+	\end{figure}
+}
+
+\frame{
+	\frametitle{Estimated Coefficients of Income Inequality by Income}
+	\vspace{-.22in}
+	\begin{figure}[hbtp] 
+		\includegraphics[width=3.5in]{../figures/m23_gini-1.pdf}
+	\end{figure}
+}
+
+
+\frame{
+	\frametitle{Belief in Meritocracy by Income}
+	\vspace{-.1in}
+	\begin{figure}[hbtp] 
+		\includegraphics[width=2.2in]{../figures/m2_pp.pdf}
+	\end{figure}
+}
+
+\section*{Conclusions}
+
+\frame{
+    \frametitle{Moving Forward}
+	\vspace{-.15in}
+	\begin{itemize}
+		\item Missing Data! 
+		\pause
+		\item \emph{IF} results hold up:
+				\pause
+            \begin{itemize}
+                \item \alert{NO} reason to think mere exposure breeds opposition
+                \pause
+                \item In fact, support for the opposite
+                \pause
+                \item Inequality is not self-correcting
+            \end{itemize}
+	\end{itemize}
+}
+
+\end{document}
