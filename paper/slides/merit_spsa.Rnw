@@ -125,7 +125,23 @@
 	\frametitle{Misinterpreted Interaction Terms}
 	\vspace{-.1in}
 	\begin{figure}[hbtp] 
-		\includegraphics[width=2.2in]{../figures/m2_pp.pdf}
+		\includegraphics[width=2.2in]{07_plot_interaction_terms_t1m1.pdf}
+	\end{figure}
+}
+
+\frame{
+	\frametitle{Pooling of Incomparable Observations}
+	\vspace{-.1in}
+	\begin{figure}[hbtp] 
+		\includegraphics[width=2.2in]{04_three_measures_dv.pdf}
+	\end{figure}
+}
+
+\frame{
+	\frametitle{Excluded Data}
+	\vspace{-.1in}
+	\begin{figure}[hbtp] 
+		\includegraphics[width=2.2in]{03_examine_all_available_data_t2_by_survey.pdf}
 	\end{figure}
 }
 
