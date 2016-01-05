@@ -25,7 +25,7 @@
 %\subsection{The Idea}
 
 \frame{
-   \frametitle{A Looming Question}
+   \frametitle{A Big Question}
 	\vspace{-.15in}
 	\begin{itemize}
 		\item What's the Relationship Between Economic Inequality and Democracy?
@@ -43,23 +43,24 @@
 	\end{itemize}
 }
 
+% Slide here on meritocracy and system-sustaining beliefs
+
 \section{A Problematic Contribution}
 \frame{
-  \frametitle{Newman, Johnston, and Lown 2015}
+  \frametitle{Newman, Johnston, and Lown (\emph{AJPS}, 2015)}
   \begin{columns}
-   \begin{column}{0.5\textwidth}
+   \begin{column}{0.6\textwidth}
        \begin{itemize}
          \item Belief in Meritocracy
          \pause
          \item Activated Conflict Theory
          \pause
            \begin{itemize}
-             \item High inequality activates class consciousness
+             \item Exposure to great inequality activates psychological defenses
              \pause
-             \item Poor less likely to believe in meritocracy
+             \item leading poor to avoid responsibility: meritocracy $\downarrow$
              \pause
-             \item Rich \emph{more} likely to believe in meritocracy
-             \pause
+             \item and rich to avoid guilt: meritocracy $\uparrow$
            \end{itemize}
          \end{itemize}
     \end{column} 
@@ -74,40 +75,16 @@
 }
 
 \frame{
-  \frametitle{Newman, Johnston, and Lown 2015}
+  \frametitle{Newman, Johnston, and Lown (\emph{AJPS}, 2015)}
   \begin{columns}
-   \begin{column}{0.5\textwidth}
+   \begin{column}{0.6\textwidth}
        \begin{itemize}
          \item Belief in Meritocracy
          \item Activated Conflict Theory
            \begin{itemize}
-             \item High inequality activates class consciousness
-             \item Poor less likely to believe in meritocracy
-             \item Rich \emph{more} likely to believe in meritocracy
-           \end{itemize}
-         \end{itemize}
-    \end{column} 
-  
-    \begin{column}{0.5\textwidth}
-    \vspace{-.25in}
-      \begin{center}
-        \includegraphics[width=1.1\textwidth]{NJL.pdf}
-      \end{center}
-    \end{column}
-  \end{columns}
-}
-
-\frame{
-  \frametitle{Newman, Johnston, and Lown 2015}
-  \begin{columns}
-   \begin{column}{0.5\textwidth}
-       \begin{itemize}
-         \item Belief in Meritocracy
-         \item Activated Conflict Theory
-           \begin{itemize}
-             \item High inequality activates class consciousness
-             \item Poor less likely to believe in meritocracy
-             \item Rich \emph{more} likely to believe in meritocracy
+             \item Exposure to great inequality activates psychological defenses
+             \item leading poor to avoid responsibility: meritocracy $\downarrow$
+             \item and rich to avoid guilt (+self-interest): meritocracy $\uparrow$
            \end{itemize}
          \end{itemize}
     \end{column} 
@@ -125,7 +102,7 @@
 	\frametitle{Misinterpreted Interaction Terms}
 	\vspace{-.1in}
 	\begin{figure}[hbtp] 
-		\includegraphics[width=2.2in]{07_plot_interaction_terms_t1m1.pdf}
+		\includegraphics[width=\textwidth]{07_plot_interaction_terms_t1m1.pdf}
 	\end{figure}
 }
 
@@ -133,21 +110,50 @@
 	\frametitle{Pooling of Incomparable Observations}
 	\vspace{-.1in}
 	\begin{figure}[hbtp] 
-		\includegraphics[width=2.2in]{04_three_measures_dv.pdf}
+		\includegraphics[width=0.67\textwidth]{04_three_measures_dv.pdf}
 	\end{figure}
 }
 
 \frame{
 	\frametitle{Excluded Data}
-	\vspace{-.1in}
+	Coefficients on Self-Identification as `Have-Not', 6 Pew Surveys
 	\begin{figure}[hbtp] 
-		\includegraphics[width=2.2in]{03_examine_all_available_data_t2_by_survey.pdf}
+		\includegraphics[width=\textwidth]{03_examine_all_available_data_t2_by_survey.pdf}
 	\end{figure}
+	Can you guess which one was reported?
 }
 
+\section{Overlooked Theory}
 
+\frame{
+	\frametitle{Another Theory}
+	Relative Power Theory
+	\begin{itemize}
+	  \item High inequality increases power of rich \dots
+	    \begin{enumerate}
+	      \item to win overt debates
+	      \item to control agenda
+	      \item to shape attitudes
+	     \end{enumerate}
+	  \item leading poor to adopt beliefs of rich: meritocracy $\uparrow$
+	  \item and, possibly, self-interest of rich: meritocracy $\uparrow$
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Yet Another}
+	Economic Mobility
+	\begin{itemize}
+	  \item High inequality decreases mobility
+	  \pause
+	  \item leading poor to recognize stratification: meritocracy $\downarrow$
+	  \pause
+	  \item and, possibly, the rich as well: meritocracy $\downarrow$
+	\end{itemize}
+}
 
 \section{Research Design}
+
 \frame{
   \frametitle{Data}
   \begin{columns}[t]
@@ -186,7 +192,7 @@
 	\frametitle{Predicting Belief in Meritocracy}
 	\vspace{-.1in}
 	\begin{figure}[hbtp] 
-		\includegraphics[width=2.9in]{../figures/m123.pdf}
+		\includegraphics[width=2.8in]{../figures/m123.pdf}
 	\end{figure}
 }
 
