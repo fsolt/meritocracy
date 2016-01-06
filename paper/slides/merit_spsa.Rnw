@@ -14,7 +14,7 @@
 
 \title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States}
 \author[Frederick Solt]{Frederick Solt\\ University of Iowa}
-\date{Inequality Mini-Conference\\ SPSA 2016}
+\date{Inequality Mini-Conference\\ SPSA 2016\\ \url{http://github.com/fsolt/meritocracy}}
 
 \begin{document}
 
@@ -34,11 +34,8 @@
 		\pause
             \begin{itemize}
                 \item Meltzer-Richard or Benabou?
-                \pause
-                \item Unequal Representation?
-                \pause
-                \item Participation: Energized or Demobilized?
-                \pause
+                \item Unequal Representation: A Smoking Gun?
+                \item Political Participation: Energized or Demobilized?
             \end{itemize}
 	\end{itemize}
 }
@@ -102,7 +99,7 @@
 	\frametitle{Misinterpreted Interaction Terms}
 	\vspace{-.1in}
 	\begin{figure}[hbtp] 
-		\includegraphics[width=\textwidth]{07_plot_interaction_terms_t1m1.pdf}
+		\includegraphics[width=0.9\textwidth]{07_plot_interaction_terms_t1m1.pdf}
 	\end{figure}
 }
 
@@ -110,16 +107,18 @@
 	\frametitle{Pooling of Incomparable Observations}
 	\vspace{-.1in}
 	\begin{figure}[hbtp] 
-		\includegraphics[width=0.67\textwidth]{04_three_measures_dv.pdf}
+		\includegraphics[width=0.64\textwidth]{04_three_measures_dv.pdf}
 	\end{figure}
 }
 
 \frame{
 	\frametitle{Excluded Data}
+	\vspace{-.05in}
 	Coefficients on Self-Identification as `Have-Not', 6 Pew Surveys
 	\begin{figure}[hbtp] 
-		\includegraphics[width=\textwidth]{03_examine_all_available_data_t2_by_survey.pdf}
+		\includegraphics[width=0.9\textwidth]{03_examine_all_available_data_t2_by_survey.pdf}
 	\end{figure}
+	\vspace{-.1in}
 	Can you guess which one was reported?
 }
 
@@ -131,7 +130,7 @@
 	\begin{itemize}
 	  \item High inequality increases power of rich \dots
 	    \begin{enumerate}
-	      \item to win overt debates
+	      \item to win overt conflicts
 	      \item to control agenda
 	      \item to shape attitudes
 	     \end{enumerate}
@@ -141,13 +140,11 @@
 }
 
 \frame{
-	\frametitle{Yet Another}
+	\frametitle{Yet Another Theory}
 	Economic Mobility
 	\begin{itemize}
 	  \item High inequality decreases mobility
-	  \pause
 	  \item leading poor to recognize stratification: meritocracy $\downarrow$
-	  \pause
 	  \item and, possibly, the rich as well: meritocracy $\downarrow$
 	\end{itemize}
 }
@@ -159,27 +156,21 @@
   \begin{columns}[t]
       \begin{column}{0.5\textwidth}
         Individual-Level Data\\
-        \pause
         \begin{itemize}
           \item Religious Landscape Survey\\
-          \pause
           \item $> 35,000$ respondents\\
-          \pause
           \item `Most people who want to get ahead can make it if they're willing to work hard'
           \item plus income and controls
+          \pause
           \end{itemize}
     \end{column} 
   
     \begin{column}{0.5\textwidth}
       Contextual Data\\
-      \pause
       \begin{itemize}
           \item Commuting Zones\\
-          \pause
           \item Equality of Opportunity Project\\
-          \pause
           \item Income Inequality\\
-          \pause
           \item Relative Mobility\\
       \end{itemize}
     \end{column}
@@ -192,7 +183,7 @@
 	\frametitle{Predicting Belief in Meritocracy}
 	\vspace{-.1in}
 	\begin{figure}[hbtp] 
-		\includegraphics[width=2.8in]{../figures/m123.pdf}
+		\includegraphics[width=2.75in]{../figures/m123.pdf}
 	\end{figure}
 }
 
