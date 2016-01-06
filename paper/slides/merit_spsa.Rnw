@@ -40,16 +40,27 @@
 	\end{itemize}
 }
 
-% Slide here on meritocracy and system-sustaining beliefs
-
 \section{A Problematic Contribution}
 \frame{
-  \frametitle{Newman, Johnston, and Lown (\emph{AJPS}, 2015)}
+  \frametitle{A Problematic Contribution}
+  Newman, Johnston, and Lown (\emph{AJPS}, 2015)
+  \begin{itemize}
+    \item Meritocracy
+    \pause
+    \begin{itemize}
+      \item belief that outcomes result from individual effort
+      \item a core tenet of American Dream
+      \item so an important system justification
+    \end{itemize}
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{A Problematic Contribution}
+  Newman, Johnston, and Lown (\emph{AJPS}, 2015)
   \begin{columns}
    \begin{column}{0.6\textwidth}
        \begin{itemize}
-         \item Belief in Meritocracy
-         \pause
          \item Activated Conflict Theory
          \pause
            \begin{itemize}
@@ -72,7 +83,8 @@
 }
 
 \frame{
-  \frametitle{Newman, Johnston, and Lown (\emph{AJPS}, 2015)}
+  \frametitle{A Problematic Contribution}
+  Newman, Johnston, and Lown (\emph{AJPS}, 2015)
   \begin{columns}
    \begin{column}{0.6\textwidth}
        \begin{itemize}
@@ -172,9 +184,12 @@
           \item Equality of Opportunity Project\\
           \item Income Inequality\\
           \item Relative Mobility\\
+          \pause
       \end{itemize}
     \end{column}
   \end{columns}
+  \bigskip
+  A problem: {\raise.17ex\hbox{$\scriptstyle\sim$}}20\% missing data at individual level
 }
 
 \section*{PRELIMINARY Results}
