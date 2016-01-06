@@ -110,6 +110,8 @@ The conflict theory argues that lower-income individuals will become disillusion
 
 Despite significant effort, I have yet to succeed in getting these models to run using multiple imputations of the missing data in the RLS: no matter what I've tried, \texttt{glmer} chokes when passed even one of the imputed datasets.  My choices appear to be down to either exporting all of the imputed data frames to HLM, running them each separately there, and reimporting the results to \R and then combining them with Rubin's Rules, or setting up a Bayesian analysis using Stan.  (I'm leaning toward the latter.)  Neither is a trivial exercise, though, so I have reluctantly proceeded with pairwise deletion, reducing the sample by about a fifth, with much of the losses due to missing income data.  Results should therefore be considered VERY PRELIMINARY; I'm not even going to write them up.  With that warning in mind, feel free to check out the pretty plots. \emph{If} they hold up when the missing data are adequately taken into account, the results would provide support for the relative power theory. Again: \emph{if}.
 
+% m2@frame$income[m2@frame$income<6] %>% length()/28633 #49%
+
 <<label=setup>>==
 library(haven)
 library(readxl)
