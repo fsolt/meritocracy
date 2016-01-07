@@ -12,7 +12,7 @@
 \setbeamercovered{highly dynamic}
 
 
-\title{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States}
+\title[Inequality, Mobility, and Meritocracy]{Economic Inequality, Intergenerational Mobility, and Belief in Meritocracy in the United States}
 \author[Frederick Solt]{Frederick Solt\\ University of Iowa}
 \date{Inequality Mini-Conference\\ SPSA 2016\\ \url{http://github.com/fsolt/meritocracy}}
 
@@ -136,7 +136,7 @@
 	Can you guess which one was reported?
 }
 
-\section{Overlooked Theory}
+\section{More Theory}
 
 \frame{
 	\frametitle{Another Theory}
