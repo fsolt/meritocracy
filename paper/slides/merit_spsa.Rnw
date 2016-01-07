@@ -43,7 +43,9 @@
 \section{A Problematic Contribution}
 \frame{
   \frametitle{A Problematic Contribution}
+  \vspace{-.55in}
   Newman, Johnston, and Lown (\emph{AJPS}, 2015)
+  \vspace{.45in}
   \begin{itemize}
     \item Meritocracy
     \pause
@@ -68,7 +70,7 @@
              \pause
              \item leading poor to avoid responsibility: meritocracy $\downarrow$
              \pause
-             \item and rich to avoid guilt: meritocracy $\uparrow$
+             \item and rich to avoid guilt (+self-interest): meritocracy $\uparrow$
            \end{itemize}
          \end{itemize}
     \end{column} 
@@ -76,7 +78,7 @@
     \begin{column}{0.5\textwidth}
     \vspace{-.25in}
       \begin{center}
- %       \includegraphics[width=1.1\textwidth]{NJL.pdf}
+        \includegraphics[width=1.1\textwidth]{NJL_blank.pdf}
       \end{center}
     \end{column}
   \end{columns}
@@ -88,7 +90,6 @@
   \begin{columns}
    \begin{column}{0.6\textwidth}
        \begin{itemize}
-         \item Belief in Meritocracy
          \item Activated Conflict Theory
            \begin{itemize}
              \item Exposure to great inequality activates psychological defenses
@@ -126,7 +127,8 @@
 \frame{
 	\frametitle{Excluded Data}
 	\vspace{-.05in}
-	Coefficients on Self-Identification as `Have-Not', 6 Pew Surveys
+	Coefficients on Belief U.S. is Divided into `Haves' and `Have-Nots'
+	\vspace{-.1in}
 	\begin{figure}[hbtp] 
 		\includegraphics[width=0.9\textwidth]{03_examine_all_available_data_t2_by_survey.pdf}
 	\end{figure}
