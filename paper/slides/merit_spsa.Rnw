@@ -239,4 +239,24 @@
 	\end{itemize}
 }
 
+% \frame{
+% 	\frametitle{Pooling of Incomparable Observations}
+% 	\vspace{-.1in}
+% 	\begin{figure}[hbtp] 
+% 		\includegraphics[width=0.64\textwidth]{04_three_measures_dv.pdf}
+% 	\end{figure}
+% }
+% 
+% \frame{
+% 	\frametitle{Excluded Data}
+% 	\vspace{-.05in}
+% 	Coefficients on Belief U.S. is Divided into `Haves' and `Have-Nots'
+% 	\vspace{-.1in}
+% 	\begin{figure}[hbtp] 
+% 		\includegraphics[width=0.9\textwidth]{03_examine_all_available_data_t2_by_survey.pdf}
+% 	\end{figure}
+% 	\vspace{-.1in}
+% 	Can you guess which one was reported?
+% }
+
 \end{document}
