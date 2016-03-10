@@ -85,7 +85,7 @@ The relative power theory starts with the proposition that money is a political 
 
 Relative power theory, in short, can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the implausible premise that social structures are self-negating \citep[37]{Huber2012}.
 
-Objective levels of economic mobility have thus far been left out of the discussion of the causes of the belief that people can get ahead through their own hard work, but it is, of course, directly implicated.  Less obvious, perhaps, is that because economic mobility tends to decline with rising inequality \citep[see, e.g.,][]{Andrews2009}, it provides a cognitive explanation for any relationship between inequality and beliefs in meritocracy that may challenge both of the theories described above.  Rather than evincing a greater psychological need to protect self-esteem in the face of personal deficiencies as the conflict theory asserts \citep[see, e.g.,][329]{Newman2015} or the more complete cultural domination of the well-off as the relative power theory maintains \citep[see, e.g.,][704]{Solt2012}, beliefs in meritocracy may instead simply reflect a correct recognition of the greater difficulty of advancing in a more sharply stratified society.
+
 \nocite{Solt2008, Solt2010, Karakoc2012, Solt2015}
 
 
