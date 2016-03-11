@@ -100,7 +100,7 @@ The other individual-level variable implicated in these theories is income.  The
 
 A number of other factors might help explain people's beliefs in meritocracy.  At the contextual level, I follow \citet{Newman2015} in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  At the individual level, the analyses include demographic controls for age, education, sex, race, and citizenship.
 
-What is \emph{not} included in these models is perhaps equally worthy of comment.  Although measures of party identification, ideology, and church attendance are often reflexively added to analyses, they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.  In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.  Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{\doublespacing On the powerful relationship between rising income inequality and greater religiosity, for example, \citet[see][]{Solt2011a, Solt2014b}.}  For the insistent, models including these variables can be found in the appendix.  They do not evince substantially different patterns, although as one would expect the estimated coefficients for income inequality are somewhat attentuated.
+What is \emph{not} included in these models is perhaps equally worthy of comment.  Although measures of party identification, ideology, and church attendance are often reflexively added to analyses, they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.  In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.  Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{\doublespacing On the powerful relationship between rising income inequality and greater religiosity, see, for example, \citet{Solt2011a, Solt2014b}.}  For the insistent, models including these variables can be found in the appendix.  They do not evince substantially different patterns, although as one would expect the estimated coefficients for income inequality are somewhat attentuated.
 
 The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs.  Because both the conflict and relative power theories suggest that the effect of the context income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included.  For individual $i$ in commuting zone $j$, then, the model of the logged odds of believing in meritocracy can be expressed as:
 {\setlength\arraycolsep{2pt} 
@@ -476,7 +476,7 @@ ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
 \end{figure}
 
 \appendix
-
+\section{Appendix A: Additional Controls}
 Objective levels of economic mobility have thus far been left out of the discussion of the causes of the belief that people can get ahead through their own hard work, but it is, of course, directly implicated.  Less obvious, perhaps, is that because economic mobility tends to decline with rising inequality \citep[see, e.g.,][]{Andrews2009}, it provides a cognitive explanation for any relationship between inequality and beliefs in meritocracy that may challenge both of the theories described above.  Rather than evincing a greater psychological need to protect self-esteem in the face of personal deficiencies as the conflict theory asserts \citep[see, e.g.,][329]{Newman2015} or the more complete cultural domination of the well-off as the relative power theory maintains \citep[see, e.g.,][704]{Solt2012}, beliefs in meritocracy may instead simply reflect a correct recognition of the greater difficulty of advancing in a more sharply stratified society.
 
 For economic mobility, we use Chetty et al.'s (\citeyear[1554]{Chetty2014}) data on relative intergenerational mobility, which provides the best available information of the extent to which ``a person's chances of success depend little on his or her family background.''  It is measured as the relationship, in each CZ, between parents' rank in the national income distribution when their children were in their late teens and the rank of those children when they are approximately age 30.  The median respondent lives in a CZ with a score of .34 on this variable, that is, a 10 percentile increase in parents' incomes is associated with only a 3.4 percentile increase in childrens' incomes.  Economic mobility ranges from .07 to .51 in this dataset.
@@ -524,8 +524,7 @@ interplot(m3a, "gini_cz", "income") +
 ggsave("figures/m3a_gini.pdf")
 
 m123a_df <- rbind(format_results(m1a, "Model A1"),
-                 format_results(m2a, "Model A2a"),
-                 format_results(m2b, "Model A2b"),
+                 format_results(m2a, "Model A2"),
                  format_results(m3a, "Model A3")) %>%
   by_2sd(p2007x1)
 
@@ -557,10 +556,24 @@ two_brackets_a <- list(c("Individual Controls", "age", "attend"), c("CZ Controls
 
 m123a <- pa %>% add_brackets(two_brackets_a)
 
-pdf("m123a.pdf")
+pdf("figures/m123a.pdf")
 grid.draw(m123a)
 dev.off()
 @
+
+\begin{figure}[!hbtp] 
+  \caption{Predicting Belief in Meritocracy With Additional Controls}
+  \label{F:app_reg_plot}
+  \begin{center}
+    \includegraphics[width=5.5in]{figures/m123a.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.3in} p{5.6in}}
+  & \emph{Note}: The dots represent estimated change in the logged odds of believing in meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,633 individual respondents living in 691 commuting zones.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
 
 \begin{spacing}{2}
 \clearpage
