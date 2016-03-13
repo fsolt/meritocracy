@@ -88,8 +88,288 @@ In summary, relative power theory can be seen as a straightforward implication o
 
 \nocite{Solt2008, Solt2010, Karakoc2012, Solt2015}
 
+\section*{Reproduction}
 
-\section*{Data and Method}
+It has been well known for over a decade that models containing multiplicative interaction terms require particular care in interpretation \citep[see, e.g.,][]{Golder2003, Braumoeller2004, Brambor2006, Kam2007}. Nevertheless, many political scientists struggle with interaction terms: improperly specified or interpreted interaction terms appear at the top of Nyhan's (\citeyear{Nyhan2015}) list of ``recurring statistical errors'' that reviewers should be sure to check for.
+<<label=setup>>==
+library(haven)
+library(readxl)
+library(readr)
+library(stringr)
+library(rio)
+library(dplyr)
+library(magrittr)
+library(Hmisc)
+library(lme4)
+library(ggplot2)
+library(interplot)
+library(dotwhisker)
+@
+
+<<label=interplot0>>==
+# Old, pre-release version of interplot; used for the reproduction below because it includes the steps argument that didn't make it into the release version
+interplot0 <- function(m, var1, var2, xlab=NULL, ylab=NULL, 
+					   seed=324, sims=1000, steps=100, xmin=NA,
+					   xmax=NA, labels=NULL, plot=TRUE) {
+	require(arm)
+	require(ggplot2)
+	require(abind)
+	set.seed(seed)
+	if (class(m)=="list") {
+		m.list <- m
+		m <- m.list[[1]]
+		m.class <- class(m)
+		m.sims.list <- lapply(m.list, function(i) arm::sim(i, sims))
+		m.sims <- m.sims.list[[1]]
+		if (m.class=="lmerMod" | m.class=="glmerMod") {
+			for(i in 2:length(m.sims.list)) {
+				m.sims@fixef <- rbind(m.sims@fixef, m.sims.list[[i]]@fixef)
+				m.sims@ranef[[1]] <- abind(m.sims@ranef[[1]], m.sims.list[[i]]@ranef[[1]], along=1)
+			}
+		} else {
+			stop(paste("Multiply imputed flat models not implemented yet"))
+		}
+	} else {
+		m.class <- class(m)
+		m.sims <- arm::sim(m, sims)
+	}
+	if(var1==var2) var12 <- paste0("I(", var1, "^2)") else var12 <- paste0(var2,":",var1)
+	if(m.class!="lmerMod" & m.class!="glmerMod"){
+		if (!var12 %in% names(m$coef)) var12 <- paste0(var1,":",var2)
+		if (!var12 %in% names(m$coef)) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
+		if (is.na(xmin)) xmin <- min(m$model[var2], na.rm=T)
+		if (is.na(xmax)) xmax <- max(m$model[var2], na.rm=T)
+		coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
+		
+		for(i in 1:steps) {    
+			coef$coef1[i] <- mean(m.sims@coef[,match(var1, names(m$coef))] + 
+								  	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))])
+			coef$ub[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
+								   	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .975)
+			coef$lb[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
+								   	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .025)    
+		}
+	} else {
+		if (!var12 %in% unlist(dimnames(m@pp$X)[2])) var12 <- paste0(var1,":",var2)
+		if (!var12 %in% unlist(dimnames(m@pp$X)[2])) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
+		if (is.na(xmin)) xmin <- min(m@frame[var2], na.rm=T)
+		if (is.na(xmax)) xmax <- max(m@frame[var2], na.rm=T)        
+		coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
+		
+		for(i in 1:steps) {   
+			coef$coef1[i] <- mean(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+								  	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))])
+			coef$ub[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+								   	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .975)
+			coef$lb[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+								   	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .025)    
+		}   
+	}
+	if (plot==TRUE) {
+		if(steps>10) {
+			coef.plot <- ggplot(coef, aes(x = fake, y = coef1)) + 
+				geom_line() + geom_ribbon(aes(ymin=lb, ymax=ub), alpha=.5) +
+				theme_bw() + ylab(ylab) + xlab(xlab)
+		} else {
+			if (is.null(labels)) {
+				coef.plot <- ggplot(coef, aes(x = fake, y = coef1)) + 
+					geom_point() + geom_errorbar(aes(ymin=lb, ymax=ub), width=0) +
+					scale_x_continuous(breaks = seq(min(coef$fake), max(coef$fake), length.out=steps)) +
+					theme_bw() + ylab(ylab) + xlab(xlab)
+			} else {
+				coef.plot <- ggplot(coef, aes(x = fake, y = coef1)) + 
+					geom_point() + geom_errorbar(aes(ymin=lb, ymax=ub), width=0) +
+					scale_x_continuous(breaks = seq(min(coef$fake), max(coef$fake), length.out=steps),
+									   labels = labels) +
+					theme_bw() + ylab(ylab) + xlab(xlab)
+			} 
+		}
+		# print(coef)
+		return(coef.plot)
+	} else {
+		names(coef) <- c(var2, "coef", "ub", "lb")
+		return(coef)
+	}
+}
+@
+
+<<label=reproduction_njl>>==
+### Read data: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26584
+pew1 <- read_tsv("../data/study_26584/Meritocracy Replication Data - Table 1.tab") # Combined Pew surveys
+pew1$year <- 2005
+pew1$year[pew1$survid2006==1] <- 2006
+pew1$year[pew1$survid2007==1] <- 2007
+pew1$year[pew1$survid2009==1] <- 2009
+
+pew1_w <- pew1 %>% filter(white==1)   # Only white respondents
+
+  
+### Analyses
+# Table 1, Model 1
+t1m1 <- glmer(formula=meritocracy~ginicnty+income_i+ginicnty:income_i+income_cnty+black_cnty+
+			  	perc_bush04+pop_cnty+educ_i+age_i+gender_i+unemp_i+union_i+partyid_i+
+			  	ideo_i+attend_i+survid2006+survid2007+survid2009+(1+income_i|fips),
+			  data=pew1_w,family=binomial(link="logit"))
+summary(t1m1)
+
+# plot interaction
+t <- data.frame(table(pew1_w$income_i))
+names(t) <- c("income_i", "freq")
+t <- t[t$freq>10, ] # include only observed values in plot (exclude imputed values)
+t$income_i <- as.numeric(levels(t$income_i))[t$income_i]
+t$inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
+				  "$50-75k", "$75-100k", "$100-150k", ">$150k")
+
+t1m1_plot <- interplot0(t1m1, "ginicnty", "income_i", sims=5000,
+						xmin = min(t$income_i), xmax = max(t$income_i),
+						steps = 9, labels = t$inc_labels,
+						xlab = "Family Income",
+						ylab = "County Income Inequality")
+t1m1_plot <- t1m1_plot + geom_hline(yintercept=0, colour="grey80", linetype="dashed")
+ggsave(file="paper/figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width=8, height=5.25)
+@
+
+\begin{figure}[htbp] 
+  \caption{Logit Coefficients of Local Income Inequality on Belief in Meritocracy by Respondent Income: Table 1, Model 1, From Replication Data}
+  \label{F:coef.t1m1}
+  \begin{center}
+    \includegraphics[width=5.25in]{figures/interaction_njl_t1m1.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.1in} p{5.1in}}
+  & \emph{Notes}: The dependent variable is coded so that 1 indicates belief in meritocracy, not rejection of meritocracy as in \citet{Newman2015}. The coefficient for county income inequality fails to reach statistical significance for any observed level of respondent family income.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
+<<label=three_measures>>==
+data_path <- "data/merit/"
+ver_a_files <- list.files(data_path, recursive = TRUE) %>% 
+	str_subset("version_a.*sav|dta")
+
+#  [1] "version_a/2011 Political Typology Survey/2011 Political Typology public.sav"
+#  [2] "version_a/august_12_middle_class/Aug12 Middle Class_cleaned.sav"
+#  [3] "version_a/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav"
+#  [4] "version_a/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Alaska and Hawaii.sav"
+#  [5] "version_a/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav"
+#  [6] "version_a/Dec05/Dec05c.sav"
+#  [7] "version_a/Dec11 Political/Dec11 public.sav"
+#  [8] "version_a/Immigration06/Mar06 Immigrationc.sav"
+#  [9] "version_a/Jan14/Jan14 public.sav"
+# [10] "version_a/Jan15/Jan15 public.sav"                
+# [11] "version_a/Polarization 2014/Polarization 2014 public.sav" 
+# [12] "version_a/Sept-10-Political-Independents/Sept10 public.sav"   
+# [13] "version_a/typo00/Typol00c.sav"
+# [14] "version_a/typo99-Roper/typo99.dta"
+# [15] "version_a/Typology04/TypoCallback05/typology callbackc.dta"
+# [16] "version_a/Typology04/TypoCallback05/Typology Callbackc.sav"
+# [17] "version_a/Typology04/typology04c.dta"                           
+# [18] "version_a/Typology04/Typology04c.sav" 
+
+ver_a <- data.frame(
+	file_name = paste0(data_path, ver_a_files[c(1:2, 5:8, 12:14, 17)]),
+	year = c(2011, 2012, 2007, 2005, 2011, 2006, 2010, 2000, 1999, 2004), 
+	stringsAsFactors = FALSE) %>% arrange(year)
+
+rc2 <- "1 = 0; 2 = 1; else = NA" # coding rule 1
+rc4 <- "c(1,2) = 0; c(3,4) = 1; else = NA" # coding rule 2
+
+ver_a <- ver_a %>% mutate(
+	var_name = c("q18j", "Q18K", "q11k", "q14k", "q8b", "q5c", "q30d", "q17k", 
+				 "q44a", "q11"),  # question numbers 
+	weight = c("weight", "WEIGHT", rep("weight", 8)),
+	rc = c(rep(rc4, 4), rep(rc2, 3), rc4, rep(rc2, 2)),
+	version = "A",
+	value = NA, 
+	se = NA)
+
+ver_a1 <- ver_a %>% filter(year!=2011) # Two surveys in 2011, so 
+ver_a2 <- ver_a %>% filter(year==2011) # need to combine them below
+
+setup <- function(x) { # read data and select variables
+  if (str_detect(x$file_name, "\\.sav")) {
+    df <- read_spss(x$file_name)
+  } else {
+    df <- read_dta(x$file_name)
+  }
+	df$rej_merit <- car::recode(as.numeric(df[[x$var_name]]), x$rc) # using the coding rule to recode
+	df$weight <- df[[x$weight]]
+	df <- df %>% select(rej_merit, weight) %>% mutate(year = x$year)
+	return(df)
+} 
+
+
+# Calculating means and variances
+	
+for (i in 1:nrow(ver_a1)) {
+	df <- setup(ver_a1[i, ])
+	df$n <- length(df$rej_merit)
+	ver_a1$value[i] <- wtd.mean(df$rej_merit, df$weight, normwt = T) * 100
+	ver_a1$se[i] <- wtd.var(df$rej_merit, df$weight, normwt = T) / df$n %>% sqrt() * 100
+}
+
+df <- rbind(setup(ver_a2[1, ]), setup(ver_a2[2, ]))
+
+ver_a2 <- summarise(df, year = 2011, 
+                    version = "A", 
+                    n = length(rej_merit),
+                    value = wtd.mean(rej_merit, weight, normwt = T) *100,
+                    se = wtd.var(rej_merit, weight, normwt = T) / n %>% sqrt() * 100)
+
+
+ver_b_file <- read_spss(paste0(data_path, "version_b/1987-2012 Values Merge/1987-2012 Values Merge public.sav")) 
+ver_b_file$rej_merit <- with(ver_b_file, ifelse(q2f < 3 & q2e < 3, 1, 0))
+ver_b_file$rej_merit[ver_b_file$q2f == 9 | ver_b_file$q2e == 9] <- NA
+ver_b <- ver_b_file %>% group_by(year) %>% 
+	summarise(version = "B",
+			  value = wtd.mean(rej_merit, weight, normwt = T) * 100,
+			  n = length(rej_merit),
+			  se = wtd.var(rej_merit, weight, normwt = T) / n %>% sqrt() * 100) %>% 
+	filter(year>=1999)
+
+
+ver_c_file <- ver_b_file 
+ver_c_file$rej_merit <- with(ver_c_file, ifelse(q2f < 3, 1, 0))
+ver_c_file$rej_merit[ver_c_file$q2f == 9] <- NA
+ver_c <- ver_c_file %>% group_by(year) %>% 
+	summarise(version = "C",
+	          value = wtd.mean(rej_merit, weight, normwt = T) * 100,
+	          n = length(rej_merit),
+	          se = wtd.var(rej_merit, weight, normwt = T) / n %>% sqrt() * 100) %>% 
+	filter(year>=1999)
+
+ver_all <- bind_rows(ver_a1, ver_a2, ver_b, ver_c) %>% 
+  select(one_of("year", "version", "value", "se"))
+ver_all_wide <- ver_all %>% tidyr::spread(key = version, value = value) # just for reference
+
+njl <- data.frame(
+	year = c(2005:2007, 2009), 
+	version = c("A", "A", "B", "C"), 
+	njl = c("A", "A", "B", "C"),
+	stringsAsFactors = FALSE) # data used in NJL paper
+
+ver_all2 <- left_join(ver_all, njl)
+ver_all2$njl[is.na(ver_all2$njl)] <- "D"
+
+ggplot(ver_all2, aes(x = year, y = value, color = version)) +
+ 	scale_color_manual(values = c(A = "red", B = "darkgreen", C = "navy")) +
+ 	scale_fill_manual(values = c(A = "red", B = "darkgreen", C = "navy", D = "white")) +
+  geom_linerange(aes(ymin=value - qnorm(.975) * se, ymax=value + qnorm(.975) * se), position = position_dodge(width = 0.08)) +
+	geom_line(position = position_dodge(width = 0.08), alpha = .5, linetype = 3) +
+	geom_point(aes(fill = njl), shape = 21, na.rm = TRUE, size = 3, position = position_dodge(width = 0.08)) +
+	scale_x_continuous(breaks=1999:2012, labels=1999:2012) +
+	theme_bw() +
+	theme(axis.text.x  = element_text(angle=80, vjust=0.6),
+		  legend.position = "none") +
+	ylab("Percentage Rejecting Meritocracy") + xlab("") +
+	geom_text(aes(label = "Measure 3", x = 2000, y = 31, color = "C")) +
+	geom_text(aes(label = "Measure 1", x = 2003, y = 26, color = "A")) +
+	geom_text(aes(label = "Measure 2", x = 2010, y = 19, color = "B"))
+ggsave("./paper/figures/three_measures.pdf", width = 4, height = 6)
+@
+
+
+\section*{Replication}
 To test the hypotheses provided by these to contending theories requires data both on individuals' belief in meritocracy and on the economic conditions of the contexts in which they live.  The contextual unit of analysis used here is the commuting zone (CZ).  CZs are aggregations of counties meant to represent the scope of local economic relationships both in metropolitan areas and across the rural United States.  They are therefore preferable to the arbitrary borders imposed by counties; they were, in fact, explicitly designed to represent where people actually live and work and overcome the unrealistic assumption that counties are economically meaningful units \citep{Tolbert1996}.
 
 Income inequality is measured using the Gini coefficient of the distribution of total family income within commuting zones for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States whose names appear on any tax form.\footnote{\doublespacing This measure is not perfect.  Its welfare definition is income after government transfers but before taxes.  Because much redistribution occurs through the tax code, an after-tax measure would be preferable; unfortunately, virtually no data on the distribution of income at any geographic scale below the national level is available for the United States \citet[see, e.g.,][420]{Kelly2012}.  Further, it examines differences in incomes across families, which means those without children are excluded.  It is based on tax records, so it suffers from potential underreporting, particularly among those with very high incomes, though because the topcode for incomes is \$10 million dollars, the downward bias is likely smaller than that found in similar Census data which is topcoded at considerably lower amounts.  Finally, it measures inequality about a decade before the Pew survey; though income distributions change only quite slowly over time, one might wish it were more temporally proximate.  Despite these shortcomings, it remains the best data available on income inequality within commuting zones.}  Within the sample examined here, this variable ranges from a low of .21 to a high of .85; the median value across individual respondents in the sample is .46.
@@ -98,7 +378,7 @@ Individual-level data are drawn from the U.S. Religious Landscape Survey (RLS) c
 
 The other individual-level variable implicated in these theories is income.  The RLS asked respondents to identify their total family income in the previous year on a nine-point scale ranging from less than $10,000 to over $150,000, with the median respondent reporting an income of $50,000 to $75,000.
 
-A number of other factors might help explain people's beliefs in meritocracy.  At the contextual level, I follow \citet{Newman2015} in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  At the individual level, the analyses include demographic controls for age, education, sex, race, and citizenship.
+A number of other factors might help explain people's beliefs in meritocracy.  At the contextual level, we follow \citet{Newman2015} in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  At the individual level, the analyses include demographic controls for age, education, sex, race, and citizenship.
 
 What is \emph{not} included in these models is perhaps equally worthy of comment.  Although measures of party identification, ideology, and church attendance are often reflexively added to analyses, they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.  In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.  Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{\doublespacing On the powerful relationship between rising income inequality and greater religiosity, see, for example, \citet{Solt2011a, Solt2014b}.}  For the insistent, models including these variables can be found in the appendix.  They do not evince substantially different patterns, although as one would expect the estimated coefficients for income inequality are somewhat attentuated.
 
@@ -122,15 +402,7 @@ The conflict theory argues that lower-income individuals will become disillusion
 
 % m2@frame$income[m2@frame$income<6] %>% length()/28633 #49%
 
-<<label=setup>>==
-library(haven)
-library(readxl)
-library(readr)
-library(lme4)
-library(magrittr)
-library(interplot)
-library(dotwhisker)
-library(dplyr)
+<<label=replication_setup>>==
 
 ### Data Set-Up
 # Commuting Zones Identification Data
@@ -476,7 +748,7 @@ ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
 \end{figure}
 
 \appendix
-\section{Appendix A: Additional Controls}
+\section*{Appendix A: Additional Controls}
 Objective levels of economic mobility have thus far been left out of the discussion of the causes of the belief that people can get ahead through their own hard work, but it is, of course, directly implicated.  Less obvious, perhaps, is that because economic mobility tends to decline with rising inequality \citep[see, e.g.,][]{Andrews2009}, it provides a cognitive explanation for any relationship between inequality and beliefs in meritocracy that may challenge both of the theories described above.  Rather than evincing a greater psychological need to protect self-esteem in the face of personal deficiencies as the conflict theory asserts \citep[see, e.g.,][329]{Newman2015} or the more complete cultural domination of the well-off as the relative power theory maintains \citep[see, e.g.,][704]{Solt2012}, beliefs in meritocracy may instead simply reflect a correct recognition of the greater difficulty of advancing in a more sharply stratified society.
 
 For economic mobility, we use Chetty et al.'s (\citeyear[1554]{Chetty2014}) data on relative intergenerational mobility, which provides the best available information of the extent to which ``a person's chances of success depend little on his or her family background.''  It is measured as the relationship, in each CZ, between parents' rank in the national income distribution when their children were in their late teens and the rank of those children when they are approximately age 30.  The median respondent lives in a CZ with a score of .34 on this variable, that is, a 10 percentile increase in parents' incomes is associated with only a 3.4 percentile increase in childrens' incomes.  Economic mobility ranges from .07 to .51 in this dataset.
