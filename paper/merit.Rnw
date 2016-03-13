@@ -354,17 +354,17 @@ ver_all2$njl[is.na(ver_all2$njl)] <- "D"
 ggplot(ver_all2, aes(x = year, y = value, color = version)) +
  	scale_color_manual(values = c(A = "red", B = "darkgreen", C = "navy")) +
  	scale_fill_manual(values = c(A = "red", B = "darkgreen", C = "navy", D = "white")) +
-  geom_linerange(aes(ymin=value - qnorm(.975) * se, ymax=value + qnorm(.975) * se), position = position_dodge(width = 0.08)) +
-	geom_line(position = position_dodge(width = 0.08), alpha = .5, linetype = 3) +
-	geom_point(aes(fill = njl), shape = 21, na.rm = TRUE, size = 3, position = position_dodge(width = 0.08)) +
+  geom_errorbar(aes(ymin=value - qnorm(.975) * se, ymax=value + qnorm(.975) * se), width = .1) +
+	geom_line(alpha = .5, linetype = 3) +
+	geom_point(aes(fill = njl), shape = 21, na.rm = TRUE, size = 3) +
 	scale_x_continuous(breaks=1999:2012, labels=1999:2012) +
 	theme_bw() +
 	theme(axis.text.x  = element_text(angle=80, vjust=0.6),
 		  legend.position = "none") +
 	ylab("Percentage Rejecting Meritocracy") + xlab("") +
-	geom_text(aes(label = "Measure 3", x = 2000, y = 31, color = "C")) +
+	geom_text(aes(label = "Measure 3", x = 2000, y = 31.3, color = "C")) +
 	geom_text(aes(label = "Measure 1", x = 2003, y = 26, color = "A")) +
-	geom_text(aes(label = "Measure 2", x = 2010, y = 19, color = "B"))
+	geom_text(aes(label = "Measure 2", x = 2010, y = 18.8, color = "B"))
 ggsave("./paper/figures/three_measures.pdf", width = 4, height = 6)
 @
 
