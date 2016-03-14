@@ -73,22 +73,22 @@ Meritocracy---that idea that if one works hard, one can get ahead---is a core te
 
 In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce rather than challenge the status quo,  \citet{Newman2015} advanced the argument that inequality in the United States  activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
 
-However, due to misinterpretation of the interaction term \citep[see, e.g.,][]{Brambor2006} in the paper's model, its empirical results do not support its conclusions, and efforts to replicate even those results revealed a number of additional severe problems.  The sanguine conclusion reached by \citet{Newman2015}, that mere exposure to high levels of inequality stimulates a rejection of meritocracy (and so should generates increased demand for redistribution) among those with lower incomes, then, cannot be accepted without further investigation. 
+We demonstrate here, however, that \citet{Newman2015} crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  Correcting this error reveals that there is no support for the paper's sanguine conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
 
-The present work brings more and better data as well as an improved specification to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  It finds no evidence for the Panglossian argument of \citet[329]{Newman2015} that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting. 
+Further, in reproducing the above result from the materials the authors provided \citep{Newman2015a}, we encountered several other problematic issues.  We therefore present here a full replication, bringing more and better data as well as an improved specification to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  This analysis finds no evidence for the Panglossian argument of \citet[329]{Newman2015} that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  To the contrary, but consistent with relative power theory, the results indicate that lower-income individuals are \emph{more} likely to accept the meritocratic ideal where economic inequality is greater.  
 
 
-\section*{Economic Inequality and Meritocracy}
+\section*{Two Theories of Economic Inequality and Politics}
 The relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory.  As mentioned above, \citet{Newman2015} advocate the conflict theory.  Based on the rational-actor perspective, this theory maintains that, for lower-income individuals, being confronted with high levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' \citep[327]{Newman2015}.  Greater class consciousness (and, in turn, increased demand for redistribution) then follows. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid the guilt and shame that their more obviously privileged position could prompt while simultaneously and self-interestedly protecting this position by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
 
-The relative power theory starts with the proposition that money is a political resource: that is, that it can be used to influence others.  Therefore, the theory contends, where the rich are richer relative to the poor, they will also be more powerful relative to the poor \citep{Goodin1980}.  With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides high-income people with more resources to spread their views in the public sphere, while depriving poorer people to a greater degree of the resources to resist these efforts.  Their greater relative powerlessness leads to ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.  Patterns of religiosity \citep[see][]{Solt2011a, Solt2014b} and respect for authority \citep{Solt2012} have been found to provide support for this theory, and Kelly and Enns' (\citeyear{Kelly2010}) finding that public opinion in the United States has shifted against redistributive policies when inequality increased is also consistent.
+The relative power theory starts with the proposition that money is a political resource: that is, that it can be used to influence others.  Therefore, the theory contends, where the rich are richer relative to the poor, they will also be more powerful relative to the poor \citep{Goodin1980}.  With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides high-income people with more resources to spread their views in the public sphere, while depriving poorer people to a greater degree of the resources to resist these efforts.  Their greater relative powerlessness leads to ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.  Patterns of religiosity \citep[see][]{Solt2011a, Solt2014b} and respect for authority \citep{Solt2012} have been found to provide support for this theory, and Kelly and Enns' (\citeyear{Kelly2010}) finding that public opinion in the United States has shifted against redistributive policies when inequality has increased is also consistent with the theory's predictions.
 
 In summary, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the implausible premise that social structures are self-negating \citep[37]{Huber2012}.
 
 
 \nocite{Solt2008, Solt2010, Karakoc2012, Solt2015}
 
-\section*{Reproduction}
+\section*{Reproduction, Results, and Reinterpretation}
 
 It has been well known for over a decade that models containing multiplicative interaction terms require particular care in interpretation \citep[see, e.g.,][]{Golder2003, Braumoeller2004, Brambor2006, Kam2007}. Nevertheless, many political scientists struggle with interaction terms: improperly specified or interpreted interaction terms appear at the top of Nyhan's (\citeyear{Nyhan2015}) list of ``recurring statistical errors'' that reviewers should be sure to check for.
 
@@ -229,18 +229,7 @@ t1m1_plot <- t1m1_plot + geom_hline(yintercept=0, colour="grey80", linetype="das
 ggsave(file="figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width=8, height=5.25)
 @
 
-\begin{figure}[htbp] 
-  \caption{Logit Coefficients of Local Income Inequality on Rejection of Meritocracy by Respondent Income: Table 1, Model 1, From Replication Data}
-  \label{F:coef.t1m1}
-  \begin{center}
-    \includegraphics[width=5.25in]{figures/interaction_njl_t1m1.pdf}
-  \end{center}
-  \begin{footnotesize}
-  \begin{tabular}{p{.1in} p{5.1in}}
-  & \emph{Notes}: The coefficient for county income inequality fails to reach statistical significance for any observed level of respondent family income.
-  \end{tabular}
-  \end{footnotesize}
-\end{figure}
+[Figure~\ref{F:coef.t1m1} about here.]
 
 <<label=three_measures>>==
 data_path <- "../data/merit/"
@@ -612,18 +601,7 @@ dev.off()
 @
 \end{spacing}
 
-\begin{figure}[!hbtp] 
-  \caption{Predicting Rejection of Meritocracy}
-  \label{F:reg_plot}
-  \begin{center}
-    \includegraphics[width=5.5in]{figures/m12.pdf}
-  \end{center}
-  \begin{footnotesize}
-  \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Note}: The dots represent estimated change in the logged odds of believing in meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,633 individual respondents living in 691 commuting zones.
-  \end{tabular}
-  \end{footnotesize}
-\end{figure}
+[Figure~\ref{F:reg_plot} about here.]
 
 <<label=inter_plot>>=
 inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
@@ -631,25 +609,14 @@ inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
 m2_gini <- interplot(m2, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
   coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Family Income", y = "Local Income Inequality") +
+  labs(x = "Family Income", y = "Coefficient of Income Inequality") +
   theme_bw() +
   geom_hline(yintercept = 0, colour = "grey80", linetype = "dashed")
-ggsave(filename="paper/figures/m2_gini.pdf", plot = m2_gini, width = 7, height = 7)
+ggsave(filename="figures/m2_gini.pdf", plot = m2_gini, width = 7, height = 7)
 @
 
+[Figure~\ref{F:coef_plot} about here.]
 
-\begin{figure}[!hbtp] 
-  \caption{Estimated Coefficients of Income Inequality by Income}
-  \label{F:coef_plot}
-  \begin{center}
-    \includegraphics[width=5.5in]{figures/m2_gini.pdf}
-  \end{center}
-  \begin{footnotesize}
-  \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Source}: Model 2, as presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficients of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  The estimates are positive and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
-  \end{tabular}
-  \end{footnotesize}
-\end{figure}
 
 <<label=predprob, include=FALSE>>==
 # replace pred_probs code with code from interplot::predprob_mlm
@@ -728,7 +695,55 @@ ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
 
 @
 
+[Figure~\ref{F:pp_plot} about here.]
 
+\clearpage
+\newpage
+\section{Figures}
+
+% Reproduction: Interaction Plot
+\begin{figure}[htbp] 
+  \caption{Logit Coefficients of Local Income Inequality on Rejection of Meritocracy by Respondent Income: Table 1, Model 1, From Replication Data}
+  \label{F:coef_t1m1}
+  \begin{center}
+    \includegraphics[width=5.25in]{figures/interaction_njl_t1m1.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.1in} p{5.1in}}
+  & \emph{Notes}: The coefficient for county income inequality fails to reach statistical significance for any observed level of respondent family income.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
+% Replication: Full Results Plot
+\begin{figure}[!hbtp] 
+  \caption{Predicting Rejection of Meritocracy}
+  \label{F:reg_plot}
+  \begin{center}
+    \includegraphics[width=5.5in]{figures/m12.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.3in} p{5.6in}}
+  & \emph{Note}: The dots represent estimated change in the logged odds of believing in meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,633 individual respondents living in 691 commuting zones.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
+% Replication: Interaction Plot
+\begin{figure}[!hbtp] 
+  \caption{Estimated Coefficients of Income Inequality by Income}
+  \label{F:coef_plot}
+  \begin{center}
+    \includegraphics[width=5.5in]{figures/m2_gini.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.3in} p{5.6in}}
+  & \emph{Source}: Model 2, as presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficients of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  The estimates are positive and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
+% Replication: Predicted Probabilities Plot
 \begin{figure}[!hbtp] 
   \caption{Predicted Probability of Belief in Meritocracy by Income and Level of Inequality}
   \label{F:pp_plot}
@@ -741,6 +756,7 @@ ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
   \end{tabular}
   \end{footnotesize}
 \end{figure}
+
 
 \appendix
 \section*{Appendix A: Additional Controls}
