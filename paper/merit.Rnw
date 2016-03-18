@@ -13,7 +13,7 @@
 \setlength{\tabcolsep}{1pt}	% Make tables slightly narrower by reducing space between columns.
 \usepackage{afterpage}
 \usepackage{hanging}
-\usepackage{fullpage}
+\usepackage[margin=1in]{geometry}
 
 \usepackage{ntheorem}
 \newtheorem{hyp}{Hypothesis} 
@@ -74,36 +74,76 @@ How belief in meritocracy, and in turn the country's dominant ideology, fares in
 Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late. 
 
 In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce rather than challenge the status quo,  \citet{Newman2015} advanced the argument that inequality in the United States  activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
-We demonstrate here, however, that \citet{Newman2015} crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  Correcting this error reveals that there is no support for the paper's sanguine conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
+We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  Correcting this error reveals that there is no support for the paper's sanguine conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
 
-Further, in reproducing the above result from the materials the authors provided \citep{Newman2015a}, we uncovered other problems.  
+Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered other problems.  
 We therefore present here a full replication, bringing more and better data as well as an improved specification to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
 This analysis finds no evidence for the Panglossian argument of \citet[329]{Newman2015} that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
 To the contrary, but consistent with relative power theory, the results indicate that lower-income individuals are \emph{more} likely to accept the meritocratic ideal where economic inequality is greater.  
 
 
-\section*{The Theories at Stake}
+\section*{Reviewing the Theories at Stake}
 The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory.  
 We briefly review these two theories in this section.
 
-\citet{Newman2015} advocate the conflict theory.  
+As noted above, \citet{Newman2015} advocate the conflict theory.  
 Based on the rational-actor perspective, this theory maintains that, for lower-income individuals, being confronted with high levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' \citep[327]{Newman2015}.
 Greater class consciousness (and, in turn, increased demand for redistribution) then follows. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid the guilt and shame that their more obviously privileged position could prompt while simultaneously and self-interestedly protecting this position by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
 The conflict theory has received sustained attention, particularly in studies of political participation, but empirical support has been at best mixed \citep[on the U.S. case, see][]{Oliver2001, Brady2004, Solt2010}.
 
 The relative power theory, on the other hand, starts with the proposition that money is a political resource: that is, that it can be used to influence others.
 Therefore, the theory contends, where the rich are richer relative to the poor, they will also be more powerful relative to the poor \citep{Goodin1980}.
-With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides high-income people with more resources to spread their views in the public sphere, while depriving poorer people to a greater degree of the resources to resist these efforts.
-Their greater relative powerlessness leads to ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
+With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides high-income people with more resources to spread their views in the public sphere while depriving poorer people to a greater degree of the resources to resist these efforts.
+This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
 Patterns of religiosity \citep[see][]{Solt2011a, Solt2014b} and respect for authority \citep{Solt2012} have been found to provide support for this theory, and Kelly and Enns' (\citeyear{Kelly2010}) finding that U.S. public opinion has shifted against redistributive policies when inequality has increased is also consistent with the theory's predictions.
 
 As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
 
 
-\section*{Reproduction, Results, and Reinterpretation}
+\section*{Reproducing the Results and Correcting Their Interpretation}
+Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 \citep[see][336]{Newman2015}.  
+We restrict our focus here, though, to the article's main analysis on the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
+As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed then to interpretation.
 
-It has been well known for over a decade that models containing multiplicative interaction terms require particular care in interpretation \citep[see, e.g.,][]{Golder2003, Braumoeller2004, Brambor2006}. 
-Nevertheless, many political scientists struggle with interaction terms: improperly specified or interpreted interaction terms appear at the top of Nyhan's (\citeyear{Nyhan2015}) list of ``recurring statistical errors'' that reviewers should be sure to check for.
+\citet[334]{Newman2015} claims that its analysis ``reveals that among low-income citizens, those residing in highly unequal contexts are significantly more likely to reject meritocratic ideals than those in relatively equal contexts [and] indicates that as we move from those with the lowest to highest incomes, the effect of increasing county inequality reverses and is associated with a decrease in the probability of rejecting meritocracy.''  
+This claim is incorrect. 
+
+The error lies in the interpretation of the multiplicative interaction term.
+Though it has been well known for over a decade that models containing multiplicative interaction terms require particular care in interpretation \citep[see, e.g.,][]{Golder2003, Braumoeller2004, Brambor2006}, many political scientists continue to struggle with them: improperly specified or interpreted interaction terms appear at the top of Nyhan's (\citeyear{Nyhan2015}) list of ``recurring statistical errors'' for which reviewers should be sure to check.
+In the multilevel logistic regression model employed in \citet{Newman2015}, the logged odds of rejecting meritocracy for individual $i$ in local context $j$ are estimated as follows: 
+\end{spacing}
+\vspace{-24pt}
+{\setlength\arraycolsep{2pt} 
+\begin{eqnarray}
+\label{E:mixed}
+Reject\thinspace Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamma_{01}Inequality_{j}\\
+ & &{}+ \gamma_{11}Inequality_{j} \times Income_{ij}
+ \nonumber\\
+ & &{} + r_{1j}Income_{ij} + u_{ij}
+ \nonumber
+ \end{eqnarray}
+}
+\vspace{-24pt}
+\begin{spacing}{2}
+\citet[334]{Newman2015} offer two pieces of evidence as support for its claim: first, that the coefficient for local income inequality (that is, $\gamma_{01}$) is estimated to be positive and statistically significant, and second, that the coefficient for the interaction between inequality and respondents' incomes ($\gamma_{11}$) is negative and statistically significant \citep[334]{Newman2015}. 
+
+Neither of the two actually support the claim. 
+With regard to the first, the coefficient $\gamma_{01}$ indicates only the effect of inequality when the other variable in the interaction, income, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
+But, oddly, the nine categories of income in the Pew surveys are recoded in the replication data to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
+Because the income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
+With regard to the second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
+\end{spacing}
+\vspace{-24pt}
+{\setlength\arraycolsep{2pt} 
+\begin{eqnarray}
+\label{E:dydx}
+\frac{\partial\thinspace Reject\thinspace Meritocracy}{\partial\thinspace Inequality} & = & \gamma_{01}
++ \gamma_{11} \times Income_{ij}
+ \end{eqnarray}
+}
+\vspace{-24pt}
+\begin{spacing}{2}
+In short, $\gamma_{11}$ is only part of the effect; the magnitude and statistical significance depend also on $\gamma_{01}$ and the value of $Income$.  We plot the conditional effect of inequality at each value of $Income$ in Figure~\ref{F:coef_t1m1}. \nocite{Solt2015b}
 
 <<label=setup>>==
 library(haven)
@@ -122,7 +162,7 @@ library(dplyr)
 <<label=interplot0>>==
 # Old, pre-release version of interplot; used for the reproduction below because it includes the steps argument that didn't make it into the release version
 interplot0 <- function(m, var1, var2, xlab=NULL, ylab=NULL, 
-					   seed=324, sims=1000, steps=100, xmin=NA,
+					   seed=324, sims=5000, steps=100, xmin=NA,
 					   xmax=NA, labels=NULL, plot=TRUE) {
 	require(arm)
 	require(ggplot2)
@@ -208,22 +248,16 @@ interplot0 <- function(m, var1, var2, xlab=NULL, ylab=NULL,
 
 <<label=reproduction_njl>>==
 ### Read data: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26584
-pew1 <- read_tsv("../data/study_26584/Meritocracy Replication Data - Table 1.tab") # Combined Pew surveys
-pew1$year <- 2005
-pew1$year[pew1$survid2006==1] <- 2006
-pew1$year[pew1$survid2007==1] <- 2007
-pew1$year[pew1$survid2009==1] <- 2009
-
+pew1 <- read_tsv("../data/study_26584/Meritocracy Replication Data - Table 1.tab") 
 pew1_w <- pew1 %>% filter(white==1)   # Only white respondents
 
-  
 ### Analyses
 # Table 1, Model 1
-t1m1 <- glmer(formula=meritocracy~ginicnty+income_i+ginicnty:income_i+income_cnty+black_cnty+
-			  	perc_bush04+pop_cnty+educ_i+age_i+gender_i+unemp_i+union_i+partyid_i+
-			  	ideo_i+attend_i+survid2006+survid2007+survid2009+(1+income_i|fips),
-			  data=pew1_w,family=binomial(link="logit"))
-summary(t1m1)
+t1m1 <- glmer(formula=meritocracy~ginicnty+income_i+ginicnty*income_i+
+                 income_cnty+black_cnty+perc_bush04+pop_cnty+educ_i+age_i+
+                 gender_i+unemp_i+union_i+partyid_i+ideo_i+attend_i+survid2006+
+                 survid2007+survid2009+(1+income_i|fips), data=pew1_w, 
+               family=binomial(link="logit"))
 
 # plot interaction
 t <- data.frame(table(pew1_w$income_i))
@@ -233,7 +267,7 @@ t$income_i <- as.numeric(levels(t$income_i))[t$income_i]
 t$inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
 				  "$50-75k", "$75-100k", "$100-150k", ">$150k")
 
-t1m1_plot <- interplot0(t1m1, "ginicnty", "income_i", sims=5000,
+t1m1_plot <- interplot0(t1m1, "ginicnty", "income_i",
 						xmin = min(t$income_i), xmax = max(t$income_i),
 						steps = 9, labels = t$inc_labels,
 						xlab = "Family Income",
@@ -242,22 +276,7 @@ t1m1_plot <- t1m1_plot + geom_hline(yintercept=0, colour="grey80", linetype="das
 ggsave(file="figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width = 7, height = 7)
 @
 
-In the multilevel logistic regression model employed in \citet{Newman2015}, the logged odds of rejecting meritocracy for individual $i$ in local context $j$ can be expressed as: 
-\end{spacing}
-\vspace{-36pt}
-{\setlength\arraycolsep{2pt} 
-\begin{eqnarray}
-\label{E:mixed}
-Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamma_{01}Inequality_{j}\\
- & &{}+ \gamma_{11}Inequality_{j} \times Income_{ij}
- \nonumber\\
- & &{} + r_{1j}Income_{ij} + u_{ij}
- \nonumber
- \end{eqnarray}
-}
-\vspace{-24pt}
-\begin{spacing}{2}
-Oddly, in \citet{Newman2015}, the nine categories of income in the Pew surveys are recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.
+
 
 
 
@@ -418,10 +437,9 @@ To test the hypotheses provided by these to contending theories requires data bo
 The contextual unit of analysis used here is the commuting zone (CZ).  CZs are aggregations of counties meant to represent the scope of local economic relationships both in metropolitan areas and across the rural United States.  
 They are therefore preferable to the arbitrary borders imposed by counties; they were, in fact, explicitly designed to represent where people actually live and work and overcome the unrealistic assumption that counties are economically meaningful units \citep{Tolbert1996}.
 
-Income inequality is measured using the Gini coefficient of the distribution of total family income within commuting zones for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States whose names appear on any tax form.
-\footnote{This measure is not perfect.  
+Income inequality is measured using the Gini coefficient of the distribution of total family income within commuting zones for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States whose names appear on any tax form.\footnote{This measure is not perfect.  
 Its welfare definition is income after government transfers but before taxes.  
-Because much redistribution occurs through the tax code, an after-tax measure would be preferable; unfortunately, virtually no data on the distribution of income at any geographic scale below the national level is available for the United States \citet[see, e.g.,][420]{Kelly2012}.  
+Because much redistribution occurs through the tax code, an after-tax measure would be preferable; unfortunately, virtually no data on the distribution of income at any geographic scale below the national level is available for the United States \citep[see, e.g.,][420]{Kelly2012}.  
 Further, it examines differences in incomes across families, which means those without children are excluded.  
 It is based on tax records, so it suffers from potential underreporting, particularly among those with very high incomes, though because the topcode for incomes is \$10 million dollars, the downward bias is likely smaller than that found in similar Census data which is topcoded at considerably lower amounts.
 Finally, it measures inequality about a decade before the Pew survey; though income distributions change only quite slowly over time, one might wish it were more temporally proximate.
@@ -431,10 +449,9 @@ Within the sample examined here, this variable ranges from a low of .21 to a hig
 Individual-level data are drawn from the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007.  
 The RLS surveyed over 35,000 individuals and was designed to provide a particularly fine-grained picture of geographic variation in attitudes and beliefs across the continental United States; it is therefore superior to the much smaller Pew surveys previously used to address the question examined here.  
 Respondents were asked which of the following two statements came closest to their own view: ``Most people who want to get ahead can make it if they're willing to work hard'' and ``Hard work and determination are no guarantee of success for most people.'' 
-Those who chose the first statement were coded 0 and others coded 1, yielding a dichotomous variable of belief in meritocracy.
-\footnote{This is Version 1 of the three measures employed by \citet{Newman2015}.}
+Those who chose the first statement were coded 0 and others coded 1, yielding a dichotomous variable of belief in meritocracy.\footnote{This corresponds to Version 1 of the three measures employed by \citet{Newman2015}.}
 In these data, 33\% of respondents rejected meritocracy.  
-The entire sample is analyzed, rather than only the subset of white non-Latino respondents, so as to make use of all of the available data, although \citet[330]{Newman2015} note that this should be expected to bias the results toward the expectations of the conflict theory.
+The entire sample is analyzed, rather than only the subset of white non-Latino respondents, so as to make use of all of the available data, although as \citet[330]{Newman2015} note this should be expected to bias the results toward the expectations of the conflict theory.
 
 The other individual-level variable implicated in these theories is income.
 Like the other Pew surveys discussed, the RLS asked respondents to identify their total family income in the previous year on a nine-point scale ranging from less than \$10,000 to over \$150,000. 
@@ -754,7 +771,7 @@ pred_probs <- function(m, var1, var2, var2_vals,
 m2_pp <- pred_probs(m2, var1 = "gini_cz", var2 = "income", 
                     var2_vals = c(1, 5, 9), times = 50, sims = 5000)
 
-ggplot(m2_pp, aes(x = gini_cz, y = est, group = income)) + 
+m2_pp <- ggplot(m2_pp, aes(x = gini_cz, y = est, group = income)) + 
   geom_line(aes(colour = income)) + 
   geom_ribbon(aes(ymin=lb, ymax=ub, fill = income), alpha=.45) +
   xlab("Income Inequality") + ylab("Probability of Rejecting Meritocracy") +
