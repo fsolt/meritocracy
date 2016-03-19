@@ -103,7 +103,7 @@ As \citet[37]{Huber2012} summarize, relative power theory can be seen as a strai
 \section*{Reproducing the Results and Correcting Their Interpretation}
 Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 \citep[see][336]{Newman2015}.  
 We restrict our focus here, though, to the article's main analysis on the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
-As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed then to interpretation.
+As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed to interpretation.
 
 \citet[334]{Newman2015} claims that its analysis ``reveals that among low-income citizens, those residing in highly unequal contexts are significantly more likely to reject meritocratic ideals than those in relatively equal contexts [and] indicates that as we move from those with the lowest to highest incomes, the effect of increasing county inequality reverses and is associated with a decrease in the probability of rejecting meritocracy.''  
 This claim is incorrect. 
@@ -143,7 +143,11 @@ With regard to the second, \citet[74]{Brambor2006} specifically advise that one 
 }
 \vspace{-24pt}
 \begin{spacing}{2}
-In short, $\gamma_{11}$ is only part of the effect; the magnitude and statistical significance depend also on $\gamma_{01}$ and the value of $Income$.  We plot the conditional effect of inequality at each value of $Income$ in Figure~\ref{F:coef_t1m1}. \nocite{Solt2015b}
+\noindent In short, $\gamma_{11}$ is only part of the conditional effect; the magnitude and statistical significance depend also on $\gamma_{01}$ and the value of $Income$.  
+
+We plot the conditional effect of $Inequality$ at each value of $Income$ in Figure~\ref{F:coef_t1m1}. \nocite{Solt2015b} 
+Contrary to the interpretation offered in \citet[334]{Newman2015}, the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent family income.
+The article's own results provide no evidence for its conclusion that poorer people are more likely to reject, and richer people more likely to embrace, the meritocratic ideal where local income inequality is greater.
 
 <<label=setup>>==
 library(haven)
@@ -989,7 +993,7 @@ dev.off()
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Notes}: Contrary to the interpretation offered in \citet[334]{Newman2015}, the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent family income.
+  & \emph{Notes}: The dots represent coefficients of income inequality within respondents' county on their belief in meritocracy for all values of respondent income, estimated from the data and model provided in \citet{Newman2015a}; the whiskers represent the 95\% confidence intervals of these estimates.  Contrary to the interpretation offered in \citet[334]{Newman2015}, the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent family income.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
