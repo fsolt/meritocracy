@@ -455,8 +455,7 @@ The final issue regards appropriate attitudinal controls.
 Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.
 In both the conflict and relative power theories, the relationship between inequality and rejection of meritocracy is mediated by just these sorts of variables (on the powerful relationship between rising income inequality and greater religiosity, for example, see \citet{Solt2011a, Solt2014b}).
 It is well understood, of course, that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.
-For the insistent, models including these variables are presented in the appendix;
-they do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
+For the insistent, models including these variables are presented in the appendix; they do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
 
 With these important exceptions, we otherwise adopt the approach employed in \citet{Newman2015}.  
 Local income inequality is measured using the Gini coefficient of the distribution of total family income within each CZ for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States whose names appear on any tax form.\footnote{This measure is not perfect.  
@@ -467,13 +466,17 @@ It is based on tax records, so it suffers from potential underreporting, particu
 Finally, it measures inequality about a decade before the Pew survey; income distributions change only quite slowly over time, but nevertheless one might wish it were more temporally proximate.
 Despite these shortcomings, it remains the best data available on income inequality within commuting zones.}  
 %Within the sample examined here, this variable ranges from a low of .21 to a high of .85; the median value across individual respondents in the sample is .46.
-As in the other Pew surveys discussed, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than $10,000 to over $150,000. 
+As in the other Pew surveys discussed, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000. 
 %The median respondent reporting an income of $50,000 to $75,000.
 
-We follow \citet{Newman2015} in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  
+At the contextual level, we follow \citet{Newman2015} in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  
 At the individual level, the analyses include demographic controls for age, education, sex, race, and citizenship.
-The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs.  
-Because both the conflict and relative power theories suggest that the effect of the context income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included, as in Equation~\ref{E:mixed}.
+The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs. 
+Model 1 assesses the average effect of inequality across people of all incomes, but because both the conflict and relative power theories suggest that the effect of the local context of income inequality on meritocratic beliefs depends on each individual's income, a cross-level interaction between these two variables is included in Model 2, as in Equation~\ref{E:mixed} above.
+
+Figure~\ref{F:reg_plot} displays a dot-and-whisker plot of the results: the dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each variable in the model, and the whiskers represent the 95\% confidence intervals of these estimates \citep[see][]{Kastellec2007, Solt2015c}.  According to Model 1, which lacks a multiplicative interaction term, the average effect of the local context of income inequality across individuals of all incomes is negative and statistically significant: on average, where inequality is greater, people are \emph{less} likely to reject meritocracy.  
+
+It is Model 2, however, that directly addresses the conflicting expectations of the conflict and relative power theories.   
 
 % The conflict theory argues that lower-income individuals will become more likely to be disillusioned with the dominant ideology of meritocracy where inequality is greater but that higher-income individuals will become more likely to uphold it. 
 % This yields the predictions that $\gamma_{01}$, the coefficient of income inequality, will be negative and $\gamma_{11}$, the coefficient of the interaction term, will be positive. 
@@ -795,15 +798,14 @@ ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
 
 %Which of these theories better describes political reality is crucial to understanding the effort
 
-
 \clearpage
 \newpage
 \appendix
 \renewcommand\thefigure{A.\arabic{figure}} 
 \section*{Appendix A: Additional Controls}
 Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.
-In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.
-Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.\footnote{On the powerful relationship between rising income inequality and greater religiosity, see, for example, \citet{Solt2011a, Solt2014b}.}
+In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables  (on the powerful relationship between rising income inequality and greater religiosity, for example, see \citet{Solt2011a, Solt2014b}).
+Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.
 For the insistent, however, models including these variables are presented here.
 They do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
 
@@ -1030,7 +1032,7 @@ dev.off()
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Note}: The dots represent estimated change in the logged odds of rejected in meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,633 individual respondents living in 691 commuting zones.
+  & \emph{Note}: The dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,633 individual respondents living in 691 commuting zones.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
