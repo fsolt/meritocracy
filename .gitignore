@@ -12,4 +12,5 @@
 *.nav
 *.toc
 *.snm
+*.ent
 .DS_Store
