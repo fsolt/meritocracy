@@ -474,16 +474,6 @@ At the individual level, the analyses include demographic controls for age, educ
 The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs. 
 Model 1 assesses the average effect of inequality across people of all incomes, but because both the conflict and relative power theories suggest that the effect of the local context of income inequality on meritocratic beliefs depends on each individual's income, a cross-level interaction between these two variables is included in Model 2, as in Equation~\ref{E:mixed} above.
 
-Figure~\ref{F:reg_plot} displays a dot-and-whisker plot of the results: the dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each variable in the model, and the whiskers represent the 95\% confidence intervals of these estimates \citep[see][]{Kastellec2007, Solt2015c}.  According to Model 1, which lacks a multiplicative interaction term, the average effect of the local context of income inequality across individuals of all incomes is negative and statistically significant: on average, where inequality is greater, people are \emph{less} likely to reject meritocracy.  
-
-It is Model 2, however, that directly addresses the conflicting expectations of the conflict and relative power theories.  The coefficient of income inequality is negative and the coefficient of the interaction term is positive.  Both are statistically significant, but as income never takes on a value of zero and the coefficient of the interaction term is only part of the conditional effect, these results do not reveal much.  Figure~\ref{F:coef_plot} plots the estimated conditional effect of inequality at each observed value of income. 
-
-% The conflict theory argues that lower-income individuals will become more likely to be disillusioned with the dominant ideology of meritocracy where inequality is greater but that higher-income individuals will become more likely to uphold it. 
-% This yields the predictions that $\gamma_{01}$, the coefficient of income inequality, will be negative and $\gamma_{11}$, the coefficient of the interaction term, will be positive. 
-% Relative power theory maintains that lower-income individuals will be more powerfully instilled with the belief in meritocracy in contexts of higher inequality and so be less likely to reject it, but that higher-income individuals' beliefs will be less sensitive to this aspect of context.  
-% Its predictions, then, are just the opposite of those of the conflict theory: that $\gamma_{01}$ will be positive and $\gamma_{11}$ will be negative.
-
-
 <<label=replication_setup>>==
 
 ### Data Set-Up
@@ -633,6 +623,9 @@ p2007x1 <- left_join(p2007x, cz_all, by="cz")
 
 @
 
+Figure~\ref{F:reg_plot} displays a dot-and-whisker plot of the results: the dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each variable in the model, and the whiskers represent the 95\% confidence intervals of these estimates \citep[see][]{Kastellec2007, Solt2015c}.  
+According to Model 1, which lacks a multiplicative interaction term, the average effect of the local context of income inequality across individuals of all incomes is negative and statistically significant: on average, where inequality is greater, people are \emph{less} likely to reject meritocracy.  
+
 <<label=models>>==
 
 # Inequality (No Interaction)
@@ -696,9 +689,13 @@ grid::grid.draw(m12)
 dev.off()
 
 @
-\end{spacing}
-
 [Figure~\ref{F:reg_plot} about here.]
+
+It is Model 2, however, that directly addresses the conflicting expectations of the conflict and relative power theories.  
+The coefficient of income inequality is negative and the coefficient of the interaction term is positive.  
+Both are statistically significant, but as income never takes on a value of zero and the coefficient of the interaction term is only part of the conditional effect, these results do not reveal much.  
+Figure~\ref{F:coef_plot} plots the conditional effect of inequality at each observed value of income.  
+It shows that inequality's estimated marginal effects on rejecting meritocracy are negative and statistically significant for those with incomes of up to \$50,000; they are not distinguishable from zero for those with higher incomes.
 
 <<label=inter_plot>>=
 inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
@@ -711,9 +708,10 @@ m2_gini <- interplot(m2, "gini_cz", "income") +
   geom_hline(yintercept = 0, colour = "grey80", linetype = "dashed")
 ggsave(filename="figures/m2_gini.pdf", plot = m2_gini, width = 7, height = 7)
 @
-
 [Figure~\ref{F:coef_plot} about here.]
 
+Of course, given the dichotomous dependent variable, these estimates are in logits and so their magnitudes are not easily interpretable.  
+Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocracy across the observed range of local income inequality at various incomes when all other variables take on their median values.
 
 <<label=predprob, include=FALSE>>==
 # replace pred_probs code with code from interplot::predprob_mlm
@@ -796,6 +794,7 @@ ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
 
 \section*{Conclusions}
 
+\end{spacing}
 %Which of these theories better describes political reality is crucial to understanding the effort
 
 \clearpage
@@ -1060,7 +1059,7 @@ dev.off()
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Source}: Analyses presented in Figure~\ref{F:reg_plot}.  Solid lines represent predicted probabilities and shaded regions represent the 95\% confidence intervals of these predictions.  The predicted probabilities were generated by fixing all other variables at their median values.
+  & \emph{Source}: Model 2, as presented in Figure~\ref{F:reg_plot}.  Solid lines represent predicted probabilities and shaded regions represent the 95\% confidence intervals of these predictions.  The predicted probabilities were generated by fixing all other variables at their median values.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
