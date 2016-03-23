@@ -694,7 +694,7 @@ dev.off()
 It is Model 2, however, that directly addresses the conflicting expectations of the conflict and relative power theories.  
 The coefficient of income inequality is negative and the coefficient of the interaction term is positive.  
 Both are statistically significant, but as income never takes on a value of zero and the coefficient of the interaction term is only part of the conditional effect, these results do not reveal much.  
-Figure~\ref{F:coef_plot} plots the conditional effect of inequality at each observed value of income.  
+Figure~\ref{F:coef_plot} plots conditional effects for inequality at each observed value of income.  
 It shows that inequality's estimated marginal effects on rejecting meritocracy are negative and statistically significant for those with incomes of up to \$50,000; they are not distinguishable from zero for those with higher incomes.
 
 <<label=inter_plot>>=
