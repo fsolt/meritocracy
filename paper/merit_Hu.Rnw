@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+
+\usepackage{graphicx}        % Enable graphics commands
+\usepackage{lscape}		% Enable landscape with \begin{landscape} until \end{landscape}
+\usepackage{natbib}			% Enable citation commands \citep{}, \citet{}, etc.
+\bibpunct{(}{)}{;}{a}{}{,}		% Formatting for in-text citations
+\usepackage{setspace}		% Enable double-spacing with \begin{spacing}{2} until \end{spacing}.
+\usepackage[utf8]{inputenc} 	% Enable utf8 characters, i.e., accents without coding--just type them in.
+\usepackage[english]{babel}	% English hyphenation and alphabetization.  Other languages available.
+\usepackage{dcolumn}        % For decimal-aligned stargazer/texreg output.
+\usepackage[colorlinks=true, urlcolor=blue, citecolor=black, linkcolor=black]{hyperref} % Include hyperlinks with the \url and \href commands.
+\setlength{\tabcolsep}{1pt}	% Make tables slightly narrower by reducing space between columns.
+\usepackage{afterpage}
+\usepackage{hanging}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{ntheorem}
+\newtheorem{hyp}{Hypothesis} 
+
+\renewcommand\floatpagefraction{.9}	% These commands allow larger tables and graphics to fit
+\renewcommand\topfraction{.9}		% on a page when default settings would complain.
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+\newcommand{\R}{\textsf{R}~}        %This creates the command \R to typeset the name R correctly.
+\mathchardef\mhyphen="2D            %Math-mode hyphen
+
+%\usepackage[left=1in, right=1in]{geometry}	%Turn footnotes into endnotes (commented out).
+%\renewcommand{\footnotesize}{\normalsize}	
+\usepackage{endnotes}
+\renewcommand{\footnote}{\endnote}
+\renewcommand{\section}{\subsection}
+
+\begin{document}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE, results='hide')
+@
+
+\title{Economic Inequality and\\ Belief in Meritocracy in the United States\thanks{Prepared for the Annual Meeting of the Midwest Political Science Association, Chicago, IL, April 7-10; an earlier version was presented at the 2016 Annual Meeting of the Southern Political Science Association, San Juan, PR, January 7-9, 2016.  The most recent version of this paper can be found \href{https://github.com/fsolt/meritocracy/blob/master/paper/merit.pdf}{on Github here}.}}
+\author{
+  Frederick Solt\\
+  \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+  \and
+  Yue Hu\\
+  \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
+    \and
+	Kevan Hudson\\
+	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
+	\and
+	Jungmin Song\\
+    \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
+	\and
+	Dong `Erico' Yu\\
+    \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
+}
+\date{\today}				
+\maketitle
+
+\begin{spacing}{2}
+
+
+Meritocracy---that idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.][21-23]{Hochschild1995}.  
+How belief in meritocracy fares in the face of the stark economic inequality that has come to characterize life in the United States over the past four decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also political attitudes, beliefs, and the continuing legitimacy of the U.S. economic system as a whole.
+
+In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce the status quo,  \citet{Newman2015} advanced the argument that inequality in the United States activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
+We demonstrate here, however, that the empirical evidence does actually not support this novel argument if the interaction term in the model is interpreted in the correct way\citep[see, e.g.,][]{Brambor2006}. Correcting this error reveals the exactly opposite conclusion.  
+
+Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered other problems.  
+We therefore present here a full replication, bringing more and better data as well as an improved specification to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
+This analysis supports \textit{higher} likelihood of lower-income individuals to accept the meritocratic ideal where economic inequality is greater against the Panglossian argument of \citet[329]{Newman2015}.
+
+
+\section*{A Review of the Theories at Stake}
+The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory. \citet{Newman2015} advocate the former. 
+Based on the rational-actor perspective, this theory maintains that, for lower-income individuals, being confronted with high levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' \citep[327]{Newman2015}.
+Greater class consciousness (and, in turn, increased demand for redistribution) then follows. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid the guilt and shame that their more obviously privileged position could prompt while simultaneously and self-interestedly protecting this position by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
+
+Compared with the conflict theory, the relative power theory starts with the proposition that money is a political resource: that is, that it can be used to influence others.
+Therefore, where the rich are richer relative to the poor, they will also be more powerful relative to the poor \citep{Goodin1980}.
+With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides high-income people with more resources to spread their views in the public sphere while depriving poorer people to a greater degree of the resources to resist these efforts.
+This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
+
+As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
+
+
+
+
+\end{document}
