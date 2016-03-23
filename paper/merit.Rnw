@@ -887,7 +887,7 @@ dev.off()
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Note}: The dots represent estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,633 individual respondents living in 691 commuting zones.
+  & \emph{Note}: The dots represent estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,615 individual respondents living in 676 commuting zones.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
