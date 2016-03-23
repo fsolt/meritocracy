@@ -33,7 +33,7 @@
 %\renewcommand{\footnotesize}{\normalsize}	
 \usepackage{endnotes}
 \renewcommand{\footnote}{\endnote}
-\renewcommand{\section}{\subsection}
+\renewcommand{\section}{\subsubsection}
 
 \begin{document}
 
@@ -296,7 +296,6 @@ In Version 2, used with data from the 2007 survey, those who mostly or completel
 Strangely, though the 2009 survey included these same two statements, respondents to that survey were coded in yet a third manner: in Version 3, those who mostly or completely agreed with statement (1) were coded as rejecting meritocracy regardless of how they responded to statement (2). 
 
 To assess whether these three very different measures are in fact comparable as \citet[331]{Newman2015} asserts, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plot the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
-Solid circles represent data used by \citet{Newman2015}, hollow circles represent data in other available Pew surveys, and the whiskers are 95\% confidence intervals for each estimate.
 The figure reveals that Version 2 results in much lower levels of rejection of meritocracy than either of the others and that Version 3 often yields considerably higher levels than Version 1.
 In light of the evident lack of comparability of these three measures, we conclude that pooling them in a single analysis cannot be justified.\footnote{For another example of uncritically mixing these three incomparable measures, see \citet{Newman2015b}.
 Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, Measure 1 is used in the 2011 Political Typology Surveys, Measure 2 is used in the 2009 and 2012 Values Surveys, and Measure 3 is used in the 2008 and 2012 Middle Class Surveys.} 
