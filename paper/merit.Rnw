@@ -69,7 +69,7 @@ How does the context of income inequality in which people live affect their beli
 
 \newpage
 
-Meritocracy---that idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.][21-23]{Hochschild1995}.  
+Meritocracy---that idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
 How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States over the past four decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.
 Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late. 
 
@@ -710,9 +710,12 @@ ggsave(filename="figures/m2_gini.pdf", plot = m2_gini, width = 7, height = 7)
 @
 [Figure~\ref{F:coef_plot} about here.]
 
-Of course, given the dichotomous dependent variable, these estimates are in logits and so their magnitudes are not easily interpretable.  
-Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocracy across the observed range of local income inequality at various incomes when all other variables take on their median values.
-
+Of course, given the dichotomous dependent variable, these estimates are in logits and so their magnitudes are not easily interpretable directly.  
+Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocracy across the observed range of local income inequality at various incomes when all other variables take on their median values.  
+Among otherwise typical people in otherwise typical contexts, those with the lowest incomes living where the context of income inequality is at the highest observed level are 20 percentage points (plus or minus 9 points) \emph{less} likely to reject meritocracy than similarly low-income people living where inequality is at its lowest observed level, according to these results.
+For people with incomes between \$40,000 to \$50,000 and otherwise median characteristics, the decline in the predicted probability of rejecting meritocracy over the observed range of inequality is $9 \pm 10$ percentage points.
+With these same assumptions, for those with the highest incomes, the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality.
+These results contrary to the predictions of conflict theory, but consistent with those of the relative power theory.
 <<label=predprob, include=FALSE>>==
 # replace pred_probs code with code from interplot::predprob_mlm
 pred_probs <- function(m, var1, var2, var2_vals,
