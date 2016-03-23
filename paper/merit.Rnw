@@ -454,7 +454,7 @@ They were explicitly designed to represent where people actually live and work a
 The final issue regards appropriate attitudinal controls.  
 Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.
 In both the conflict and relative power theories, the relationship between inequality and rejection of meritocracy is mediated by just these sorts of variables (on the powerful relationship between rising income inequality and greater religiosity, for example, see \citet{Solt2011a, Solt2014b}).
-It is well understood, of course, that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.
+It is well understood, of course, that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citep[188]{Gelman2007}.
 For the insistent, models including these variables are presented in the appendix; they do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
 
 With these important exceptions, we otherwise adopt the approach employed in \citet{Newman2015}.  
@@ -466,7 +466,7 @@ It is based on tax records, so it suffers from potential underreporting, particu
 Finally, it measures inequality about a decade before the Pew survey; income distributions change only quite slowly over time, but nevertheless one might wish it were more temporally proximate.
 Despite these shortcomings, it remains the best data available on income inequality within commuting zones.}  
 %Within the sample examined here, this variable ranges from a low of .21 to a high of .85; the median value across individual respondents in the sample is .46.
-As in the other Pew surveys discussed, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000. 
+As in the other Pew surveys discussed, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000, straightforwardly coded here with values 1 to 9. 
 %The median respondent reporting an income of $50,000 to $75,000.
 
 At the contextual level, we follow \citet{Newman2015} in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  
@@ -476,7 +476,7 @@ Model 1 assesses the average effect of inequality across people of all incomes, 
 
 Figure~\ref{F:reg_plot} displays a dot-and-whisker plot of the results: the dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each variable in the model, and the whiskers represent the 95\% confidence intervals of these estimates \citep[see][]{Kastellec2007, Solt2015c}.  According to Model 1, which lacks a multiplicative interaction term, the average effect of the local context of income inequality across individuals of all incomes is negative and statistically significant: on average, where inequality is greater, people are \emph{less} likely to reject meritocracy.  
 
-It is Model 2, however, that directly addresses the conflicting expectations of the conflict and relative power theories.   
+It is Model 2, however, that directly addresses the conflicting expectations of the conflict and relative power theories.  The coefficient of income inequality is negative and the coefficient of the interaction term is positive.  Both are statistically significant, but as income never takes on a value of zero and the coefficient of the interaction term is only part of the conditional effect, these results do not reveal much.  Figure~\ref{F:coef_plot} plots the estimated conditional effect of inequality at each observed value of income. 
 
 % The conflict theory argues that lower-income individuals will become more likely to be disillusioned with the dominant ideology of meritocracy where inequality is greater but that higher-income individuals will become more likely to uphold it. 
 % This yields the predictions that $\gamma_{01}$, the coefficient of income inequality, will be negative and $\gamma_{11}$, the coefficient of the interaction term, will be positive. 
@@ -841,9 +841,9 @@ m3a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
 @
 
 <<app_dwplot>>==
-m123a_df <- rbind(format_results(m1a, "Model A1"),
-                 format_results(m2a, "Model A2"),
-                 format_results(m3a, "Model A3")) %>%
+m123a_df <- rbind(format_results(m1a, "Model 1A"),
+                 format_results(m2a, "Model 2A"),
+                 format_results(m3a, "Model 3A")) %>%
   by_2sd(p2007x1)
 
 ordered_vars <- c("gini_cz", "gini_cz:income", "income", "rm_cz",
@@ -1004,7 +1004,7 @@ dev.off()
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Notes}: The dots represent coefficients of income inequality within respondents' county on their belief in meritocracy for all values of respondent income, estimated from the data and model provided in \citet{Newman2015a}; the whiskers represent the 95\% confidence intervals of these estimates.  Contrary to the interpretation offered in \citet[334]{Newman2015}, the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent family income.
+  & \emph{Notes}: The dots represent coefficients of income inequality within respondents' county on their rejection of meritocracy for all values of respondent income, estimated from the data and model provided in \citet{Newman2015a}; the whiskers represent the 95\% confidence intervals of these estimates.  Contrary to the interpretation offered in \citet[334]{Newman2015}, the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent family income.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
@@ -1046,7 +1046,7 @@ dev.off()
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Source}: Model 2, as presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficients of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  The estimates are positive and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  & \emph{Source}: Model 2, as presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficients of income inequality within respondents' commuting zones on their rejection of meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  The estimates are negative and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
