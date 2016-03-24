@@ -33,7 +33,7 @@
 %\renewcommand{\footnotesize}{\normalsize}	
 \usepackage{endnotes}
 \renewcommand{\footnote}{\endnote}
-\renewcommand{\section}{\noindent \textbf}
+\renewcommand{\section}{\subsubsection}
 
 \begin{document}
 
@@ -83,7 +83,7 @@ This analysis finds no evidence for the Panglossian argument of NJL (p.329) that
 To the contrary, but consistent with relative power theory, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.  
 
 
-\section{A Review of the Theories at Stake}\\
+\section*{A Review of the Theories at Stake}
 The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory.  
 We briefly review these two theories in this section.
 
@@ -101,7 +101,7 @@ Patterns of religiosity \citep[see][]{Solt2011a, Solt2014b} and respect for auth
 As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
 
 
-\section{Reproduced Results and Corrected Interpretation}\\
+\section*{Reproduced Results and Corrected Interpretation}
 Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 \citep[see][336]{Newman2015}.  
 We restrict our focus here, though, to the article's main analysis on the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
 As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed to interpretation.
@@ -284,7 +284,7 @@ ggsave(file="figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width = 7, heigh
 [Figure~\ref{F:coef_t1m1} about here.]
 
 
-\section{Replication}\\
+\section*{Replication}
 In reproducing the above analysis, our attention was drawn to three additional issues that prompted us to pursue an independent replication.  
 The most serious of these issues regards measurement of the dependent variable.  
 To amass observations from a sufficient range of local contexts, NJL (p.330-331) combines in a single analysis data from four surveys using three different measures of its dependent variable, rejection of meritocracy.  
@@ -794,7 +794,7 @@ ggsave("figures/m2_pp.pdf", width = 5.5, height = 7)
 
 [Figure~\ref{F:pp_plot} about here.]
 
-\section{Conclusions}\\
+\section*{Conclusions}
 One of the most important questions underlying recent research on economic inequality and democracy is whether inequality is self-correcting or instead self-reinforcing.  
 \citet{Newman2015} argues in favor of the former, more optimistic view.  
 It contends that mere exposure to high levels of local income inequality prompt those with lower incomes to become more likely to reject an important ideological prop of persistent inequality, the idea that those who work hard can get ahead.  
@@ -809,7 +809,7 @@ Our independent replication using more and better data, in fact, yields the oppo
 \newpage
 \appendix
 \renewcommand\thefigure{A.\arabic{figure}} 
-\section{Appendix A: Additional Controls}\\
+\section*{Appendix A: Additional Controls}
 Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.
 In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables  (on the powerful relationship between rising income inequality and greater religiosity, for example, see \citet{Solt2011a, Solt2014b}).
 Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.
@@ -998,7 +998,7 @@ dev.off()
 
 \clearpage
 \newpage
-\section{Figures}\\
+\section*{Figures}
 \renewcommand\thefigure{\arabic{figure}} 
 \setcounter{figure}{0}
 
