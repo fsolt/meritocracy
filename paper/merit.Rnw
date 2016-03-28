@@ -129,7 +129,7 @@ Reject\thinspace Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamm
 NJL (p.334) offers two pieces of evidence as support for its claim: first, that the coefficient for local income inequality (that is, $\gamma_{01}$) is estimated to be positive and statistically significant, and second, that the coefficient for the interaction between inequality and respondents' incomes ($\gamma_{11}$) is negative and statistically significant (NJL, 334). 
 
 Neither of the two actually provide any support. 
-First, the coefficient $\gamma_{01}$ indicates only the effect of inequality when the other variable in the interaction, income, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
+First, the coefficient $\gamma_{01}$ indicates only the effect of $Inequality$ when the other variable in the interaction, $Income$, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
 Oddly, however, the nine categories of income in the Pew surveys the article employs are recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
 Because the income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
 Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
@@ -291,7 +291,7 @@ To amass observations from a sufficient range of local contexts, NJL (p.330-331)
 Version 1 was drawn from 2005 and 2006 surveys that asked respondents which of two statements came closest to their own opinion: ``Most people who want to get ahead can make it if they're willing to work hard'' or ``Hard work and determination are no guarantee of success for most people.''  
 Those who chose the latter were coded as rejecting meritocracy.
 The 2007 and 2009 surveys employed did not include this item.
-Instead, they asked respondents to assess on a four-point agree-disagree scale two separate statements: (1) ``Hard work offers little guarantee of success,'' and (2) ``Success in life is pretty much determined by forces outside our control.''
+Instead, they asked respondents to assess on a four-point agree-disagree scale two separate statements: (1) ``Hard work offers little guarantee of success'' and (2) ``Success in life is pretty much determined by forces outside our control.''
 In Version 2, used with data from the 2007 survey, those who mostly or completely agreed with both statements were coded as rejecting meritocracy.
 Strangely, though the 2009 survey included these same two statements, respondents to that survey were coded in yet a third manner: in Version 3, those who mostly or completely agreed with statement (1) were coded as rejecting meritocracy regardless of how they responded to statement (2). 
 
@@ -710,10 +710,10 @@ ggsave(filename="figures/m2_gini.pdf", plot = m2_gini, width = 7, height = 7)
 [Figure~\ref{F:coef_plot} about here.]
 
 Of course, given the dichotomous dependent variable, these estimates are in logits and so their magnitudes are not easily interpretable directly.  
-Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocracy across the observed range of local income inequality at various incomes when all other variables take on their median values.  
-Among otherwise typical people in otherwise typical contexts, those with the lowest incomes living where the context of income inequality is at the highest observed level are 20 percentage points (plus or minus 9 points) \emph{less} likely to reject meritocracy than similarly low-income people living where inequality is at its lowest observed level, according to these results.
+Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocracy according to Model 2 across the observed range of local income inequality at various incomes when all other variables are assumed to take on their median values.  
+Given that assumption, those with the lowest incomes living where the context of income inequality is at the highest observed level are 20 percentage points (plus or minus 9 points) \emph{less} likely to reject meritocracy than similarly low-income people living where inequality is at its lowest observed level.
 For people with incomes between \$40,000 to \$50,000 and otherwise median characteristics, the predicted probability of rejecting meritocracy declines from $38\pm 2$\% to $29\pm4$\% over the observed range of inequality.
-With these same assumptions, for those with the highest incomes, the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality.
+Among otherwise typical people in otherwise typical contexts, for those with the highest incomes, the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality.
 These results are contrary to the predictions of conflict theory, but consistent with those of the relative power theory.
 <<label=predprob, include=FALSE>>==
 # replace pred_probs code with code from interplot::predprob_mlm
