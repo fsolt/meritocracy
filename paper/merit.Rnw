@@ -69,11 +69,11 @@ How does the context of income inequality in which people live affect their beli
 
 \newpage
 
-Meritocracy---that idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
+Meritocracy---the idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
 How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States over the past four decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.
 Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late. 
 
-In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce rather than challenge the status quo,  Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advanced the argument that inequality in the United States  activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
+In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce rather than challenge the status quo,  Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States  activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
 We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
 Correcting this error reveals that there is no support for the paper's sanguine conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
 
@@ -103,7 +103,7 @@ As \citet[37]{Huber2012} summarize, relative power theory can be seen as a strai
 
 \section*{Reproduced Results and Corrected Interpretation}
 Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 \citep[see][336]{Newman2015}.  
-We restrict our focus here, though, to the article's main analysis on the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
+We restrict our focus here, though, to the article's main analysis of the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
 As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed to interpretation.
 
 NJL (p.334) claims that its analysis ``reveals that among low-income citizens, those residing in highly unequal contexts are significantly more likely to reject meritocratic ideals than those in relatively equal contexts [and] indicates that as we move from those with the lowest to highest incomes, the effect of increasing county inequality reverses and is associated with a decrease in the probability of rejecting meritocracy.''  
