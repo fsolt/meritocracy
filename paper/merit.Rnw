@@ -1066,7 +1066,7 @@ dev.off()
 
 % Replication: Predicted Probabilities Plot
 \begin{figure}[!hbtp] 
-  \caption{Predicted Probability of Belief in Meritocracy by Income and Level of Inequality}
+  \caption{Predicted Probability of Rejecting Meritocracy by Income and Level of Inequality}
   \label{F:pp_plot}
   \begin{center}
     \includegraphics[width=5.5in]{figures/m2_pp.pdf}
