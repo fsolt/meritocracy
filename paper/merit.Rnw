@@ -276,7 +276,7 @@ t1m1_plot <- interplot0(t1m1, "ginicnty", "income_i",
 						xmin = min(t$income_i), xmax = max(t$income_i),
 						steps = 9, labels = t$inc_labels,
 						xlab = "Income",
-						ylab = "County Income Inequality")
+						ylab = "Coefficient of Income Inequality on Rejecting Meritocracy")
 t1m1_plot <- t1m1_plot + geom_hline(yintercept=0, colour="grey80", linetype="dashed")
 ggsave(file="figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width = 7, height = 7)
 @
@@ -702,7 +702,7 @@ inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
 m2_gini <- interplot(m2, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
   coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Income", y = "Coefficient of Income Inequality") +
+  labs(x = "Income", y = "Coefficient of Income Inequality on Rejecting Meritocracy") +
   theme_bw() +
   geom_hline(yintercept = 0, colour = "grey80", linetype = "dashed")
 ggsave(filename="figures/m2_gini.pdf", plot = m2_gini, width = 7, height = 7)
