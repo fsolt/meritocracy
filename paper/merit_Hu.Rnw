@@ -64,6 +64,7 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 
 \begin{spacing}{2}
 
+\newpage
 
 Meritocracy---that idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.][21-23]{Hochschild1995}.  
 How belief in meritocracy fares in the face of the stark economic inequality that has come to characterize life in the United States over the past four decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also political attitudes, beliefs, and the continuing legitimacy of the U.S. economic system as a whole.

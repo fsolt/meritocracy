@@ -64,9 +64,12 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 
 \begin{spacing}{2}
 
+\newpage
+
 Meritocracy---that idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.][21-23]{Hochschild1995}. 
 How belief in meritocracy, and in turn the country’s dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States over the past four decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole. 
 Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late. 
+
 In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce the status quo, \citet{Newman2015} advances the argument that inequality in the United States activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious. 
 We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}. 
 Correcting this error and bringing more and better data reveals that there is no support for the paper’s sanguine conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
