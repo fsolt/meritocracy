@@ -92,3 +92,13 @@ This gives poorer people ``a greater susceptibility to the internalization of th
 
 
 As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
+
+\end{spacing}
+
+\clearpage
+\pagebreak
+\newpage
+\bibliographystyle{ajps}
+\bibliography{FSLibrary}
+
+\end{document}
