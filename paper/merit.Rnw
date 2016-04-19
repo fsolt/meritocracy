@@ -70,26 +70,25 @@ How does the context of income inequality in which people live affect their beli
 \newpage
 
 Meritocracy---the idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
-How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States over the past four decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.
-Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late. 
+How belief in meritocracy fares in the face of the stark economic inequality that has come to characterize life in the United States is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.
+This question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late. 
+% Get from 8 lines to 7 lines by following Kevan--drop clauses, not sentences (Hu gets to 6 by dropping the last sentence, but once we're to a one page intro, this doesn't gain us anything).
 
-In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce rather than challenge the status quo,  Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States  activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
-We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
-Correcting this error reveals that there is no support for the paper's sanguine conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
+In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce the status quo, Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
+However, that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
+We correct this error and show that the article's own analysis provides no support for its conclusion. 
+% Only three overflow words to lose a line.  Per everyone, "sanguine" dropped.
 
-Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered other problems.  
-We therefore present here a full, independent replication, bringing more and better data as well as an improved specification to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
+Further, reproducing the above result from the materials the authors provide \citep{Newman2015a} uncovered other problems.  
+We therefore present here a full, independent replication, bringing more and better data as well as an improved specification to examine how local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
 This analysis finds no evidence for the Panglossian argument of NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
-To the contrary, but consistent with relative power theory, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.  
-
+Consistent with prior research, the results instead indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.  
+% Dropping just a few words gets this all on one page.
 
 \section*{A Review of the Theories at Stake}
-The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory.  
-We briefly review these two theories in this section.
-
-As noted above, NJL advocates the conflict theory.  
-Based on the rational-actor perspective, this theory maintains that, for lower-income individuals, being confronted with high levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, 327).
-Greater class consciousness (and, in turn, increased demand for redistribution) then follows. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid the guilt and shame that their more obviously privileged position could prompt while simultaneously and self-interestedly protecting this position by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
+The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory. 
+As noted above, NJL advocates the former.  
+Based on a rational-actor perspective, this theory maintains that, for lower-income individuals, being confronted with high levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, 327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt and shame while simultaneously protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
 The conflict theory has received sustained attention, particularly in studies of political participation, but empirical support has been at best mixed \citep[on the U.S. case, see][]{Oliver2001, Brady2004, Solt2010}.
 
 The relative power theory, on the other hand, starts with the proposition that money is a political resource: that is, that it can be used to influence others.
