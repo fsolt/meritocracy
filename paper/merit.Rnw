@@ -70,35 +70,32 @@ How does the context of income inequality in which people live affect their beli
 \newpage
 
 Meritocracy---the idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
-How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States over the past four decades is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.
-Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late. 
+How belief in meritocracy fares in the face of the stark economic inequality that has come to characterize life in the United States is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.
+This question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late.
 
-In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce rather than challenge the status quo,  Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States  activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
-We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
-Correcting this error reveals that there is no support for the paper's sanguine conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
+In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce the status quo, Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
+However, that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
+We correct this error and show that the article's own analysis provides no support for its conclusion. 
 
-Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered other problems.  
-We therefore present here a full, independent replication, bringing more and better data as well as an improved specification to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
+Further, reproducing the above result from the materials the authors provide \citep{Newman2015a} uncovered other problems.  
+We therefore present here a full, independent replication, bringing more and better data as well as an improved specification to examine how local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
 This analysis finds no evidence for the Panglossian argument of NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
-To the contrary, but consistent with relative power theory, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.  
+Consistent with prior research, the results instead indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.  
 
 
 \section*{A Review of the Theories at Stake}
-The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory.  
-We briefly review these two theories in this section.
-
-As noted above, NJL advocates the conflict theory.  
-Based on the rational-actor perspective, this theory maintains that, for lower-income individuals, being confronted with high levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, 327).
-Greater class consciousness (and, in turn, increased demand for redistribution) then follows. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid the guilt and shame that their more obviously privileged position could prompt while simultaneously and self-interestedly protecting this position by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
-The conflict theory has received sustained attention, particularly in studies of political participation, but empirical support has been at best mixed \citep[on the U.S. case, see][]{Oliver2001, Brady2004, Solt2010}.
+The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory. 
+As noted above, NJL advocates the former.  
+This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position'' (NJL, 327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
+The conflict theory has received sustained attention, but empirical support has been at best mixed \citep[see, e.g.,][]{Oliver2001, Brady2004, Solt2010}.
 
 The relative power theory, on the other hand, starts with the proposition that money is a political resource: that is, that it can be used to influence others.
 Therefore, the theory contends, where the rich are richer relative to the poor, they will also be more powerful relative to the poor \citep{Goodin1980}.
-With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides high-income people with more resources to spread their views in the public sphere while depriving poorer people to a greater degree of the resources to resist these efforts.
+With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides higher-income people with more resources to spread their views while depriving poorer people to a greater degree of the resources to resist.
 This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
-Patterns of religiosity \citep[see][]{Solt2011a, Solt2014b} and respect for authority \citep[see][]{Solt2012} have been found to provide support for this theory, and Kelly and Enns' (\citeyear{Kelly2010}) finding that U.S. public opinion has shifted against redistributive policies when inequality has increased is also consistent with the theory's predictions.
+Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
-As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
+%As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
 
 
 \section*{Reproduced Results and Corrected Interpretation}
@@ -148,7 +145,7 @@ Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer
 
 We plot the conditional effect of $Inequality$ at each value of $Income$ in Figure~\ref{F:coef_t1m1} using the \R package \texttt{interplot} \citep{Solt2015b}. 
 Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.
-The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace the meritocratic ideal where local income inequality is greater.
+The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
 
 <<label=setup>>==
 library(haven)
@@ -285,7 +282,7 @@ ggsave(file="figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width = 7, heigh
 
 
 \section*{Replication}
-In reproducing the above analysis, our attention was drawn to three additional issues that prompted us to pursue an independent replication.  
+In reproducing the above analysis, our attention was drawn to three additional issues that led us to pursue an independent replication.  
 The most serious of these issues regards measurement of the dependent variable.  
 To amass observations from a sufficient range of local contexts, NJL (p.330-331) combines in a single analysis data from four surveys using three different measures of its dependent variable, rejection of meritocracy.  
 Version 1 was drawn from 2005 and 2006 surveys that asked respondents which of two statements came closest to their own opinion: ``Most people who want to get ahead can make it if they're willing to work hard'' or ``Hard work and determination are no guarantee of success for most people.''  
@@ -295,9 +292,9 @@ Instead, they asked respondents to assess on a four-point agree-disagree scale t
 In Version 2, used with data from the 2007 survey, those who mostly or completely agreed with both statements were coded as rejecting meritocracy.
 Strangely, though the 2009 survey included these same two statements, respondents to that survey were coded in yet a third manner: in Version 3, those who mostly or completely agreed with statement (1) were coded as rejecting meritocracy regardless of how they responded to statement (2). 
 
-To assess whether these three very different measures are in fact comparable as NJL (p.331) asserts, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plot the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
+To assess whether these three very different measures are in fact comparable, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plot the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
 The figure reveals that Version 2 results in much lower levels of rejection of meritocracy than either of the others and that Version 3 often yields considerably higher levels than Version 1.
-In light of the evident lack of comparability of these three measures, we conclude that pooling them in a single analysis cannot be justified.\footnote{For another example of uncritically mixing these three incomparable measures, see \citet{Newman2015b}.
+In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.\footnote{For another example of uncritically mixing these three incomparable measures, see \citet{Newman2015b}.
 Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, Measure 1 is used in the 2011 Political Typology Surveys, Measure 2 is used in the 2009 and 2012 Values Surveys, and Measure 3 is used in the 2008 and 2012 Middle Class Surveys.} 
 
 <<label=three_measures>>==
@@ -439,39 +436,37 @@ ggsave("figures/three_measures.pdf", width = 5, height = 6)
 
 [Figure~\ref{F:three_measures} about here.]
 
-In our replication, we instead employ the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007, which includes the question needed to construct Version 1 of the dependent variable.  
+In our replication, we instead employ the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007, which includes Version 1 of the dependent variable.  
 Further, with more than ten times the number of respondents of the much smaller Pew surveys examined in NJL, the RLS was designed to provide a particularly fine-grained picture of geographic variation in attitudes and beliefs across the continental United States; it is therefore perfectly suited to providing observations across a broad range of local contexts.  
-We analyze the entire sample of survey respondents, rather than only the subset of white non-Latino respondents, so as to make use of all of the available data; as NJL (p.330) notes, this should be expected to bias the results toward the expectations of the conflict theory.
+To make use of all of the available data, we analyze the entire sample of survey respondents, rather than only non-Latino white respondents; as NJL (p.330) notes, this should be expected to bias the results toward the expectations of the conflict theory.
 %In these data, 33\% of respondents rejected meritocracy.
 
 The second additional issue with the NJL (p.331-332) analysis regards the contextual unit of analysis: the respondent's county of residence.  
-Counties have long been criticized as only poorly reflecting local economic conditions \citep[see][]{Tolbert1987}.
+Counties have long been criticized as only poorly reflecting local economic conditions.
 To overcome this, we use commuting zones (CZs) to define respondents' local context.  
-CZs are aggregations of counties that represent the scope of local economic relationships both in metropolitan areas and across the rural United States.  
+CZs are aggregations of counties that represent the scope of local economic relationships across the United States.  
 They were explicitly designed to represent where people actually live and work and overcome the unrealistic assumption that counties are economically meaningful units \citep{Tolbert1996}.
 
 The final issue regards appropriate attitudinal controls.  
-Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.
-In both the conflict and relative power theories, the relationship between inequality and rejection of meritocracy is mediated by just these sorts of variables (on the powerful relationship between rising income inequality and greater religiosity, for example, see \citet{Solt2011a, Solt2014b}).
-It is well understood, of course, that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citep[188]{Gelman2007}.
-For the insistent, models including these variables are presented in the appendix; they do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
+Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocracy.
+In both the conflict and relative power theories, the relationship between inequality and rejection of meritocracy is mediated by just these sorts of variables (on the powerful relationship between income inequality and religiosity, for example, see \citet{Solt2011a, Solt2014b}).
+It is well known that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citep[188]{Gelman2007}.
+Models including these variables are presented in the appendix; they do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
 
 With these important exceptions, we otherwise adopt the approach employed in NJL.  
-Local income inequality is measured using the Gini coefficient of the distribution of total family income within each CZ for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States whose names appear on any tax form.\footnote{This measure is not perfect.  
+Local income inequality is measured using the Gini coefficient of the distribution of total family income within each CZ for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States who appear on any tax form.\footnote{This measure is not perfect.  
 Its welfare definition is income after government transfers but before taxes.  
 Because much redistribution occurs through the tax code, an after-tax measure would be preferable; unfortunately, virtually no data on the distribution of after-tax income at any geographic scale below the national level is available for the United States \citep[see, e.g.,][420]{Kelly2012}.  
 Further, it examines differences in incomes across families, which means those without children are excluded.  
 It is based on tax records, so it suffers from potential underreporting, particularly among those with very high incomes, though because the topcode for incomes is \$10 million dollars, the downward bias is likely smaller than that found in similar Census data which is topcoded at considerably lower amounts.
 Finally, it measures inequality about a decade before the Pew survey; income distributions change only quite slowly over time, but nevertheless one might wish it were more temporally proximate.
 Despite these shortcomings, it remains the best data available on income inequality within commuting zones.}  
-%Within the sample examined here, this variable ranges from a low of .21 to a high of .85; the median value across individual respondents in the sample is .46.
-As in the other Pew surveys discussed, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000, straightforwardly coded here with values 1 to 9. 
-%The median respondent reporting an income of $50,000 to $75,000.
+As in the other Pew surveys, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000, straightforwardly coded here with values 1 to 9. 
 
-At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.  
-At the individual level, the analyses include demographic controls for age, education, sex, race, and citizenship.
+At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.\footnote{Additional analyses adding controls for two contextual variables not considered in NJL, objective economic mobility and residential income segregation, are presented in the Appendix.  The results of these analyses are substantively similar to those presented in the text.}  
+At the individual level, the analyses include controls for age, education, sex, race, and citizenship.
 The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs. 
-Model 1 assesses the average effect of inequality across people of all incomes, but because both the conflict and relative power theories suggest that the effect of the local context of income inequality on meritocratic beliefs depends on each individual's income, a cross-level interaction between these two variables is included in Model 2, as in Equation~\ref{E:mixed} above.
+Model 1 assesses the average effect of inequality across people of all incomes, but because both conflict and relative power theories suggest that the effect of income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included in Model 2, as in Equation~\ref{E:mixed} above.
 
 <<label=replication_setup>>==
 
@@ -574,7 +569,7 @@ for(i in 1:length(states)) {
   missing$county[missing$state==states[i]] <- lapply(missing$county0[missing$state==states[i]], function (ii) agrep(ii, t.rem, value=T, max.distance=.2)) # find matches to county name by state
 }
 missing$county <- unlist(lapply(missing$county, function(ii) ii[1])) # use closest match to county name
-missing <- left_join(missing, fips_cnty, by=c("state", "county")) # now merge; some results still without fips in Maine, otherwise good
+missing <- left_join(missing, fips_cnty, by=c("state", "county")) # now merge; some results still without fips in Maine (no RLS respondents anyway), otherwise good
 missing$county0 <- NULL # drop tempvar
 
 bush04_cnty %<>% rbind(missing) 
@@ -713,7 +708,7 @@ Of course, given the dichotomous dependent variable, these estimates are in logi
 Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocracy according to Model 2 across the observed range of local income inequality at various incomes when all other variables are assumed to take on their median values.  
 Given that assumption, those with the lowest incomes living where the context of income inequality is at the highest observed level are 20 percentage points (plus or minus 9 points) \emph{less} likely to reject meritocracy than similarly low-income people living where inequality is at its lowest observed level.
 For people with incomes between \$40,000 to \$50,000 and otherwise median characteristics, the predicted probability of rejecting meritocracy declines from $38\pm 2$\% to $29\pm4$\% over the observed range of inequality.
-Among otherwise typical people in otherwise typical contexts, for those with the highest incomes, the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality.
+For those with the highest incomes, the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality.
 These results are contrary to the predictions of conflict theory, but consistent with those of the relative power theory.
 <<label=predprob, include=FALSE>>==
 # replace pred_probs code with code from interplot::predprob_mlm
@@ -811,19 +806,29 @@ Our independent replication using more and better data, in fact, yields the oppo
 \renewcommand\thefigure{A.\arabic{figure}} 
 \section*{Appendix A: Additional Controls}
 Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.
-In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables  (on the powerful relationship between rising income inequality and greater religiosity, for example, see \citet{Solt2011a, Solt2014b}).
+In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.
 Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.
-For the insistent, however, models including these variables are presented here.
+For the insistent, however, models including these variables are presented here in Model 1A of Figure~\ref{F:app_reg_plot} and Figure~\ref{F:app_coef_plot}.
 They do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
 
 Objective levels of economic mobility are an additional control variable that has thus far been left out of the discussion of the causes of meritocratic attitudes, but it is, of course, directly implicated.  
-Less obvious, perhaps, is that because economic mobility tends to decline with rising inequality \citep[see, e.g.,][]{Andrews2009}, it provides a cognitive explanation for any relationship between inequality and beliefs in meritocracy that may challenge both of the theories described above.  
-Rather than evincing a greater psychological need to protect self-esteem in the face of personal deficiencies as the conflict theory asserts \citet[see, e.g.,][329]{Newman2015} or the more complete cultural domination of the well-off as the relative power theory maintains \citep[see, e.g.,][704]{Solt2012}, beliefs in meritocracy may instead simply reflect a correct recognition of the greater difficulty of advancing in a more sharply stratified society.
+Less obvious, perhaps, is that because economic mobility tends to decline with rising inequality \citep[see, e.g.,][]{Andrews2009}, it provides a cognitive explanation for any relationship between inequality and beliefs in meritocracy that may challenge both of the theories described in the text.  
+Rather than evincing a greater psychological need to protect self-esteem in the face of personal deficiencies as the conflict theory asserts \citep[see, e.g.,][329]{Newman2015} or the more complete cultural domination of the well-off as the relative power theory maintains \citep[see, e.g.,][704]{Solt2012}, beliefs in meritocracy in more unequal contexts may instead simply reflect a correct recognition of the greater difficulty of advancing in a more sharply stratified society.
 
 For economic mobility, we use Chetty et al.'s (\citeyear[1554]{Chetty2014}) data on relative intergenerational mobility, which provides the best available information of the extent to which ``a person's chances of success depend little on his or her family background.''  
 It is measured as the relationship, in each CZ, between parents' rank in the national income distribution when their children were in their late teens and the rank of those children when they are approximately age 30.  
 The median respondent lives in a CZ with a score of .34 on this variable, that is, a 10 percentile increase in parents' incomes is associated with only a 3.4 percentile increase in childrens' incomes.  
 Economic mobility ranges from .07 to .51 in this dataset.
+
+The results of Model 2A, which adds relative mobility to Model 2, and Model 3A, which adds it to Model 1A, lend no support to cognitive hypothesis suggested above: it is those living in context of \emph{greater} relative mobility who are more likely to reject meritocracy, and the results regarding the effect of income inequality are essentially unchanged.
+
+The extent to which people are segregated by income in a locality may also be thought to affect the relationships tested here.  
+The \citet{Chetty2014} data include three measures of income segregation: overall segregation, the segregation of poverty, and the segregation of affluence.
+We added each of these measures to Model 3A of Figure~\ref{F:app_reg_plot}.
+The results are shown in Figure~\ref{F:app_reg_plot2} and Figure~\ref{F:app_coef_plot2}.  
+Regardless of the measure employed, income segregation has no discernable effect on meritocratic beliefs.  
+As greater residential segregation by income is an well-known result of higher income inequality, with the higher income households increasingly moving away from those with lower incomes and poorer households being increasingly unable to afford to live in those neighborhoods considered most desirable by richer ones, it is not surprising that the estimated effects of income inequality are somewhat smaller when this variable is included.
+The conclusions reached in the text, however, are still supported.
 
 <<label=app_models>>==
 # Inequality by Income (Relative Mobility Only, No Downstream)
@@ -909,7 +914,7 @@ dev.off()
 m1a_gini <- interplot(m1a, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
   coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Family Income", y = "Coefficient of Income Inequality") +
+  labs(x = "Income", y = "Coefficient of Income Inequality") +
   theme_bw() +
   geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
   ggtitle("Model 1A") +
@@ -919,7 +924,7 @@ ggsave("figures/m1a_gini.pdf", m1a_gini)
 m2a_gini <- interplot(m2a, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
   coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Family Income", y = "") +
+  labs(x = "Income", y = "") +
   theme_bw() +
   geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
   ggtitle("Model 2A") +
@@ -929,7 +934,7 @@ ggsave("figures/m2a_gini.pdf", m2a_gini)
 m3a_gini <- interplot(m3a, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
   coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Family Income", y = "") +
+  labs(x = "Income", y = "") +
   theme_bw() +
   geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
   ggtitle("Model 3A") +
@@ -988,6 +993,146 @@ dev.off()
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
   & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In all three models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
+<<label=app_models2>>==
+p2007x1$inc_seg_cz <- p2007x1$seg_inc_cz
+
+m4a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
+                 educ + age + male + noncitizen +
+                 latino + black + asian + other_min +
+                 partyid_rep + ideo_con + attend +
+                 income_cz + black_cz + bush04_cz + pop_cz +
+                 inc_seg_cz +
+                 (1+income|cz),
+             data=p2007x1, family=binomial(link="logit"))
+
+p2007x1$inc_seg_cz <- p2007x1$seg_pov_cz
+
+m5a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
+                 educ + age + male + noncitizen +
+                 latino + black + asian + other_min +
+                 partyid_rep + ideo_con + attend +
+                 income_cz + black_cz + bush04_cz + pop_cz +
+                 inc_seg_cz +
+                 (1+income|cz),
+             data=p2007x1, family=binomial(link="logit"))
+
+p2007x1$inc_seg_cz <- p2007x1$seg_aff_cz
+
+m6a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
+                 educ + age + male + noncitizen +
+                 latino + black + asian + other_min +
+                 partyid_rep + ideo_con + attend +
+                 income_cz + black_cz + bush04_cz + pop_cz +
+                 inc_seg_cz +
+                 (1+income|cz),
+             data=p2007x1, family=binomial(link="logit"))
+@
+
+<<app_dwplot2>>==
+m456a_df <- rbind(format_results(m4a, "Segregation\nOverall"),
+                 format_results(m5a, "Segregation\nof Poverty"),
+                 format_results(m6a, "Segregation\nof Affluence")) %>%
+  by_2sd(p2007x1)
+
+ordered_vars <- c("gini_cz", "gini_cz:income", "income", "rm_cz",
+                  "inc_seg_cz",
+                  "age", "educ", "male",
+                  "latino", "black", "asian", 
+                  "other_min", "noncitizen",
+                  "partyid_rep", "ideo_con", "attend",
+                  "income_cz", "black_cz", "bush04_cz", "pop_cz")
+
+pa2 <- dwplot(m456a_df, order_vars = ordered_vars) +
+     relabel_y_axis(c("Income Inequality", "Income Inequality x Income",
+                      "Income", "Relative Mobility",
+                      "Income Segregation",
+                      "Education", "Age", "Male",
+                      "Latino", "Black", "Asian", 
+                      "Other Minority", "Noncitizen",
+                      "Republican Party ID", "Conservative Ideology",
+                      "Church Attendance", 
+                      "Income/Capita", "Percent Black",
+                      "Bush Vote, 2004", "Population")) +
+     theme_bw() + xlab("Coefficient Estimate") + ylab("") +
+     geom_vline(xintercept = 0, colour = "grey60", linetype = 2) +
+     theme(plot.title = element_text(face="bold"),
+           legend.justification=c(1, 0), legend.position=c(.3, 0),
+           legend.background = element_rect(colour="grey80"),
+           legend.title = element_blank())
+
+two_brackets_a <- list(c("Individual Controls", "age", "attend"), c("CZ Controls", "income_cz", "pop_cz"))
+
+m456a <- pa2 %>% add_brackets(two_brackets_a)
+
+pdf("figures/m456a.pdf")
+grid::grid.draw(m456a)
+dev.off()
+@
+
+\begin{figure}[!hbtp] 
+  \caption{Predicting Rejection of Meritocracy Controlling for Income Segregation}
+  \label{F:app_reg_plot2}
+  \begin{center}
+    \includegraphics[width=5.5in]{figures/m456a.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.3in} p{5.6in}}
+  & \emph{Note}: The dots represent estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,615 individual respondents living in 676 commuting zones.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
+<<label=app_interplot2>>==
+m4a_gini <- interplot(m4a, "gini_cz", "income") +
+  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
+  coord_cartesian(ylim = c(-2, 1)) +
+  labs(x = "Income", y = "Coefficient of Income Inequality") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
+  ggtitle("Segregation\nOverall") +
+  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
+ggsave("figures/m4a_gini.pdf", m4a_gini)
+
+m5a_gini <- interplot(m5a, "gini_cz", "income") +
+  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
+  coord_cartesian(ylim = c(-2, 1)) +
+  labs(x = "Income", y = "") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
+  ggtitle("Segregation\nof Poverty") +
+  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
+ggsave("figures/m5a_gini.pdf", m5a_gini)
+
+m6a_gini <- interplot(m6a, "gini_cz", "income") +
+  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
+  coord_cartesian(ylim = c(-2, 1)) +
+  labs(x = "Income", y = "") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
+  ggtitle("Segregation\nof Affluence") +
+  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
+ggsave("figures/m6a_gini.pdf", m6a_gini)
+@
+
+<<label=m456a_gini>>=
+pdf("figures/m456a_gini.pdf", width=5.5, height=3)
+multiplot(m4a_gini, m5a_gini, m6a_gini, layout = matrix(1:3, nrow=1))
+dev.off()
+@
+
+\begin{figure}[!hbtp] 
+  \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy}
+  \label{F:app_coef_plot2}
+  \begin{center}
+    \includegraphics[width=5.5in]{figures/m456a_gini.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.3in} p{5.6in}}
+  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot2}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In all three models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
