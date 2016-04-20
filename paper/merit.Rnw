@@ -808,7 +808,7 @@ Our independent replication using more and better data, in fact, yields the oppo
 Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.
 In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.
 Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.
-For the insistent, however, models including these variables are presented here in Figure~\ref{F:app_reg_plot} and Figure~\ref{F:app_coef_plot}.
+For the insistent, however, models including these variables are presented here in Model 1A of Figure~\ref{F:app_reg_plot} and Figure~\ref{F:app_coef_plot}.
 They do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
 
 Objective levels of economic mobility are an additional control variable that has thus far been left out of the discussion of the causes of meritocratic attitudes, but it is, of course, directly implicated.  
@@ -820,7 +820,7 @@ It is measured as the relationship, in each CZ, between parents' rank in the nat
 The median respondent lives in a CZ with a score of .34 on this variable, that is, a 10 percentile increase in parents' incomes is associated with only a 3.4 percentile increase in childrens' incomes.  
 Economic mobility ranges from .07 to .51 in this dataset.
 
-The results lend no support to cognitive hypothesis suggested above: it is those living in context of \emph{greater} relative mobility who are more likely to reject meritocracy, and the results regarding the effect of income inequality are essentially unchanged.
+The results of Model 2A, which adds relative mobility to Model 2, and Model 3A, which adds it to Model 1A, lend no support to cognitive hypothesis suggested above: it is those living in context of \emph{greater} relative mobility who are more likely to reject meritocracy, and the results regarding the effect of income inequality are essentially unchanged.
 
 The extent to which people are segregated by income in a locality may also be thought to affect the relationships tested here.  
 The \citet{Chetty2014} data include three measures of income segregation: overall segregation, the segregation of poverty, and the segregation of affluence.
