@@ -70,32 +70,34 @@ How does the context of income inequality in which people live affect their beli
 \newpage
 
 Meritocracy---the idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
-How belief in meritocracy fares in the face of the stark economic inequality that has come to characterize life in the United States is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.\footnote{On the negative relationship between belief in the American Dream and preferences for redistributive policies, see, e.g., \citet{Brooks2014}.}
-This question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late.
+How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.\footnote{On the negative relationship between belief in the American Dream and preferences for redistributive policies, see, e.g., \citet{Brooks2014}.}
+Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late.
 
 In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce the status quo, Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
-However, that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
-We correct this error and show that the article's own analysis provides no support for its conclusion. 
+We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
+Correcting this error reveals that there is no support for the paper's conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
 
-Further, reproducing the above result from the materials the authors provide \citep{Newman2015a} uncovered other problems.  
-We therefore present here a full, independent replication, bringing more and better data as well as an improved specification to examine how local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
+Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered other problems. 
+We therefore present here a full, independent replication, bringing more and better data as well as an improved specification to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
 This analysis finds no evidence for the Panglossian argument of NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
-Consistent with prior research, the results instead indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.  
+To the contrary, but consistent with previous research, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.   
 
 
 \section*{A Review of the Theories at Stake}
 The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory. 
-As noted above, NJL advocates the former.  
-This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position'' (NJL, 327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
-The conflict theory has received sustained attention, but empirical support has been at best mixed \citep[see, e.g.,][]{Oliver2001, Brady2004, Solt2010}.
+We briefly review these two theories in this section.
+
+As noted above, NJL advocates the conflict theory.  
+This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, 327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
+The conflict theory has received sustained attention, particularly in studies of political participation, but empirical support has been at best mixed \citep[on the U.S. case, see][]{Oliver2001, Brady2004, Solt2010}.
 
 The relative power theory, on the other hand, starts with the proposition that money is a political resource: that is, that it can be used to influence others.
 Therefore, the theory contends, where the rich are richer relative to the poor, they will also be more powerful relative to the poor \citep{Goodin1980}.
-With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides higher-income people with more resources to spread their views while depriving poorer people to a greater degree of the resources to resist.
+With regard to attitudes and beliefs like meritocracy, this theory suggests that the greater power imbalance that results from higher levels of economic inequality provides higher-income people with more resources to spread their views in the public sphere while depriving poorer people to a greater degree of the resources needed to resist these efforts.
 This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
 Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
-%As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
+As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
 
 
 \section*{Reproduced Results and Corrected Interpretation}
@@ -295,7 +297,7 @@ Strangely, though the 2009 survey included these same two statements, respondent
 To assess whether these three very different measures are in fact comparable, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plot the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
 The figure reveals that Version 2 results in much lower levels of rejection of meritocracy than either of the others and that Version 3 often yields considerably higher levels than Version 1.
 In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.\footnote{For another example of uncritically mixing these three incomparable measures, see \citet{Newman2015b}.
-Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, Measure 1 is used in the 2011 Political Typology Surveys, Measure 2 is used in the 2009 and 2012 Values Surveys, and Measure 3 is used in the 2008 and 2012 Middle Class Surveys.} 
+Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, Measure 1 is used in the 2011 Political Typology Survey, Measure 2 is used in the 2009 and 2012 Values Surveys, and Measure 3 is used in the 2008 and 2012 Middle Class Surveys.} 
 
 <<label=three_measures>>==
 data_path <- "../data/merit/"
