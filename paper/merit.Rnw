@@ -42,7 +42,7 @@ library(knitr)
 opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE, results='hide')
 @
 
-\title{Economic Inequality and\\ Belief in Meritocracy in the United States\thanks{Earlier versions of this work were presented the 2016 Annual Meeting of the Southern Political Science Association and the 2016 Annual Meeting of the Midwest Political Science Association.  We thank Larry Bartels and Amber Wichowsky for helpful comments.  Its revision history and the materials needed to reproduce its analyses can be found \href{https://github.com/fsolt/meritocracy}{on Github here}.}}
+\title{Economic Inequality and\\ Belief in Meritocracy in the United States\thanks{Earlier versions of this work were presented the 2016 Annual Meeting of the Southern Political Science Association and the 2016 Annual Meeting of the Midwest Political Science Association.  We thank Larry Bartels and Amber Wichowsky for helpful comments.  The paper's revision history and the materials needed to reproduce its analyses can be found \href{https://github.com/fsolt/meritocracy}{on Github here}.}}
 \author{
   Frederick Solt\\
   \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
@@ -70,7 +70,7 @@ How does the context of income inequality in which people live affect their beli
 \newpage
 
 Meritocracy---the idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
-How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.\footnote{On the negative relationship between belief in the American Dream and preferences for redistributive policies, see, e.g., \citet{Brooks2014}.}
+How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.\footnote{\doublespacing On the negative relationship between belief in the American Dream and preferences for redistributive policies, see, e.g., \citet{Brooks2014}.}
 Not surprisingly, this question and related ones regarding the relationship between economic inequality and political attitudes and beliefs have attracted considerable scholarly attention of late.
 
 In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce the status quo, Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
@@ -88,7 +88,7 @@ The crucial relationship between economic inequality and system-supporting belie
 We briefly review these two theories in this section.
 
 As noted above, NJL advocates the conflict theory.  
-This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, 327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
+This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, p.327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
 The conflict theory has received sustained attention, particularly in studies of political participation, but empirical support has been at best mixed \citep[on the U.S. case, see][]{Oliver2001, Brady2004, Solt2010}.
 
 The relative power theory, on the other hand, starts with the proposition that money is a political resource: that is, that it can be used to influence others.
@@ -101,7 +101,7 @@ As \citet[37]{Huber2012} summarize, relative power theory can be seen as a strai
 
 
 \section*{Reproduced Results and Corrected Interpretation}
-Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 \citep[see][336]{Newman2015}.  
+Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{\doublespacing We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 (see NJL, p.336).  
 We restrict our focus here, though, to the article's main analysis of the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
 As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed to interpretation.
 
@@ -292,12 +292,12 @@ Those who chose the latter were coded as rejecting meritocracy.
 The 2007 and 2009 surveys employed did not include this item.
 Instead, they asked respondents to assess on a four-point agree-disagree scale two separate statements: (1) ``Hard work offers little guarantee of success'' and (2) ``Success in life is pretty much determined by forces outside our control.''
 In Version 2, used with data from the 2007 survey, those who mostly or completely agreed with both statements were coded as rejecting meritocracy.
-Strangely, though the 2009 survey included these same two statements, respondents to that survey were coded in yet a third manner: in Version 3, those who mostly or completely agreed with statement (1) were coded as rejecting meritocracy regardless of how they responded to statement (2). 
+Strangely, though the 2009 survey included these same two statements, respondents to that survey were coded in yet a third manner: in Version 3, those who mostly or completely agreed with statement (1) were coded as rejecting meritocracy regardless of how they responded to statement (2).\footnote{\doublespacing For another example of uncritically mixing these three measures, see \citet{Newman2015b}.
+Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, Measure 1 is used in the 2011 Political Typology Survey, Measure 2 is used in the 2009 and 2012 Values Surveys, and Measure 3 is used in the 2008 and 2012 Middle Class Surveys.} 
 
 To assess whether these three very different measures are in fact comparable, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plot the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
 The figure reveals that Version 2 results in much lower levels of rejection of meritocracy than either of the others and that Version 3 often yields considerably higher levels than Version 1.
-In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.\footnote{For another example of uncritically mixing these three incomparable measures, see \citet{Newman2015b}.
-Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, Measure 1 is used in the 2011 Political Typology Survey, Measure 2 is used in the 2009 and 2012 Values Surveys, and Measure 3 is used in the 2008 and 2012 Middle Class Surveys.} 
+In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.
 
 <<label=three_measures>>==
 data_path <- "../data/merit/"
@@ -456,7 +456,7 @@ It is well known that controlling for variables that are causally downstream fro
 Models including these variables are presented in the appendix; they do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
 
 With these important exceptions, we otherwise adopt the approach employed in NJL.  
-Local income inequality is measured using the Gini coefficient of the distribution of total family income within each CZ for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States who appear on any tax form.\footnote{This measure is not perfect.  
+Local income inequality is measured using the Gini coefficient of the distribution of total family income within each CZ for the years 1996 to 2000 as calculated by \citet{Chetty2014} from the IRS Databank, which provides de-identified income and location information for all individuals living in the United States who appear on any tax form.\footnote{\doublespacing This measure is not perfect.  
 Its welfare definition is income after government transfers but before taxes.  
 Because much redistribution occurs through the tax code, an after-tax measure would be preferable; unfortunately, virtually no data on the distribution of after-tax income at any geographic scale below the national level is available for the United States \citep[see, e.g.,][420]{Kelly2012}.  
 Further, it examines differences in incomes across families, which means those without children are excluded.  
@@ -465,7 +465,7 @@ Finally, it measures inequality about a decade before the Pew survey; income dis
 Despite these shortcomings, it remains the best data available on income inequality within commuting zones.}  
 As in the other Pew surveys, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000, straightforwardly coded here with values 1 to 9. 
 
-At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.\footnote{Additional analyses adding controls for two contextual variables not considered in NJL, objective economic mobility and residential income segregation, are presented in the Appendix.  The results of these analyses are substantively similar to those presented in the text.}  
+At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.\footnote{\doublespacing Additional analyses adding controls for two contextual variables not considered in NJL, objective economic mobility and residential income segregation, are presented in the Appendix.  The results of these analyses are substantively similar to those presented in the text.}  
 At the individual level, the analyses include controls for age, education, sex, race, and citizenship.
 The models are estimated using multilevel logistic regression of individuals nested in CZs, with both the intercept and the coefficient for income allowed to vary across the CZs. 
 Model 1 assesses the average effect of inequality across people of all incomes, but because both conflict and relative power theories suggest that the effect of income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included in Model 2, as in Equation~\ref{E:mixed} above.
