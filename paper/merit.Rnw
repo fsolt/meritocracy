@@ -29,11 +29,11 @@
 \newcommand{\R}{\textsf{R}~}        %This creates the command \R to typeset the name R correctly.
 \mathchardef\mhyphen="2D            %Math-mode hyphen
 
-%\usepackage[left=1in, right=1in]{geometry}	%Turn footnotes into endnotes (commented out).
-%\renewcommand{\footnotesize}{\normalsize}	
-\usepackage{endnotes}
-\renewcommand{\footnote}{\endnote}
-\renewcommand{\section}{\subsubsection}
+% \usepackage[left=1in, right=1in]{geometry}	%Turn footnotes into endnotes (commented out).
+% \renewcommand{\footnotesize}{\normalsize}	
+% \usepackage{endnotes}
+% \renewcommand{\footnote}{\endnote}
+% \renewcommand{\section}{\subsubsection}
 
 \begin{document}
 
@@ -110,7 +110,7 @@ This claim is incorrect.
 
 The error lies in the interpretation of the multiplicative interaction term.
 Though it has been well known for over a decade that models containing multiplicative interaction terms require particular care in interpretation \citep[see, e.g.,][]{Golder2003, Braumoeller2004, Brambor2006}, many political scientists continue to struggle with them: improperly specified or interpreted interaction terms appear at the top of Nyhan's (\citeyear{Nyhan2015}) list of ``recurring statistical errors'' for which reviewers should be sure to check.
-In the multilevel logistic regression model employed in \citet{Newman2015}, the logged odds of rejecting meritocracy for individual $i$ in local context $j$ are estimated as follows: 
+In the multilevel logistic regression model employed in NJL, the logged odds of rejecting meritocracy for individual $i$ in local context $j$ are estimated as follows: 
 \end{spacing}
 \vspace{-24pt}
 {\setlength\arraycolsep{2pt} 
@@ -1139,9 +1139,9 @@ dev.off()
   \end{footnotesize}
 \end{figure}
 
-\clearpage
-\pagebreak
-\theendnotes
+% \clearpage
+% \pagebreak
+% \theendnotes
 
 \clearpage
 \pagebreak
