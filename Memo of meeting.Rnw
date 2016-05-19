@@ -1,0 +1,80 @@
+\documentclass{article}
+
+\begin{document}
+Meeting on R&R(5/19/2016 10am-12pm)
+
+1.Review on the Editor's R&R Comments
+not very enthusiastic "R&R", "Critical for R&R", but definitely editors want the piece (even the reviewers are harsh); most editors make decisions based on reviewer's recommendations (revisions or rejection); ordinally, if reviewers all say R&R, editors may not want to make the decision of R&R; 
+Not"typically critical"for other journals
+
+First thing to do: read the review, make an outline combing different pieces of review; take all the things down to make a list of "things to do"
+
+Hu: see his list of response on the github. main points: (1) the tone of the article; (2)the interaction; (3)a strict replications, not adding new more;
+Erico: they don't understand what we says about the interaction term; adding to (2)maybe we should remake the figure of interaction and make it in NJL's way;
+Jumgming: more clarification on the interaction term; making their results in our way and compare to our results and figures 
+Solt: (1)as for the paper, yes, they did it in the wrong way; we need to point out this point again (you have to plot mariginal effect to explain the marginal effect); (2)as for the response memo, we need a more extensive discussion on it; this requires more and comprehensive literatures review on explaining interaction; (3)“comment error":even the reviewers were wrong, we need to please/satisfy them
+
+
+
+List of the things:
+1.Strcit Replications:
+(1)DV (Reviewer #2): we use a different DV, causing different results)
+
+Solt: replication of NJL's appendix (just take 2005 and 2006; showing still not significant result)
+
+
+
+(2)IV: gini data (CZ): reviewer#2: overselling; reviwer#1: recent year data
+
+Solt: suggestion#1: justify more about CZ; county is arbitary and not very meaning
+
+HU: we should provide more substantial evdiences to explain why Cz is better;
+
+Solt: suggestion#2: we can add a county-level analysis in the appendix even we insist using CZ in our paper; need to get county-level gini data, as well as all other county level data, from the census bureau (see the package for American Community Survey) ; NJL's replication materaial only has a couple hundred of counties, not complete
+
+
+(3)controls
+
+
+2. the interaction term
+(1)"p=0.6"; Reviewer#2: "the lowest income group, still significant" in Figure 1 of our paper: 
+
+Solt: we should calculate the amount of that income group and show how this substantially significance only applies to a small group of observations; do similar to the other income grops
+
+(2)including the explaination of plotting marginal effect of probability in the memo 
+Solt: again, memo is to please reviewers; we cannot just list literatures and ask them to read ; the tone should be: "reviewer#2's comment suggest us that we didn't do adequat to explain why we should use the marginal effect plot to interpret the interaction
+
+Jungming: maybe adding a table to show the effect of interaction term?
+
+Kevin&Hu: other faculy in the department would suggest to do so
+
+Erico and Solt: one sentence to interpret the point estimate on either end (the lowest and highest income groups; "one point change-->how much change in probability of rejecting meritocracy"; not statistically significant)
+
+we agree on adding a table as well as two sentences
+
+3. Tone
+Reviewer#1: some hard wordings on NJL
+(1)with regards to the "strangely", we can just lay out the fact that change the original range of the variable
+(2)the Huber's quote:
+
+
+Reviewer#2: (1)defense NJL; don't deny on their contributions; (2)replication?
+Response to point#2:we need to explain the difference between reproducation and replication; do a reproduction (on NJL data) and a replication (with a new data )
+
+
+4. Figure 5(Reviewe#2)
+
+
+5. Impications of the results (Not discussed)
+
+
+
+Next step do:
+Adding task to address the comments of reviewers by adding issues on Github;
+
+
+Primary responsibility done by June 3rd;
+
+Deadline of response: June 15
+
+\end{document}
