@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+
+\usepackage{graphicx}        % Enable graphics commands
+\usepackage[tbtags]{amsmath}
+\usepackage{lscape}    	% Enable landscape with \begin{landscape} until \end{landscape}
+\usepackage{natbib}			% Enable citation commands \citep{}, \citet{}, etc.
+\bibpunct{(}{)}{;}{a}{}{,}		% Formatting for in-text citations
+\usepackage{setspace}		% Enable double-spacing with \begin{spacing}{2} until \end{spacing}.
+\usepackage[utf8]{inputenc} 	% Enable utf8 characters, i.e., accents without coding--just type them in.
+\usepackage[english]{babel}	% English hyphenation and alphabetization.  Other languages available.
+\usepackage{dcolumn}        % For decimal-aligned stargazer/texreg output.
+\usepackage[colorlinks=true, urlcolor=blue, citecolor=black, linkcolor=black]{hyperref} % Include hyperlinks with the \url and \href commands.
+\setlength{\tabcolsep}{1pt}	% Make tables slightly narrower by reducing space between columns.
+\usepackage{afterpage}
+\usepackage{hanging}
+\usepackage{fullpage}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+\renewcommand\floatpagefraction{.9}	% These commands allow larger tables and graphics to fit
+\renewcommand\topfraction{.9}		% on a page when default settings would complain.
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+\newcommand{\R}{\textsf{R}~}        %This creates the command \R to typeset the name R correctly.
+
+%\usepackage[left=1in, right=1in]{geometry}	%Turn footnotes into endnotes (commented out).
+%\renewcommand{\footnotesize}{\normalsize}	
+%\usepackage{endnotes}
+%\renewcommand{\footnote}{\endnote}
+%\renewcommand{\section}{\subsection}
+
+\begin{document}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance=TRUE, 
+cache=FALSE,
+message=FALSE
+)
+@
+
+
+\title{Memo to Reviewers\\ The Dynamics of Party Relabeling:\\ Why Do Parties Change Names?}
+% \author{
+%     Mi-Son Kim\\
+%     \href{mailto:mi-son-kim@uiowa.edu}{mi-son-kim@uiowa.edu}
+%     \and
+%     Frederick Solt\\
+%     \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+% }
+\date{\today}				
+\maketitle
+
+Thank you for the opportunity to revise and resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United State.'' 
+Based on your helpful comments and constructive suggestions for improvement, we have made a number of revisions as listed following. 
+
+\begin{enumerate}
+\item Both reviewers raised the issue of our discussion about NJL's error in interpreting interaction. 
+Answering Reviewer 1's query about Figure 3 of NJL, we explained how this figure is a misleading way to interprete interaction in [PAGE #].
+
+Reviewer 2's comments indicate that we did not provide an adequate explanation of methodologists' guidance to political scientists on the use and interpretation of interaction terms. Taking the advice, we add more description of the problem and correct and incorrect ways to handle it, as in  [PAGE #].
+We clarify our position that the error of interpretation we discussed is not about statistical significance, but the misunderstanding of the true meaning of the base term and interaction term coefficients.
+
+As almost all the methodological studies about interaction \citep[e.g.,]{Brambor2006,Berry2012,Aiken1991,Hainmueller2016} warns, researchers can never understand the conditional effect barely with the coefficients of either base terms or the interaction term, unless they only care about what happens when one term equals zero.
+That is mainly because a condition effect consist of two parts: the effect when the conditioning term equals zero represented by the base term coefficient, and the conditioning effect represent by the base term coefficient of one term \textit{plus} the coefficient of the interaction conditioned on (timing) the value of other term. 
+Only when the value of the conditioning term is zero can the conditioning effect be absolutely ignored and the conditional effect be interpreted solely based on the coefficient of the base term. 
+Nevertheless, few studies will only focus on this extreme scenario.
+
+More commonly as in NJL, researchers, are interested in how the conditioning variable affects the effect of the conditioned variable on variance of the dependent variable.
+In this case, the conditional effect is methodologically determined by three factors: the point estimation of the performance of the conditioned variable at \textit{each} value of the conditioning variable, the uncertainty of these estimations, and the distribution of both the conditioning and conditioned variables.
+None of the information about these three factors can be directly interpreted from the base term or interaction term coefficients.
+To illustrate how to correctly interpret each factor's influence, let's take a simplified version of NJL's model:
+\begin{equation}\label{e:interaction}
+Reject Meritocracy = \beta_0 + \beta_1Income + \beta_2Inequality + \beta_3Income * Inequality.
+\end{equation}
+
+In this model, the base term are $Income$ and $Inequality$, and the interaction term is $Income * Inequality$. 
+Both base terms can be the conditioned or conditioning variable, because of the symmetric property of the interaction term in a regression model. 
+But the research theory often focus on a specific conditioned-conditioning relations. 
+In the case of NJL which argues the conditional effect of income on inequality's influence, the inequality is income \textit{conditioning} variable and inequality is the \textit{conditioned} variable. 
+Taking this focus, according to \cref{e:interaction}, the variance of reject meritocracy associating with is $beta_2Inequality + \beta_3Income * Inequality$. 
+In other words, the influence of inequality is $beta_2 + beta_3Income$, consisting of two constants, $beta_2$ and $beta_3$, and a variable $Income$---never the constants alone given income is always above zero in the sample.
+Therefor, it is inadequate to only look at the constant coefficient to investigate if there is a conditional effect.
+Instead, as \citet{Brambor2006} indicate to interpret the conditional effect based on the marginal effects, the first derivative with respect to the conditioned variable rather than directly from the coefficients:
+\begin{eqnarray}\label{E:dydx}
+\frac{\partial\thinspace Reject\thinspace Meritocracy}{\partial\thinspace Inequality} & = & \beta_2
++ \beta_3 \times Income.
+\end{eqnarray} 
+
+Marginal effects provide the proper point estimates for conditional effect, however, as any sample based estimation, whether this effect actually exists is also determined by the uncertainty estimate.
+An oft-used estimate is standard error. 
+In our example, that is $se(\hat{\beta_2} + \hat{\beta_3}Income)$.
+Can one learn this directly from $se(\hat{\beta_2})$ or  $se(\hat{\beta_3})$?
+No---again, unless income is zero.
+Formally, 
+\begin{align*}
+	se(\hat{\beta_2} + \hat{\beta_3}Income|Inequality) =& \sqrt{var(\hat{\beta_2} + \hat{\beta_3}Income)}\\
+													   =& \sqrt{var(\hat{\beta_2}) + Income^2var(\hat{\beta_3}) + 2Income\cdot cov(\hat{\beta_2}, \hat{\beta_3})}.
+\end{align*}
+Unless income or $cov(\hat{\beta_2}, \hat{\beta_3})$ is zero, it is impossible to correctly learn the uncertainty merely from the estimates of either base term or the interaction term.
+The uncertainty of the conditional effect is ought to be specifically estimated.
+
+Even with both appropriately point and uncertainty estimation, recent studies point out that it is still too rush to conclude the existence of the conditional effect \citep[e.g.,]{Berry2012,Hainmueller2016}. 
+That's because the conditional effect is always the interaction between two variables, while the marginal effects provides only the information about one variable but not the other. 
+In the aforementioned case, for instance, even if the marginal effects confirm a none-zero conditional effects of income (which actually not as we analyzed in the paper), this effect is never salient, since income only varies in a certain range in which its influence on inequality is actually trivial.
+Accordingly, \citet{Berry2012} argues that a prudent researcher should test the conditional effects from both directions: that is, the conditional effects both of income on inequality and of inequality on income.
+
+Additionally, there is a special situation in which the conditional effect is salient only at certain values, rather than the whole range, of the conditioning variable. 
+In this scenario, how many observations takes those values determines whether the salience in the estimates of the conditional effect is substantively important in reality. 
+This concern thus require the interpretation of conditional effects taking the distribution of the conditioning variable into account, when the effect is not full-range significant.
+
+To wrap up, to appropriate interpret a conditional effect should concern at least the aforesaid three aspects: point estimation, uncertainty and variable distribution, and none of them can be correctly understand merely with the regression coefficients. 
+Unfortunately, NJL's interpretation does not cover any of them, and, we found that the empirics do not support their argument at all when interpreting the conditional effects in the correct way.
+
+
+\end{enumerate}
+
+\end{document}
