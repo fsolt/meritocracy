@@ -88,7 +88,7 @@ The crucial relationship between economic inequality and system-supporting belie
 We briefly review these two theories in this section.
 
 As noted above, NJL advocates the conflict theory.  
-This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, p.327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
+This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, p.327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards. Accordingly, the conflict theory expects that low and high income citizens' views about meritocracy will be more polarized as inequality increases.
 The conflict theory has received sustained attention, particularly in studies of political participation, but empirical support has been at best mixed \citep[on the U.S. case, see][]{Oliver2001, Brady2004, Solt2010}.
 
 The relative power theory, on the other hand, starts with the proposition that money is a political resource: that is, that it can be used to influence others.
@@ -97,7 +97,7 @@ With regard to attitudes and beliefs like meritocracy, this theory suggests that
 This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
 Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
-As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
+As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. }. From these theoretical grounds, the relative power theory predicts that low and high income citizens' views about meritocracy will be less polarized as inequality increases. In high-inequality contexts, all individuals regardless of income will be more likely to support meritocracy than before. 
 
 
 \section*{Reproduced Results and Corrected Interpretation}
