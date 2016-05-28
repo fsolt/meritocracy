@@ -1,0 +1,10 @@
+base
+knitr
+haven
+readr
+stringr
+magrittr
+Matrix
+lme4
+ggplot2
+dplyr

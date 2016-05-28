@@ -45,7 +45,7 @@ message=FALSE
 @
 
 
-\title{Memo to Reviewers\\ The Dynamics of Party Relabeling:\\ Why Do Parties Change Names?}
+\title{Memo to Reviewers\\ Economic Inequality and\\ Belief in Meritocracy in the United State}
 % \author{
 %     Mi-Son Kim\\
 %     \href{mailto:mi-son-kim@uiowa.edu}{mi-son-kim@uiowa.edu}
@@ -60,6 +60,9 @@ Thank you for the opportunity to revise and resubmit our manuscript, ``Economic 
 Based on your helpful comments and constructive suggestions for improvement, we have made a number of revisions as listed following. 
 
 \begin{enumerate}
+\item Both reviewers pointed out that the article's tone is not professional, and some of its claims are inflated. We agreed with this criticism, and we reframe the article in a more humble and respective way and build up our discussion based on the replication and extention of NJL's paper.   
+
+
 \item Both reviewers raised the issue of our discussion about NJL's error in interpreting interaction. 
 Answering Reviewer 1's query about Figure 3 of NJL, we explained how this figure is a misleading way to interprete interaction in [PAGE #].
 
@@ -116,6 +119,22 @@ This concern thus require the interpretation of conditional effects taking the d
 
 To wrap up, to appropriate interpret a conditional effect should concern at least the aforesaid three aspects: point estimation, uncertainty and variable distribution, and none of them can be correctly understand merely with the regression coefficients. 
 Unfortunately, NJL's interpretation does not cover any of them, and, we found that the empirics do not support their argument at all when interpreting the conditional effects in the correct way.
+
+\item Both reviewer 1 and 2 suggested to conduct a strict replication with county-level gini coefficient and compare it with NJL's result. We followed the suggestion and presented a table of the replicated result of the county-level data and controls; see pages XX and XX
+
+Reviewer 1 concerned that the inequality data of commuter zones (CZs) is measured in an earlier period than the time of the survey, and questioned whether inequality changed dramatically overtime. 
+
+(Erico's note: this comment has not yet been addressed. Maybe we should discuss in the next meeting.)
+
+Reviewer 2 noted that the authors over-selling the use of CZs as the level of anlaysis without sufficient evidence. 
+
+
+
+\item Reviewer 1 noted that the axis values and lengend of Figure 5 are missing. After a careful review of the original submission of the paper, we confirmed that Figure 5 is properly labelled. We also attached a separate Figure 5 in this memo; see page XX.
+
+\item With regards to the explanation of results, both reviewers had concerns on its implications to the theory on inequality and public opinion. Reviewer 1 suspected the wealthy would be more supportive of the meritocracy belief as inequality increases, which it is not shown in the result. Our results suggest that only for those with the highest incomes (over $150,000), the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality. For other high income groups, such as $50-75K, $75-100K, and $100-150K, the predicted probability of rejecting meritocracy consistently declines over the observed range of inequality. We think this result is still consistent with relative power theory because it is more reasonable to expect that those with the highest incomes would support meritocracy even in low-inequality contexts. In other words, because they are already the strongest supporters of meritocracy in low-inequality contexts, high-inequality contexts do not lead them to support meritocracy more than before. Reviewer 2 suggested that the authors should differentiate between (1) whether each income group becomes significantly more rejecting/accepting of meritocracy due to increases in inequality, and (2) whether significant differences BETWEEN income groups emerge as inequality increases.
+
+(Erico's note: after I show the replicated result, I would suggest Junming to write some sentences in this part as a specific response to this second comment)
 
 
 \end{enumerate}
