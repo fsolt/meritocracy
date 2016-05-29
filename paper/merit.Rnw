@@ -88,7 +88,7 @@ The crucial relationship between economic inequality and system-supporting belie
 We briefly review these two theories in this section.
 
 As noted above, NJL advocates the conflict theory.  
-This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, p.327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
+This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, p.327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards. Accordingly, the conflict theory expects that low and high income citizens' views about meritocracy will be more polarized as inequality increases.
 The conflict theory has received sustained attention, particularly in studies of political participation, but empirical support has been at best mixed \citep[on the U.S. case, see][]{Oliver2001, Brady2004, Solt2010}.
 
 The relative power theory, on the other hand, starts with the proposition that money is a political resource: that is, that it can be used to influence others.
@@ -97,7 +97,7 @@ With regard to attitudes and beliefs like meritocracy, this theory suggests that
 This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
 Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
-As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. 
+As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. }. From these theoretical grounds, the relative power theory predicts that low and high income citizens' views about meritocracy will be less polarized as inequality increases. In high-inequality contexts, all individuals regardless of income will be more likely to support meritocracy than before. 
 
 
 \section*{Reproduced Results and Corrected Interpretation}
@@ -109,8 +109,11 @@ NJL (p.334) claims that its analysis ``reveals that among low-income citizens, t
 This claim is incorrect. 
 
 The error lies in the interpretation of the multiplicative interaction term.
-Though it has been well known for over a decade that models containing multiplicative interaction terms require particular care in interpretation \citep[see, e.g.,][]{Golder2003, Braumoeller2004, Brambor2006}, many political scientists continue to struggle with them: improperly specified or interpreted interaction terms appear at the top of Nyhan's (\citeyear{Nyhan2015}) list of ``recurring statistical errors'' for which reviewers should be sure to check.
-In the multilevel logistic regression model employed in NJL, the logged odds of rejecting meritocracy for individual $i$ in local context $j$ are estimated as follows: 
+It is worth to notice that the error discussed here is not about about whether 0.05 p-value should be the criterion of significant result, but a query about whether the interpretation represents what the interaction term truely means.
+The enduring efforts of political methodologists have manifested that multiplicative interaction terms require particular care in interpretation and it is \textit{impossible} to interpret interactions merely with coefficient esimates on either base terms or interaction term \citep[see, e.g.,][]{Golder2003, Braumoeller2004, Brambor2006}.
+However, in NJL's interpretations, an error almost all the methodological discussions about interaction term warn to avoid appears and serves as the evidence of the main theoretical argument.
+
+In NJL's logit model, the logged odds of rejecting meritocracy for individual $i$ in local context $j$ are estimated as follows: 
 \end{spacing}
 \vspace{-24pt}
 {\setlength\arraycolsep{2pt} 
@@ -127,11 +130,20 @@ Reject\thinspace Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamm
 \begin{spacing}{2}
 NJL (p.334) offers two pieces of evidence as support for its claim: first, that the coefficient for local income inequality (that is, $\gamma_{01}$) is estimated to be positive and statistically significant, and second, that the coefficient for the interaction between inequality and respondents' incomes ($\gamma_{11}$) is negative and statistically significant (NJL, 334). 
 
-Neither of the two actually provide any support. 
+Neither actually provide any support. 
 First, the coefficient $\gamma_{01}$ indicates only the effect of $Inequality$ when the other variable in the interaction, $Income$, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
-Oddly, however, the nine categories of income in the Pew surveys the article employs are recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
-Because the income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
-Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
+Nonetheless, the nine categories of income the article employs ranges from .21 to 1 \citep[see][]{Newman2015a}.  
+Because this income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
+Even regarding this coefficient can represent the effect on the group of people with the lowest income (which actually cannot!), those people are only 10\% of the sample.
+For the effect of inequality on the rest 90\%, the coefficient of the interaction term provides not any information at all.
+
+Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.'' 
+Nor is respectively presenting the effect of $X$ in different categories (as in Figure 3 of NJL) helpful, even regardless that it may mislead the understanding.
+Figure 3 of NJL was used to visualiz the conditional effect of inequality aggregating difference between low and hign income people.
+However, a closer look of each line in the figure, the confidence intervals are overlapped from the low inequality to high, wihch suggest the influence of inequality on either group of people's class identity is no different from zero.
+Stated differently, the seemingly increasing difference between low and high income people are illusionary without taking acount of the uncertainty in inferential statistics.
+
+A more reliable and proper way to interprete is through marginal effects with respect to inequality, according to \citet{Berry2012}:
 \end{spacing}
 \vspace{-24pt}
 {\setlength\arraycolsep{2pt} 
@@ -143,7 +155,7 @@ Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer
 }
 \vspace{-24pt}
 \begin{spacing}{2}
-\noindent In short, $\gamma_{11}$ is only part of the conditional effect; the magnitude and statistical significance depend also on $\gamma_{01}$ and the value of $Income$.  
+\noindent  
 
 We plot the conditional effect of $Inequality$ at each value of $Income$ in Figure~\ref{F:coef_t1m1} using the \R package \texttt{interplot} \citep{Solt2015b}. 
 Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.
