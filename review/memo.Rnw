@@ -127,7 +127,7 @@ Reviewer 1 concerned that the inequality data of commuter zones (CZs) is measure
 
 (Erico's note: this comment has not yet been addressed. Maybe we should discuss in the next meeting.)
 
-Reviewer 2 noted that the authors over-selling the use of CZs as the level of anlaysis without sufficient evidence. 
+\item Reviewer 1 and Reviewer 2 both noted the use of commuter zones (CZs) in this papers analysis. While Reviewer 1 notes that CZs are likely better suited to this type of analysis than counties, Reviewer 2 highlights that the benefits of using CZs is unclear. We have included additional justification for the use of CZs rather than counties in the text of the paper. As noted in our intial submission, CZs were developed to better capture the areas in which people actually live and work. For manu individuals, the county in which they reside may be different than the county in which they work. CZs overcome this problem by constructing areas that are characterized by high levels of internal commuting with relatiely little commuting between different CZs. The fact that commuting zones were developed based upon economic geography, more specifically, labor markets, and not incidental factors such as minimum poulations, city, county, or state borders suggests that they provide a more nuanced idea of the local economic conditions that actually impact individuals than counties.
 
 
 
