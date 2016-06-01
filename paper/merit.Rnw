@@ -462,7 +462,7 @@ The second additional issue with the NJL (p.331-332) analysis regards the contex
 Counties have long been criticized as only poorly reflecting local economic conditions.
 To overcome this, we use commuting zones (CZs) to define respondents' local context.  
 CZs are aggregations of counties that represent the scope of local economic relationships across the United States.  
-They were explicitly designed to represent where people actually live and work and overcome the unrealistic assumption that counties are economically meaningful units \citep{Tolbert1996}.
+They were explicitly designed to represent where people actually live and work and overcome the unrealistic assumption that counties are economically meaningful units \citep{Tolbert1996}. CZs better capture local economic conditions than counties due in part to the fact that they are based on economic geography rather than factors such as county lines or minimum populations \citep{Dorn2009}
 
 The final issue regards appropriate attitudinal controls.  
 Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocracy.
