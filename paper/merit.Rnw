@@ -37,7 +37,7 @@
 
 \begin{document}
 
-<<include=FALSE>>=
+<<label=knitr_setup, include=FALSE>>=
 library(knitr)
 opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE, results='hide')
 @
@@ -100,7 +100,7 @@ With regard to attitudes and beliefs like meritocracy, this theory suggests that
 This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
 Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
-As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. }. From these theoretical grounds, the relative power theory predicts that low and high income citizens' views about meritocracy will be less polarized as inequality increases. In high-inequality contexts, all individuals regardless of income will be more likely to support meritocracy than before. 
+As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. From these theoretical grounds, the relative power theory predicts that low and high income citizens' views about meritocracy will be less polarized as inequality increases. In high-inequality contexts, all individuals regardless of income will be more likely to support meritocracy than before. 
 
 
 \section*{Reproduced Results and Corrected Interpretation}
@@ -343,8 +343,8 @@ ver_a <- data.frame(
 	year = c(2011, 2012, 2007, 2005, 2011, 2006, 2010, 2000, 1999, 2004), 
 	stringsAsFactors = FALSE) %>% arrange(year)
 
-rc2 <- "1 = 0; 2 = 1; else = NA" # coding rule 1
-rc4 <- "c(1,2) = 0; c(3,4) = 1; else = NA" # coding rule 2
+rc2 <- "1 = 0; 2 = 1; else = NA" # 2 response categories
+rc4 <- "c(1,2) = 0; c(3,4) = 1; else = NA" # 4 response categories
 
 ver_a <- ver_a %>% mutate(
 	var_name = c("q18j", "Q18K", "q11k", "q14k", "q8b", "q5c", "q30d", "q17k", 
@@ -377,7 +377,7 @@ for (i in 1:nrow(ver_a1)) {
 	df <- setup(ver_a1[i, ])
 	df$n <- length(df$rej_merit)
 	ver_a1$value[i] <- Hmisc::wtd.mean(df$rej_merit, df$weight, normwt = T) * 100
-	ver_a1$se[i] <- Hmisc::wtd.var(df$rej_merit, df$weight, normwt = T) / df$n %>% sqrt() * 100
+	ver_a1$se[i] <- Hmisc::wtd.var(df$rej_merit, df$weight, normwt = T) / df$n[1] %>% sqrt() * 100
 }
 
 df <- rbind(setup(ver_a2[1, ]), setup(ver_a2[2, ]))
@@ -412,7 +412,7 @@ ver_c <- ver_c_file %>% group_by(year) %>%
 
 ver_c_file2 <- read_spss(paste0(data_path, "version_b/Pew-Social-Trends-Data-Middle-Class-04-2009/Jan08 Middle class_cleaned.sav"))
 ver_c_file2$rej_merit <- with(ver_c_file2, ifelse(q9a < 3, 1, 0))
-ver_c_file2$rej_merit[ver_c_file$q9a == 9] <- NA
+ver_c_file2$rej_merit[ver_c_file2$q9a == 9] <- NA
 ver_c2 <- ver_c_file2 %>%  
 	summarise(year = 2008,
 	          version = "C",
@@ -434,7 +434,7 @@ njl <- data.frame(
 ver_all2 <- left_join(ver_all, njl)
 ver_all2$njl[is.na(ver_all2$njl)] <- "D"
 
-meas_plot <- ggplot(ver_all2, aes(x = year, y = value, color = version)) +
+three_measures <- ggplot(ver_all2, aes(x = year, y = value, color = version)) +
  	scale_color_manual(values = c(A = "red", B = "darkgreen", C = "navy")) +
  	scale_fill_manual(values = c(A = "red", B = "darkgreen", C = "navy", D = "white")) +
   geom_errorbar(aes(ymin=value - qnorm(.975) * se, ymax=value + qnorm(.975) * se), width = .1) +
@@ -637,8 +637,7 @@ p2007x1 <- left_join(p2007x, cz_all, by="cz")
 Figure~\ref{F:reg_plot} displays a dot-and-whisker plot of the results: the dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each variable in the model, and the whiskers represent the 95\% confidence intervals of these estimates \citep[see][]{Kastellec2007, Solt2015c}.  
 According to Model 1, which lacks a multiplicative interaction term, the average effect of the local context of income inequality across individuals of all incomes is negative and statistically significant: on average, where inequality is greater, people are \emph{less} likely to reject meritocracy.  
 
-<<label=models>>==
-
+<<label=m1>>==
 # Inequality (No Interaction)
 m1 <- glmer(formula = rej_merit ~ gini_cz + income +
               educ + age + male + noncitizen +
@@ -647,7 +646,9 @@ m1 <- glmer(formula = rej_merit ~ gini_cz + income +
               (1 + income|cz),
             data = p2007x1,
             family = binomial(link = "logit"))
+@
 
+<<label=m2>>==
 # Inequality by Income
 m2 <- glmer(formula = rej_merit ~ gini_cz*income +
               educ + age + male + noncitizen +
@@ -815,348 +816,6 @@ Our independent replication using more and better data, in fact, yields the oppo
 
 
 \end{spacing}
-%Which of these theories better describes political reality is crucial to understanding the effort
-
-\clearpage
-\newpage
-\appendix
-\renewcommand\thefigure{A.\arabic{figure}} 
-\section*{Appendix A: Additional Controls}
-Measures of party identification, ideology, and church attendance are often added to analyses somewhat reflexively, but they are inappropriate in a study of the relationship between income inequality and meritocratic beliefs.
-In both the conflict and relative power theories, the relationship between inequality and belief in meritocracy is mediated by just these sorts of variables.
-Of course, it is well understood that controlling for variables that are causally downstream from an independent variable ``messes up'' the estimates of that independent variable's effect on the dependent variable \citet[188]{Gelman2007}.
-For the insistent, however, models including these variables are presented here in Model 1A of Figure~\ref{F:app_reg_plot} and Figure~\ref{F:app_coef_plot}.
-They do not evince substantially different patterns, although as expected the estimated coefficients for income inequality are somewhat attentuated.
-
-Objective levels of economic mobility are an additional control variable that has thus far been left out of the discussion of the causes of meritocratic attitudes, but it is, of course, directly implicated.  
-Less obvious, perhaps, is that because economic mobility tends to decline with rising inequality \citep[see, e.g.,][]{Andrews2009}, it provides a cognitive explanation for any relationship between inequality and beliefs in meritocracy that may challenge both of the theories described in the text.  
-Rather than evincing a greater psychological need to protect self-esteem in the face of personal deficiencies as the conflict theory asserts \citep[see, e.g.,][329]{Newman2015} or the more complete cultural domination of the well-off as the relative power theory maintains \citep[see, e.g.,][704]{Solt2012}, beliefs in meritocracy in more unequal contexts may instead simply reflect a correct recognition of the greater difficulty of advancing in a more sharply stratified society.
-
-For economic mobility, we use Chetty et al.'s (\citeyear[1554]{Chetty2014}) data on relative intergenerational mobility, which provides the best available information of the extent to which ``a person's chances of success depend little on his or her family background.''  
-It is measured as the relationship, in each CZ, between parents' rank in the national income distribution when their children were in their late teens and the rank of those children when they are approximately age 30.  
-The median respondent lives in a CZ with a score of .34 on this variable, that is, a 10 percentile increase in parents' incomes is associated with only a 3.4 percentile increase in childrens' incomes.  
-Economic mobility ranges from .07 to .51 in this dataset.
-
-The results of Model 2A, which adds relative mobility to Model 2, and Model 3A, which adds it to Model 1A, lend no support to cognitive hypothesis suggested above: it is those living in context of \emph{greater} relative mobility who are more likely to reject meritocracy, and the results regarding the effect of income inequality are essentially unchanged.
-
-The extent to which people are segregated by income in a locality may also be thought to affect the relationships tested here.  
-The \citet{Chetty2014} data include three measures of income segregation: overall segregation, the segregation of poverty, and the segregation of affluence.
-We added each of these measures to Model 3A of Figure~\ref{F:app_reg_plot}.
-The results are shown in Figure~\ref{F:app_reg_plot2} and Figure~\ref{F:app_coef_plot2}.  
-Regardless of the measure employed, income segregation has no discernable effect on meritocratic beliefs.  
-As greater residential segregation by income is an well-known result of higher income inequality, with the higher income households increasingly moving away from those with lower incomes and poorer households being increasingly unable to afford to live in those neighborhoods considered most desirable by richer ones, it is not surprising that the estimated effects of income inequality are somewhat smaller when this variable is included.
-The conclusions reached in the text, however, are still supported.
-
-<<label=app_models>>==
-# Inequality by Income (Relative Mobility Only, No Downstream)
-m1a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
-              educ + age + male + noncitizen +
-              latino + black + asian + other_min +
-              income_cz + black_cz + bush04_cz + pop_cz +
-              (1+income|cz),
-            data=p2007x1, family=binomial(link="logit"))
-
-# Inequality by Income (Downstream, No Relative Mobility)
-m2a <- glmer(formula = rej_merit ~ gini_cz*income +
-              educ + age + male + noncitizen +
-              latino + black + asian + other_min +
-              partyid_rep + ideo_con + attend +
-              income_cz + black_cz + bush04_cz + pop_cz +
-              (1+income|cz),
-            data=p2007x1, family=binomial(link="logit"))
-
-# Inequality by Income (Downstream AND Relative Mobility)
-m3a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
-              educ + age + male + noncitizen +
-              latino + black + asian + other_min +
-              partyid_rep + ideo_con + attend +
-              income_cz + black_cz + bush04_cz + pop_cz +
-              (1+income|cz),
-            data=p2007x1, family=binomial(link="logit"))
-@
-
-<<app_dwplot>>==
-m123a_df <- rbind(format_results(m1a, "Model 1A"),
-                 format_results(m2a, "Model 2A"),
-                 format_results(m3a, "Model 3A")) %>%
-  by_2sd(p2007x1)
-
-ordered_vars <- c("gini_cz", "gini_cz:income", "income", "rm_cz",
-                  "age", "educ", "male",
-                  "latino", "black", "asian", 
-                  "other_min", "noncitizen",
-                  "partyid_rep", "ideo_con", "attend",
-                  "income_cz", "black_cz", "bush04_cz", "pop_cz")
-
-pa <- dwplot(m123a_df, order_vars = ordered_vars) +
-     relabel_y_axis(c("Income Inequality", "Income Inequality x Income",
-                      "Income", "Relative Mobility",
-                      "Education", "Age", "Male",
-                      "Latino", "Black", "Asian", 
-                      "Other Minority", "Noncitizen",
-                      "Republican Party ID", "Conservative Ideology",
-                      "Church Attendance", 
-                      "Income/Capita", "Percent Black",
-                      "Bush Vote, 2004", "Population")) +
-     theme_bw() + xlab("Coefficient Estimate") + ylab("") +
-     geom_vline(xintercept = 0, colour = "grey60", linetype = 2) +
-     theme(plot.title = element_text(face="bold"),
-           legend.justification=c(1, 0), legend.position=c(.3, 0),
-           legend.background = element_rect(colour="grey80"),
-           legend.title = element_blank())
-
-two_brackets_a <- list(c("Individual Controls", "age", "attend"), c("CZ Controls", "income_cz", "pop_cz"))
-
-m123a <- pa %>% add_brackets(two_brackets_a)
-
-pdf("figures/m123a.pdf")
-grid::grid.draw(m123a)
-dev.off()
-@
-
-\begin{figure}[!hbtp] 
-  \caption{Predicting Rejection of Meritocracy With Additional Controls}
-  \label{F:app_reg_plot}
-  \begin{center}
-    \includegraphics[width=5.5in]{figures/m123a.pdf}
-  \end{center}
-  \begin{footnotesize}
-  \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Note}: The dots represent estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,615 individual respondents living in 676 commuting zones.
-  \end{tabular}
-  \end{footnotesize}
-\end{figure}
-
-<<label=app_interplot>>==
-m1a_gini <- interplot(m1a, "gini_cz", "income") +
-  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
-  coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Income", y = "Coefficient of Income Inequality") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
-  ggtitle("Model 1A") +
-  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
-ggsave("figures/m1a_gini.pdf", m1a_gini)
-
-m2a_gini <- interplot(m2a, "gini_cz", "income") +
-  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
-  coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Income", y = "") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
-  ggtitle("Model 2A") +
-  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
-ggsave("figures/m2a_gini.pdf", m2a_gini)
-
-m3a_gini <- interplot(m3a, "gini_cz", "income") +
-  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
-  coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Income", y = "") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
-  ggtitle("Model 3A") +
-  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
-ggsave("figures/m3a_gini.pdf", m3a_gini)
-@
-
-<<label=m123a_gini>>=
-multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
-  require(grid)
-  
-  # Make a list from the ... arguments and plotlist
-  plots <- c(list(...), plotlist)
-  
-  numPlots = length(plots)
-  
-  # If layout is NULL, then use 'cols' to determine layout
-  if (is.null(layout)) {
-    # Make the panel
-    # ncol: Number of columns of plots
-    # nrow: Number of rows needed, calculated from # of cols
-    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
-                     ncol = cols, nrow = ceiling(numPlots/cols))
-  }
-  
-  if (numPlots==1) {
-    print(plots[[1]])
-    
-  } else {
-    # Set up the page
-    grid.newpage()
-    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
-    
-    # Make each plot, in the correct location
-    for (i in 1:numPlots) {
-      # Get the i,j matrix positions of the regions that contain this subplot
-      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
-      
-      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
-                                      layout.pos.col = matchidx$col))
-    }
-  }
-}
-
-pdf("figures/m123a_gini.pdf", width=5.5, height=3)
-multiplot(m1a_gini, m2a_gini, m3a_gini, layout = matrix(1:3, nrow=1))
-dev.off()
-@
-
-\begin{figure}[!hbtp] 
-  \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy}
-  \label{F:app_coef_plot}
-  \begin{center}
-    \includegraphics[width=5.5in]{figures/m123a_gini.pdf}
-  \end{center}
-  \begin{footnotesize}
-  \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In all three models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
-  \end{tabular}
-  \end{footnotesize}
-\end{figure}
-
-<<label=app_models2>>==
-p2007x1$inc_seg_cz <- p2007x1$seg_inc_cz
-
-m4a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
-                 educ + age + male + noncitizen +
-                 latino + black + asian + other_min +
-                 partyid_rep + ideo_con + attend +
-                 income_cz + black_cz + bush04_cz + pop_cz +
-                 inc_seg_cz +
-                 (1+income|cz),
-             data=p2007x1, family=binomial(link="logit"))
-
-p2007x1$inc_seg_cz <- p2007x1$seg_pov_cz
-
-m5a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
-                 educ + age + male + noncitizen +
-                 latino + black + asian + other_min +
-                 partyid_rep + ideo_con + attend +
-                 income_cz + black_cz + bush04_cz + pop_cz +
-                 inc_seg_cz +
-                 (1+income|cz),
-             data=p2007x1, family=binomial(link="logit"))
-
-p2007x1$inc_seg_cz <- p2007x1$seg_aff_cz
-
-m6a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
-                 educ + age + male + noncitizen +
-                 latino + black + asian + other_min +
-                 partyid_rep + ideo_con + attend +
-                 income_cz + black_cz + bush04_cz + pop_cz +
-                 inc_seg_cz +
-                 (1+income|cz),
-             data=p2007x1, family=binomial(link="logit"))
-@
-
-<<app_dwplot2>>==
-m456a_df <- rbind(format_results(m4a, "Segregation\nOverall"),
-                 format_results(m5a, "Segregation\nof Poverty"),
-                 format_results(m6a, "Segregation\nof Affluence")) %>%
-  by_2sd(p2007x1)
-
-ordered_vars <- c("gini_cz", "gini_cz:income", "income", "rm_cz",
-                  "inc_seg_cz",
-                  "age", "educ", "male",
-                  "latino", "black", "asian", 
-                  "other_min", "noncitizen",
-                  "partyid_rep", "ideo_con", "attend",
-                  "income_cz", "black_cz", "bush04_cz", "pop_cz")
-
-pa2 <- dwplot(m456a_df, order_vars = ordered_vars) +
-     relabel_y_axis(c("Income Inequality", "Income Inequality x Income",
-                      "Income", "Relative Mobility",
-                      "Income Segregation",
-                      "Education", "Age", "Male",
-                      "Latino", "Black", "Asian", 
-                      "Other Minority", "Noncitizen",
-                      "Republican Party ID", "Conservative Ideology",
-                      "Church Attendance", 
-                      "Income/Capita", "Percent Black",
-                      "Bush Vote, 2004", "Population")) +
-     theme_bw() + xlab("Coefficient Estimate") + ylab("") +
-     geom_vline(xintercept = 0, colour = "grey60", linetype = 2) +
-     theme(plot.title = element_text(face="bold"),
-           legend.justification=c(1, 0), legend.position=c(.3, 0),
-           legend.background = element_rect(colour="grey80"),
-           legend.title = element_blank())
-
-two_brackets_a <- list(c("Individual Controls", "age", "attend"), c("CZ Controls", "income_cz", "pop_cz"))
-
-m456a <- pa2 %>% add_brackets(two_brackets_a)
-
-pdf("figures/m456a.pdf")
-grid::grid.draw(m456a)
-dev.off()
-@
-
-\begin{figure}[!hbtp] 
-  \caption{Predicting Rejection of Meritocracy Controlling for Income Segregation}
-  \label{F:app_reg_plot2}
-  \begin{center}
-    \includegraphics[width=5.5in]{figures/m456a.pdf}
-  \end{center}
-  \begin{footnotesize}
-  \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Note}: The dots represent estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,615 individual respondents living in 676 commuting zones.
-  \end{tabular}
-  \end{footnotesize}
-\end{figure}
-
-<<label=app_interplot2>>==
-m4a_gini <- interplot(m4a, "gini_cz", "income") +
-  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
-  coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Income", y = "Coefficient of Income Inequality") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
-  ggtitle("Segregation\nOverall") +
-  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
-ggsave("figures/m4a_gini.pdf", m4a_gini)
-
-m5a_gini <- interplot(m5a, "gini_cz", "income") +
-  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
-  coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Income", y = "") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
-  ggtitle("Segregation\nof Poverty") +
-  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
-ggsave("figures/m5a_gini.pdf", m5a_gini)
-
-m6a_gini <- interplot(m6a, "gini_cz", "income") +
-  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
-  coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Income", y = "") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
-  ggtitle("Segregation\nof Affluence") +
-  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
-ggsave("figures/m6a_gini.pdf", m6a_gini)
-@
-
-<<label=m456a_gini>>=
-pdf("figures/m456a_gini.pdf", width=5.5, height=3)
-multiplot(m4a_gini, m5a_gini, m6a_gini, layout = matrix(1:3, nrow=1))
-dev.off()
-@
-
-\begin{figure}[!hbtp] 
-  \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy}
-  \label{F:app_coef_plot2}
-  \begin{center}
-    \includegraphics[width=5.5in]{figures/m456a_gini.pdf}
-  \end{center}
-  \begin{footnotesize}
-  \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot2}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In all three models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
-  \end{tabular}
-  \end{footnotesize}
-\end{figure}
-
-% \clearpage
-% \pagebreak
-% \theendnotes
 
 \clearpage
 \pagebreak
