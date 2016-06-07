@@ -821,7 +821,7 @@ Our independent replication using more and better data, in fact, yields the oppo
 \pagebreak
 \newpage
 \bibliographystyle{ajps}
-\bibliography{FSLibrary}
+\bibliography{merit}
 
 \clearpage
 \newpage
