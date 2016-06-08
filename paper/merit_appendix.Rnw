@@ -66,7 +66,10 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 \renewcommand\thefigure{A.\arabic{figure}} 
 \section*{Appendix A: Simple Replication}
 
-The independent replication presented in the text improves upon the analysis presented in NJL by taking advantage of the of the larger, more geographically representative, and more comparable data provided by the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007.  It also eschews (a) defining the local context in terms of the arbitrary boundaries provided by counties and (b) including as controls variables attitudes that are known to be causally downstream from our independent variable of interest. Although these latter improvements are well motivated, it is the application of more and better data to the question that is most responsible for the difference in results: the model presented in Figure~\ref{F:m1a} uses counties for local context and includes the attitudinal variables as controls.  It yields results substantively similar to those presented in the text.
+The independent replication presented in the text improves upon the analysis presented in NJL by taking advantage of the of the larger, more geographically representative, and more comparable data provided by the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007.  
+It also eschews (a) defining the local context in terms of the arbitrary boundaries provided by counties and (b) including as controls variables attitudes that are, according to both theories being tested, causally downstream from our independent variable of interest. 
+Although these latter improvements are well motivated, it is the application of more and better data to the question that is most responsible for the difference in results: the model presented in Figure~\ref{F:m1a} uses counties for local context and includes the attitudinal variables as controls.  
+It yields results substantively similar to those presented in the text.
 
 <<label=app_setup>>==
 library(readr)
@@ -205,7 +208,7 @@ ggsave("figures/m1a_gini.pdf", m1a_gini)
   \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy}
   \label{F:m1a_gini}
   \begin{center}
-    \includegraphics[width=5.5in]{figures/m1a_gini.pdf}
+    \includegraphics[width=3.5in]{figures/m1a_gini.pdf}
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
@@ -225,7 +228,7 @@ It is measured as the relationship, in each CZ, between parents' rank in the nat
 The median respondent lives in a CZ with a score of .34 on this variable, that is, a 10 percentile increase in parents' incomes is associated with only a 3.4 percentile increase in childrens' incomes.  
 Economic mobility ranges from .07 to .51 in this dataset.
 
-The results of Model 2A, which adds relative mobility to Model 2, and Model 3A, which adds it to Model 1A, lend no support to cognitive hypothesis suggested above: it is those living in context of \emph{greater} relative mobility who are more likely to reject meritocracy, and the results regarding the effect of income inequality are essentially unchanged.
+The results of Model 2A, which adds relative mobility to Model 2, and Model 3A, which adds relative mobility and the causally-downstream attitudinal controls included NJL, lend no support to cognitive hypothesis suggested above: it is those living in context of \emph{greater} relative mobility who are more likely to reject meritocracy, and the results regarding the effect of income inequality are essentially unchanged.
 
 The extent to which people are segregated by income in a locality may also be thought to affect the relationships tested here.  
 The \citet{Chetty2014} data include three measures of income segregation: overall segregation, the segregation of poverty, and the segregation of affluence.
@@ -449,7 +452,7 @@ dev.off()
 @
 
 \begin{figure}[!hbtp] 
-  \caption{Predicting Rejection of Meritocracy With Additional Controls}
+  \caption{Predicting Rejection of Meritocracy Controlling for Relative Mobility}
   \label{F:app_reg_plot}
   \begin{center}
     \includegraphics[width=5.5in]{figures/m23a.pdf}
@@ -526,14 +529,14 @@ dev.off()
 @
 
 \begin{figure}[!hbtp] 
-  \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy}
+  \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy, Controlling for Relative Mobility}
   \label{F:app_coef_plot}
   \begin{center}
     \includegraphics[width=5.5in]{figures/m23a_gini.pdf}
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In both models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In both models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero. The conclusions reached in the text are still supported even when controlling for relative mobility.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
@@ -666,14 +669,14 @@ dev.off()
 @
 
 \begin{figure}[!hbtp] 
-  \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy}
+  \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy Controlling for Income Segregation}
   \label{F:app_coef_plot2}
   \begin{center}
     \includegraphics[width=5.5in]{figures/m456a_gini.pdf}
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot2}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In all three models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot2}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In all three models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.  The conclusions reached in the text are still supported even when controlling for income segregation.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
