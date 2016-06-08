@@ -66,9 +66,9 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 \renewcommand\thefigure{A.\arabic{figure}} 
 \section*{Appendix A: Simple Replication}
 
-The independent replication presented in the text improves upon the analysis presented in NJL by taking advantage of the of the larger, more geographically representative, and more comparable data provided by the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007.  It also eschews (a) defining the local context in terms of the arbitrary boundaries provided by counties and (b) including as controls variables attitudes that are known to be causally downstream from our independent variable of interest. Although these latter improvements are well motivated, it is the application of more and better data to the question that is most responsible for the difference in results: the model presented in Figure~\href{F:RLSonly} uses counties for local context and includes the attitudinal variables as controls.  It yields results substantively similar to those presented in the text.
+The independent replication presented in the text improves upon the analysis presented in NJL by taking advantage of the of the larger, more geographically representative, and more comparable data provided by the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007.  It also eschews (a) defining the local context in terms of the arbitrary boundaries provided by counties and (b) including as controls variables attitudes that are known to be causally downstream from our independent variable of interest. Although these latter improvements are well motivated, it is the application of more and better data to the question that is most responsible for the difference in results: the model presented in Figure~\ref{F:m1a} uses counties for local context and includes the attitudinal variables as controls.  It yields results substantively similar to those presented in the text.
 
-<<label=setup>>==
+<<label=app_setup>>==
 library(readr)
 library(haven)
 library(magrittr)
@@ -81,7 +81,7 @@ library(dplyr)
 @
 
 
-<<label=data>>==
+<<label=app_data>>==
 # Individual-Level Data: Pew 2007 Religious Landscape Survey
 p2007 <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
 p2007fips <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
@@ -119,7 +119,7 @@ p2007_cnty %<>% left_join(counties, by="fips")
 p07cw <- p2007_cnty %>% filter(white==1)
 @
 
-<<label=simple_replication>>==
+<<label=app_simple_replication>>==
 # RLS data, county context, attitudinal controls 
 m1a <- glmer(formula = rej_merit ~ gini_cnty*income +
               educ + age + male + noncitizen +
@@ -131,7 +131,7 @@ m1a <- glmer(formula = rej_merit ~ gini_cnty*income +
             family=binomial(link="logit"))
 @
 
-<<label=simple_rep_plots>>==
+<<label=app_simple_rep_plots>>==
 format_results <- function(m, model = "Model") {
   m_df <- broom::tidy(m) %>% 
     filter(term != "(Intercept)") %>% 
@@ -174,6 +174,47 @@ grid::grid.draw(m1a_plot)
 dev.off()
 @
 
+\begin{figure}[!hbtp] 
+  \caption{Predicting Rejection of Meritocracy Across Counties with Attitudinal Controls}
+  \label{F:m1a}
+  \begin{center}
+    \includegraphics[width=5.5in]{figures/m1a_plot.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.3in} p{5.6in}}
+  & \emph{Note}: The dots represent estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 27,032 individual respondents living in 2,621 counties.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
+<<label=m1a_gini>>==
+inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
+                "$50-75k", "$75-100k", "$100-150k", ">$150k")
+
+m1a_gini <- interplot(m1a, "gini_cnty", "income") +
+  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
+  labs(x = "Income", y = "Coefficient of Income Inequality") +
+  theme_bw() +
+  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
+  ggtitle("Model 1A") +
+  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
+ggsave("figures/m1a_gini.pdf", m1a_gini)
+@
+
+\begin{figure}[!hbtp] 
+  \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy}
+  \label{F:m1a_gini}
+  \begin{center}
+    \includegraphics[width=5.5in]{figures/m1a_gini.pdf}
+  \end{center}
+  \begin{footnotesize}
+  \begin{tabular}{p{.3in} p{5.6in}}
+  & \emph{Source}: Analyses presented in Figure~\ref{F:m1a}.  The dots represent estimated coefficient of income inequality within respondents' counties on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  These estimates are negative and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  \end{tabular}
+  \end{footnotesize}
+\end{figure}
+
+\newpage
 \section*{Appendix B: Additional Controls}
 Objective levels of economic mobility are an additional control variable that has thus far been left out of the discussion of the causes of meritocratic attitudes, but it is, of course, directly implicated.  
 Less obvious, perhaps, is that because economic mobility tends to decline with rising inequality \citep[see, e.g.,][]{Andrews2009}, it provides a cognitive explanation for any relationship between inequality and beliefs in meritocracy that may challenge both of the theories described in the text.  
@@ -194,8 +235,156 @@ Regardless of the measure employed, income segregation has no discernable effect
 As greater residential segregation by income is an well-known result of higher income inequality, with the higher income households increasingly moving away from those with lower incomes and poorer households being increasingly unable to afford to live in those neighborhoods considered most desirable by richer ones, it is not surprising that the estimated effects of income inequality are somewhat smaller when this variable is included.
 The conclusions reached in the text, however, are still supported.
 
+<<label=replication_setup>>==
+### Data Set-Up
+# Commuting Zones Identification Data
+if (!file.exists("../data/cw_cty00_cz.csv")) {
+  temp <- tempfile(fileext = ".zip")
+  download.file("http://www.equality-of-opportunity.org/images/crosswalks.zip", temp)
+  cw <- read_dta(unzip(temp, "cw_cty00_cz.dta"))
+  unlink(c(temp, "cw_cty00_cz.dta"))
+  write_csv(cw,"../data/cw_cty00_cz.csv")
+}
+
+cz <- read_csv("../data/cw_cty00_cz.csv") %>% 
+  transmute(fips = county_id,
+         cz = cz) %>% 
+  rbind(c(8014, 28900)) %>% # Broomfield County, CO (see http://www.ddorn.net/data/FIPS_County_Code_Changes.pdf)
+  arrange(fips)
+
+# Individual-Level Data: Pew 2007 Religious Landscape Survey
+p2007 <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
+p2007fips <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
+
+p2007x <- merge(p2007, p2007fips) %>% 
+  transmute(resp = psraid,
+            fips2 = as.numeric(fips),
+            state = as.numeric(state),
+            rej_merit = (q5c!=1)+0,
+            income = ifelse(income<=9, income, NA), # 1 to 9
+            income_c = income - median(income, na.rm = TRUE),
+            educ = ifelse(educ<=7, educ, NA), # 1 to 7
+            age = ifelse(age<99, age, NA),
+            male = ifelse(sex==1, 1, 0),
+            latino = ifelse(hisp<=2, (hisp==1)+0, NA),
+            white = ifelse(race<=4, (race==1 & latino!=1)+0, NA),
+            black = ifelse(race<=4, (race==2)+0, NA),
+            asian = ifelse(race<=4, (race==3)+0, NA),
+            other_min = ifelse(race<=4, (race==4)+0, NA),
+            noncitizen = ifelse((q60==9 | (q61==9 & !is.na(q61))),
+                                NA, (q60==2 & q61==2)+0),
+            ideo_con = 6 - ifelse(ideo<=5, ideo, NA), # 1 to 5
+            attend = 7 - ifelse(q20<=6, q20, NA)) %>% # 1 to 6
+  rename(fips = fips2)
+p2007x$partyid_rep <- plyr::mapvalues(p2007$party, 
+                                      from = c(1:5, 9), 
+                                      to = c(5, 1, 3, 3, 3, NA))
+p2007x$partyid_rep[p2007$partyln==1] <- 4
+p2007x$partyid_rep[p2007$partyln==2] <- 2
+
+p2007x %<>% left_join(cz, by="fips") 
+
+# 2004 Election Results Data
+fips_cnty <- read_csv("https://raw.githubusercontent.com/raypereda/fips-county-codes/master/lib/national.txt", 
+                      col_types="ccccc") 
+names(fips_cnty) <- tolower(gsub(" ", "_", names(fips_cnty)))
+fips_cnty$fips <- as.numeric(do.call(paste0, c(fips_cnty[, c(2,3)])))
+fips_cnty$county <- tolower(gsub(" County| Parish", "", fips_cnty$county_name))
+fips_cnty$county <- gsub(" ", "", fips_cnty$county)
+
+bush04 <- read_tsv("http://bactra.org/election/vote-counts-with-NE-aggregated")
+bush04$perc_bush04 <- with(bush04, Bush/(Bush+Kerry+Nader))
+names(bush04) <- tolower(names(bush04))
+bush04$county <- tolower(gsub(" County| Parish", "", bush04$county))
+bush04$county <- gsub("saint", "st.", bush04$county)
+bush04$county <- gsub(" ", "", bush04$county)
+bush04$county[(bush04$state=="LA"|bush04$state=="MS") & bush04$county=="jeffdavis"] <- "jeffersondavis"
+bush04$county[(bush04$state=="ME") & bush04$county=="linc"] <- "lincoln"
+bush04$county[(bush04$state=="ME") & bush04$county=="andr"] <- "androscoggin"
+bush04$county[(bush04$state=="ME") & bush04$county=="pen-s"] <- "penobscot"
+bush04$county[(bush04$state=="ME") & bush04$county=="som-s"] <- "somerset"
+bush04$county[(bush04$state=="ME") & bush04$county=="oxf-s"] <- "oxford"
+bush04$county[(bush04$state=="MA") & bush04$county=="hamd"] <- "hamden"
+bush04$county[(bush04$state=="MA") & bush04$county=="esse"] <- "essex"
+bush04$county[(bush04$state=="MA") & bush04$county=="hams"] <- "hampshire"
+bush04$county[(bush04$state=="NH") & bush04$county=="graf"] <- "grafton"
+bush04$county[(bush04$state=="NY") & bush04$county=="manhattan"] <- "newyork"
+bush04$county[(bush04$state=="NY") & bush04$county=="statenisland"] <- "richmond"
+bush04$county[(bush04$state=="NY") & bush04$county=="brooklyn"] <- "kings"
+bush04$county[(bush04$state=="VT") & bush04$county=="fran"] <- "franklin"
+bush04$county[(bush04$state=="VT") & bush04$county=="wins"] <- "windsor"
+bush04$county[(bush04$state=="VT") & bush04$county=="addi"] <- "addison"
+bush04$county[(bush04$state=="VT") & bush04$county=="gris"] <- "grandisle"
+bush04$county[(bush04$state=="VT") & bush04$county=="oran"] <- "orange"
+bush04$county[(bush04$state=="VA") & bush04$county=="manassas"] <- "manassascity"
+bush04$county[(bush04$state=="VA") & bush04$county=="norton"] <- "nortoncity"
+
+bush04_cnty <- left_join(bush04, fips_cnty, by=c("state", "county"))
+missing <- bush04_cnty[is.na(bush04_cnty$fips), 1:8] # election results still without fips due to county name inconsistencies
+bush04_cnty <- bush04_cnty[!is.na(bush04_cnty$fips), ] # keep only results that already have fips
+remaining <- anti_join(fips_cnty, bush04, by=c("state", "county")) %>%
+  arrange(state) # fips without election results
+
+missing$county0 <- missing$county # move county names to a tempvar
+missing$county <- NA
+
+states <- unique(missing$state)
+states <- states[states != "AK"] # nothing to be done with Alaska election results--no breakdown in data
+for(i in 1:length(states)) {
+  t.rem <- remaining$county[remaining$state==states[i]] # fips without election results, one state at a time
+  missing$county[missing$state==states[i]] <- lapply(missing$county0[missing$state==states[i]], function (ii) agrep(ii, t.rem, value=T, max.distance=.2)) # find matches to county name by state
+}
+missing$county <- unlist(lapply(missing$county, function(ii) ii[1])) # use closest match to county name
+missing <- left_join(missing, fips_cnty, by=c("state", "county")) # now merge; some results still without fips in Maine (no RLS respondents anyway), otherwise good
+missing$county0 <- NULL # drop tempvar
+
+bush04_cnty %<>% rbind(missing) 
+
+cz_bush04 <- left_join(bush04_cnty, cz, by="fips") %>% 
+  group_by(cz) %>% 
+  dplyr::summarize(bush04_cz = sum(bush)/sum(bush+kerry+nader))
+
+# Equality of Opportunity Data
+if (!file.exists("../data/eq_of_opp_online_data.xls")) {
+  download.file("http://www.equality-of-opportunity.org/images/online_data_tables.xls", "../data/eq_of_opp_online_data.xls")
+}
+
+cz_eo <- read_excel("../data/eq_of_opp_online_data.xls", 
+                    sheet = "Online Data Table 5", 
+                    skip = 49,
+                    col_types = c("numeric", "text", "text", 
+                                  rep("numeric", 32))) %>% 
+  filter(!is.na(CZ)) %>% 
+  transmute(cz = CZ,
+         rm_cz = `RM, 80-82 Cohort`) 
+
+cz_other <- read_excel("../data/eq_of_opp_online_data.xls", 
+                       sheet = "Online Data Table 8", 
+                       skip = 6,
+                       col_types = c("numeric", "text", "text", 
+                                     rep("numeric", 38))) %>%
+  filter(!CZ==-1) %>% 
+  transmute(cz = CZ,
+            gini_cz = Gini,
+            income_cz = `Household Income per capita`/10000,
+            black_cz = `Frac. Black`,
+            pop_cz = `Census 2000 population`/1000000,
+            seg_race_cz = `Racial Segregation`,
+            seg_inc_cz = `Income Segregation`,
+            seg_pov_cz = `Segregation of Poverty (<p25)`,
+            seg_aff_cz = `Segregation of Affluence (>p75)`) 
+
+cz_all <- left_join(cz_eo, cz_bush04, by="cz") %>% 
+  left_join(cz_other, by="cz")
+
+
+# Merge Data
+p2007x1 <- left_join(p2007x, cz_all, by="cz")
+
+@
+
 <<label=app_models>>==
-# Inequality by Income (Relative Mobility Only, No Downstream)
+# Inequality by income (relative mobility, no downstream)
 m2a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
               educ + age + male + noncitizen +
               latino + black + asian + other_min +
@@ -203,7 +392,7 @@ m2a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
               (1+income|cz),
             data=p2007x1, family=binomial(link="logit"))
 
-# Inequality by Income (Relative Mobility with Downstream)
+# Inequality by income (relative mobility, with downstream)
 m3a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
               educ + age + male + noncitizen +
               latino + black + asian + other_min +
@@ -214,6 +403,14 @@ m3a <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
 @
 
 <<app_dwplot>>==
+format_results <- function(m, model = "Model") {
+  m_df <- broom::tidy(m) %>% 
+    filter(term != "(Intercept)") %>% 
+    filter(group != "cz") %>% 
+    mutate(model = model)
+  return(m_df)
+}
+
 m23a_df <- rbind(format_results(m2a, "Model 2A"),
                  format_results(m3a, "Model 3A")) %>%
   by_2sd(p2007x1)
@@ -255,7 +452,7 @@ dev.off()
   \caption{Predicting Rejection of Meritocracy With Additional Controls}
   \label{F:app_reg_plot}
   \begin{center}
-    \includegraphics[width=5.5in]{figures/m123a.pdf}
+    \includegraphics[width=5.5in]{figures/m23a.pdf}
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
@@ -265,16 +462,6 @@ dev.off()
 \end{figure}
 
 <<label=app_interplot>>==
-m1a_gini <- interplot(m1a, "gini_cz", "income") +
-  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
-  coord_cartesian(ylim = c(-2, 1)) +
-  labs(x = "Income", y = "Coefficient of Income Inequality") +
-  theme_bw() +
-  geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
-  ggtitle("Model 1A") +
-  theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
-ggsave("figures/m1a_gini.pdf", m1a_gini)
-
 m2a_gini <- interplot(m2a, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
   coord_cartesian(ylim = c(-2, 1)) +
@@ -296,7 +483,7 @@ m3a_gini <- interplot(m3a, "gini_cz", "income") +
 ggsave("figures/m3a_gini.pdf", m3a_gini)
 @
 
-<<label=m123a_gini>>=
+<<label=m23a_gini>>=
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   require(grid)
   
@@ -333,8 +520,8 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   }
 }
 
-pdf("figures/m123a_gini.pdf", width=5.5, height=3)
-multiplot(m1a_gini, m2a_gini, m3a_gini, layout = matrix(1:3, nrow=1))
+pdf("figures/m23a_gini.pdf", width=5.5, height=3)
+multiplot(m2a_gini, m3a_gini, layout = matrix(1:2, nrow=1))
 dev.off()
 @
 
@@ -342,11 +529,11 @@ dev.off()
   \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy}
   \label{F:app_coef_plot}
   \begin{center}
-    \includegraphics[width=5.5in]{figures/m123a_gini.pdf}
+    \includegraphics[width=5.5in]{figures/m23a_gini.pdf}
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In all three models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  & \emph{Source}: Analyses presented in Figure~\ref{F:app_reg_plot}.  The dots represent estimated coefficient of income inequality within respondents' commuting zones on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In both models, these estimates are negative---indicating a lower probability of rejecting meritocracy---and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
@@ -490,6 +677,12 @@ dev.off()
   \end{tabular}
   \end{footnotesize}
 \end{figure}
+
+\clearpage
+\pagebreak
+\newpage
+\bibliographystyle{ajps}
+\bibliography{merit}
 
 
 \end{document}
