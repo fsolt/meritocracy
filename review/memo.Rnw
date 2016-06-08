@@ -8,6 +8,8 @@
 \bibpunct{(}{)}{;}{a}{}{,}		% Formatting for in-text citations
 \usepackage{setspace}		% Enable double-spacing with \begin{spacing}{2} until \end{spacing}.
 \usepackage[utf8]{inputenc} 	% Enable utf8 characters, i.e., accents without coding--just type them in.
+\usepackage{natbib} %3 lines from here Bibliographic; sort & compress orders multiple citations into the sequence in which they appear in the list of references+;but in addition multiple numerical citations are compressed if possible (as 3-6, 15)
+\bibpunct{(}{)}{;}{a}{}{,}
 \usepackage[english]{babel}	% English hyphenation and alphabetization.  Other languages available.
 \usepackage{dcolumn}        % For decimal-aligned stargazer/texreg output.
 \usepackage[colorlinks=true, urlcolor=blue, citecolor=black, linkcolor=black]{hyperref} % Include hyperlinks with the \url and \href commands.
@@ -16,6 +18,7 @@
 \usepackage{hanging}
 \usepackage{fullpage}
 \usepackage[capitalise,noabbrev]{cleveref}
+
 
 \renewcommand\floatpagefraction{.9}	% These commands allow larger tables and graphics to fit
 \renewcommand\topfraction{.9}		% on a page when default settings would complain.
@@ -64,62 +67,60 @@ Based on your helpful comments and constructive suggestions for improvement, we 
 We feel that this stance is justified, as what we undertake is not a simple reproduction of the analysis carried out by NJL, but a replication, that is an attempt to verify that the findings of NJL are accurate. The inclusion of larger amounts of data do not move out study further away from replication, but instead embody the vary nature of the practice. Our attempt to test and ultimately confirm or deny the findings of NJL are the essence of replication, which we take to involve efforts to reach similar findings through independent analyses. Our use of larger, and arguably improved data should not disqualify our paper as a replication piece, but instead should be taken as an indication of the rigor with which we seek to not only duplicate or refute the findings advanced by NJL, but also to advance our understanding of the effects of inequality
 
 
-\item Both reviewers raised the issue of our discussion about NJL's error in interpreting interaction. 
-Answering Reviewer 1's query about Figure 3 of NJL, we explained how this figure is a misleading way to interprete interaction in [PAGE #].
+\item Both reviewers commented on our discussion about NJL's error in interpreting interaction. 
+Responding to Reviewer 1's query about Figure 3 of NJL, we explained how this figure is misleading to interprete interaction in [PAGE].
 
-Reviewer 2's comments indicate that we did not provide an adequate explanation of methodologists' guidance to political scientists on the use and interpretation of interaction terms. Taking the advice, we add more description of the problem and correct and incorrect ways to handle it, as in  [PAGE #].
-We clarify our position that the error of interpretation we discussed is not about statistical significance, but the misunderstanding of the true meaning of the base term and interaction term coefficients.
+Reviewer 2's comments indicate that we did not provide an adequate explanation of methodologists' guidance on interpreting interaction terms. Taking the advice, we add more descriptions about the problem and corrections as in [PAGE].
+We clarify our position that the error of interpretation we discussed is not only about the statistical significance of the interaction term in the regression, but a misunderstanding of the true meaning of the base term and interaction term coefficients.
 
-As almost all the methodological studies about interaction \citep[e.g.,]{Brambor2006,Berry2012,Aiken1991,Hainmueller2016} warns, researchers can never understand the conditional effect barely with the coefficients of either base terms or the interaction term, unless they only care about what happens when one term equals zero.
-That is mainly because a condition effect consist of two parts: the effect when the conditioning term equals zero represented by the base term coefficient, and the conditioning effect represent by the base term coefficient of one term \textit{plus} the coefficient of the interaction conditioned on (timing) the value of other term. 
-Only when the value of the conditioning term is zero can the conditioning effect be absolutely ignored and the conditional effect be interpreted solely based on the coefficient of the base term. 
-Nevertheless, few studies will only focus on this extreme scenario.
+As many methodological studies of interaction \citep[e.g.,][]{Brambor2006,Berry2012,Aiken1991,Hainmueller2016} warns, researchers cannot correctly understand the conditional effect barely with the coefficients of either base terms or the interaction term, unless they only care about what happens when one term turns to zero.
+Nevertheless, few studies only focus on this extreme scenario.
 
-More commonly as in NJL, researchers, are interested in how the conditioning variable affects the effect of the conditioned variable on variance of the dependent variable.
-In this case, the conditional effect is methodologically determined by three factors: the point estimation of the performance of the conditioned variable at \textit{each} value of the conditioning variable, the uncertainty of these estimations, and the distribution of both the conditioning and conditioned variables.
-None of the information about these three factors can be directly interpreted from the base term or interaction term coefficients.
-To illustrate how to correctly interpret each factor's influence, let's take a simplified version of NJL's model:
+More commonly, as in NJL, researchers, are interested in how a conditioning variable changes the influence of the conditioned variable on variance of the dependent variable.
+This changing effect is methodologically determined by three factors: the point estimation of the conditioned variable coefficient at \textit{each} value of the conditioning variable, the uncertainty of the estimations, and the distribution of both the conditioning and conditioned variables.
+None of the information about these three factors can be fully interpreted from the base term or interaction term coefficients.
+
+
+To illustrate how these factors affect the conditional effects, let's take a simplified version of NJL's model as an example:
 \begin{equation}\label{e:interaction}
 Reject Meritocracy = \beta_0 + \beta_1Income + \beta_2Inequality + \beta_3Income * Inequality.
 \end{equation}
 
-In this model, the base term are $Income$ and $Inequality$, and the interaction term is $Income * Inequality$. 
-Both base terms can be the conditioned or conditioning variable, because of the symmetric property of the interaction term in a regression model. 
-But the research theory often focus on a specific conditioned-conditioning relations. 
-In the case of NJL which argues the conditional effect of income on inequality's influence, the inequality is income \textit{conditioning} variable and inequality is the \textit{conditioned} variable. 
-Taking this focus, according to \cref{e:interaction}, the variance of reject meritocracy associating with is $beta_2Inequality + \beta_3Income * Inequality$. 
-In other words, the influence of inequality is $beta_2 + beta_3Income$, consisting of two constants, $beta_2$ and $beta_3$, and a variable $Income$---never the constants alone given income is always above zero in the sample.
-Therefor, it is inadequate to only look at the constant coefficient to investigate if there is a conditional effect.
-Instead, as \citet{Brambor2006} indicate to interpret the conditional effect based on the marginal effects, the first derivative with respect to the conditioned variable rather than directly from the coefficients:
+In this model, the base terms are $Income$ and $Inequality$, and the interaction term is $Income * Inequality$. 
+The two base terms have the equivalent function to affect the conditional effect methodologicall, while in theory, income is the \textit{conditioning} variable and inequality is the \textit{conditioned} variable. 
+In this case, the variance of reject meritocracy due to the conditional effect is $beta_2Inequality + \beta_3Income * Inequality$. 
+Obviously, it includes two parts, $beta_2Inequality$ and $\beta_3Income * Inequality$. Only looking at either part is inadequate to comprehend the whole conditional effect.
+Instead, as \citet{Brambor2006} suggests, marginal effects, viz., the first derivative with respect to the conditioned variable is a more proper statistics for interpreting conditional effects, since it involves information from both parts:
 \begin{eqnarray}\label{E:dydx}
 \frac{\partial\thinspace Reject\thinspace Meritocracy}{\partial\thinspace Inequality} & = & \beta_2
 + \beta_3 \times Income.
 \end{eqnarray} 
 
-Marginal effects provide the proper point estimates for conditional effect, however, as any sample based estimation, whether this effect actually exists is also determined by the uncertainty estimate.
-An oft-used estimate is standard error. 
+Besides marginal effects as the proper point estimates, one also needs appropriate estimates of uncertainties.
+An oft-used statistic for this is standard error. 
 In our example, that is $se(\hat{\beta_2} + \hat{\beta_3}Income)$.
-Can one learn this directly from $se(\hat{\beta_2})$ or  $se(\hat{\beta_3})$?
-No---again, unless income is zero.
+Can this statistic be directly conducted from $se(\hat{\beta_2})$ or $se(\hat{\beta_3})$?
+No, again.
 Formally, 
 \begin{align*}
 	se(\hat{\beta_2} + \hat{\beta_3}Income|Inequality) =& \sqrt{var(\hat{\beta_2} + \hat{\beta_3}Income)}\\
 													   =& \sqrt{var(\hat{\beta_2}) + Income^2var(\hat{\beta_3}) + 2Income\cdot cov(\hat{\beta_2}, \hat{\beta_3})}.
 \end{align*}
-Unless income or $cov(\hat{\beta_2}, \hat{\beta_3})$ is zero, it is impossible to correctly learn the uncertainty merely from the estimates of either base term or the interaction term.
-The uncertainty of the conditional effect is ought to be specifically estimated.
+Unless income or $cov(\hat{\beta_2}, \hat{\beta_3})$ is zero, it is impossible to draw the correct $se(\hat{\beta_2} + \hat{\beta_3}Income|Inequality)$ merely from $se(\hat{\beta_2})$ or $se(\hat{\beta_3})$.
+The uncertainty of the conditional effect is ought to be specifically calculated.
 
-Even with both appropriately point and uncertainty estimation, recent studies point out that it is still too rush to conclude the existence of the conditional effect \citep[e.g.,]{Berry2012,Hainmueller2016}. 
-That's because the conditional effect is always the interaction between two variables, while the marginal effects provides only the information about one variable but not the other. 
-In the aforementioned case, for instance, even if the marginal effects confirm a none-zero conditional effects of income (which actually not as we analyzed in the paper), this effect is never salient, since income only varies in a certain range in which its influence on inequality is actually trivial.
-Accordingly, \citet{Berry2012} argues that a prudent researcher should test the conditional effects from both directions: that is, the conditional effects both of income on inequality and of inequality on income.
+Some recent studies point out that, except for point and uncertainty estimates, the distribution of both the conditioning and conditioned variables also influence the conditional effect, where the information marginal effects can offer is still inadequate \citep[e.g.,][]{Berry2012,Hainmueller2016}. 
+That's because the marginal effects provides only the information about one variable (the other was derivated), but the conditional effect is always about both.
+In the aforementioned case, for instance, even if the marginal effects confirm a none-zero conditional effects of income (which actually not as we analyzed in the paper) on inequality, the effect could never be salient in reality when inequality, the conditioned variable, only varies in a limited range.
+Accordingly, \citet{Berry2012} indicate, a prudent researcher should test the conditional effects from both directions: that is, the conditional effects both of income on inequality and of inequality on income.
 
-Additionally, there is a special situation in which the conditional effect is salient only at certain values, rather than the whole range, of the conditioning variable. 
-In this scenario, how many observations takes those values determines whether the salience in the estimates of the conditional effect is substantively important in reality. 
-This concern thus require the interpretation of conditional effects taking the distribution of the conditioning variable into account, when the effect is not full-range significant.
+Additionally, the conditional effect might be salient only at certain values, rather than the whole range of the conditioning variable. 
+In this scenario, how the conditioning variable distributes is also important to understand the substantive significance of the conditional effect. 
+This concern thus requires the interpretation incorporating the distribution of the conditioning variable into account, when the effect is not full-range significant.
 
-To wrap up, to appropriate interpret a conditional effect should concern at least the aforesaid three aspects: point estimation, uncertainty and variable distribution, and none of them can be correctly understand merely with the regression coefficients. 
-Unfortunately, NJL's interpretation does not cover any of them, and, we found that the empirics do not support their argument at all when interpreting the conditional effects in the correct way.
+To wrap up, to appropriate interpret a conditional effect should address at least three aspects: point estimation, uncertainty and variable distribution, and none of them can be correctly understand merely with the regression coefficients. 
+Unfortunately, NJL's interpretation does not cover any of them, and distorts what the empirics actually tell.
+With proper methods, we found that the empirics do not support their argument at all.
 
 \item Both reviewer 1 and 2 suggested to conduct a strict replication with county-level gini coefficient and compare it with NJL's result. We followed the suggestion and presented a table of the replicated result of the county-level data and controls; see pages XX and XX
 
@@ -133,11 +134,14 @@ Reviewer 1 concerned that the inequality data of commuter zones (CZs) is measure
 
 \item Reviewer 1 noted that the axis values and lengend of Figure 5 are missing. After a careful review of the original submission of the paper, we confirmed that Figure 5 is properly labelled. We also attached a separate Figure 5 in this memo; see page XX.
 
-\item With regards to the explanation of results, both reviewers had concerns on its implications to the theory on inequality and public opinion. Reviewer 1 suspected the wealthy would be more supportive of the meritocracy belief as inequality increases, which it is not shown in the result. Our results suggest that only for those with the highest incomes (over $150,000), the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality. For other high income groups, such as $50-75K, $75-100K, and $100-150K, the predicted probability of rejecting meritocracy consistently declines over the observed range of inequality. We think this result is still consistent with relative power theory because it is more reasonable to expect that those with the highest incomes would support meritocracy even in low-inequality contexts. In other words, because they are already the strongest supporters of meritocracy in low-inequality contexts, high-inequality contexts do not lead them to support meritocracy more than before. Reviewer 2 suggested that the authors should differentiate between (1) whether each income group becomes significantly more rejecting/accepting of meritocracy due to increases in inequality, and (2) whether significant differences BETWEEN income groups emerge as inequality increases.
+\item With regards to the explanation of results, both reviewers had concerns on its implications to the theory on inequality and public opinion. Reviewer 1 suspected the wealthy would be more supportive of the meritocracy belief as inequality increases, which it is not shown in the result. Our results suggest that only for those with the highest incomes (over \$150,000), the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality. For other high income groups, such as \$50-75K, \$75-100K, and \$100-150K, the predicted probability of rejecting meritocracy consistently declines over the observed range of inequality. We think this result is still consistent with relative power theory because it is more reasonable to expect that those with the highest incomes would support meritocracy even in low-inequality contexts. In other words, because they are already the strongest supporters of meritocracy in low-inequality contexts, high-inequality contexts do not lead them to support meritocracy more than before. Reviewer 2 suggested that the authors should differentiate between (1) whether each income group becomes significantly more rejecting/accepting of meritocracy due to increases in inequality, and (2) whether significant differences BETWEEN income groups emerge as inequality increases.
 
 (Erico's note: after I show the replicated result, I would suggest Junming to write some sentences in this part as a specific response to this second comment)
 
-
 \end{enumerate}
+
+
+\bibliographystyle{ajps}
+\bibliography{ref}
 
 \end{document}
