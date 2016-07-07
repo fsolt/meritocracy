@@ -42,7 +42,23 @@ library(knitr)
 opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE, results='hide')
 @
 
-\title{Economic Inequality and\\ Belief in Meritocracy in the United States}
+\title{Economic Inequality and\\ Belief in Meritocracy in the United States\thanks{Earlier versions of this work were presented the 2016 Annual Meeting of the Southern Political Science Association and the 2016 Annual Meeting of the Midwest Political Science Association.  We thank Larry Bartels and Amber Wichowsky for helpful comments.  The paper's revision history and the materials needed to reproduce its analyses can be found \href{https://github.com/fsolt/meritocracy}{on Github here}.}}
+\author{
+  Frederick Solt\\
+  \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+  \and
+  Yue Hu\\
+  \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
+    \and
+	Kevan Hudson\\
+	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
+	\and
+	Jungmin Song\\
+    \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
+	\and
+	Dong `Erico' Yu\\
+    \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
+}}
 \date{}				
 \maketitle
 
