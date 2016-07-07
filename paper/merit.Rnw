@@ -61,9 +61,9 @@ In contrast to a range of earlier studies that found that greater inequality ten
 We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
 Correcting this error reveals that there is no support for the paper's conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
 
-Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered other problems. 
-We therefore present here a full, independent replication, bringing more and better data as well as an improved specification to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
-This analysis finds no evidence for the Panglossian argument of NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
+Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered problems with manner in which the dependent variable was measured. 
+We therefore present here a full, independent replication, bringing more and better data to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
+This analysis finds no evidence for the argument of NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
 To the contrary, but consistent with previous research, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.   
 
 
@@ -81,7 +81,7 @@ With regard to attitudes and beliefs like meritocracy, this theory suggests that
 This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
 Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
-As \citet[37]{Huber2012} summarize the two theories, relative power theory can be seen as a straightforward implication of ``the usual assumption in sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly ``implausible'' premise that social structures are self-negating.
+As \citet[37]{Huber2012} summarize the two theories, relative power theory can be seen as a straightforward implication of ``the usual assumption in sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating.
 
 
 \section*{Reproduced Results and Corrected Interpretation}
@@ -131,6 +131,8 @@ Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer
 
 We plot the conditional effect of $Inequality$ at each value of $Income$ in Figure~\ref{F:coef_t1m1} using the \R package \texttt{interplot} \citep{Solt2015b}. 
 Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.
+\footnote{The coefficient estimate for those with the lowest incomes, under \$10,000 per year, approaches but does not reach statistical significance at conventional levels.  
+In any event, only 4\% of the sample employed in NJL had incomes this low; even if this coefficient did reach statistical significance, it would provide little support for the conflict theory \citep[see][660-661]{Berry2012}.}
 The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
 
 <<label=setup>>==
