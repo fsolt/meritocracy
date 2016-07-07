@@ -100,7 +100,7 @@ With regard to attitudes and beliefs like meritocracy, this theory suggests that
 This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
 Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
-As \citet[37]{Huber2012} summarize, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating. From these theoretical grounds, the relative power theory predicts that low and high income citizens' views about meritocracy will be less polarized as inequality increases. In high-inequality contexts, all individuals regardless of income will be more likely to support meritocracy than in low-inequality contexts. 
+As \citet[37]{Huber2012} summarize the two theories, relative power theory can be seen as a straightforward implication of ``the usual assumption of sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating.
 
 
 \section*{Reproduced Results and Corrected Interpretation}
@@ -133,20 +133,12 @@ Reject\thinspace Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamm
 \begin{spacing}{2}
 NJL (p.334) offers two pieces of evidence as support for its claim: first, that the coefficient for local income inequality (that is, $\gamma_{01}$) is estimated to be positive and statistically significant, and second, that the coefficient for the interaction between inequality and respondents' incomes ($\gamma_{11}$) is negative and statistically significant (NJL, 334). 
 
-Neither provide support for the claims advanced by the authors. 
+Neither of the two actually provide support for the claim. 
 First, the coefficient $\gamma_{01}$ indicates only the effect of $Inequality$ when the other variable in the interaction, $Income$, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
-Nonetheless, the nine categories of income the article employs ranges from .21 to 1 \citep[see][]{Newman2015a}.  
-Because this income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
-Even regarding this coefficient can represent the effect on the group of people with the lowest income (which actually cannot!), those people are only 10\% of the sample.
-For the effect of inequality on the rest 90\%, the coefficient of the interaction term provides not any information at all.
+However, the nine categories of income in the Pew surveys the article employs are recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
+Because the income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
+Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
 
-Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.'' 
-Nor is respectively presenting the effect of $X$ in different categories (as in Figure 3 of NJL) helpful, even regardless that it may mislead the understanding.
-Figure 3 of NJL was used to visualiz the conditional effect of inequality aggregating difference between low and hign income people.
-However, a closer look of each line in the figure, the confidence intervals are overlapped from the low inequality to high, wihch suggest the influence of inequality on either group of people's class identity is no different from zero.
-Stated differently, the seemingly increasing difference between low and high income people are illusionary without taking acount of the uncertainty in inferential statistics.
-
-A more reliable and proper way to interprete is through marginal effects with respect to inequality, according to \citet{Berry2012}:
 \end{spacing}
 \vspace{-24pt}
 {\setlength\arraycolsep{2pt} 
@@ -159,10 +151,12 @@ A more reliable and proper way to interprete is through marginal effects with re
 \vspace{-24pt}
 \begin{spacing}{2}
 \noindent  
+\noindent In short, $\gamma_{11}$ is only part of the conditional effect; the magnitude and statistical significance depend also on $\gamma_{01}$ and the value of $Income$.  
 
 We plot the conditional effect of $Inequality$ at each value of $Income$ in Figure~\ref{F:coef_t1m1} using the \R package \texttt{interplot} \citep{Solt2015b}. 
 Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.
 The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
+
 
 <<label=setup>>==
 library(haven)
@@ -729,7 +723,7 @@ For people with incomes between \$40,000 to \$50,000 and otherwise median charac
 For those with the highest incomes, the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality.
 These results are contrary to the predictions of conflict theory, but consistent with those of the relative power theory.
 <<label=predprob, include=FALSE>>==
-# replace pred_probs code with code from interplot::predprob_mlm
+
 pred_probs <- function(m, var1, var2, var2_vals,
                        times = 20, sims = 1000) {
   m_sims <- arm::sim(m, sims)
