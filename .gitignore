@@ -14,3 +14,4 @@
 *.snm
 *.ent
 .DS_Store
+paper/cache/*
