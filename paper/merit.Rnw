@@ -133,7 +133,7 @@ NJL (p.334) offers two pieces of evidence as support for its claim: first, that 
 
 Neither of the two actually provide any support. 
 First, the coefficient $\gamma_{01}$ indicates only the effect of $Inequality$ when the other variable in the interaction, $Income$, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
-However, the nine categories of income in the Pew surveys the article employs are recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
+However, inspection of the NJL data reveals that the nine categories of income in the Pew surveys the article employs were recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
 Because this income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
 Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  
 Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
