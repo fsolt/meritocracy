@@ -37,7 +37,7 @@
 
 \begin{document}
 
-<<include=FALSE>>=
+<<label=knitr_setup, include=FALSE>>=
 library(knitr)
 opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE, results='hide')
 @
@@ -58,13 +58,16 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 	\and
 	Dong `Erico' Yu\\
     \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
-}}
-\date{}				
+}
+\date{\today}				
 \maketitle
 
 \begin{spacing}{2}
 \begin{abstract}
-How does the context of income inequality in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  One prominent recent study, \citet{Newman2015}, argues that exposure to higher levels of local income inequality lead low-income people to become more likely to reject the dominant U.S. ideology of meritocracy.  Here, we show that this sanguine conclusion is not supported by the study's own empirical results and further that analysis of more and better data yields precisely the opposite conclusion.  Consistent with relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard.   
+How does the context of income inequality in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  
+One prominent recent study, \citet{Newman2015}, argues that exposure to higher levels of local income inequality lead low-income people to become more likely to reject the dominant U.S. ideology of meritocracy.  
+Here, we show that this sanguine conclusion is not supported by the study's own empirical results and further that analysis of more and better data yields precisely the opposite conclusion.  
+Consistent with relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard.   
 \end{abstract}
 
 \newpage
@@ -79,7 +82,7 @@ Correcting this error reveals that there is no support for the paper's conclusio
 
 Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered problems with manner in which the dependent variable was measured. 
 We therefore present here a full, independent replication, bringing more and better data to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
-This analysis finds no evidence for the argument of NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
+This analysis finds no evidence for the argument advanced by NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
 To the contrary, but consistent with previous research, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.   
 
 
@@ -88,7 +91,8 @@ The crucial relationship between economic inequality and system-supporting belie
 We briefly review these two theories in this section.
 
 As noted above, NJL advocates the conflict theory.  
-This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, p.327), promotes class consciousness, and, in turn, increases demand for redistribution. Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
+This theory maintains that, for lower-income individuals, being confronted with higher levels of inequality locally ``increases the salience of their disadvantaged position within a conspicuous local economic hierarchy'' (NJL, p.327), promotes class consciousness, and, in turn, increases demand for redistribution. 
+Higher-income individuals in high inequality contexts, on the other hand, are expected to avoid guilt while simultaneously and self-interestedly protecting their privilege by becoming even more likely to believe in the importance of individual effort to the distribution of economic rewards.
 The conflict theory has received sustained attention, particularly in studies of political participation, but empirical support has been at best mixed \citep[on the U.S. case, see][]{Oliver2001, Brady2004, Solt2010}.
 
 The relative power theory, on the other hand, starts with the proposition that money is a political resource: that is, that it can be used to influence others.
@@ -129,9 +133,10 @@ NJL (p.334) offers two pieces of evidence as support for its claim: first, that 
 
 Neither of the two actually provide any support. 
 First, the coefficient $\gamma_{01}$ indicates only the effect of $Inequality$ when the other variable in the interaction, $Income$, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
-Oddly, however, the nine categories of income in the Pew surveys the article employs are recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
-Because the income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
-Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
+However, the nine categories of income in the Pew surveys the article employs are recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
+Because this income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
+Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  
+Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
 \end{spacing}
 \vspace{-24pt}
 {\setlength\arraycolsep{2pt} 
@@ -330,8 +335,8 @@ ver_a <- data.frame(
 	year = c(2011, 2012, 2007, 2005, 2011, 2006, 2010, 2000, 1999, 2004), 
 	stringsAsFactors = FALSE) %>% arrange(year)
 
-rc2 <- "1 = 0; 2 = 1; else = NA" # coding rule 1
-rc4 <- "c(1,2) = 0; c(3,4) = 1; else = NA" # coding rule 2
+rc2 <- "1 = 0; 2 = 1; else = NA" # 2 response categories
+rc4 <- "c(1,2) = 0; c(3,4) = 1; else = NA" # 4 response categories
 
 ver_a <- ver_a %>% mutate(
 	var_name = c("q18j", "Q18K", "q11k", "q14k", "q8b", "q5c", "q30d", "q17k", 
@@ -364,7 +369,7 @@ for (i in 1:nrow(ver_a1)) {
 	df <- setup(ver_a1[i, ])
 	df$n <- length(df$rej_merit)
 	ver_a1$value[i] <- Hmisc::wtd.mean(df$rej_merit, df$weight, normwt = T) * 100
-	ver_a1$se[i] <- Hmisc::wtd.var(df$rej_merit, df$weight, normwt = T) / df$n %>% sqrt() * 100
+	ver_a1$se[i] <- Hmisc::wtd.var(df$rej_merit, df$weight, normwt = T) / df$n[1] %>% sqrt() * 100
 }
 
 df <- rbind(setup(ver_a2[1, ]), setup(ver_a2[2, ]))
@@ -399,7 +404,7 @@ ver_c <- ver_c_file %>% group_by(year) %>%
 
 ver_c_file2 <- read_spss(paste0(data_path, "version_b/Pew-Social-Trends-Data-Middle-Class-04-2009/Jan08 Middle class_cleaned.sav"))
 ver_c_file2$rej_merit <- with(ver_c_file2, ifelse(q9a < 3, 1, 0))
-ver_c_file2$rej_merit[ver_c_file$q9a == 9] <- NA
+ver_c_file2$rej_merit[ver_c_file2$q9a == 9] <- NA
 ver_c2 <- ver_c_file2 %>%  
 	summarise(year = 2008,
 	          version = "C",
@@ -421,7 +426,7 @@ njl <- data.frame(
 ver_all2 <- left_join(ver_all, njl)
 ver_all2$njl[is.na(ver_all2$njl)] <- "D"
 
-meas_plot <- ggplot(ver_all2, aes(x = year, y = value, color = version)) +
+three_measures <- ggplot(ver_all2, aes(x = year, y = value, color = version)) +
  	scale_color_manual(values = c(A = "red", B = "darkgreen", C = "navy")) +
  	scale_fill_manual(values = c(A = "red", B = "darkgreen", C = "navy", D = "white")) +
   geom_errorbar(aes(ymin=value - qnorm(.975) * se, ymax=value + qnorm(.975) * se), width = .1) +
@@ -451,7 +456,7 @@ As in the other Pew surveys, respondents' incomes are measured in the RLS on a n
 
 At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.\footnote{\doublespacing Additional analyses adding controls for two contextual variables not considered in NJL, objective economic mobility and residential income segregation, are presented in the Appendix.  The results of these analyses are substantively similar to those presented in the text.}  
 At the individual level, the analyses include controls for age, education, sex, race, and citizenship.
-The models are estimated using multilevel logistic regression of individuals nested in counties, with both the intercept and the coefficient for income allowed to vary across counties. 
+The models are estimated using multilevel logistic regression of individuals nested in counties, with both the intercept and the coefficient for income allowed to vary across the counties. 
 Model 1 assesses the average effect of inequality across people of all incomes, but because both conflict and relative power theories suggest that the effect of income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included in Model 2, as in Equation~\ref{E:mixed} above.
 
 <<label=replication_setup>>==
@@ -495,7 +500,7 @@ p2007_cnty %<>% left_join(counties, by="fips")
 Figure~\ref{F:reg_plot} displays a dot-and-whisker plot of the results: the dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each variable in the model, and the whiskers represent the 95\% confidence intervals of these estimates \citep[see][]{Kastellec2007, Solt2015c}.  
 According to Model 1, which lacks a multiplicative interaction term, the average effect of the local context of income inequality across individuals of all incomes is negative and statistically significant: on average, where inequality is greater, people are \emph{less} likely to reject meritocracy.  
 
-<<label=models>>==
+<<label=m1>>==
 m1 <- glmer(formula = rej_merit ~ gini_cnty*income +
               educ + age + male + noncitizen +
               latino + black + asian + other_min + 
@@ -573,7 +578,7 @@ ggsave(filename="figures/m1_gini.pdf", plot = m1_gini, width = 7, height = 7)
 Of course, given the dichotomous dependent variable, these estimates are in logits and so their magnitudes are not easily interpretable directly.  
 Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocracy according to Model 1 across the observed range of local income inequality at various incomes when all other variables are assumed to take on their median values.  
 Given that assumption, those with the lowest incomes living where the context of income inequality is at the highest observed level are 17 percentage points (plus or minus 8 points) \emph{less} likely to reject meritocracy than similarly low-income people living where inequality is at its lowest observed level.
-For people with incomes between \$40,000 to \$50,000 and otherwise median characteristics, the predicted probability of rejecting meritocracy declines from $40\pm 3$\% to $32\pm 4$\% over the observed range of inequality.
+For people with incomes between \$30,000 to \$40,000 and otherwise median characteristics, the predicted probability of rejecting meritocracy declines from $40\pm 3$\% to $32\pm 4$\% over the observed range of inequality.
 For those with the highest incomes, the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality.
 These results are contrary to the predictions of conflict theory, but consistent with those of the relative power theory.
 <<label=predprob, include=FALSE>>==
@@ -672,7 +677,7 @@ Our independent replication using more and better data, in fact, yields the oppo
 \pagebreak
 \newpage
 \bibliographystyle{ajps}
-\bibliography{FSLibrary}
+\bibliography{merit}
 
 \clearpage
 \newpage
