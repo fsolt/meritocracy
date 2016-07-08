@@ -291,8 +291,7 @@ ggsave(file="figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width = 7, heigh
 
 
 \section*{Replication}
-In reproducing the above analysis, our attention was drawn to three additional issues that led us to pursue an independent replication.  
-The most serious of these issues regards measurement of the dependent variable.  
+In reproducing the above analysis, our attention was drawn to an additional issue that led us to pursue an independent replication: the measurement of the dependent variable.  
 To amass observations from a sufficient range of local contexts, NJL (p.330-331) combines in a single analysis data from four surveys using three different measures of its dependent variable, rejection of meritocracy.  
 Version 1 was drawn from 2005 and 2006 surveys that asked respondents which of two statements came closest to their own opinion: ``Most people who want to get ahead can make it if they're willing to work hard'' or ``Hard work and determination are no guarantee of success for most people.''  
 Those who chose the latter were coded as rejecting meritocracy.
@@ -448,14 +447,13 @@ ggsave("figures/three_measures.pdf", width = 5, height = 6)
 In our replication, we instead employ the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007, which includes Version 1 of the dependent variable.  
 Further, with more than ten times the number of respondents of the much smaller Pew surveys examined in NJL, the RLS was designed to provide a particularly fine-grained picture of geographic variation in attitudes and beliefs across the continental United States; it is therefore perfectly suited to providing observations across a broad range of local contexts.  
 To make use of all of the available data, we analyze the entire sample of survey respondents, rather than only non-Latino white respondents; as NJL (p.330) notes, this should be expected to bias the results toward the expectations of the conflict theory.
-%In these data, 33\% of respondents rejected meritocracy.
 
 We otherwise adopt the approach employed in NJL.  
 To measure income inequality at the local level, we use the Gini coefficient of household income inequality for each county calculated by the U.S. Census Bureau from the 2005-2009 American Community Survey (five-year estimates).  
 As in the other Pew surveys, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000, straightforwardly coded here with values 1 to 9. 
 
 At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.\footnote{\doublespacing Additional analyses adding controls for two contextual variables not considered in NJL, objective economic mobility and residential income segregation, are presented in the Appendix.  The results of these analyses are substantively similar to those presented in the text.}  
-At the individual level, the analyses include controls for age, education, sex, race, and citizenship.
+At the individual level, the analyses include controls for age, education, sex, race, citizenship, partisan identification, political ideology, and church attendance.
 The models are estimated using multilevel logistic regression of individuals nested in counties, with both the intercept and the coefficient for income allowed to vary across the counties. 
 Model 1 assesses the average effect of inequality across people of all incomes, but because both conflict and relative power theories suggest that the effect of income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included in Model 2, as in Equation~\ref{E:mixed} above.
 
@@ -498,7 +496,7 @@ p2007_cnty %<>% left_join(counties, by="fips")
 @
 
 Figure~\ref{F:reg_plot} displays a dot-and-whisker plot of the results: the dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each variable in the model, and the whiskers represent the 95\% confidence intervals of these estimates \citep[see][]{Kastellec2007, Solt2015c}.  
-According to Model 1, which lacks a multiplicative interaction term, the average effect of the local context of income inequality across individuals of all incomes is negative and statistically significant: on average, where inequality is greater, people are \emph{less} likely to reject meritocracy.  
+
 
 <<label=m1>>==
 m1 <- glmer(formula = rej_merit ~ gini_cnty*income +
@@ -540,10 +538,7 @@ p <- dwplot(m1_df) +
                       "Bush Vote, 2004", "Population")) +
      theme_bw() + xlab("Coefficient Estimate") + ylab("") +
      geom_vline(xintercept = 0, colour = "grey60", linetype = 2) +
-     theme(plot.title = element_text(face="bold"),
-           legend.justification=c(1, 0), legend.position=c(.25, 0),
-           legend.background = element_rect(colour="grey80"),
-           legend.title = element_blank())
+     theme(legend.position="none")
 
 two_brackets <- list(c("Individual Controls", "age", "attend"), c("County Controls", "income_cnty", "pop_cnty"))
 
@@ -556,11 +551,11 @@ dev.off()
 @
 [Figure~\ref{F:reg_plot} about here.]
 
-It is Model 2, however, that directly addresses the conflicting expectations of the conflict and relative power theories.  
 The coefficient of income inequality is negative and the coefficient of the interaction term is positive.  
 Both are statistically significant, but as income never takes on a value of zero and the coefficient of the interaction term is only part of the conditional effect, these results do not reveal much.  
 Figure~\ref{F:coef_plot} plots conditional effects for inequality at each observed value of income.  
-It shows that inequality's estimated marginal effects on rejecting meritocracy are negative and statistically significant for those with incomes of up to \$50,000; they are not distinguishable from zero for those with higher incomes.
+It shows that inequality's estimated marginal effects on rejecting meritocracy are negative and statistically significant for those with incomes of up to \$40,000, that is, for the poorest two quintiles by income in the sample.
+They are not distinguishable from zero for those with higher incomes.
 
 <<label=inter_plot>>=
 inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
@@ -664,8 +659,9 @@ ggsave("figures/m1_pp.pdf", width = 5.5, height = 7)
 One of the most important questions underlying recent research on economic inequality and democracy is whether inequality is self-correcting or instead self-reinforcing.  
 \citet{Newman2015} argues in favor of the former, more optimistic view.  
 It contends that mere exposure to high levels of local income inequality prompt those with lower incomes to become more likely to reject an important ideological prop of persistent inequality, the idea that those who work hard can get ahead.  
-Unfortunately, the article's own reported results do not support this conclusion, and its analysis suffers from additional issues that render even those results untrustworthy.
+Unfortunately, the article's own reported results do not support this conclusion, and its analysis suffers from measurement issues that render even those results untrustworthy.
 Our independent replication using more and better data, in fact, yields the opposite result: lower-income people living where local levels of income inequality are higher are less likely to reject meritocracy than those living where the income distribution is more egalitarian.
+
 
 
 \end{spacing}
@@ -736,7 +732,7 @@ Our independent replication using more and better data, in fact, yields the oppo
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Source}: Model 1, as presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficients of income inequality within respondents' commuting zones on their rejection of meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  The estimates are negative and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  & \emph{Source}: Results presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficients of income inequality within respondents' commuting zones on their rejection of meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  The estimates are negative and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
@@ -750,7 +746,7 @@ Our independent replication using more and better data, in fact, yields the oppo
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Source}: Model 1, as presented in Figure~\ref{F:reg_plot}.  Solid lines represent predicted probabilities and shaded regions represent the 95\% confidence intervals of these predictions.  The predicted probabilities were generated by fixing all other variables at their median values.
+  & \emph{Source}: Results presented in Figure~\ref{F:reg_plot}.  Solid lines represent predicted probabilities and shaded regions represent the 95\% confidence intervals of these predictions.  The predicted probabilities were generated by fixing all other variables at their median values.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
