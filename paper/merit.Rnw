@@ -102,6 +102,7 @@ This gives poorer people ``a greater susceptibility to the internalization of th
 Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
 As \citet[37]{Huber2012} summarize the two theories, relative power theory can be seen as a straightforward implication of ``the usual assumption in sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating.
+Regardless of the theories' plausibility \emph{a priori}, which of the two is actually supported by the evidence is crucial to understanding the political consequences of economic inequality.
 
 
 \section*{Reproduced Results and Corrected Interpretation}
@@ -149,10 +150,10 @@ Instead, the conditional effect of inequality is found by taking the partial der
 \vspace{-24pt}
 \begin{spacing}{2}
 \noindent In short, $\gamma_{11}$ is only part of the conditional effect; the magnitude and statistical significance depend also on $\gamma_{01}$ and the value of $Income$.  
+To properly interpret the conditional effect of $Inequality$, then, one cannot examine $\gamma_{01}$ or $\gamma_{11}$ in isolation, as NJL does; instead the conditional effect must be calculated using Equation~\ref{E:dydx} for all observed values of $Income$ \citep[see, e.g.,][]{Braumoeller2004, Brambor2006, Berry2012}.
 
-We plot the conditional effect of $Inequality$ at each value of $Income$ in Figure~\ref{F:coef_t1m1} using the \R package \texttt{interplot} \citep{Solt2015b}. 
-Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.
-\footnote{The coefficient estimate for those with the lowest incomes, under \$10,000 per year, approaches but does not reach statistical significance at conventional levels.  
+We plot the conditional effect of $Inequality$ at each observed value of $Income$ in Figure~\ref{F:coef_t1m1} using the \R package \texttt{interplot} \citep{Solt2015b}. 
+Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.\footnote{\doublespacing The coefficient estimate for those with the lowest incomes, under \$10,000 per year, approaches but does not reach statistical significance at conventional levels.  
 In any event, only 4\% of the sample employed in NJL had incomes this low; even if this coefficient did reach statistical significance, it would provide little support for the conflict theory \citep[see][660-661]{Berry2012}.}
 The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
 
@@ -293,17 +294,17 @@ ggsave(file="figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width = 7, heigh
 \section*{Replication}
 In reproducing the above analysis, our attention was drawn to an additional issue that led us to pursue an independent replication: the measurement of the dependent variable.  
 To amass observations from a sufficient range of local contexts, NJL (p.330-331) combines in a single analysis data from four surveys using three different measures of its dependent variable, rejection of meritocracy.  
-Version 1 was drawn from 2005 and 2006 surveys that asked respondents which of two statements came closest to their own opinion: ``Most people who want to get ahead can make it if they're willing to work hard'' or ``Hard work and determination are no guarantee of success for most people.''  
+Measure 1 was drawn from 2005 and 2006 surveys that asked respondents which of two statements came closest to their own opinion: ``Most people who want to get ahead can make it if they're willing to work hard'' or ``Hard work and determination are no guarantee of success for most people.''  
 Those who chose the latter were coded as rejecting meritocracy.
 The 2007 and 2009 surveys employed did not include this item.
 Instead, they asked respondents to assess on a four-point agree-disagree scale two separate statements: (1) ``Hard work offers little guarantee of success'' and (2) ``Success in life is pretty much determined by forces outside our control.''
-In Version 2, used with data from the 2007 survey, those who mostly or completely agreed with both statements were coded as rejecting meritocracy.
-Although the 2009 survey included these same two statements, respondents to that survey were coded in yet a third manner: in Version 3, those who mostly or completely agreed with statement (1) were coded as rejecting meritocracy regardless of how they responded to statement (2).\footnote{\doublespacing For another example of uncritically mixing these three measures, see \citet{Newman2015b}.
+In Measure 2, used with data from the 2007 survey, those who mostly or completely agreed with both statements were coded as rejecting meritocracy.
+Although the 2009 survey included these same two statements, and so made Measure 2 easily calculable, respondents to that survey were coded in yet a third manner: in Measure 3, those who mostly or completely agreed with statement (1) were coded as rejecting meritocracy regardless of how they responded to statement (2).\footnote{\doublespacing For another example of uncritically mixing these three measures, see \citet{Newman2016}.
 Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, Measure 1 is used in the 2011 Political Typology Survey, Measure 2 is used in the 2009 and 2012 Values Surveys, and Measure 3 is used in the 2008 and 2012 Middle Class Surveys.} 
 
 To assess whether these three very different measures are in fact comparable, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plot the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
-The figure reveals that Version 2 results in much lower levels of rejection of meritocracy than either of the others and that Version 3 often yields considerably higher levels than Version 1.
-In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.
+The figure reveals that Measure 2 results in much lower levels of rejection of meritocracy than either of the others and that Measure 3 often yields considerably higher levels than Measure 1.
+In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.\footnote{In a footnote and the article's online appendix, NJL argue that mixing these different measures is not problematic on the basis that the 2005 and 2006 surveys alone, which use Measure 1, yield results for the variables of interest similar to those produced by the four surveys together (NJL, p.331).  In  Appendix A, we demonstrate that the results obtained for the NJL model differ considerably across the three measures of the dependent variable and confirm that the conditional effect of inequality fails to reach statistical significance at any observed level of income, just as in the full sample described above, regardless of how the dependent variable is measured.}
 
 <<label=three_measures>>==
 data_path <- "../data/merit/"
@@ -444,13 +445,13 @@ ggsave("figures/three_measures.pdf", width = 5, height = 6)
 
 [Figure~\ref{F:three_measures} about here.]
 
-In our replication, we instead employ the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007, which includes Version 1 of the dependent variable.  
+In our replication, we instead employ the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007, which includes Measure 1 of the dependent variable.  
 Further, with more than ten times the number of respondents of the much smaller Pew surveys examined in NJL, the RLS was designed to provide a particularly fine-grained picture of geographic variation in attitudes and beliefs across the continental United States; it is therefore perfectly suited to providing observations across a broad range of local contexts.  
 To make use of all of the available data, we analyze the entire sample of survey respondents, rather than only non-Latino white respondents; as NJL (p.330) notes, this should be expected to bias the results toward the expectations of the conflict theory.
 
 We otherwise adopt the approach employed in NJL.  
-To measure income inequality at the local level, we use the Gini coefficient of household income inequality for each county calculated by the U.S. Census Bureau from the 2005-2009 American Community Survey (five-year estimates).  
-As in the other Pew surveys, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000, straightforwardly coded here with values 1 to 9. 
+As in that article, we use the Gini coefficient of household income inequality for each county calculated by the U.S. Census Bureau from the 2005-2009 American Community Survey (five-year estimates) to measure income inequality at the local level.  
+Like in the Pew surveys analyzed in NJL, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000, which we straightforwardly coded with values 1 to 9. 
 
 At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.\footnote{\doublespacing Additional analyses adding controls for two contextual variables not considered in NJL, objective economic mobility and residential income segregation, are presented in the Appendix.  The results of these analyses are substantively similar to those presented in the text.}  
 At the individual level, the analyses include controls for age, education, sex, race, citizenship, partisan identification, political ideology, and church attendance.
@@ -574,7 +575,7 @@ Of course, given the dichotomous dependent variable, these estimates are in logi
 Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocracy according to Model 1 across the observed range of local income inequality at various incomes when all other variables are assumed to take on their median values.  
 Given that assumption, those with the lowest incomes living where the context of income inequality is at the highest observed level are 17 percentage points (plus or minus 8 points) \emph{less} likely to reject meritocracy than similarly low-income people living where inequality is at its lowest observed level.
 For people with incomes between \$30,000 to \$40,000 and otherwise median characteristics, the predicted probability of rejecting meritocracy declines from $40\pm 3$\% to $32\pm 4$\% over the observed range of inequality.
-For those with the highest incomes, the predicted probability of rejecting meritocracy is essentially flat regardless of the level of local income inequality.
+For those with the highest incomes, given the confidence intervals, the predicted probabilities of rejecting meritocracy are consistent with no change across all levels of local income inequality.
 These results are contrary to the predictions of conflict theory, but consistent with those of the relative power theory.
 <<label=predprob, include=FALSE>>==
 # replace pred_probs code with code from interplot::predprob_mlm
@@ -658,14 +659,21 @@ ggsave("figures/m1_pp.pdf", width = 5.5, height = 7)
 \section*{Conclusions}
 One of the most important questions underlying recent research on economic inequality and democracy is whether inequality is self-correcting or instead self-reinforcing.  
 \citet{Newman2015} argues in favor of the former, more optimistic view.  
-It contends that mere exposure to high levels of local income inequality prompt those with lower incomes to become more likely to reject an important ideological prop of persistent inequality, the idea that those who work hard can get ahead.  
+It contends that mere exposure to high levels of local income inequality prompt those with lower incomes to become more likely to reject an important ideological prop of persistent inequality, the idea that those who work hard can get ahead, supporting the conflict theory.  
 Unfortunately, the article's own reported results do not support this conclusion, and its analysis suffers from measurement issues that render even those results untrustworthy.
-Our independent replication using more and better data, in fact, yields the opposite result: lower-income people living where local levels of income inequality are higher are less likely to reject meritocracy than those living where the income distribution is more egalitarian.
+Our independent replication using more and better data, in fact, yields the opposite result: lower-income people living where local levels of income inequality are higher are less likely to reject meritocracy than those living where the income distribution is more egalitarian, in line with the predictions of the relative power theory.
 
+These results have important political implications.  
+For those who would prefer higher levels of redistribution, which of the two theories better describes political reality is crucial to understanding the effort that will be required to reverse the decades-long trend of rising income inequality in the United States.
+If the NJL results were sound, and the conflict theory supported, advocates of greater redistribution could remain relatively quiescent, confident that by activating conflict, higher levels of inequality would more or less automatically deliver the votes needed for the policies they prefer.
+
+The results presented here, however, suggest that the current social structure will not  simply undermine itself in this fashion. 
+That lower-income individuals living in localities with higher levels of income inequality tend to be less likely to reject the meritocratic ideology that sustains the status quo means that change, if it is to occur, will only result from concerted effort, from the difficult and much-constrained work of organization and mobilization.
+Absent such undertakings, the greater relative power of the wealthy to shape the views of their poorer fellow citizens in contexts of greater inequality will go uncontested.
 
 
 \end{spacing}
-%Which of these theories better describes political reality is crucial to understanding the effort
+%
 
 
 
