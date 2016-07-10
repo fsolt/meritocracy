@@ -451,7 +451,9 @@ Further, with more than ten times the number of respondents of the much smaller 
 To make use of all of the available data, we analyze the entire sample of survey respondents, rather than only non-Latino white respondents; as NJL (p.330) notes, this should be expected to bias the results toward the expectations of the conflict theory.
 
 We otherwise adopt the approach employed in NJL.  
-As in that article, we use the Gini coefficient of household income inequality for each county calculated by the U.S. Census Bureau from the 2005-2009 American Community Survey (five-year estimates) to measure income inequality at the local level.  
+As in that article, we use the Gini coefficient of household income inequality for each county calculated by the U.S. Census Bureau from the 2005-2009 American Community Survey (five-year estimates) to measure income inequality at the local level.\footnote{\doublespacing It is worth noting that this measure is not perfect.  
+Its welfare definition is income after government transfers but before taxes.  
+Because much redistribution occurs through the tax code \citep[see, e.g.,][]{Faricy2016}, an after-tax measure would be preferable; unfortunately, virtually no data on the distribution of after-tax income at any geographic scale below the national level is available for the United States \citep[see, e.g.,][420]{Kelly2012}, making the ACS data the best available at the county level.}  
 Like in the Pew surveys analyzed in NJL, respondents' incomes are measured in the RLS on a nine-point scale ranging from less than \$10,000 to over \$150,000, which we straightforwardly coded with values 1 to 9. 
 
 At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.\footnote{\doublespacing Additional analyses adding controls for two contextual variables not considered in NJL, objective economic mobility and residential income segregation, are presented in the Appendix.  The results of these analyses are substantively similar to those presented in the text.}  
