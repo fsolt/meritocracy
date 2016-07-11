@@ -50,79 +50,60 @@ message=FALSE
 
 \title{Memo to Reviewers\\ Economic Inequality and\\ Belief in Meritocracy in the United States}
 % \author{
-%     Mi-Son Kim\\
-%     \href{mailto:mi-son-kim@uiowa.edu}{mi-son-kim@uiowa.edu}
+%   Frederick Solt\\
+%   \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+%   \and
+%   Yue Hu\\
+%   \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
 %     \and
-%     Frederick Solt\\
-%     \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+% 	Kevan Hudson\\
+% 	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
+% 	\and
+% 	Jungmin Song\\
+%     \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
+% 	\and
+% 	Dong `Erico' Yu\\
+%     \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
 % }
 \date{\today}				
-\maketitle
+\maketitle			
 
 Thank you for the opportunity to revise and resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United States.'' 
-Based on your helpful comments and constructive suggestions for improvement, we have made a number of revisions as listed following. 
+Based on your helpful comments and constructive suggestions for improvement, we have made significant revisions, and we hope you will agree that the piece is much stronger as a result. 
+
+Roughly in order of magnitude:
 
 \begin{enumerate}
-\item Reviewer 1 suggested that the ``tone of the article can be somewhat less snarky." We have striven to highlight the peculiarities in the empirics of NJL without being snarky: we agree that the article is best served by avoiding any editorializing in favor of straight description of these instances. We have revised the language of the article to remove any editorial language.
+\item \textbf{A Close Replication.} A major concern raised by both reviewers was with regard to the multiple changes to the NJL research design made in the replication we presented: (1) the use of a single, consistent measure for the dependent variable in a much larger survey that was designed to be representative at small geographic scales, (2) the use of commuting zones rather than counties, and (3) the omission of causally-downstream attitudinal control variables.  
+In hindsight, we can see how the simultaneous introduction of so many moving parts naturally raised the question of which is responsible for the difference from NJL's null results, and how the scale of the local context raised particular concern.  
+Although the CZ may well be a better contextual unit, as Reviewer 1 noted sympathetically, it does require us to use inequality data from about a decade earlier, raising the possibility that county-specific changes in the interim could be important.  
+Reviewer 2 further pointed to the literature on racial context as an example of a body of work where different geographic scales have been implicated in divergent findings, and was generally skeptical of the superiority of commuting zones as a unit of local context.  
+
+We therefore redid our replication using counties as the contextual unit, which of course also allowed us to use the same ACS income inequality data as employed in NJL.  
+As Reviewer 2 also questioned our omission of the attitudinal controls, and because this decision made little difference to the results either way, we now include those variables as well.  
+This usefully allows us to focus on the one difference that does matter: the replication employs a single, consistent measure and more representative data than those used in NJL.
+
+\item \textbf{Testing the Three NJL Measures.} Reviewer 2 expressed concern that we overstated our claim that the three different measures of the dependent variable employed by NJL should not have been pooled together.  
+Despite showing substantial differences in the levels and trends of the three measures, she or he pointed out, we had not demonstrated that the three measures actually lead to different results.  
+This is a good point.
+We therefore used the same surveys employed in NJL to perform separate analyses of each of the three measures of the dependent variable.
+These analyses confirm that the results obtained differ across the three measures in ways that strongly suggest that the results presented in NJL for several important predictors are an artifact of pooling the three different measures together. 
+They also confirm that our primary critique is well grounded.
+There is no support for the conflict theory in these data when the interaction term is correctly interpreted, regardless of how rejection of meritocracy is measured.
+
+\item Reviewer 1 suggested that the ``tone of the article can be somewhat less snarky." 
+We took this to heart: we agree that the article is best served by simply describing each of these peculiarities in the empirics of NJL without  editorializing.  
+We have revised throughout to avoid any judgmental language.\footnote{We were also sure to revise the paragraph at page 4, flagged by this reviewer, to make more clear that we are reporting Huber and Stephens' characterization of the conflict theory as based on an ``implausible premise''---the passage we paraphrase is ``With only a little reflection, the basic premise of Meltzer-Richard [a tremendously influential early formalization of the conflict theory] is implausible.  It asserts a major feature of social structure, the very system of stratification of society, is self-negating'' (it can be read \href{https://books.google.com/books?id=SbnEj7ZxGTcC&pg=PA37}{on Google Books here})---and added a sentence to indicate that regardless of their plausibility, the important thing is to find out which theory is supported by the evidence.}
 
 \item Reviewer 2 argues that the paper should be reframed to move away from a ``failed replication," and instead presented as a study driven by the findings of NJL. While we appreciate the intent behind this suggestion, we feel that this article meets the standards of a replication, and believe that maintaining the current framing of the paper is crucial to conveying its findings which stand in stark contrast to the findings of NJL. More specifically, we feel that this article seeks to address the issues we have found in the work of NJL, and to illustrate that these isues lead to flawed results. Our ultimate goal is to correct the record and illustrate that the claims of a self-negating inequality advanced by NJL are incorrect. Such a goal cannot be adequately achieved without first and foremost illustrating that the findings of NJL are flawed.
 We feel that this stance is justified, as we undertake both a simple reproduction of the analysis carried out by NJL, and a replication -- an attempt to verify that the findings of NJL are accurate. The inclusion of larger amounts of data do not move out study further away from replication, but instead embody the vary nature of the practice. Our attempt to test and ultimately confirm or deny the findings of NJL are the essence of replication, which we take to involve efforts to reach similar findings through independent analyses. Our use of larger, and arguably improved data should not disqualify our paper as a replication piece, but instead should be taken as an indication of the rigor with which we seek to not only duplicate or refute the findings advanced by NJL, but also to advance our understanding of the effects of inequality.
 
 
-\item Both reviewers commented on our discussion about NJL's error in interpreting interaction. 
-Responding to Reviewer 1's query about Figure 3 of NJL, we explained how this figure is misleading to interprete interaction in [PAGE].
+\item Reviewer 1 inquired about NJL's predicted probability plots---``Did the authors of this article look at the NJL code and see how they arrived at these figures?''---and Reviewer 2 also noted these diverging predicted probabilities.  Unfortunately, the NJL replication materials do not provide the code for producing their figures; in fact, these materials include little more than a single line of code for each model in the article.  Despite considerable effort, we were unable to approximate the predicted probabilities depicted in NJL using the reproduced results: predicted probabilities derived from logistic regression models depend not only on the values of the variables of interest but also on the values assumed for the other variables in the model, and NJL does not indicate what values were adopted. Neither mean nor median values for the control variables yield predicted probabilities similar to those shown in NJL's Figure 2.
+
 
 Reviewer 2's comments indicate that we did not provide an adequate explanation of methodologists' guidance on interpreting interaction terms. Taking the advice, we add more descriptions about the problem and corrections as in [PAGE].
-We clarify our position that the error of interpretation we discussed is not only about the statistical significance of the interaction term in the regression, but a misunderstanding of the true meaning of the base term and interaction term coefficients.
 
-As many methodological studies of interaction \citep[e.g.,][]{Brambor2006,Berry2012,Aiken1991,Hainmueller2016} warns, researchers cannot correctly understand the conditional effect barely with the coefficients of either base terms or the interaction term, unless they only care about what happens when one term turns to zero.
-Nevertheless, few studies only focus on this extreme scenario.
-
-More commonly, as in NJL, researchers, are interested in how a conditioning variable changes the influence of the conditioned variable on variance of the dependent variable.
-This changing effect is methodologically determined by three factors: the point estimation of the conditioned variable coefficient at \textit{each} value of the conditioning variable, the uncertainty of the estimations, and the distribution of both the conditioning and conditioned variables.
-None of the information about these three factors can be fully interpreted from the base term or interaction term coefficients.
-
-
-To illustrate how these factors affect the conditional effects, let's take a simplified version of NJL's model as an example:
-\begin{equation}\label{e:interaction}
-Reject Meritocracy = \beta_0 + \beta_1Income + \beta_2Inequality + \beta_3Income * Inequality.
-\end{equation}
-
-In this model, the base terms are $Income$ and $Inequality$, and the interaction term is $Income * Inequality$. 
-The two base terms have the equivalent function to affect the conditional effect methodologicall, while in theory, income is the \textit{conditioning} variable and inequality is the \textit{conditioned} variable. 
-In this case, the variance of reject meritocracy due to the conditional effect is $beta_2Inequality + \beta_3Income * Inequality$. 
-Obviously, it includes two parts, $beta_2Inequality$ and $\beta_3Income * Inequality$. Only looking at either part is inadequate to comprehend the whole conditional effect.
-Instead, as \citet{Brambor2006} suggests, marginal effects, viz., the first derivative with respect to the conditioned variable is a more proper statistics for interpreting conditional effects, since it involves information from both parts:
-\begin{eqnarray}\label{E:dydx}
-\frac{\partial\thinspace Reject\thinspace Meritocracy}{\partial\thinspace Inequality} & = & \beta_2
-+ \beta_3 \times Income.
-\end{eqnarray} 
-
-Besides marginal effects as the proper point estimates, one also needs appropriate estimates of uncertainties.
-An oft-used statistic for this is standard error. 
-In our example, that is $se(\hat{\beta_2} + \hat{\beta_3}Income)$.
-Can this statistic be directly conducted from $se(\hat{\beta_2})$ or $se(\hat{\beta_3})$?
-No, again.
-Formally, 
-\begin{align*}
-	se(\hat{\beta_2} + \hat{\beta_3}Income|Inequality) =& \sqrt{var(\hat{\beta_2} + \hat{\beta_3}Income)}\\
-													   =& \sqrt{var(\hat{\beta_2}) + Income^2var(\hat{\beta_3}) + 2Income\cdot cov(\hat{\beta_2}, \hat{\beta_3})}.
-\end{align*}
-Unless income or $cov(\hat{\beta_2}, \hat{\beta_3})$ is zero, it is impossible to draw the correct $se(\hat{\beta_2} + \hat{\beta_3}Income|Inequality)$ merely from $se(\hat{\beta_2})$ or $se(\hat{\beta_3})$.
-The uncertainty of the conditional effect is ought to be specifically calculated.
-
-Some recent studies point out that, except for point and uncertainty estimates, the distribution of both the conditioning and conditioned variables also influence the conditional effect, where the information marginal effects can offer is still inadequate \citep[e.g.,][]{Berry2012,Hainmueller2016}. 
-That's because the marginal effects provides only the information about one variable (the other was derivated), but the conditional effect is always about both.
-In the aforementioned case, for instance, even if the marginal effects confirm a none-zero conditional effects of income (which actually not as we analyzed in the paper) on inequality, the effect could never be salient in reality when inequality, the conditioned variable, only varies in a limited range.
-Accordingly, \citet{Berry2012} indicate, a prudent researcher should test the conditional effects from both directions: that is, the conditional effects both of income on inequality and of inequality on income.
-
-Additionally, the conditional effect might be salient only at certain values, rather than the whole range of the conditioning variable. 
-In this scenario, how the conditioning variable distributes is also important to understand the substantive significance of the conditional effect. 
-This concern thus requires the interpretation incorporating the distribution of the conditioning variable into account, when the effect is not full-range significant.
-
-To wrap up, to appropriate interpret a conditional effect should address at least three aspects: point estimation, uncertainty and variable distribution, and none of them can be correctly understand merely with the regression coefficients. 
-Unfortunately, NJL's interpretation does not cover any of them, and distorts what the empirics actually tell.
-With proper methods, we found that the empirics do not support their argument at all.
 
 \item Both reviewer 1 and 2 suggested to conduct a strict replication with county-level gini coefficient and compare it with NJL's result. We followed the suggestion and presented a table of the replicated result of the county-level data and controls; see Appendix A. 
 
@@ -138,7 +119,7 @@ Reviewer 1 concerned that the inequality data of commuter zones (CZs) is measure
 \item With regards to the explanation of results, both reviewers expressed concerns about the potential implications for theories of inequality and public opinion. Reviewer 1 suspected the wealthy would be more supportive of the meritocracy belief as inequality increases, which it is not supported by the result. Our results suggest that only for those with the highest incomes (over \$150,000), is the predicted probability of rejecting meritocracy essentially flat regardless of the level of local income inequality. For other high income groups, such as \$50-75K, \$75-100K, and \$100-150K, the predicted probability of rejecting meritocracy consistently declines over the observed range of inequality. We think this result is consistent with the relative power theory because it is more reasonable to expect that those with the highest incomes would support meritocracy even in low-inequality contexts. In other words, because they are already the strongest supporters of meritocracy in low-inequality contexts, high-inequality contexts do not lead them to support meritocracy more than before. 
 Also, Reviewer 2 suggested that the authors should differentiate between (1) whether each income group becomes significantly more rejecting/accepting of meritocracy due to increases in inequality, and (2) whether significant differences BETWEEN income groups emerge as inequality increases, and should reject these two main arguments of NJL separately. Our replication results clearly reject both of them. For the first argument, our replication results suggest that low income groups become significantly ``more accepting meritocracy" rather than ``more rejecting meritocracy" as inequality increases. Income groups over \$50K (except over \$150K) also become more accepting meritocracy, even though they are not statistically significant (Figure 4). For the second argument, because none of income groups become significantly more rejecting meritocracy as inequality increases, the differences BETWEEN income groups diminish rather than emerge as inequality increases (Figure 5).
 
-
+\item Simplifying the replication had the happy consequence of freeing space below the RaP word limit for us to incorporate Reviewer 1's suggestion that we expand the paper's conclusion to include a discussion of the implications of our findings.  These implications are indeed important.  If the conflict theory were correct, advocates for redistribution would need only wait for inequality to activate conflict and so deliver the votes needed for the policies they prefer.  That the relative power theory better describes political reality, however, means that the social structure will not simply undermine itself.  Instead, the hard work of organization and mobilization will be crucial.
 
 \end{enumerate}
 
