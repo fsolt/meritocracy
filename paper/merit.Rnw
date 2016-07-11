@@ -566,7 +566,7 @@ inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
                 "$50-75k", "$75-100k", "$100-150k", ">$150k")
 m1_gini <- interplot(m1, "gini_cnty", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
-  labs(x = "Income", y = "Coefficient of Income Inequality") +
+  labs(x = "Income", y = "Coefficient of Income Inequality on Rejecting Meritocracy") +
   theme_bw() +
   geom_hline(yintercept=0, colour="grey80", linetype="dashed") +
   theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8))
