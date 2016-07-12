@@ -15,3 +15,4 @@
 *.ent
 .DS_Store
 paper/cache/*
+paper/appendix/cache/*
