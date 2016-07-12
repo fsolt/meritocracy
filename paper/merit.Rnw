@@ -117,6 +117,7 @@ The error lies in the interpretation of the multiplicative interaction term.
 Though it has been well known for over a decade that models containing multiplicative interaction terms require particular care in interpretation \citep[see, e.g.,][]{Golder2003, Braumoeller2004, Brambor2006}, many political scientists continue to struggle with them: improperly specified or interpreted interaction terms appear at the top of Nyhan's (\citeyear{Nyhan2015}) list of ``recurring statistical errors'' for which reviewers should be sure to check.
 In the multilevel logistic regression model employed in NJL, the logged odds of rejecting meritocracy for individual $i$ in local context $j$ are estimated as follows: 
 \end{spacing}
+\pagebreak
 \vspace{-24pt}
 {\setlength\arraycolsep{2pt} 
 \begin{eqnarray}
