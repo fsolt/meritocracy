@@ -170,7 +170,7 @@ interplot0 <- function(m, var1, var2, xlab=NULL, ylab=NULL,
 @
 
 <<label=a_v123_data>>==
-data_path <- "../data/merit/"
+data_path <- "../../data/merit/"
 pew_05 <- read_spss(paste0(data_path, "version_a/Dec05/Dec05c.sav")) %>% 
   select(fips = qfips, q0 = q14k, income,
          educ, age, sex, race, hisp, labor,
@@ -244,7 +244,7 @@ pew_v23 <- bind_rows(pew_07, pew_09) %>%
 pew_v23$partyid[pew_v23$partyln==1] <- 4
 pew_v23$partyid[pew_v23$partyln==2] <- 2
 
-counties <- read_csv("../data/cnty_data.csv")
+counties <- read_csv("../../data/cnty_data.csv")
 pew_v1 %<>% left_join(counties, by="fips")
 pew_v23 %<>% left_join(counties, by="fips")
 @
@@ -473,23 +473,23 @@ Income segregation has no discernable effect on meritocratic beliefs in the resu
 <<label=b_cz_data>>==
 ### Data Set-Up
 # Commuting Zones Identification Data
-if (!file.exists("../data/cw_cty00_cz.csv")) {
+if (!file.exists("../../data/cw_cty00_cz.csv")) {
   temp <- tempfile(fileext = ".zip")
   download.file("http://www.equality-of-opportunity.org/images/crosswalks.zip", temp)
   cw <- read_dta(unzip(temp, "cw_cty00_cz.dta"))
   unlink(c(temp, "cw_cty00_cz.dta"))
-  write_csv(cw,"../data/cw_cty00_cz.csv")
+  write_csv(cw,"../../data/cw_cty00_cz.csv")
 }
 
-cz <- read_csv("../data/cw_cty00_cz.csv") %>% 
+cz <- read_csv("../../data/cw_cty00_cz.csv") %>% 
   transmute(fips = county_id,
          cz = cz) %>% 
   rbind(c(8014, 28900)) %>% # Broomfield County, CO (see http://www.ddorn.net/data/FIPS_County_Code_Changes.pdf)
   arrange(fips)
 
 # Individual-Level Data: Pew 2007 Religious Landscape Survey
-p2007 <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
-p2007fips <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
+p2007 <- read_sav("../../data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
+p2007fips <- read_sav("../../data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
 
 p2007x <- merge(p2007, p2007fips) %>% 
   transmute(resp = psraid,
@@ -580,11 +580,11 @@ cz_bush04 <- left_join(bush04_cnty, cz, by="fips") %>%
   dplyr::summarize(bush04_cz = sum(bush)/sum(bush+kerry+nader))
 
 # Equality of Opportunity Data
-if (!file.exists("../data/eq_of_opp_online_data.xls")) {
-  download.file("http://www.equality-of-opportunity.org/images/online_data_tables.xls", "../data/eq_of_opp_online_data.xls")
+if (!file.exists("../../data/eq_of_opp_online_data.xls")) {
+  download.file("http://www.equality-of-opportunity.org/images/online_data_tables.xls", "../../data/eq_of_opp_online_data.xls")
 }
 
-cz_eo <- read_excel("../data/eq_of_opp_online_data.xls", 
+cz_eo <- read_excel("../../data/eq_of_opp_online_data.xls", 
                     sheet = "Online Data Table 5", 
                     skip = 49,
                     col_types = c("numeric", "text", "text", 
@@ -593,7 +593,7 @@ cz_eo <- read_excel("../data/eq_of_opp_online_data.xls",
   transmute(cz = CZ,
          rm_cz = `RM, 80-82 Cohort`) 
 
-cz_other <- read_excel("../data/eq_of_opp_online_data.xls", 
+cz_other <- read_excel("../../data/eq_of_opp_online_data.xls", 
                        sheet = "Online Data Table 8", 
                        skip = 6,
                        col_types = c("numeric", "text", "text", 
@@ -780,7 +780,7 @@ dev.off()
 \pagebreak
 \newpage
 \bibliographystyle{ajps}
-\bibliography{merit}
+\bibliography{../merit}
 
 
 \end{document}
