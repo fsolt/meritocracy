@@ -730,7 +730,7 @@ Absent such undertakings, the greater relative power of the wealthy to shape the
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Note}: The dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 28,633 individual respondents living in 691 commuting zones.
+  & \emph{Note}: The dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in the independent variable; the whiskers represent the 95\% confidence intervals of these estimates.  Multilevel logistic regression analyses of 27,032 individual respondents living in 2621 counties.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
