@@ -459,8 +459,7 @@ Like in the Pew surveys analyzed in NJL, respondents' incomes are measured in th
 
 At the contextual level, we follow NJL in controlling for average income, the black share of the population, the percentage of votes won by George W. Bush in 2004, and the total population size.\footnote{\doublespacing Additional analyses adding controls for two contextual variables not considered in NJL, objective economic mobility and residential income segregation, are presented in the Appendix.  The results of these analyses are substantively similar to those presented in the text.}  
 At the individual level, the analyses include controls for age, education, sex, race, citizenship, partisan identification, political ideology, and church attendance.
-The models are estimated using multilevel logistic regression of individuals nested in counties, with both the intercept and the coefficient for income allowed to vary across the counties. 
-Model 1 assesses the average effect of inequality across people of all incomes, but because both conflict and relative power theories suggest that the effect of income inequality on meritocratic beliefs depends on an individual's income, a cross-level interaction between these two variables is included in Model 2, as in Equation~\ref{E:mixed} above.
+As in NJL, the model is estimated using multilevel logistic regression of individuals nested in counties, with both the intercept and the coefficient for income allowed to vary across the counties. 
 
 <<label=replication_setup>>==
 
