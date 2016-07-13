@@ -66,7 +66,7 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 \renewcommand\thefigure{A\arabic{figure}} 
 \section*{Appendix A: Analysis of the Three NJL Meritocracy Measures}
 
-Beyond the readily evident lack of comparability displayed in Figure 2 of the main text, the three different measures that were pooled together in the analysis presented in NJL yield very different results when analyzed separately.
+Beyond the evident lack of comparability displayed in Figure 2 of the main text, the three different measures that were pooled together in the analysis presented in NJL yield very different results when analyzed separately.
 
 <<label=a_setup>>==
 library(haven)
