@@ -125,7 +125,7 @@ Despite considerable effort, we were unable to approximate the predicted probabi
 Predicted probabilities derived from logistic regression models depend not only on the values of the variables of interest but also on the values assumed for the other variables in the model, and NJL does not indicate what values were adopted. 
 Neither mean nor median values---the most easily justified and commonly assumed values---for the other predictors yield predicted probabilities similar to those shown in NJL's Figure 2.
 
-\item \textbf{Expands the Conclusion.} Presenting a close replication had the happy consequence of allowing us to dispense with the discussion of commuting zones, freeing space below the RaP word limit for us to incorporate Reviewer 1's suggestion that we expand the paper's conclusion to include a discussion of the implications of our findings.  
+\item \textbf{Expands the Conclusion.} Presenting a close replication had the fortunate consequence of allowing us to dispense with the discussion of commuting zones, freeing space below the RaP word limit for us to incorporate Reviewer 1's suggestion that we expand the paper's conclusion to include a discussion of the implications of our findings.  
 These implications are indeed important.  
 If the conflict theory were correct, advocates for redistribution would need only wait for inequality to activate conflict and so deliver the votes needed for the policies they prefer.  
 That the relative power theory better describes political reality, however, means that the social structure will not simply undermine itself.  
