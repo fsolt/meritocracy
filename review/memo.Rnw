@@ -133,7 +133,7 @@ Instead, the hard work of organization and mobilization will be crucial.
 
 \item \textbf{Labels Figure 5.}  Reviewer 1 wrote that she or he could not see the labels on the axes and lines on Figure~5 and so needed to refer to the text to understand what was being depicted.  
 This is a concern: we completely agree that all such plots should be easily understood at a glance.  
-We verified that these axis and line labels appear in our revised submission, but as the labels also appear in our proof of the original submission we received from Manuscript Central, this is not completely reassuring.
+We verified that these axis and line labels appear in our revised submission, but as the labels also appear in the proof of the original submission we received from Manuscript Central, this is not completely reassuring.
 We will be sure to confirm with the RaP editors that the figures appear as intended should we be given the opportunity to publish the work.
 
 \end{enumerate}
