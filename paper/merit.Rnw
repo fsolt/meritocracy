@@ -159,8 +159,8 @@ In any event, only 4\% of the sample employed in NJL had incomes this low; even 
 The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
 
 <<label=setup>>==
-# if (!require(checkpoint)) install.packages("checkpoint")
-# checkpoint("2016-08-13")
+if (!require(checkpoint)) install.packages("checkpoint")
+checkpoint("2016-07-13")
 
 library(checkpoint)
 library(haven)
