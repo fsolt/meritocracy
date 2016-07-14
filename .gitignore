@@ -13,6 +13,7 @@
 *.toc
 *.snm
 *.ent
+*.docx
 .DS_Store
 paper/cache/*
 paper/appendix/cache/*
