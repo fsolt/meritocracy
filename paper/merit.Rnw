@@ -67,7 +67,7 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 How does the context of income inequality in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  
 One prominent recent study, \citet{Newman2015}, argues that exposure to higher levels of local income inequality lead low-income people to become more likely to reject the dominant U.S. ideology of meritocracy.  
 Here, we show that this sanguine conclusion is not supported by the study's own empirical results and further that analysis of more and better data yields precisely the opposite conclusion.  
-Consistent with relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard.   
+Consistent with the relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard.   
 \end{abstract}
 
 \newpage
@@ -101,7 +101,7 @@ With regard to attitudes and beliefs like meritocracy, this theory suggests that
 This gives poorer people ``a greater susceptibility to the internalization of the values, beliefs, or rules of the game of the powerful as a further adaptive response---i.e., as a means of escaping the subjective sense of powerlessness, if not its objective condition'' \citep[17]{Gaventa1980}.
 Patterns of religiosity \citep{Solt2011a, Solt2014b}, respect for authority \citep{Solt2012}, and policy mood \citep{Kelly2010} have provided support for this theory.
 
-As \citet[37]{Huber2012} summarize the two theories, relative power theory can be seen as a straightforward implication of ``the usual assumption in sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while conflict theory is grounded in the seemingly implausible premise that social structures are self-negating.
+As \citet[37]{Huber2012} summarize the two theories, the relative power theory can be seen as a straightforward implication of ``the usual assumption in sociology, political science, and anthropology \ldots that social structures reproduce themselves,'' while the conflict theory is grounded in the seemingly implausible premise that social structures are self-negating.
 Regardless of the theories' plausibility \emph{a priori}, which of the two is actually supported by the evidence is crucial to understanding the political consequences of economic inequality.
 
 
@@ -159,12 +159,13 @@ In any event, only 4\% of the sample employed in NJL had incomes this low; even 
 The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
 
 <<label=setup>>==
+# if (!require(checkpoint)) install.packages("checkpoint")
+# checkpoint("2016-08-13")
+
+library(checkpoint)
 library(haven)
-library(readxl)
 library(readr)
 library(stringr)
-library(rio)
-library(magrittr)
 library(lme4)
 library(ggplot2)
 library(interplot)
@@ -303,7 +304,7 @@ In Measure 2, used with data from the 2007 survey, those who mostly or completel
 Although the 2009 survey included these same two statements, and so made Measure 2 easily calculable, respondents to that survey were coded in yet a third manner: in Measure 3, those who mostly or completely agreed with statement (1) were coded as rejecting meritocracy regardless of how they responded to statement (2).\footnote{\doublespacing For another example of uncritically mixing these three measures, see \citet{Newman2016}.
 Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, Measure 1 is used in the 2011 Political Typology Survey, Measure 2 is used in the 2009 and 2012 Values Surveys, and Measure 3 is used in the 2008 and 2012 Middle Class Surveys.} 
 
-To assess whether these three very different measures are in fact comparable, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plot the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
+To assess whether these three very different measures are in fact comparable, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plotted the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
 The figure reveals that Measure 2 results in much lower levels of rejection of meritocracy than either of the others and that Measure 3 often yields considerably higher levels than Measure 1.
 In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.\footnote{\doublespacing In a footnote and the article's online appendix, NJL argues that mixing these different measures is not problematic on the basis that the 2005 and 2006 surveys alone, which use Measure 1, yield results for the variables of interest similar to those produced by the four surveys together (NJL, p.331).  
 Using the same four surveys, in  Appendix A, we demonstrate that the results obtained for the NJL model differ considerably across the three measures of the dependent variable and confirm that the conditional effect of inequality fails to reach statistical significance at any observed level of income, just as in the full sample described above, regardless of how the dependent variable is measured.}
@@ -496,7 +497,7 @@ p2007_cnty$partyid_rep[p2007$partyln==2] <- 2
 
 # add county-level data
 counties <- read_csv("../data/cnty_data.csv")
-p2007_cnty %<>% left_join(counties, by="fips") 
+p2007_cnty <- left_join(p2007_cnty, counties, by="fips") 
 @
 
 Figure~\ref{F:reg_plot} displays a dot-and-whisker plot of the results: the dots represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each variable in the model, and the whiskers represent the 95\% confidence intervals of these estimates \citep[see][]{Kastellec2007, Solt2015c}.  
@@ -579,7 +580,7 @@ Figure~\ref{F:pp_plot} presents the predicted probability of rejecting meritocra
 Given that assumption, those with the lowest incomes living where the context of income inequality is at the highest observed level are 17 percentage points (plus or minus 8 points) \emph{less} likely to reject meritocracy than similarly low-income people living where inequality is at its lowest observed level.
 For people with incomes between \$30,000 to \$40,000 and otherwise median characteristics, the predicted probability of rejecting meritocracy declines from $40\pm 3$\% to $32\pm 4$\% over the observed range of inequality.
 For those with the highest incomes, given the confidence intervals, the predicted probabilities of rejecting meritocracy are consistent with no change across all levels of local income inequality.
-These results are contrary to the predictions of conflict theory, but consistent with those of the relative power theory.
+These results are contrary to the predictions of the conflict theory, but consistent with those of the relative power theory.
 <<label=predprob, include=FALSE>>==
 # replace pred_probs code with code from interplot::predprob_mlm
 pred_probs <- function(m, var1, var2, var2_vals,
