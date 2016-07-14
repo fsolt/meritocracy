@@ -69,12 +69,14 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 Beyond the evident lack of comparability displayed in Figure 2 of the main text, the three different measures that were pooled together in the analysis presented in NJL yield very different results when analyzed separately.
 
 <<label=a_setup>>==
+if (!require(checkpoint)) install.packages("checkpoint")
+checkpoint("2016-07-13")
+
+library(codetools)
 library(haven)
 library(readxl)
 library(readr)
 library(stringr)
-library(rio)
-library(magrittr)
 library(lme4)
 library(ggplot2)
 library(interplot)
@@ -245,8 +247,8 @@ pew_v23$partyid[pew_v23$partyln==1] <- 4
 pew_v23$partyid[pew_v23$partyln==2] <- 2
 
 counties <- read_csv("../../data/cnty_data.csv")
-pew_v1 %<>% left_join(counties, by="fips")
-pew_v23 %<>% left_join(counties, by="fips")
+pew_v1 <- left_join(pew_v1, counties, by="fips")
+pew_v23 <- left_join(pew_v23, counties, by="fips")
 @
 
 For these analyses, we could not rely on the NJL replication materials because they only include the data as analyzed in the article.  
@@ -517,7 +519,7 @@ p2007x$partyid_rep <- plyr::mapvalues(p2007$party,
 p2007x$partyid_rep[p2007$partyln==1] <- 4
 p2007x$partyid_rep[p2007$partyln==2] <- 2
 
-p2007x %<>% left_join(cz, by="fips") 
+p2007x <- left_join(p2007x, cz, by="fips") 
 
 # 2004 Election Results Data
 fips_cnty <- read_csv("https://raw.githubusercontent.com/raypereda/fips-county-codes/master/lib/national.txt", 
@@ -573,7 +575,7 @@ missing$county <- unlist(lapply(missing$county, function(ii) ii[1])) # use close
 missing <- left_join(missing, fips_cnty, by=c("state", "county")) # now merge; some results still without fips in Maine (no RLS respondents anyway), otherwise good
 missing$county0 <- NULL # drop tempvar
 
-bush04_cnty %<>% rbind(missing) 
+bush04_cnty <- rbind(bush04_cnty, missing) 
 
 cz_bush04 <- left_join(bush04_cnty, cz, by="fips") %>% 
   group_by(cz) %>% 
