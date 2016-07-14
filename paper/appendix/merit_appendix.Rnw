@@ -288,6 +288,8 @@ t1m1_v3 <- glmer(formula = ver3 ~ gini_cnty+income+gini_cnty:income+
 @
 
 <<label=a_v123_dwplot>>==
+if (!dir.exists("figures")) dir.create("figures")
+
 format_results <- function(m, model = "Model") {
   m_df <- broom::tidy(m) %>% 
     filter(term != "(Intercept)") %>% 
@@ -490,8 +492,8 @@ cz <- read_csv("../../data/cw_cty00_cz.csv") %>%
   arrange(fips)
 
 # Individual-Level Data: Pew 2007 Religious Landscape Survey
-p2007 <- read_sav("../../data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
-p2007fips <- read_sav("../../data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
+p2007 <- read_sav("../../data/merit/version_a/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
+p2007fips <- read_sav("../../data/merit/FIPS Continental US.sav")
 
 p2007x <- merge(p2007, p2007fips) %>% 
   transmute(resp = psraid,

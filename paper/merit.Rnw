@@ -274,6 +274,7 @@ t1m1 <- glmer(formula=meritocracy~ginicnty+income_i+ginicnty*income_i+
                family=binomial(link="logit"))
 
 # plot interaction
+if (!dir.exists("figures")) dir.create("figures")
 t <- data.frame(table(pew1_w$income_i))
 names(t) <- c("income_i", "freq")
 t <- t[t$freq>10, ] # include only observed values in plot (exclude imputed values)
@@ -314,27 +315,8 @@ data_path <- "../data/merit/"
 ver_a_files <- list.files(data_path, recursive = TRUE) %>% 
 	str_subset("version_a.*sav|dta")
 
-#  [1] "version_a/2011 Political Typology Survey/2011 Political Typology public.sav"
-#  [2] "version_a/august_12_middle_class/Aug12 Middle Class_cleaned.sav"
-#  [3] "version_a/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav"
-#  [4] "version_a/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Alaska and Hawaii.sav"
-#  [5] "version_a/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav"
-#  [6] "version_a/Dec05/Dec05c.sav"
-#  [7] "version_a/Dec11 Political/Dec11 public.sav"
-#  [8] "version_a/Immigration06/Mar06 Immigrationc.sav"
-#  [9] "version_a/Jan14/Jan14 public.sav"
-# [10] "version_a/Jan15/Jan15 public.sav"                
-# [11] "version_a/Polarization 2014/Polarization 2014 public.sav" 
-# [12] "version_a/Sept-10-Political-Independents/Sept10 public.sav"   
-# [13] "version_a/typo00/Typol00c.sav"
-# [14] "version_a/typo99-Roper/typo99.dta"
-# [15] "version_a/Typology04/TypoCallback05/typology callbackc.dta"
-# [16] "version_a/Typology04/TypoCallback05/Typology Callbackc.sav"
-# [17] "version_a/Typology04/typology04c.dta"                           
-# [18] "version_a/Typology04/Typology04c.sav" 
-
 ver_a <- data.frame(
-	file_name = paste0(data_path, ver_a_files[c(1:2, 5:8, 12:14, 17)]),
+	file_name = paste0(data_path, ver_a_files[c(1:2, 4:11)]),
 	year = c(2011, 2012, 2007, 2005, 2011, 2006, 2010, 2000, 1999, 2004), 
 	stringsAsFactors = FALSE) %>% arrange(year)
 
@@ -466,8 +448,8 @@ As in NJL, the model is estimated using multilevel logistic regression of indivi
 
 ### Data Set-Up
 # Individual-Level Data: Pew 2007 Religious Landscape Survey
-p2007 <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
-p2007fips <- read_sav("../data/dataset_Religious_Landscape_Survey_Data/FIPS Continental US.sav")
+p2007 <- read_sav("../data/merit/version_a/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
+p2007fips <- read_sav("../data/merit/FIPS Continental US.sav")
 
 p2007_cnty <- merge(p2007, p2007fips) %>% 
   transmute(resp = psraid,
@@ -581,8 +563,8 @@ Given that assumption, those with the lowest incomes living where the context of
 For people with incomes between \$30,000 to \$40,000 and otherwise median characteristics, the predicted probability of rejecting meritocracy declines from $40\pm 3$\% to $32\pm 4$\% over the observed range of inequality.
 For those with the highest incomes, given the confidence intervals, the predicted probabilities of rejecting meritocracy are consistent with no change across all levels of local income inequality.
 These results are contrary to the predictions of the conflict theory, but consistent with those of the relative power theory.
-<<label=predprob, include=FALSE>>==
-# replace pred_probs code with code from interplot::predprob_mlm
+ <<label=predprob, include=FALSE>>==
+ # replace pred_probs code with code from interplot::predprob_mlm
 pred_probs <- function(m, var1, var2, var2_vals,
                        times = 20, sims = 1000) {
   m_sims <- arm::sim(m, sims)
@@ -592,22 +574,22 @@ pred_probs <- function(m, var1, var2, var2_vals,
   df$`(Intercept)` <- 1
   
   # Find name of interaction term
-  ifelse(var1 == var2, var12 <- paste0("I(", var1, "^2)"), 
+  ifelse(var1 == var2, var12 <- paste0("I(", var1, "^2)"),
          var12 <- paste0(var2, ":", var1))
-  if (!var12 %in% unlist(dimnames(m@pp$X)[2])) 
+  if (!var12 %in% unlist(dimnames(m@pp$X)[2]))
     var12 <- paste0(var1, ":", var2)
-  if (!var12 %in% unlist(dimnames(m@pp$X)[2])) 
-    stop(paste("Model does not include the interaction of", var1, "and", 
+  if (!var12 %in% unlist(dimnames(m@pp$X)[2]))
+    stop(paste("Model does not include the interaction of", var1, "and",
                var2, "."))
   
-  iv_medians <- summarize_each(df, funs(median(., na.rm = TRUE))) 
-
-  fake_data <- iv_medians[rep(1:nrow(iv_medians), each=times*length(var2_vals)), ] 
+  iv_medians <- summarize_each(df, funs(median(., na.rm = TRUE)))
+  
+  fake_data <- iv_medians[rep(1:nrow(iv_medians), each=times*length(var2_vals)), ]
   fake_data[[var1]] <- with(df, rep(seq(min(get(var1)), max(get(var1)), length.out=times),
                                     times=length(var2_vals)))
   fake_data[[var2]] <- rep(var2_vals, each=times)
   fake_data[[var12]] <- fake_data[[var1]] * fake_data[[var2]]
-
+  
   pp <- rowMeans(plogis(data.matrix(fake_data) %*% t(data.matrix(m_sims@fixef))))
   row_quantiles <- function (x, probs) {
     naValue <- NA
@@ -640,11 +622,11 @@ pred_probs <- function(m, var1, var2, var2_vals,
   return(pp)
 }
 
-m1_pp <- pred_probs(m1, var1 = "gini_cnty", var2 = "income", 
+m1_pp <- pred_probs(m1, var1 = "gini_cnty", var2 = "income",
                     var2_vals = c(1, 4, 9), times = 50, sims = 5000)
 
-m1_pp_plot <- ggplot(m1_pp, aes(x = gini_cnty, y = est, group = income)) + 
-  geom_line(aes(colour = income)) + 
+m1_pp_plot <- ggplot(m1_pp, aes(x = gini_cnty, y = est, group = income)) +
+  geom_line(aes(colour = income)) +
   geom_ribbon(aes(ymin=lb, ymax=ub, fill = income), alpha=.45) +
   xlab("Income Inequality") + ylab("Probability of Rejecting Meritocracy") +
   theme_bw() + theme(legend.position="none") +
@@ -656,7 +638,7 @@ m1_pp_plot <- ggplot(m1_pp, aes(x = gini_cnty, y = est, group = income)) +
   scale_fill_manual(values = c("red", "blue", "darkgreen"))
 ggsave("figures/m1_pp.pdf", width = 5.5, height = 7)
 
-@
+ @
 
 [Figure~\ref{F:pp_plot} about here.]
 
@@ -677,9 +659,6 @@ Absent such undertakings, the greater relative power of the wealthy to shape the
 
 
 \end{spacing}
-%
-
-
 
 \clearpage
 \pagebreak
@@ -722,7 +701,7 @@ Absent such undertakings, the greater relative power of the wealthy to shape the
 \end{figure}
 
 % Replication: Full Results Plot
-\begin{figure}[!hbtp] 
+\begin{figure}[!hbtp]
   \caption{Predicting Rejection of Meritocracy}
   \label{F:reg_plot}
   \begin{center}
@@ -736,7 +715,7 @@ Absent such undertakings, the greater relative power of the wealthy to shape the
 \end{figure}
 
 % Replication: Interaction Plot
-\begin{figure}[!hbtp] 
+\begin{figure}[!hbtp]
   \caption{Estimated Coefficients of Income Inequality by Income}
   \label{F:coef_plot}
   \begin{center}
@@ -750,7 +729,7 @@ Absent such undertakings, the greater relative power of the wealthy to shape the
 \end{figure}
 
 % Replication: Predicted Probabilities Plot
-\begin{figure}[!hbtp] 
+\begin{figure}[!hbtp]
   \caption{Predicted Probability of Rejecting Meritocracy by Income and Level of Inequality}
   \label{F:pp_plot}
   \begin{center}
