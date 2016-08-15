@@ -43,22 +43,22 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 @
 
 \title{Economic Inequality and\\ Belief in Meritocracy in the United States\thanks{Earlier versions of this work were presented the 2016 Annual Meeting of the Southern Political Science Association and the 2016 Annual Meeting of the Midwest Political Science Association.  We thank Larry Bartels and Amber Wichowsky for helpful comments.  The paper's revision history and the materials needed to reproduce its analyses can be found \href{https://github.com/fsolt/meritocracy}{on Github here}.}}
-% \author{
-%   Frederick Solt\\
-%   \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
-%   \and
-%   Yue Hu\\
-%   \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
-%     \and
-% 	Kevan Hudson\\
-% 	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
-% 	\and
-% 	Jungmin Song\\
-%     \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
-% 	\and
-% 	Dong `Erico' Yu\\
-%     \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
-% }
+\author{
+  Frederick Solt\\
+  \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+  \and
+  Yue Hu\\
+  \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
+    \and
+	Kevan Hudson\\
+	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
+	\and
+	Jungmin Song\\
+    \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
+	\and
+	Dong `Erico' Yu\\
+    \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
+}
 \date{\today}				
 \maketitle
 
@@ -135,7 +135,7 @@ NJL (p.334) offers two pieces of evidence as support for its claim: first, that 
 
 Neither of the two actually provide any support. 
 First, the coefficient $\gamma_{01}$ indicates only the effect of $Inequality$ when the other variable in the interaction, $Income$, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
-However, inspection of the NJL data reveals that the nine categories of income in the Pew surveys the article employs were recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.  
+However, inspection of the NJL data reveals that the nine categories of income in the Pew surveys the article employs were recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.\footnote{\doublespacing There is a single respondent in the NJL replication dataset who did not respond to the income question but to whom was assigned an income value of zero.  Putting aside the impossibility of a value less than ``Less than \$10,000,'' the lowest value on the Pew income scale, this respondent, a nonagenarian woman from Michigan, was nonwhite and so is not part of the sample analyzed in Table 1, Model 1.}  
 Because this income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
 Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  
 Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
@@ -154,8 +154,10 @@ Instead, the conditional effect of inequality is found by taking the partial der
 To properly interpret the conditional effect of $Inequality$, then, one cannot examine $\gamma_{01}$ or $\gamma_{11}$ in isolation, as NJL does; instead the conditional effect must be calculated using Equation~\ref{E:dydx} for all observed values of $Income$ \citep[see, e.g.,][]{Braumoeller2004, Brambor2006, Berry2012}.
 
 We plot the conditional effect of $Inequality$ at each observed value of $Income$ in Figure~\ref{F:coef_t1m1} using the \R package \texttt{interplot} \citep{Solt2015b}. 
-Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.\footnote{\doublespacing The coefficient estimate for those with the lowest incomes, under \$10,000 per year, approaches but does not reach statistical significance at conventional levels.  
-In any event, only 4\% of the sample employed in NJL had incomes this low; even if this coefficient did reach statistical significance, it would provide little support for the conflict theory \citep[see][660-661]{Berry2012}.}
+Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.
+The coefficient estimate for those with the lowest incomes, under \$10,000 per year, approaches but does not reach statistical significance at conventional levels.  
+In any event, only 4\% of the sample employed in NJL had incomes this low; even if this coefficient did reach statistical significance, it would provide little support for the conflict theory \citep[see][660-661]{Berry2012}.
+At the other end of the income scale, there is no hint of support for the claim that these results support the conflict theory's prediction that \emph{higher}-income individuals will be \emph{less} likely to reject meritocracy in contexts of greater income inequality.
 The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
 
 <<label=setup>>==
