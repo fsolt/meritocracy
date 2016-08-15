@@ -106,7 +106,7 @@ Regardless of the theories' plausibility \emph{a priori}, which of the two is ac
 
 
 \section*{Reproduced Results and Corrected Interpretation}
-Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{\doublespacing We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 (see NJL, p.336).  
+Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{\doublespacing We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 (see NJL, p.336; see also \citealt{Solt2016c}).  
 We restrict our focus here, though, to the article's main analysis of the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
 As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed to interpretation.
 
