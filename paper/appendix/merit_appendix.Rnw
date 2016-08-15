@@ -90,95 +90,106 @@ interplot0 <- function(m, var1, var2, xlab=NULL, ylab=NULL,
 					   seed=324, sims=5000, steps=100, xmin=NA,
 					   xmax=NA, labels=NULL, plot=TRUE) {
 	require(arm)
-	require(ggplot2)
-	require(abind)
-	set.seed(seed)
-	if (class(m)=="list") {
-		m.list <- m
-		m <- m.list[[1]]
-		m.class <- class(m)
-		m.sims.list <- lapply(m.list, function(i) arm::sim(i, sims))
-		m.sims <- m.sims.list[[1]]
-		if (m.class=="lmerMod" | m.class=="glmerMod") {
-			for(i in 2:length(m.sims.list)) {
-				m.sims@fixef <- rbind(m.sims@fixef, m.sims.list[[i]]@fixef)
-				m.sims@ranef[[1]] <- abind(m.sims@ranef[[1]], m.sims.list[[i]]@ranef[[1]], along=1)
-			}
-		} else {
-			stop(paste("Multiply imputed flat models not implemented yet"))
-		}
-	} else {
-		m.class <- class(m)
-		m.sims <- arm::sim(m, sims)
-	}
-	if(var1==var2) var12 <- paste0("I(", var1, "^2)") else var12 <- paste0(var2,":",var1)
-	if(m.class!="lmerMod" & m.class!="glmerMod"){
-		if (!var12 %in% names(m$coef)) var12 <- paste0(var1,":",var2)
-		if (!var12 %in% names(m$coef)) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
-		if (is.na(xmin)) xmin <- min(m$model[var2], na.rm=T)
-		if (is.na(xmax)) xmax <- max(m$model[var2], na.rm=T)
-		coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
-		
-		for(i in 1:steps) {    
-			coef$coef1[i] <- mean(m.sims@coef[,match(var1, names(m$coef))] + 
-								  	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))])
-			coef$ub[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
-								   	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .975)
-			coef$lb[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
-								   	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .025)    
-		}
-	} else {
-		if (!var12 %in% unlist(dimnames(m@pp$X)[2])) var12 <- paste0(var1,":",var2)
-		if (!var12 %in% unlist(dimnames(m@pp$X)[2])) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
-		if (is.na(xmin)) xmin <- min(m@frame[var2], na.rm=T)
-		if (is.na(xmax)) xmax <- max(m@frame[var2], na.rm=T)        
-		coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
-		
-		for(i in 1:steps) {   
-			coef$coef1[i] <- mean(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
-								  	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))])
-			coef$ub[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
-								   	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .975)
-			coef$lb[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
-								   	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .025)    
-		}   
-	}
-	
-	var2_dt <- eval(parse(text = paste0("m@frame$", var2)))
+  require(ggplot2)
+  require(abind)
+  set.seed(seed)
+  if (class(m)=="list") {
+    m.list <- m
+    m <- m.list[[1]]
+    m.class <- class(m)
+    m.sims.list <- lapply(m.list, function(i) arm::sim(i, sims))
+    m.sims <- m.sims.list[[1]]
+    if (m.class=="lmerMod" | m.class=="glmerMod") {
+      for(i in 2:length(m.sims.list)) {
+        m.sims@fixef <- rbind(m.sims@fixef, m.sims.list[[i]]@fixef)
+        m.sims@ranef[[1]] <- abind(m.sims@ranef[[1]], m.sims.list[[i]]@ranef[[1]], along=1)
+      }
+    } else {
+      stop(paste("Multiply imputed flat models not implemented yet"))
+    }
+  } else {
+    m.class <- class(m)
+    m.sims <- arm::sim(m, sims)
+  }
+  if(var1==var2) var12 <- paste0("I(", var1, "^2)") else var12 <- paste0(var2,":",var1)
+  if(m.class!="lmerMod" & m.class!="glmerMod"){
+    if (!var12 %in% names(m$coef)) var12 <- paste0(var1,":",var2)
+    if (!var12 %in% names(m$coef)) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
+    if (is.na(xmin)) xmin <- min(m$model[var2], na.rm=T)
+    if (is.na(xmax)) xmax <- max(m$model[var2], na.rm=T)
+    coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
+    
+    for(i in 1:steps) {    
+      coef$coef1[i] <- mean(m.sims@coef[,match(var1, names(m$coef))] + 
+                              coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))])
+      coef$ub[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
+                               coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .975)
+      coef$lb[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
+                               coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .025)    
+    }
+  } else {
+    if (!var12 %in% unlist(dimnames(m@pp$X)[2])) var12 <- paste0(var1,":",var2)
+    if (!var12 %in% unlist(dimnames(m@pp$X)[2])) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
+    if (is.na(xmin)) xmin <- min(m@frame[var2], na.rm=T)
+    if (is.na(xmax)) xmax <- max(m@frame[var2], na.rm=T)        
+    coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
+    
+    for(i in 1:steps) {   
+      coef$coef1[i] <- mean(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+                              coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))])
+      coef$ub[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+                               coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .975)
+      coef$lb[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+                               coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .025)    
+    }   
+  }
+  
+  var2_dt <- eval(parse(text = paste0("m@frame$", var2)))
 	
 	if (plot==TRUE) {
     m <- coef 
     levels <- sort(unique(m$fake))
     ymin <- ymax <- vector()
-	  ercolor <- "black"
-	  
-	  yrange <- c(m$ub, m$lb, var2_dt)
+    ercolor <- "black"
+    
+    yrange <- c(m$ub, m$lb, var2_dt)
     maxdiff <- (max(yrange) - min(yrange))
     
-    break_var2 <- length(unique(var2_dt))
+    break_var2 <- steps + 1
     if (break_var2 >= 100) 
-        break_var2 <- 100
-    hist.out <- hist(var2_dt, breaks = break_var2, plot = FALSE)
-    
+      break_var2 <- 100
+    hist.out <- hist(var2_dt, breaks = seq(min(var2_dt), max(var2_dt), l = break_var2), plot = FALSE)
+
     n.hist <- length(hist.out$mids)
-    dist <- hist.out$mids[2] - hist.out$mids[1]
+    if (steps <10) {
+      dist <- (hist.out$mids[2] - hist.out$mids[1])/3
+    } else {
+      dist <- hist.out$mids[2] - hist.out$mids[1]
+    }
     hist.max <- max(hist.out$counts)
     
-    histX <- data.frame(ymin = rep(min(yrange) - maxdiff/5, n.hist), ymax = hist.out$counts/hist.max * 
-        maxdiff/5 + min(yrange) - maxdiff/5, xmin = hist.out$mids - dist/2, xmax = hist.out$mids + 
-        dist/2)
+    histX <- data.frame(ymin = rep(min(yrange) - maxdiff/5, n.hist),
+                        ymax = hist.out$counts/hist.max * 
+                          maxdiff/5 + min(yrange) - maxdiff/5, 
+                        xmin = sort(unique(var2_dt)) - dist/2, 
+                        xmax = sort(unique(var2_dt)) + dist/2)
     
-    histX_sub <- mutate(histX, xdiff = xmax - xmin, xmax = xmax - xdiff)
+    if (steps <10) {
+      histX_sub <- histX
+    } else {
+      histX_sub <- mutate(histX, xdiff = xmax - xmin, xmax = xmax - xdiff/2)
+    }
+    
     coef.plot <- ggplot()
     coef.plot <- coef.plot + geom_rect(data = histX_sub, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), colour = "gray50", alpha = 0, size = 0.5)  #histgram
     
-            
-		coef.plot <- coef.plot + 
-		  geom_point(data = coef, aes_string(x = "fake", y = "coef1")) + 
-		  geom_errorbar(data = coef, aes_string(x = "fake", ymin = "lb", ymax = "ub"), width = 0, color = ercolor, size = 0.5) +
-		  scale_x_continuous(breaks = seq(min(coef$fake), max(coef$fake), length.out=steps),
-								   labels = labels) +
-		  theme_bw() + ylab(ylab) + xlab(xlab)
+    
+    coef.plot <- coef.plot + 
+      geom_point(data = coef, aes_string(x = "fake", y = "coef1")) + 
+      geom_errorbar(data = coef, aes_string(x = "fake", ymin = "lb", ymax = "ub"), width = 0, color = ercolor, size = 0.5) +
+      scale_x_continuous(breaks = seq(min(coef$fake), max(coef$fake), length.out=steps),
+                         labels = labels) +
+      theme_bw() + ylab(ylab) + xlab(xlab)
 
 		return(coef.plot)}
 }
@@ -378,8 +389,7 @@ t1m1_v1_plot <- interplot0(t1m1_v1, "gini_cnty", "income",
   ggtitle("Version 1") +
   theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8),
         axis.title.x = element_text(size=11),
-        axis.title.y = element_text(size=11)) +
-  ylim(-10, 10)
+        axis.title.y = element_text(size=11)) 
 
 t1m1_v2_plot <- interplot0(t1m1_v2, "gini_cnty", "income",
                            steps = 9,
@@ -390,8 +400,7 @@ t1m1_v2_plot <- interplot0(t1m1_v2, "gini_cnty", "income",
   ggtitle("Version 2") +
   theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8),
         axis.title.x = element_text(size=11),
-        axis.title.y = element_text(size=11)) +
-  ylim(-12.16, 10)
+        axis.title.y = element_text(size=11)) 
 
 t1m1_v3_plot <- interplot0(t1m1_v3, "gini_cnty", "income",
                            steps = 9,
@@ -402,8 +411,7 @@ t1m1_v3_plot <- interplot0(t1m1_v3, "gini_cnty", "income",
   ggtitle("Version 3") +
   theme(axis.text.x = element_text(angle = 90, vjust = .5, size = 8),
         axis.title.x = element_text(size=11),
-        axis.title.y = element_text(size=11)) +
-  ylim(-10, 10)
+        axis.title.y = element_text(size=11)) 
 
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   require(grid)
@@ -597,11 +605,11 @@ cz_bush04 <- left_join(bush04_cnty, cz, by="fips") %>%
   dplyr::summarize(bush04_cz = sum(bush)/sum(bush+kerry+nader))
 
 # Equality of Opportunity Data
-if (!file.exists("../../data/eq_of_opp_online_data.xls")) {
-  download.file("http://www.equality-of-opportunity.org/images/online_data_tables.xls", "../../data/eq_of_opp_online_data.xls")
+if (!file.exists("././data/eq_of_opp_online_data.xls")) {
+  download.file("http://www.equality-of-opportunity.org/images/online_data_tables.xls", "././data/eq_of_opp_online_data.xls")
 }
 
-cz_eo <- read_excel("../../data/eq_of_opp_online_data.xls", 
+cz_eo <- read_excel("././data/eq_of_opp_online_data.xls", 
                     sheet = "Online Data Table 5", 
                     skip = 49,
                     col_types = c("numeric", "text", "text", 
@@ -735,7 +743,7 @@ Lower-income people in local contexts with greater income inequality are less li
 \end{figure}
 
 <<label=b_m1_cz_gini>>==
-m1_cz_gini <- interplot(m1_cz, "gini_cz", "income") +
+m1_cz_gini <- interplot(m1_cz, "gini_cz", "income", hist = T) +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
   coord_cartesian(ylim = c(-2, 1)) +
   labs(x = "Income", y = "Coefficient of Income Inequality\n on Rejecting Meritocracy") +
@@ -748,7 +756,7 @@ m1_cz_gini <- interplot(m1_cz, "gini_cz", "income") +
 @
 
 <<label=b_m2_cz_gini>>==
-m2_cz_gini <- interplot(m2_cz, "gini_cz", "income") +
+m2_cz_gini <- interplot(m2_cz, "gini_cz", "income", hist = T) +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
   coord_cartesian(ylim = c(-2, 1)) +
   labs(x = "Income", y = "") +
@@ -761,7 +769,7 @@ m2_cz_gini <- interplot(m2_cz, "gini_cz", "income") +
 @
 
 <<label=b_m3_cz_gini>>==
-m3_cz_gini <- interplot(m3_cz, "gini_cz", "income") +
+m3_cz_gini <- interplot(m3_cz, "gini_cz", "income", hist = T) +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
   coord_cartesian(ylim = c(-2, 1)) +
   labs(x = "Income", y = "") +
