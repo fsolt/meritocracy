@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+
+\usepackage{graphicx}        % Enable graphics commands
+\usepackage[tbtags]{amsmath}
+\usepackage{lscape}    	% Enable landscape with \begin{landscape} until \end{landscape}
+\usepackage{natbib}			% Enable citation commands \citep{}, \citet{}, etc.
+\bibpunct{(}{)}{;}{a}{}{,}		% Formatting for in-text citations
+\usepackage{setspace}		% Enable double-spacing with \begin{spacing}{2} until \end{spacing}.
+\usepackage[utf8]{inputenc} 	% Enable utf8 characters, i.e., accents without coding--just type them in.
+\usepackage{natbib} %3 lines from here Bibliographic; sort & compress orders multiple citations into the sequence in which they appear in the list of references+;but in addition multiple numerical citations are compressed if possible (as 3-6, 15)
+\bibpunct{(}{)}{;}{a}{}{,}
+\usepackage[english]{babel}	% English hyphenation and alphabetization.  Other languages available.
+\usepackage{dcolumn}        % For decimal-aligned stargazer/texreg output.
+\usepackage[colorlinks=true, urlcolor=blue, citecolor=black, linkcolor=black]{hyperref} % Include hyperlinks with the \url and \href commands.
+\setlength{\tabcolsep}{1pt}	% Make tables slightly narrower by reducing space between columns.
+\usepackage{afterpage}
+\usepackage{hanging}
+\usepackage{fullpage}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+
+\renewcommand\floatpagefraction{.9}	% These commands allow larger tables and graphics to fit
+\renewcommand\topfraction{.9}		% on a page when default settings would complain.
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+\newcommand{\R}{\textsf{R}~}        %This creates the command \R to typeset the name R correctly.
+
+%\usepackage[left=1in, right=1in]{geometry}	%Turn footnotes into endnotes (commented out).
+%\renewcommand{\footnotesize}{\normalsize}	
+%\usepackage{endnotes}
+%\renewcommand{\footnote}{\endnote}
+%\renewcommand{\section}{\subsection}
+
+\begin{document}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance=TRUE, 
+cache=FALSE,
+message=FALSE
+)
+@
+
+
+\title{Economic Inequality and\\ Belief in Meritocracy in the United States\\ Memo to the Editors}
+% \author{
+%   Frederick Solt\\
+%   \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+%   \and
+%   Yue Hu\\
+%   \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
+%     \and
+% 	Kevan Hudson\\
+% 	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
+% 	\and
+% 	Jungmin Song\\
+%     \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
+% 	\and
+% 	Dong `Erico' Yu\\
+%     \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
+% }
+\date{\today}				
+\maketitle
+
+Thank you again for the opportunity to revise and resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United States.''  
+
+\begin{enumerate}
+
+\item Reviewer 2 contends that our description of the NJL income variable is ``inaccurate,'' noting that the NJL replication data include imputed values for income.  Of course, as \citet{Rubin1987} established and \citet{King2001} popularized among political scientists, \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce.  We were aware of this problem with NJL, but given the many other issues we found with the piece, we let that particular critique fall to the cutting room floor.
+
+In any event, R2 has gotten confused here. We understand how that could happen: as the replication materials are extremely scant and the authors themselves are unable to reproduce their own work, it is naturally quite difficult for others to follow what they did.  R2 writes, ``Upon reviewing the data available in Dataverse, it is evident that there is 1 respondent coded `0' and interestingly enough N=490 respondents coded a value of roughly .212.  When the model is estimated as is, the effect of Gini is estimated for that single respondent."  This second sentence \emph{would} follow from the first sentence, but the first sentence is mistaken.  Yes, there is one respondent in the entire pooled survey dataset who was assigned an imputed value of 0.  We put aside that this value is nonsensical--one cannot have an income \emph{below} ``Less than \$10,000,'' the Pew category that is assigned a value of .212 in the NJL replication data---and that ordinal variables like this would properly be (multiply) imputed values that actually exist on their own ordinal scales because there's a much more straightforward answer to R2's point.  The single respondent to whom NJL assigned an income value of zero, a 94-year-old woman who was living in Oakland County, Michigan, when she was surveyed in 2005, was \emph{not white}.  That respondent is not in the sample analyzed in NJL's Table 1, Model 1, and therefore `when the model is estimated as is,' the effect of Gini is \emph{not} estimated for that single respondent, nor anyone else.  As the literature on interaction terms we review at pages 5-7 explains, the actual estimated effect of inequality at each observed level of income therefore needs to be calculated using what we label equation 2 at page 6.  We have now added a footnote discussing this single respondent to page 6.
+
+\item Reviewer 2 shouts that the NJL ``model results ENTIRELY HOLD."  Actually, we completely agree and have always stated as much.  As we write at page 5: ``we were able to reproduce a close approximation of the article's main results \dots the differences are quite small.''  The issue, we have always maintained, is how these results are interpreted.  R2 insists that because the estimated effect of inequality for the lowest-income individuals approaches statistical significance, we are making ``a mountain out of a molehill of minor data coding errors.''  R2 did not reply to our responses to this line of argument that (1) only 4\% of respondents in the sample fell into the lowest income category, and so per \citet{Berry2012} even if the coefficient were significant it would provide only minimal support for the conflict theory (which we had included in the manuscript as a footnote) and (2) there is no hint of support for NJL's claim that its results support the conflict theory's prediction that \emph{higher}-income individuals will be \emph{less} likely to reject meritocracy in contexts of greater income inequality (which admittedly was only directed to her or his attention in our memo to reviewers).  We have now brought both of these responses to the text to ensure that they are not overlooked.  At your suggestion, we also incorporated a histogram into Figure 1 (and our other similar plots) to underscore that the share of respondents who fell into the lowest-income category is very small.
+
+\item predicted probability
+
+\item intro
+
+\end{enumerate}
+
+
+\bibliographystyle{ajps}
+\bibliography{../paper/merit}
+
+\end{document}
