@@ -276,7 +276,7 @@ pew_v23 <- left_join(pew_v23, counties, by="fips")
 @
 
 For these analyses, we could not rely on the NJL replication materials because they only include the data as analyzed in the article.  
-The number of observations available for Version 2 of the dependent variable in this dataset is smaller than the number of parameters in the model, rendering the model impossible to estimate.  
+The number of observations available for Version 2 of the dependent variable in this dataset is smaller than the number of parameters in the model, rendering the model impossible to estimate without incorporating additional information.  
 The questions needed for Version 2 and for Version 3 were asked in both the 2007 and 2009 Pew surveys examined in NJL, however, so we are able to generate these variables from the original Pew datasets and pool them together to provide an adequate number of observations for analysis.  
 We opt for a straightforward coding of all variables, with the categories of ordinal variables assigned consecutive integers beginning at 1, although because the results displayed below are rescaled to represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each predictor, this choice makes little difference.  
 Our approach is otherwise identical to that of the core analysis of NJL: Model 1, Table 1.
@@ -462,7 +462,7 @@ dev.off()
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.3in} p{5.6in}}
-  & \emph{Source}: Analyses presented in Figure~\ref{F:a_v123}.  The dots represent estimated coefficient of income inequality within respondents' counties on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  For all three measures of the dependent variable, none of estimates reach statistical significance.  There is no evidence in support of the conflict theory in the NJL data.
+  & \emph{Source}: Analyses presented in Figure~\ref{F:a_v123}.  The dots represent estimated coefficient of income inequality within respondents' counties on their belief in meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  In each panel, a histogram of the relative frequency of each value of respondent income appears below.  For all three measures of the dependent variable, none of estimates reach statistical significance.  There is no evidence in support of the conflict theory in the NJL data.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
@@ -605,11 +605,11 @@ cz_bush04 <- left_join(bush04_cnty, cz, by="fips") %>%
   dplyr::summarize(bush04_cz = sum(bush)/sum(bush+kerry+nader))
 
 # Equality of Opportunity Data
-if (!file.exists("././data/eq_of_opp_online_data.xls")) {
+if (!file.exists("../../data/eq_of_opp_online_data.xls")) {
   download.file("http://www.equality-of-opportunity.org/images/online_data_tables.xls", "././data/eq_of_opp_online_data.xls")
 }
 
-cz_eo <- read_excel("././data/eq_of_opp_online_data.xls", 
+cz_eo <- read_excel("../../data/eq_of_opp_online_data.xls", 
                     sheet = "Online Data Table 5", 
                     skip = 49,
                     col_types = c("numeric", "text", "text", 
@@ -743,7 +743,7 @@ Lower-income people in local contexts with greater income inequality are less li
 \end{figure}
 
 <<label=b_m1_cz_gini>>==
-m1_cz_gini <- interplot(m1_cz, "gini_cz", "income", hist = T) +
+m1_cz_gini <- interplot(m1_cz, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
   coord_cartesian(ylim = c(-2, 1)) +
   labs(x = "Income", y = "Coefficient of Income Inequality\n on Rejecting Meritocracy") +
@@ -756,7 +756,7 @@ m1_cz_gini <- interplot(m1_cz, "gini_cz", "income", hist = T) +
 @
 
 <<label=b_m2_cz_gini>>==
-m2_cz_gini <- interplot(m2_cz, "gini_cz", "income", hist = T) +
+m2_cz_gini <- interplot(m2_cz, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
   coord_cartesian(ylim = c(-2, 1)) +
   labs(x = "Income", y = "") +
@@ -769,7 +769,7 @@ m2_cz_gini <- interplot(m2_cz, "gini_cz", "income", hist = T) +
 @
 
 <<label=b_m3_cz_gini>>==
-m3_cz_gini <- interplot(m3_cz, "gini_cz", "income", hist = T) +
+m3_cz_gini <- interplot(m3_cz, "gini_cz", "income") +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
   coord_cartesian(ylim = c(-2, 1)) +
   labs(x = "Income", y = "") +
@@ -781,7 +781,7 @@ m3_cz_gini <- interplot(m3_cz, "gini_cz", "income", hist = T) +
         axis.title.y = element_text(size=11))
 @
 
-<<label=b_m123_cz_gini_plot>>=
+<<label=b_m123_cz_gini_plot, cache=FALSE>>=
 pdf("figures/b_m123_cz_gini.pdf", width=6, height=3)
 multiplot(m1_cz_gini, m2_cz_gini, m3_cz_gini, layout = matrix(1:3, nrow=1))
 dev.off()
