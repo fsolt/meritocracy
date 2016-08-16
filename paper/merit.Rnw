@@ -158,7 +158,7 @@ Contrary to the interpretation offered in NJL (p.334), this plot reveals that th
 The coefficient estimate for those with the lowest incomes, under \$10,000 per year, approaches but does not reach statistical significance at conventional levels.  
 In any event, only 4\% of the sample employed in NJL had incomes this low; even if this coefficient did reach statistical significance, it would provide little support for the conflict theory \citep[see][660-661]{Berry2012}.
 At the other end of the income scale, there is no hint of support for the claim that these results support the conflict theory's prediction that \emph{higher}-income individuals will be \emph{less} likely to reject meritocracy in contexts of greater income inequality.
-The article's own results do not provide evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
+The article's own results provide little if any evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
 
 <<label=setup>>==
 if (!require(checkpoint)) install.packages("checkpoint")
@@ -181,95 +181,115 @@ interplot0 <- function(m, var1, var2, xlab=NULL, ylab=NULL,
 					   seed=324, sims=5000, steps=100, xmin=NA,
 					   xmax=NA, labels=NULL, plot=TRUE) {
 	require(arm)
-	require(ggplot2)
-	require(abind)
-	set.seed(seed)
-	if (class(m)=="list") {
-		m.list <- m
-		m <- m.list[[1]]
-		m.class <- class(m)
-		m.sims.list <- lapply(m.list, function(i) arm::sim(i, sims))
-		m.sims <- m.sims.list[[1]]
-		if (m.class=="lmerMod" | m.class=="glmerMod") {
-			for(i in 2:length(m.sims.list)) {
-				m.sims@fixef <- rbind(m.sims@fixef, m.sims.list[[i]]@fixef)
-				m.sims@ranef[[1]] <- abind(m.sims@ranef[[1]], m.sims.list[[i]]@ranef[[1]], along=1)
-			}
-		} else {
-			stop(paste("Multiply imputed flat models not implemented yet"))
-		}
-	} else {
-		m.class <- class(m)
-		m.sims <- arm::sim(m, sims)
-	}
-	if(var1==var2) var12 <- paste0("I(", var1, "^2)") else var12 <- paste0(var2,":",var1)
-	if(m.class!="lmerMod" & m.class!="glmerMod"){
-		if (!var12 %in% names(m$coef)) var12 <- paste0(var1,":",var2)
-		if (!var12 %in% names(m$coef)) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
-		if (is.na(xmin)) xmin <- min(m$model[var2], na.rm=T)
-		if (is.na(xmax)) xmax <- max(m$model[var2], na.rm=T)
-		coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
-		
-		for(i in 1:steps) {    
-			coef$coef1[i] <- mean(m.sims@coef[,match(var1, names(m$coef))] + 
-								  	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))])
-			coef$ub[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
-								   	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .975)
-			coef$lb[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
-								   	coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .025)    
-		}
-	} else {
-		if (!var12 %in% unlist(dimnames(m@pp$X)[2])) var12 <- paste0(var1,":",var2)
-		if (!var12 %in% unlist(dimnames(m@pp$X)[2])) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
-		if (is.na(xmin)) xmin <- min(m@frame[var2], na.rm=T)
-		if (is.na(xmax)) xmax <- max(m@frame[var2], na.rm=T)        
-		coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
-		
-		for(i in 1:steps) {   
-			coef$coef1[i] <- mean(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
-								  	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))])
-			coef$ub[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
-								   	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .975)
-			coef$lb[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
-								   	coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .025)    
-		}   
-	}
-	
-	var2_dt <- eval(parse(text = paste0("m@frame$", var2)))
-	
+  require(ggplot2)
+  require(abind)
+  set.seed(seed)
+  if (class(m)=="list") {
+    m.list <- m
+    m <- m.list[[1]]
+    m.class <- class(m)
+    m.sims.list <- lapply(m.list, function(i) arm::sim(i, sims))
+    m.sims <- m.sims.list[[1]]
+    if (m.class=="lmerMod" | m.class=="glmerMod") {
+      for(i in 2:length(m.sims.list)) {
+        m.sims@fixef <- rbind(m.sims@fixef, m.sims.list[[i]]@fixef)
+        m.sims@ranef[[1]] <- abind(m.sims@ranef[[1]], m.sims.list[[i]]@ranef[[1]], along=1)
+      }
+    } else {
+      stop(paste("Multiply imputed flat models not implemented yet"))
+    }
+  } else {
+    m.class <- class(m)
+    m.sims <- arm::sim(m, sims)
+  }
+  if(var1==var2) var12 <- paste0("I(", var1, "^2)") else var12 <- paste0(var2,":",var1)
+  if(m.class!="lmerMod" & m.class!="glmerMod"){
+    if (!var12 %in% names(m$coef)) var12 <- paste0(var1,":",var2)
+    if (!var12 %in% names(m$coef)) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
+    if (is.na(xmin)) xmin <- min(m$model[var2], na.rm=T)
+    if (is.na(xmax)) xmax <- max(m$model[var2], na.rm=T)
+    coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
+    
+    for(i in 1:steps) {    
+      coef$coef1[i] <- mean(m.sims@coef[,match(var1, names(m$coef))] + 
+                              coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))])
+      coef$ub[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
+                               coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .975)
+      coef$lb[i] <- quantile(m.sims@coef[,match(var1, names(m$coef))] + 
+                               coef$fake[i]*m.sims@coef[,match(var12, names(m$coef))], .025)    
+    }
+  } else {
+    if (!var12 %in% unlist(dimnames(m@pp$X)[2])) var12 <- paste0(var1,":",var2)
+    if (!var12 %in% unlist(dimnames(m@pp$X)[2])) stop(paste("Model does not include the interaction of",var1 ,"and",var2))
+    if (is.na(xmin)) xmin <- min(m@frame[var2], na.rm=T)
+    if (is.na(xmax)) xmax <- max(m@frame[var2], na.rm=T)        
+    coef <- data.frame(fake = seq(xmin, xmax, length.out=steps), coef1 = NA, ub = NA, lb = NA)
+    
+    for(i in 1:steps) {   
+      coef$coef1[i] <- mean(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+                              coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))])
+      coef$ub[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+                               coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .975)
+      coef$lb[i] <- quantile(m.sims@fixef[,match(var1, unlist(dimnames(m@pp$X)[2]))] + 
+                               coef$fake[i]*m.sims@fixef[,match(var12, unlist(dimnames(m@pp$X)[2]))], .025)    
+    }   
+  }
+  
+  var2_dt <- eval(parse(text = paste0("m@frame$", var2)))
+  if (steps < 10 & length(unique(var2_dt)) >= 10) {
+    var2_vals <- var2_dt %>% as_data_frame() %>% 
+      group_by(value) %>% 
+      summarize(n_obs = n()) %>% 
+      arrange(desc(n_obs)) %>%
+      top_n(steps, n_obs)
+    var2_vals <- as.vector(var2_vals$value)
+    var2_dt <- var2_dt[var2_dt %in% var2_vals]
+  }
+  	
 	if (plot==TRUE) {
     m <- coef 
     levels <- sort(unique(m$fake))
     ymin <- ymax <- vector()
-	  ercolor <- "black"
-	  
-	  yrange <- c(m$ub, m$lb, var2_dt)
+    ercolor <- "black"
+    
+    yrange <- c(m$ub, m$lb, var2_dt)
     maxdiff <- (max(yrange) - min(yrange))
     
-    break_var2 <- length(unique(var2_dt))
+    break_var2 <- steps + 1
     if (break_var2 >= 100) 
-        break_var2 <- 100
-    hist.out <- hist(var2_dt, breaks = break_var2, plot = FALSE)
-    
+      break_var2 <- 100
+    hist.out <- hist(var2_dt, breaks = seq(min(var2_dt), max(var2_dt), l = break_var2), plot = FALSE)
+
     n.hist <- length(hist.out$mids)
-    dist <- hist.out$mids[2] - hist.out$mids[1]
+    if (steps <10) {
+      dist <- (hist.out$mids[2] - hist.out$mids[1])/3
+    } else {
+      dist <- hist.out$mids[2] - hist.out$mids[1]
+    }
     hist.max <- max(hist.out$counts)
     
-    histX <- data.frame(ymin = rep(min(yrange) - maxdiff/5, n.hist), ymax = hist.out$counts/hist.max * 
-        maxdiff/5 + min(yrange) - maxdiff/5, xmin = hist.out$mids - dist/2, xmax = hist.out$mids + 
-        dist/2)
+    histX <- data.frame(ymin = rep(min(yrange) - maxdiff/5, n.hist),
+                        ymax = hist.out$counts/hist.max * 
+                          maxdiff/5 + min(yrange) - maxdiff/5, 
+                        xmin = sort(unique(var2_dt)) - dist/2, 
+                        xmax = sort(unique(var2_dt)) + dist/2)
     
-    histX_sub <- filter(histX, ymax > -2.9)
+    if (steps <10) {
+      histX_sub <- histX
+    } else {
+      histX_sub <- mutate(histX, xdiff = xmax - xmin, xmax = xmax - xdiff/2)
+    }
+    
     coef.plot <- ggplot()
     coef.plot <- coef.plot + geom_rect(data = histX_sub, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), colour = "gray50", alpha = 0, size = 0.5)  #histgram
     
-            
-		coef.plot <- coef.plot + 
-		  geom_point(data = coef, aes_string(x = "fake", y = "coef1")) + 
-		  geom_errorbar(data = coef, aes_string(x = "fake", ymin = "lb", ymax = "ub"), width = 0, color = ercolor, size = 0.5) +
-		  scale_x_continuous(breaks = seq(min(coef$fake), max(coef$fake), length.out=steps),
-								   labels = labels) +
-		  theme_bw() + ylab(ylab) + xlab(xlab)
+    
+    coef.plot <- coef.plot + 
+      geom_point(data = coef, aes_string(x = "fake", y = "coef1")) + 
+      geom_errorbar(data = coef, aes_string(x = "fake", ymin = "lb", ymax = "ub"), width = 0, color = ercolor, size = 0.5) +
+      scale_x_continuous(breaks = seq(min(coef$fake), max(coef$fake), length.out=steps),
+                         labels = labels) +
+      theme_bw() + ylab(ylab) + xlab(xlab)
 
 		return(coef.plot)}
 }
@@ -322,8 +342,9 @@ Of the five Pew surveys listed in Table 1 and pooled in the article's analysis, 
 
 To assess whether these three very different measures are in fact comparable, we collected Pew surveys conducted between 1999 and 2012 that asked any of the items just described and plotted the estimated percentage of the population to reject meritocracy according each of three versions of the dependent variable in Figure~\ref{F:three_measures}. 
 The figure reveals that Measure 2 results in much lower levels of rejection of meritocracy than either of the others and that Measure 3 often yields considerably higher levels than Measure 1.
-In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.\footnote{\doublespacing In a footnote and the article's online appendix, NJL argues that mixing these different measures is not problematic on the basis that the 2005 and 2006 surveys alone, which use Measure 1, yield results for the variables of interest similar to those produced by the four surveys together (NJL, p.331).  
-Using the same four surveys, in  Appendix A, we demonstrate that the results obtained for the NJL model differ considerably across the three measures of the dependent variable and confirm that the conditional effect of inequality fails to reach statistical significance at any observed level of income, just as in the full sample described above, regardless of how the dependent variable is measured.}
+In a footnote and the article's online appendix, NJL argues that mixing these different measures is not problematic on the basis that the 2005 and 2006 surveys alone, which use Measure 1, yield results for the variables of interest similar to those produced by the four surveys together (NJL, p.331).  
+Using the same four surveys, we demonstrate in Appendix A that the results obtained for the NJL model differ considerably across the three measures of the dependent variable and confirm that the conditional effect of inequality fails to reach statistical significance at any observed level of income, just as in the full sample described above, regardless of how the dependent variable is measured.
+In light of their evident lack of comparability, we conclude that pooling them in a single analysis cannot be justified.
 
 <<label=three_measures>>==
 data_path <- "../data/merit/"
@@ -562,7 +583,7 @@ They are not distinguishable from zero for those with higher incomes.
 <<label=inter_plot>>=
 inc_labels <- c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k",
                 "$50-75k", "$75-100k", "$100-150k", ">$150k")
-m1_gini <- interplot(m1, "gini_cnty", "income") +
+m1_gini <- interplot0(m1, "gini_cnty", "income", steps = 9) +
   scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
   labs(x = "Income", y = "Coefficient of Income Inequality on Rejecting Meritocracy") +
   theme_bw() +
@@ -696,7 +717,7 @@ Absent such undertakings, the greater relative power of the wealthy to shape the
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Notes}: The dots represent coefficients of income inequality within respondents' county on their rejection of meritocracy for all values of respondent income, estimated from the data and model provided in \citet{Newman2015a}; the whiskers represent the 95\% confidence intervals of these estimates.  Contrary to the interpretation offered in \citet[334]{Newman2015}, the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent family income.
+  & \emph{Notes}: The dots represent coefficients of income inequality within respondents' county on their rejection of meritocracy for all values of respondent income, estimated from the data and model provided in \citet{Newman2015a}; the whiskers represent the 95\% confidence intervals of these estimates.  Contrary to the interpretation offered in \citet[334]{Newman2015}, the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.  The histogram presented below the main plot depicts the relative frequency of each observed value of respondent income: only 4\% of respondents, for example, reported incomes below \$10,000.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
@@ -738,7 +759,7 @@ Absent such undertakings, the greater relative power of the wealthy to shape the
   \end{center}
   \begin{footnotesize}
   \begin{tabular}{p{.5in} p{5.6in}}
-  & \emph{Source}: Results presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficients of income inequality within respondents' commuting zones on their rejection of meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  The estimates are negative and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero.
+  & \emph{Source}: Results presented in Figure~\ref{F:reg_plot}.  The dots represent estimated coefficients of income inequality within respondents' commuting zones on their rejection of meritocracy for all values of respondent family income; the whiskers represent the 95\% confidence intervals of these estimates.  The estimates are negative and statistically significant for those with lower incomes, while the coefficients for those with higher incomes are not distinguishable from zero. The histogram presented below the main plot depicts the relative frequency of each observed value of respondent income: 39\% of respondents reported incomes below \$40,000.
   \end{tabular}
   \end{footnotesize}
 \end{figure}
