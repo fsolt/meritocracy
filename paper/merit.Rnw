@@ -78,10 +78,10 @@ Not surprisingly, this question and related ones regarding the relationship betw
 
 In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce the status quo, Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
 We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
-Correcting this error reveals that there is little or no support for the paper's conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
+Correcting this error reveals that there is little or no support in the paper's results for its conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
 
-Further, in reproducing the above result from the materials the authors provide \citep{Newman2015a}, we uncovered problems with the manner in which the dependent variable was measured. 
-We therefore present here a full, independent replication, bringing data from a larger and more representive survey that employs a uniform measure of the dependent variable to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
+Further, in reproducing the NJL analyses from the materials the authors provide \citep{Newman2015a}, we uncovered problems with the manner in which the dependent variable was measured that would render the article's results untrustworthy even if they had supported its conclusions. 
+We therefore present here a full, independent replication, bringing new data from a larger and more representive survey that employs a uniform measure of the dependent variable to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
 This analysis finds no evidence for the argument advanced by NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
 To the contrary, but consistent with previous research, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.   
 
