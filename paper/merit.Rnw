@@ -106,7 +106,7 @@ Regardless of the theories' plausibility \emph{a priori}, which of the two is ac
 
 
 \section*{Reproduced Results and Corrected Interpretation}
-Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{\doublespacing We were not able to reproduce the auxiliary analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 (see NJL, p.336; see also \citealt{Solt2016c}).  
+Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{\doublespacing We were not able to reproduce the analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 (see NJL, p.336; see also \citealt{Solt2016c}).  
 We restrict our focus here, though, to the article's main analysis of the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
 As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed to interpretation.
 
@@ -131,12 +131,12 @@ Reject\thinspace Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamm
 }
 \vspace{-24pt}
 \begin{spacing}{2}
-NJL (p.334) offers two pieces of evidence as support for its claim: first, that the coefficient for local income inequality (that is, $\gamma_{01}$) is estimated to be positive and statistically significant, and second, that the coefficient for the interaction between inequality and respondents' incomes ($\gamma_{11}$) is negative and statistically significant (NJL, 334). 
+NJL (p.334) offers two pieces of evidence as support for the above-quoted claim: first, that the coefficient for local income inequality (that is, $\gamma_{01}$) is estimated to be positive and statistically significant, and second, that the coefficient for the interaction between inequality and respondents' incomes ($\gamma_{11}$) is negative and statistically significant (NJL, 334). 
 
 Neither of the two actually provide any support. 
 First, the coefficient $\gamma_{01}$ indicates only the effect of $Inequality$ when the other variable in the interaction, $Income$, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
-However, inspection of the NJL data reveals that the nine categories of income in the Pew surveys the article employs were recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.\footnote{\doublespacing There is a single respondent in the NJL replication dataset who did not respond to the income question but to whom was assigned an income value of zero.  Putting aside the impossibility of a value less than ``Less than \$10,000,'' the lowest value on the Pew income scale, and that \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce \citep[e.g.,][]{Rubin1987, King2001}, this respondent, a nonagenarian woman from Michigan, was \emph{nonwhite} and so is not part of the sample analyzed in Table 1, Model 1.}  
-Because this income variable never actually equals zero, $\gamma_{01}$ is not directly interpretable.
+However, inspection of the NJL data reveals that the nine categories of income in the Pew surveys the article employs were recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.\footnote{\doublespacing There is a single respondent in the NJL replication dataset who did not respond to the income question but to whom was assigned an income value of zero.  Putting aside the impossibility of a value less than ``Less than \$10,000,'' the lowest value on the Pew income scale, and that \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce \citep[e.g.,][]{Rubin1987, King2001}, this respondent, a nonagenarian woman from Michigan, was \emph{not white} and so is not part of the sample analyzed in Table 1, Model 1.}  
+Because this income variable never actually equals zero in the analyzed sample, $\gamma_{01}$ is not directly interpretable.
 Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  
 Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
 \end{spacing}
@@ -157,7 +157,7 @@ We plot the conditional effect of $Inequality$ at each observed value of $Income
 Contrary to the interpretation offered in NJL (p.334), this plot reveals that the coefficient for county income inequality fails to reach statistical significance at any observed level of respondent income.
 The coefficient estimate for those with the lowest incomes, under \$10,000 per year, approaches but does not reach statistical significance at conventional levels.  
 In any event, only 4\% of the sample employed in NJL had incomes this low; even if this coefficient did reach statistical significance, it would provide little support for the conflict theory \citep[see][660-661]{Berry2012}.
-At the other end of the income scale, there is no hint of support for the claim that these results support the conflict theory's prediction that \emph{higher}-income individuals will be \emph{less} likely to reject meritocracy in contexts of greater income inequality.
+At the other end of the income scale, there is no hint of support for the NJL claim that these results support the conflict theory's prediction that \emph{higher}-income individuals will be \emph{less} likely to reject meritocracy in contexts of greater income inequality.
 The article's own results provide little if any evidence for its conclusion that poorer people are more likely to reject and richer people more likely to embrace meritocracy where local income inequality is greater.
 
 <<label=setup>>==
@@ -349,7 +349,7 @@ To assess whether these three very different measures are in fact comparable, we
 The figure reveals that Measure 2 results in much lower levels of rejection of meritocracy than either of the others and that Measure 3 often yields considerably higher levels than Measure 1.
 Their evident lack of comparability suggests that pooling them in a single analysis is difficult to justify.
 
-In a footnote and the article's online appendix, however, NJL argues that mixing these different measures is not problematic on the basis that the 2005 and 2006 surveys alone, which use Measure 1, yield results for the variables of interest similar to those produced by the four surveys together (NJL, p.331).  
+In a footnote and the article's online appendix, NJL nevertheless argues that mixing these different measures is not problematic on the basis that the 2005 and 2006 surveys alone, which use Measure 1, yield results for the variables of interest similar to those produced by the four surveys together (NJL, p.331).  
 In analyses we report in Appendix A, we demonstrate that the results obtained for the NJL model differ considerably across the three measures of the dependent variable.
 We also confirm that the conditional effect of inequality fails to reach statistical significance at any observed level of income, just as in the full sample described above, regardless of how the dependent variable is measured.
 The results presented in NJL would appear to be an artifact generated by the authors' decision to pool these three very different measures together.
@@ -551,23 +551,6 @@ mdf_mi_list <- lapply(mdf_mi_list, function(df)
     if(any(class(v)=="factor")) v <- as.numeric(levels(v))[v] else v <- v) %>%
     data.frame) # get rid of %&*(&^ factors
 mdf_mi_list <- imputationList(mdf_mi_list)
-
-format_mi_results <- function(m) {
-	# format results of analysis of multiply imputed Pew dataset
-    m_fe <- MIextract(m, fun=fixef) # see https://books.google.com/books?id=EbLrQrBGid8C&pg=PA384
-    m_vars <- MIextract(m, fun=vcov)
-    m_vars2 <- list()
-    m_vars2 <- lapply(m_vars, as.matrix)
-    m_res <- MIcombine(m_fe, m_vars2)
-    b <- m_res$coefficients
-    se <- diag(m_res$variance^.5)
-    df <- data.frame(term = names(b),
-               estimate = b,
-               std.error = se,
-               model = deparse(substitute(m)), 
-               stringsAsFactors = FALSE)
-    df %>% filter(term!="(Intercept)")
-}
 @
 
 
@@ -583,13 +566,22 @@ m1 <- suppressMessages(with(mdf_mi_list,
 @
 
 <<label=dw_plot>>=
-# format_results <- function(m, model = "Model") {
-#   m_df <- broom::tidy(m) %>% 
-#     filter(term != "(Intercept)") %>% 
-#     filter(group != "fips") %>% 
-#     mutate(model = model)
-#   return(m_df)
-# }
+format_mi_results <- function(m) {
+	# format results of analysis of multiply imputed Pew dataset
+    m_fe <- mitools::MIextract(m, fun=fixef) # see https://books.google.com/books?id=EbLrQrBGid8C&pg=PA384
+    m_vars <- mitools::MIextract(m, fun=vcov)
+    m_vars2 <- list()
+    m_vars2 <- lapply(m_vars, as.matrix)
+    m_res <- mitools::MIcombine(m_fe, m_vars2)
+    b <- m_res$coefficients
+    se <- diag(m_res$variance^.5)
+    df <- data.frame(term = names(b),
+               estimate = b,
+               std.error = se,
+               model = deparse(substitute(m)), 
+               stringsAsFactors = FALSE)
+    df %>% filter(term!="(Intercept)")
+}
 
 ordered_vars <- c("gini_cnty", "gini_cnty:income", "income",
                   "age", "educ", "male",
@@ -721,8 +713,8 @@ m1_pp_plot <- ggplot(m1_pp, aes(x = gini_cnty, y = est, group = income)) +
   xlab("Income Inequality") + ylab("Probability of Rejecting Meritocracy") +
   theme_bw() + theme(legend.position="none") +
   theme(plot.title = element_text(face="bold")) +
-  geom_text(aes(.36, 55, label="<$10k", color="1")) +
-  geom_text(aes(.4, 37.5, label="$40-50k", color="5")) +
+  geom_text(aes(.36, 56, label="<$10k", color="1")) +
+  geom_text(aes(.4, 38, label="$40-50k", color="5")) +
   geom_text(aes(.44, 27.5, label=">$150k", color="9")) +
   scale_colour_manual(values = c("red", "blue", "darkgreen")) +
   scale_fill_manual(values = c("red", "blue", "darkgreen"))
@@ -778,7 +770,7 @@ Absent such undertakings, the greater relative power of the wealthy to shape the
 
 % Reproduction: Three Measures Plot
 \begin{figure}[htbp] 
-  \caption{Comparing Three Measures of Rejection of Meritocracy Pooled by \citet{Newman2015}}
+  \caption{Comparing the Three Measures of Rejection of Meritocracy Pooled by \citet{Newman2015}}
   \label{F:three_measures}
   \begin{center}
     \includegraphics[width=5.25in]{figures/three_measures.pdf}
