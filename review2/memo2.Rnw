@@ -68,12 +68,12 @@ message=FALSE
 \date{\today}				
 \maketitle
 
-Thank you again for the opportunity to revise and resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United States.''  MORE
+Thank you again for the invitation to revise and resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United States,'' and for this opportunity to address the points raised by Reviewer 2.
 
 \begin{enumerate}
 
 \item Reviewer 2 contends that our description of the NJL income variable is ``inaccurate,'' noting that the NJL replication data include imputed values for income.  
-Of course, as \citet{Rubin1987} established and \citet{King2001} popularized among political scientists, \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce.  
+Of course, as \citet{Rubin1987} established and \citet{King2001} popularized in political science, \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce.  
 We were aware of this problem with NJL, but given the many other issues we found with the piece, we had initially decided to omit this particular critique.\footnote{Incidentally, we have now put our own house in order in that regard.
 While working on a companion piece to this paper \citep{Solt2016c}, we ironed out some software conflicts between the \R package we used to estimate our multilevel model and the packages used for multiple imputation.  We have updated the results presented here accordingly; there are no substantively important differences from those of previous versions.}
 
@@ -81,7 +81,7 @@ In any event, R2 has gotten confused here.
 We understand how that could happen: as the replication materials are extremely scant and the authors themselves are unable to reproduce their own work, it naturally takes a great deal of effort for others to follow what they did.  
 R2 writes, ``Upon reviewing the data available in Dataverse, it is evident that there is 1 respondent coded `0' and interestingly enough N=490 respondents coded a value of roughly .212.  When the model is estimated as is, the effect of Gini is estimated for that single respondent."  
 This second sentence \emph{would} follow from the first sentence, but the first sentence is mistaken in an important respect.  
-Yes, there is one respondent in the entire pooled survey dataset who was assigned an imputed value of 0.  
+It is true that there is one respondent in the entire pooled survey dataset who was assigned an imputed value of 0.  
 We leave aside for the moment that this value is nonsensical---one cannot have an income \emph{below} ``Less than \$10,000,'' the Pew category that is assigned a value of .212 in the NJL replication data---and that ordinal variables like this one would properly be (multiply) imputed values that actually exist on their own ordinal scales. 
 There's actually a much more straightforward answer to R2's point.  
 The single respondent to whom NJL assigned an income value of zero, a 94-year-old woman who was living in Oakland County, Michigan, when she was surveyed in 2005, was \emph{not white}.  
