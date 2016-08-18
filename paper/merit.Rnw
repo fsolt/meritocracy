@@ -66,8 +66,8 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 \begin{abstract}
 How does the context of income inequality in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  
 One prominent recent study, \citet{Newman2015}, argues that exposure to higher levels of local income inequality lead low-income people to become more likely to reject the dominant U.S. ideology of meritocracy.  
-Here, we show that this sanguine conclusion is not supported by the study's own empirical results and further that analysis of more and better data yields precisely the opposite conclusion.  
-Consistent with the relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard.   
+Here, we show that this sanguine conclusion is not supported by the study's own empirical results and further that analysis of new data from a larger and more representative survey that employs a single consistent measure of the dependent variable yields precisely the opposite conclusion.  
+Consistent with the relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard.   %136 words
 \end{abstract}
 
 \newpage
@@ -81,7 +81,7 @@ We demonstrate here, however, that that article crucially misinterprets the inte
 Correcting this error reveals that there is little or no support in the paper's results for its conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
 
 Further, in reproducing the NJL analyses from the materials the authors provide \citep{Newman2015a}, we uncovered problems with the manner in which the dependent variable was measured that would render the article's results untrustworthy even if they had supported its conclusions. 
-We therefore present here a full, independent replication, bringing new data from a larger and more representive survey that employs a uniform measure of the dependent variable to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
+We therefore present here a full, independent replication, bringing new data from a larger and more representative survey that employs a single consistent measure of the dependent variable to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
 This analysis finds no evidence for the argument advanced by NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
 To the contrary, but consistent with previous research, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.   
 
@@ -131,11 +131,11 @@ Reject\thinspace Meritocracy_{ij} & = & X\gamma + \gamma_{10}Income_{ij} + \gamm
 }
 \vspace{-24pt}
 \begin{spacing}{2}
-NJL (p.334) offers two pieces of evidence as support for the above-quoted claim: first, that the coefficient for local income inequality (that is, $\gamma_{01}$) is estimated to be positive and statistically significant, and second, that the coefficient for the interaction between inequality and respondents' incomes ($\gamma_{11}$) is negative and statistically significant (NJL, 334). 
+NJL (p.334) offers two pieces of evidence as support for the above-quoted claim: first, that the coefficient for local income inequality (that is, $\gamma_{01}$) is estimated to be positive and statistically significant, and second, that the coefficient for the interaction between inequality and respondents' incomes ($\gamma_{11}$) is negative and statistically significant (NJL, 334).
 
 Neither of the two actually provide any support. 
 First, the coefficient $\gamma_{01}$ indicates only the effect of $Inequality$ when the other variable in the interaction, $Income$, takes on the value of zero \citep[see, e.g.][72]{Brambor2006}.  
-However, inspection of the NJL data reveals that the nine categories of income in the Pew surveys the article employs were recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.\footnote{\doublespacing There is a single respondent in the NJL replication dataset who did not respond to the income question but to whom was assigned an income value of zero.  Putting aside the impossibility of a value less than ``Less than \$10,000,'' the lowest value on the Pew income scale, and that \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce \citep[e.g.,][]{Rubin1987, King2001}, this respondent, a nonagenarian woman from Michigan, was \emph{not white} and so is not part of the sample analyzed in Table 1, Model 1.}  
+However, inspection of the NJL data reveals that the nine categories of income in the Pew surveys the article employs were recoded to take on nine evenly-spaced values ranging from .21 to 1 \citep[see][]{Newman2015a}.\footnote{\doublespacing There is a single respondent in the NJL replication dataset who did not respond to the income question but to whom was assigned an income value of zero.  Putting aside the impossibility of a value less than ``Less than \$10,000,'' the lowest value on the Pew income scale, and that \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce \citep[e.g.,][]{Rubin1987}, this respondent, a nonagenarian woman from Michigan, was \emph{not white} and so is not part of the sample analyzed in Table 1, Model 1.}  
 Because this income variable never actually equals zero in the analyzed sample, $\gamma_{01}$ is not directly interpretable.
 Second, \citet[74]{Brambor2006} specifically advise that one ``cannot even infer whether $X$ has a meaningful conditional effect on $Y$ from the magnitude and significance of the coefficient on the interaction term.''  
 Instead, the conditional effect of inequality is found by taking the partial derivative of Equation~\ref{E:mixed} with respect to inequality:
@@ -729,7 +729,7 @@ One of the most important questions underlying recent research on economic inequ
 \citet{Newman2015} argues in favor of the former, more optimistic view.  
 It contends that mere exposure to high levels of local income inequality prompt those with lower incomes to become more likely to reject an important ideological prop of persistent inequality, the idea that those who work hard can get ahead, supporting the conflict theory.  
 Unfortunately, the article's own reported results do not support this conclusion, and its analysis suffers from measurement issues that render even those results untrustworthy.
-Our independent replication using data from a larger and more representive survey that employs a uniform measure of the dependent variable, in fact, yields the opposite result: lower-income people living where local levels of income inequality are higher are less likely to reject meritocracy than those living where the income distribution is more egalitarian, in line with the predictions of the relative power theory.
+Our independent replication using data from a larger and more representative survey that employs a uniform measure of the dependent variable, in fact, yields the opposite result: lower-income people living where local levels of income inequality are higher are less likely to reject meritocracy than those living where the income distribution is more egalitarian, in line with the predictions of the relative power theory.
 
 These results have important political implications.  
 For those who would prefer higher levels of redistribution, whether the conflict theory or the relative power theory better describes political reality is crucial to understanding the effort that will be required to reverse the decades-long trend of rising income inequality in the United States.
