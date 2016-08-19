@@ -68,14 +68,14 @@ message=FALSE
 \date{\today}				
 \maketitle
 
-Thank you again for the invitation to revise and resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United States,'' and for this opportunity to address the points raised by Reviewer 2.
+Thank you for the invitation to revise and again resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United States,'' and for the opportunity to address the points raised by Reviewer 2.  We think that the piece is stronger for it, and we hope you will agree that it will be a valuable contribution to \emph{Research and Politics} and to our understanding of economic inequality's political consequences.
 
 \begin{enumerate}
 
 \item Reviewer 2 contends that our description of the NJL income variable is ``inaccurate,'' noting that the NJL replication data include imputed values for income.  
 Of course, as \citet{Rubin1987} established and \citet{King2001} popularized in political science, \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce.  
 We were aware of this problem with NJL, but given the many other issues we found with the piece, we had initially decided to omit this particular critique.\footnote{Incidentally, we have now put our own house in order in that regard.
-While working on a companion piece to this paper \citep{Solt2016c}, we ironed out some software conflicts between the \R package we used to estimate our multilevel model and the packages used for multiple imputation.  We have updated the results presented here accordingly; there are no substantively important differences from those of previous versions.}
+While working on a companion piece to this paper \citep{Solt2016c}, we ironed out some software conflicts between the \R package we used to estimate our multilevel model and the packages used for multiple imputation.  We have updated the results presented in this manuscript accordingly; there are no substantively important differences from those of previous versions.}
 
 In any event, R2 has gotten confused here. 
 We understand how that could happen: as the replication materials are extremely scant and the authors themselves are unable to reproduce their own work, it naturally takes a great deal of effort for others to follow what they did.  
@@ -84,7 +84,7 @@ This second sentence \emph{would} follow from the first sentence, but the first 
 It is true that there is one respondent in the entire pooled survey dataset who was assigned an imputed value of 0.  
 We leave aside for the moment that this value is nonsensical---one cannot have an income \emph{below} ``Less than \$10,000,'' the Pew category that is assigned a value of .212 in the NJL replication data---and that ordinal variables like this one would properly be (multiply) imputed values that actually exist on their own ordinal scales. 
 There's actually a much more straightforward answer to R2's point.  
-The single respondent to whom NJL assigned an income value of zero, a 94-year-old woman who was living in Oakland County, Michigan, when she was surveyed in 2005, was \emph{not white}.  
+The single respondent to whom NJL assigned an income value of zero, a 94-year-old woman who was living in Oakland County, Michigan, when she was surveyed in 2005, was \emph{not~white}.  
 That respondent is not in the sample analyzed in NJL's Table 1, Model 1, and therefore `when the model is estimated as is,' the effect of Gini is \emph{not} estimated for that single respondent, nor anyone else.  
 As the literature on interaction terms we review at pages 5-7 explains, the actual estimated effect of inequality at each observed level of income therefore needs to be calculated using equation 2 at page 6.  
 We have now added a footnote discussing this single respondent to page 6.
@@ -104,9 +104,10 @@ Unfortunately, the NJL reproducibility materials do not provide the code for pro
 Predicted probabilities derived from logistic regression models depend not only on the values of the variables of interest but also on the values assumed for the other variables in the model, and NJL does not indicate what values were adopted. 
 Neither mean nor median values---the most easily justified and commonly assumed values---for the other predictors yield predicted probabilities similar to those shown in NJL's Figure 2.
 \end{quote}
-If we had space, we could add a discussion of this, but the fact remains that even if we could reproduce this plot, it would still be based on the untrustworthy mixture of three different measures of the dependent variable, a critique that R2 accepts as among the ``weaknesses'' of NJL. 
+Moreover, even if we could reproduce these predicted probabilities, they would still be based on results from an untrustworthy mixture of three different measures of the dependent variable, a critique that R2 accepts as among the ``weaknesses'' of NJL.
+To ensure that this important implication is not missed by other readers, we have given our discussion of the measurement issue its own section.
 
-\item The \emph{RaP} editor suggested that we explain in the introduction that we are ``not just doing a replication.''  \href{https://politicalsciencereplication.wordpress.com/2014/05/08/learning-about-reproducible-research-on-coursera-recap-week-1/}{The appropriate terminology here remains unsettled, unfortunately.}  We have revised the introduction and throughout to make clear that in addition to reanalyzing the data used in NJL, we are also bringing new data to the question and correcting the article's measurement problem.
+\item The \emph{RaP} editor suggested that we explain in the introduction that we are ``not just doing a replication.''  \href{https://politicalsciencereplication.wordpress.com/2014/05/08/learning-about-reproducible-research-on-coursera-recap-week-1/}{Given the multiple meanings given the word `replication,'} we have revised our language to avoid the term entirely.  We have revised the introduction and throughout to make clear that we are reanalyzing the NJL data and results and that we are also bringing new data to the question that corrects the article's measurement problems.
 
 \end{enumerate}
 
