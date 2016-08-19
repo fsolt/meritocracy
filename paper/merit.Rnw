@@ -44,20 +44,20 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 
 \title{Economic Inequality and\\ Belief in Meritocracy in the United States\thanks{Earlier versions of this work were presented the 2016 Annual Meeting of the Southern Political Science Association and the 2016 Annual Meeting of the Midwest Political Science Association.  We thank Larry Bartels and Amber Wichowsky for helpful comments.  The paper's revision history and the materials needed to reproduce its analyses can be found \href{https://github.com/fsolt/meritocracy}{on Github here}.}}
 \author{
-  Frederick Solt\\
-  \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
-  \and
-  Yue Hu\\
-  \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
-    \and
-	Kevan Hudson\\
-	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
-	\and
-	Jungmin Song\\
-    \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
-	\and
-	Dong `Erico' Yu\\
-    \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
+%   Frederick Solt\\
+%   \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+%   \and
+%   Yue Hu\\
+%   \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
+%     \and
+% 	Kevan Hudson\\
+% 	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
+% 	\and
+% 	Jungmin Song\\
+%     \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
+% 	\and
+% 	Dong `Erico' Yu\\
+%     \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
 }
 \date{\today}				
 \maketitle
@@ -65,9 +65,10 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 \begin{spacing}{2}
 \begin{abstract}
 How does the context of income inequality in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  
-One prominent recent study, \citet{Newman2015}, argues that exposure to higher levels of local income inequality lead low-income people to become more likely to reject the dominant U.S. ideology of meritocracy.  
-Here, we show that this sanguine conclusion is not supported by the study's own empirical results and further that analysis of new data from a larger and more representative survey that employs a single consistent measure of the dependent variable yields precisely the opposite conclusion.  
-Consistent with the relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard.   %136 words
+One prominent recent study, \citet{Newman2015}, argues that, consistent with the conflict theory, exposure to higher levels of local income inequality lead lower-income people to become more likely to reject---and higher-income people to become more likely to accept---the dominant U.S. ideology of meritocracy.  
+Here, we show that this conclusion is not supported by the study's own reported results and that even these results depend on pooling three different measures of meritocracy into a single analysis.
+We then demonstrate that analysis of a larger and more representative survey employing a single consistent measure of the dependent variable yields the opposite conclusion.  
+Consistent with the relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard. %161 (<200) words
 \end{abstract}
 
 \newpage
@@ -79,14 +80,14 @@ Not surprisingly, this question and related ones regarding the relationship betw
 In contrast to a range of earlier studies that found that greater inequality tends to be associated with attitudes that reinforce the status quo, Newman, Johnston, and Lown (\citeyear{Newman2015}, hereafter NJL) advances the argument that inequality in the United States activates class conflict, leading poorer individuals in local contexts of higher inequality to reject meritocracy and become more class conscious.
 We demonstrate here, however, that that article crucially misinterprets the interaction term in its model \citep[see, e.g.,][]{Brambor2006}.  
 Correcting this error reveals that there is little or no support in the paper's results for its conclusion that mere exposure to high levels of inequality stimulates a rejection of meritocracy. 
+Further, we reveal problems with how the article's dependent variable is measured that render its results untrustworthy: even if the NJL results did support the conclusions drawn from them, they would not be credible. 
 
-Further, in reproducing the NJL analyses from the materials the authors provide \citep{Newman2015a}, we uncovered problems with the manner in which the dependent variable was measured that would render the article's results untrustworthy even if they had supported its conclusions. 
-We therefore present here a full, independent replication, bringing new data from a larger and more representative survey that employs a single consistent measure of the dependent variable to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
+We therefore present here an independent analysis that brings new data from a larger and more representative survey employing a single consistent measure of the dependent variable to examine how, if at all, local contexts across the United States shape beliefs about whether people can get ahead if they are willing to work hard.  
 This analysis finds no evidence for the argument advanced by NJL (p.329) that high levels of economic inequality work to activate an ``oppositional consciousness'' among lower-income individuals and so are ultimately self-correcting.  
 To the contrary, but consistent with previous research, the results indicate that lower-income individuals are \emph{less} likely to reject the meritocratic ideal where economic inequality is greater.   
 
 
-\section*{A Review of the Theories at Stake}
+\section*{The Theories at Stake}
 The crucial relationship between economic inequality and system-supporting beliefs like meritocracy is the subject of two diametrically opposed theories: the conflict theory and the relative power theory. 
 We briefly review these two theories in this section.
 
@@ -105,9 +106,8 @@ As \citet[37]{Huber2012} summarize the two theories, the relative power theory c
 Regardless of the theories' plausibility \emph{a priori}, which of the two is actually supported by the evidence is crucial to understanding the political consequences of economic inequality.
 
 
-\section*{Reproduced Results and Corrected Interpretation}
-Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's main results.\footnote{\doublespacing We were not able to reproduce the analysis on class consciousness presented in Table 3 at all, however, as the number of random effects to be estimated in the model, 1322, exceeds the number of observations in the data, 1067 (see NJL, p.336; see also \citealt{Solt2016c}).  
-We restrict our focus here, though, to the article's main analysis of the rejection of meritocracy as presented in Table 1, Model 1 (``White Rs'').}  
+\section*{A Problem of Interpretation}
+Using the data files and \R commands provided \citep{Newman2015a}, we were able to reproduce a close approximation of the article's results on belief in meritocracy as presented in Table 1, Model 1 (``White Rs'').\footnote{\doublespacing On the issues in the article's analysis of class consciousness (NJL, pp.336-337), see \citet{Solt2016c}.}  
 As these files note that the authors are themselves unable to reproduce the published estimates exactly, and the differences are indeed quite small, we proceed to interpretation.
 
 NJL (p.334) claims that its analysis ``reveals that among low-income citizens, those residing in highly unequal contexts are significantly more likely to reject meritocratic ideals than those in relatively equal contexts [and] indicates that as we move from those with the lowest to highest incomes, the effect of increasing county inequality reverses and is associated with a decrease in the probability of rejecting meritocracy.''  
@@ -334,8 +334,8 @@ ggsave(file="figures/interaction_njl_t1m1.pdf", plot=t1m1_plot, width = 7, heigh
 [Figure~\ref{F:coef_t1m1} about here.]
 
 
-\section*{Replication}
-In reproducing the above analysis, our attention was drawn to an additional issue that led us to pursue an independent replication: the measurement of the dependent variable.  
+\section*{A Problem of Measurement}
+Beyond the relatively common problem of misinterpreting its interaction term, NJL suffers a more fundamental problem with measurement.
 Ostensibly to amass observations from a sufficient range of local contexts, NJL (p.330-331) combines in a single analysis data from four surveys using three different measures of its dependent variable, rejection of meritocracy.  
 Measure 1 was drawn from 2005 and 2006 surveys that asked respondents which of two statements came closest to their own opinion: ``Most people who want to get ahead can make it if they're willing to work hard'' or ``Hard work and determination are no guarantee of success for most people.''  
 Those who chose the latter were coded as rejecting meritocracy.
@@ -351,8 +351,8 @@ Their evident lack of comparability suggests that pooling them in a single analy
 
 In a footnote and the article's online appendix, NJL nevertheless argues that mixing these different measures is not problematic on the basis that the 2005 and 2006 surveys alone, which use Measure 1, yield results for the variables of interest similar to those produced by the four surveys together (NJL, p.331).  
 In analyses we report in Appendix A, we demonstrate that the results obtained for the NJL model differ considerably across the three measures of the dependent variable.
-We also confirm that the conditional effect of inequality fails to reach statistical significance at any observed level of income, just as in the full sample described above, regardless of how the dependent variable is measured.
-The results presented in NJL would appear to be an artifact generated by the authors' decision to pool these three very different measures together.
+Regardless of how the dependent variable is measured, however, the conditional effect of inequality fails to reach---or even approach---statistical significance at any observed level of income.
+The results presented in NJL are an artifact generated by the decision to pool these three very different measures together.
 
 <<label=three_measures>>==
 data_path <- "../data/merit/"
@@ -474,8 +474,11 @@ ggsave("figures/three_measures.pdf", width = 5, height = 6)
 
 [Figure~\ref{F:three_measures} about here.]
 
-In our replication, we instead employ the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007, which includes Measure 1 of the dependent variable.  
-Further, with more than ten times the number of respondents of the much smaller Pew surveys examined in NJL, the RLS was designed to provide a particularly fine-grained picture of geographic variation in attitudes and beliefs across the continental United States; it is therefore perfectly suited to providing observations across a broad range of local contexts.  
+\section*{Economic Inequality and Meritocracy}
+What then can be discerned regarding the relationship between economic inequality and belief in meritocracy?  
+We employ the U.S. Religious Landscape Survey (RLS) conducted by the Pew Forum on Religion and Public Life in 2007 to better investigate the question.
+With more than ten times the number of respondents of the much smaller Pew surveys examined in NJL, the RLS was designed to provide a particularly fine-grained picture of geographic variation in attitudes and beliefs across the continental United States. 
+The RLS is therefore perfectly suited to providing observations across a broad range of local contexts, and it includes Measure 1 of the dependent variable.
 To make use of all of the available data, we analyze the entire sample of survey respondents, rather than only non-Latino white respondents; as NJL (p.330) notes, this should be expected to bias the results toward the expectations of the conflict theory.
 We use the \R package \texttt{mi} to multiply impute missing data \citep{Su2011}.
 
@@ -728,8 +731,8 @@ ggsave("figures/m1_pp.pdf", width = 5.5, height = 7)
 One of the most important questions underlying recent research on economic inequality and democracy is whether inequality is self-correcting or instead self-reinforcing.  
 \citet{Newman2015} argues in favor of the former, more optimistic view.  
 It contends that mere exposure to high levels of local income inequality prompt those with lower incomes to become more likely to reject an important ideological prop of persistent inequality, the idea that those who work hard can get ahead, supporting the conflict theory.  
-Unfortunately, the article's own reported results do not support this conclusion, and its analysis suffers from measurement issues that render even those results untrustworthy.
-Our independent replication using data from a larger and more representative survey that employs a uniform measure of the dependent variable, in fact, yields the opposite result: lower-income people living where local levels of income inequality are higher are less likely to reject meritocracy than those living where the income distribution is more egalitarian, in line with the predictions of the relative power theory.
+Unfortunately, the article's own reported results do not support this conclusion, and its analysis suffers from serious measurement issues that render even those results untrustworthy.
+Our analysis of data from a larger and more representative survey that employs a uniform measure of the dependent variable, in fact, yields the opposite result: lower-income people living where local levels of income inequality are higher are less likely to reject meritocracy than those living where the income distribution is more egalitarian, in line with the predictions of the relative power theory.
 
 These results have important political implications.  
 For those who would prefer higher levels of redistribution, whether the conflict theory or the relative power theory better describes political reality is crucial to understanding the effort that will be required to reverse the decades-long trend of rising income inequality in the United States.
