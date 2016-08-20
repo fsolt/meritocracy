@@ -278,7 +278,7 @@ pew_v23 <- left_join(pew_v23, counties, by="fips")
 @
 
 For these analyses, we could not rely on the NJL replication materials because they only include the data as analyzed in the article.  
-The number of observations available for Version 2 of the dependent variable in this dataset is smaller than the number of parameters in the model, rendering the model impossible to estimate without incorporating additional information.  
+The number of observations available for Version 2 of the dependent variable in this dataset is smaller than the number of parameters in the model, rendering the model impossible to estimate without incorporating additional information (for example, via priors in a Bayesian approach).  
 The questions needed for Version 2 and for Version 3 were asked in both the 2007 and 2009 Pew surveys examined in NJL, however, so we are able to generate these variables from the original Pew datasets and pool them together to provide an adequate number of observations for analysis.  
 We opt for a straightforward coding of all variables, with the categories of ordinal variables assigned consecutive integers beginning at 1, although because the results displayed below are rescaled to represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each predictor, this choice makes little difference.  
 Our approach is otherwise identical to that of the core analysis of NJL: Table 1, Model 1.
