@@ -68,16 +68,16 @@ message=FALSE
 \date{\today}				
 \maketitle
 
-Thank you for the invitation to revise and again resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United States,'' and for the opportunity to address the points raised by Reviewer 2.  We think that the piece is stronger for it, and we hope you will agree that it will be a valuable contribution to \emph{Research and Politics} and to our understanding of economic inequality's political consequences.
+Thank you for the invitation to revise and again resubmit our manuscript, ``Economic Inequality and Belief in Meritocracy in the United States,'' and for the opportunity to address the points raised by Reviewer 2.  We have taken her or his remaining comments very seriously.  We addressed some of these concerns in our previous revision, but that the reviewer continued to raise these issues indicated to us where we needed to make our points more clearly.  She or he also raised some new arguments that are valuable to address.  We think that the piece is stronger for our revisions, and we hope you will agree that it will be a valuable contribution to \emph{Research and Politics} and to our understanding of economic inequality's political consequences.
 
 \begin{enumerate}
 
-\item Reviewer 2 contends that our description of the NJL income variable is ``inaccurate,'' noting that the NJL replication data include imputed values for income.  
+\item In one of her or his new points, Reviewer 2 contends that our description of the NJL income variable is ``inaccurate,'' noting that the NJL replication data include imputed values for income.  
 Of course, as \citet{Rubin1987} established and \citet{King2001} popularized in political science, \emph{multiple} imputation is the appropriate way to deal with missing data and the uncertainty they introduce.  
 We were aware of this problem with NJL, but given the many other issues we found with the piece, we had initially decided to omit this particular critique.\footnote{Incidentally, we have now put our own house in order in that regard.
 While working on a companion piece to this paper \citep{Solt2016c}, we ironed out some software conflicts between the \R package we used to estimate our multilevel model and the packages used for multiple imputation.  We have updated the results presented in this manuscript accordingly; there are no substantively important differences from those of previous versions.}
 
-In any event, R2 has gotten confused here. 
+Unfortunately, R2 has gotten confused here. 
 We understand how that could happen: as the replication materials are extremely scant and the authors themselves are unable to reproduce their own work, it naturally takes a great deal of effort for others to follow what they did.  
 R2 writes, ``Upon reviewing the data available in Dataverse, it is evident that there is 1 respondent coded `0' and interestingly enough N=490 respondents coded a value of roughly .212.  When the model is estimated as is, the effect of Gini is estimated for that single respondent."  
 This second sentence \emph{would} follow from the first sentence, but the first sentence is mistaken in an important respect.  
@@ -98,14 +98,14 @@ R2 did not reply to our responses to this line of argument that (a) only 4\% of 
 We have now brought both of these responses to the text to ensure that they are not overlooked.  
 At the \emph{RaP} editor's suggestion, we also incorporated a histogram into Figure 1 to underscore that the share of respondents who fell into the lowest-income category is very small.
 
-\item R2 again pointed us to the NJL plot of predicted probabilities, apparently overlooking our response in our memo to reviewers: 
+\item R2 again pointed us to the NJL plot of predicted probabilities.  We had addressed this issue in the memo to reviewers we submitted with our previous revisions: 
 \begin{quote}
 Unfortunately, the NJL reproducibility materials do not provide the code for producing the article's figures \ldots . Despite considerable effort, we were unable to approximate the predicted probabilities depicted in NJL using the reproduced results. 
 Predicted probabilities derived from logistic regression models depend not only on the values of the variables of interest but also on the values assumed for the other variables in the model, and NJL does not indicate what values were adopted. 
 Neither mean nor median values---the most easily justified and commonly assumed values---for the other predictors yield predicted probabilities similar to those shown in NJL's Figure 2.
 \end{quote}
-Moreover, even if we could reproduce these predicted probabilities, they would still be based on results from an untrustworthy mixture of three different measures of the dependent variable, a critique that R2 accepts as among the ``weaknesses'' of NJL.
-To ensure that this important implication is not missed by other readers, we have given our discussion of the measurement issue its own section.
+But more importantly, even if we could reproduce these predicted probabilities, they would still be based on results from an untrustworthy mixture of three different measures of the dependent variable, a critique that R2 accepts as among the ``weaknesses'' of NJL.
+To ensure that this important implication is not missed by other readers, we have given our discussion of the measurement issue its own section and worked to highlight it in other parts of the paper.
 
 \item The \emph{RaP} editor suggested that we explain in the introduction that we are ``not just doing a replication.''  \href{https://politicalsciencereplication.wordpress.com/2014/05/08/learning-about-reproducible-research-on-coursera-recap-week-1/}{Given the multiple meanings given the word `replication,'} we have revised our language to avoid the term entirely.  We have revised the introduction and throughout to make clear that we are reanalyzing the NJL data and results and that we are also bringing new data to the question that corrects the article's measurement problems.
 
