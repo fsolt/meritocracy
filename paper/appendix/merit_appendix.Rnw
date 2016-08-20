@@ -77,11 +77,13 @@ library(haven)
 library(readxl)
 library(readr)
 library(stringr)
+library(mitools)
 library(lme4)
 library(ggplot2)
 library(interplot)
 library(dotwhisker)
 library(dplyr)
+library(purrr)
 @
 
 <<label=a_interplot0>>==
@@ -279,7 +281,7 @@ For these analyses, we could not rely on the NJL replication materials because t
 The number of observations available for Version 2 of the dependent variable in this dataset is smaller than the number of parameters in the model, rendering the model impossible to estimate without incorporating additional information.  
 The questions needed for Version 2 and for Version 3 were asked in both the 2007 and 2009 Pew surveys examined in NJL, however, so we are able to generate these variables from the original Pew datasets and pool them together to provide an adequate number of observations for analysis.  
 We opt for a straightforward coding of all variables, with the categories of ordinal variables assigned consecutive integers beginning at 1, although because the results displayed below are rescaled to represent the estimated change in the logged odds of rejecting meritocracy for a change of two standard deviations in each predictor, this choice makes little difference.  
-Our approach is otherwise identical to that of the core analysis of NJL: Model 1, Table 1.
+Our approach is otherwise identical to that of the core analysis of NJL: Table 1, Model 1.
 
 Figure~\ref{F:a_v123} displays the results obtained by separately analyzing each of the three versions of the dependent variable that were pooled together in the NJL analysis.  
 It reveals considerable differences.
@@ -493,7 +495,7 @@ Model 1A replicates the analysis presented in the main text, but uses CZs as the
 
 Despite the change in the unit of local context from county to commuting zone, the results for Model 1A are substantively identical to those displayed in Figure 3 of the main text.  
 Model 2A, which adds relative mobility, lends no support to cognitive hypothesis suggested above: it is those living in context of \emph{greater} relative mobility who are more likely to reject meritocracy, and the results regarding the effect of income inequality are essentially unchanged.
-Income segregation has no discernable effect on meritocratic beliefs in the results for Model 3A.  
+Income segregation has no discernible effect on meritocratic beliefs in the results for Model 3A.  
 
 <<label=b_cz_data>>==
 ### Data Set-Up
@@ -511,38 +513,6 @@ cz <- read_csv("../../data/cw_cty00_cz.csv") %>%
          cz = cz) %>% 
   rbind(c(8014, 28900)) %>% # Broomfield County, CO (see http://www.ddorn.net/data/FIPS_County_Code_Changes.pdf)
   arrange(fips)
-
-# Individual-Level Data: Pew 2007 Religious Landscape Survey
-p2007 <- read_sav("../../data/merit/version_a/dataset_Religious_Landscape_Survey_Data/Religious Landscape Survey Data - Continental US.sav")
-p2007fips <- read_sav("../../data/merit/FIPS Continental US.sav")
-
-p2007x <- merge(p2007, p2007fips) %>% 
-  transmute(resp = psraid,
-            fips2 = as.numeric(fips),
-            state = as.numeric(state),
-            rej_merit = (q5c!=1)+0,
-            income = ifelse(income<=9, income, NA), # 1 to 9
-            income_c = income - median(income, na.rm = TRUE),
-            educ = ifelse(educ<=7, educ, NA), # 1 to 7
-            age = ifelse(age<99, age, NA),
-            male = ifelse(sex==1, 1, 0),
-            latino = ifelse(hisp<=2, (hisp==1)+0, NA),
-            white = ifelse(race<=4, (race==1 & latino!=1)+0, NA),
-            black = ifelse(race<=4, (race==2)+0, NA),
-            asian = ifelse(race<=4, (race==3)+0, NA),
-            other_min = ifelse(race<=4, (race==4)+0, NA),
-            noncitizen = ifelse((q60==9 | (q61==9 & !is.na(q61))),
-                                NA, (q60==2 & q61==2)+0),
-            ideo_con = 6 - ifelse(ideo<=5, ideo, NA), # 1 to 5
-            attend = 7 - ifelse(q20<=6, q20, NA)) %>% # 1 to 6
-  rename(fips = fips2)
-p2007x$partyid_rep <- plyr::mapvalues(p2007$party, 
-                                      from = c(1:5, 9), 
-                                      to = c(5, 1, 3, 3, 3, NA))
-p2007x$partyid_rep[p2007$partyln==1] <- 4
-p2007x$partyid_rep[p2007$partyln==2] <- 2
-
-p2007x <- left_join(p2007x, cz, by="fips") 
 
 # 2004 Election Results Data
 fips_cnty <- read_csv("https://raw.githubusercontent.com/raypereda/fips-county-codes/master/lib/national.txt", 
@@ -636,65 +606,93 @@ cz_other <- read_excel("../../data/eq_of_opp_online_data.xls",
 
 cz_all <- left_join(cz_eo, cz_bush04, by="cz") %>% 
   left_join(cz_other, by="cz")
-
-
-# Merge Data
-p2007x1 <- left_join(p2007x, cz_all, by="cz")
-
 @
 
-<<label=b_m1_cz>>==
+<<label=b_cz_data_merge>>==
+# Merge Data
+load("mdf_mi_list.rda") # Individual-Level Data: Pew 2007 RLS, multiply imputed and saved in merit.Rnw
+
+mdf_mi_list <- mdf_mi_list[[1]] %>% 
+  map(. %>% 
+        left_join(cz, by="fips") %>% 
+        left_join(cz_all, by="cz"))
+
+mdf_mi_list <- imputationList(mdf_mi_list)
+@
+
+<<label=b_m1_cz, results="asis">>==
 # Inequality by income (replication of main text results)
-m1_cz <- glmer(formula = rej_merit ~ gini_cz*income + 
-              educ + age + male + noncitizen +
-              latino + black + asian + other_min +
-              partyid_rep + ideo_con + attend +
-              income_cz + black_cz + bush04_cz + pop_cz +
-              (1+income|cz),
-            data=p2007x1, family=binomial(link="logit"))
+m1_cz <- suppressMessages(
+  with(mdf_mi_list, 
+       glmer(formula = rej_merit ~ gini_cz*income + 
+               educ + age + male + noncitizen +
+               latino + black + asian + other_min +
+               partyid_rep + ideo_con + attend +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               (1+income|cz),
+             family=binomial(link="logit"))
+       )
+  )
 @
 
 <<label=b_m2_cz>>==
 # Inequality by income (add relative mobility)
-m2_cz <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
-              educ + age + male + noncitizen +
-              latino + black + asian + other_min +
-              partyid_rep + ideo_con + attend +
-              income_cz + black_cz + bush04_cz + pop_cz +
-              (1+income|cz),
-            data=p2007x1, family=binomial(link="logit"))
+m2_cz <- suppressMessages(
+  with(mdf_mi_list,
+       glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
+               educ + age + male + noncitizen +
+               latino + black + asian + other_min +
+               partyid_rep + ideo_con + attend +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               (1+income|cz),
+             family=binomial(link="logit"))
+       )
+  )
 @
 
 <<label=b_m3_cz>>==
 # Inequality by income (add income segregation)
-m3_cz <- glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
-                 seg_inc_cz +
-                 educ + age + male + noncitizen +
-                 latino + black + asian + other_min +
-                 partyid_rep + ideo_con + attend +
-                 income_cz + black_cz + bush04_cz + pop_cz +
-                 (1+income|cz),
-               data=p2007x1, family=binomial(link="logit"))
+m3_cz <- suppressMessages(
+  with(mdf_mi_list,
+       glmer(formula = rej_merit ~ gini_cz*income + rm_cz +
+               seg_inc_cz +
+               educ + age + male + noncitizen +
+               latino + black + asian + other_min +
+               partyid_rep + ideo_con + attend +
+               income_cz + black_cz + bush04_cz + pop_cz +
+               (1+income|cz),
+             family=binomial(link="logit"))
+       )
+  )
 @
 
 <<label=b_m123_cz_dwplot>>==
-format_results <- function(m, model = "Model") {
-  m_df <- broom::tidy(m) %>% 
-    filter(term != "(Intercept)") %>% 
-    filter(group != "cz") %>% 
-    mutate(model = model)
-  return(m_df)
+format_mi_results <- function(m, mod) {
+	# format results of analysis of multiply imputed Pew dataset
+    m_fe <- mitools::MIextract(m, fun=fixef) # see https://books.google.com/books?id=EbLrQrBGid8C&pg=PA384
+    m_vars <- mitools::MIextract(m, fun=vcov)
+    m_vars2 <- list()
+    m_vars2 <- lapply(m_vars, as.matrix)
+    m_res <- mitools::MIcombine(m_fe, m_vars2)
+    b <- m_res$coefficients
+    se <- diag(m_res$variance^.5)
+    df <- data.frame(term = names(b),
+               estimate = b,
+               std.error = se,
+               model = mod,
+               stringsAsFactors = FALSE)
+    df %>% filter(term!="(Intercept)")
 }
 
-m123_cz_df <- rbind(format_results(m1_cz, "Model 1A"),
-                 format_results(m2_cz, "Model 2A"),
-                 format_results(m3_cz, "Model 3A")) %>%
-  by_2sd(p2007x1)
+m123_cz_df <- rbind(format_mi_results(m1_cz, "Model 1A"),
+                 format_mi_results(m2_cz, "Model 2A"),
+                 format_mi_results(m3_cz, "Model 3A")) %>%
+  by_2sd(mdf_mi_list[[1]][[1]])
 
-ordered_vars <- c("gini_cz", "gini_cz:income", "income", 
+ordered_vars <- c("gini_cz", "gini_cz:income", "income",
                   "rm_cz", "seg_inc_cz",
                   "age", "educ", "male",
-                  "latino", "black", "asian", 
+                  "latino", "black", "asian",
                   "other_min", "noncitizen",
                   "partyid_rep", "ideo_con", "attend",
                   "income_cz", "black_cz", "bush04_cz", "pop_cz")
@@ -704,10 +702,10 @@ pa <- dwplot(m123_cz_df, order_vars = ordered_vars) +
                       "Income", "Relative Mobility",
                       "Income Segregation",
                       "Education", "Age", "Male",
-                      "Latino", "Black", "Asian", 
+                      "Latino", "Black", "Asian",
                       "Other Minority", "Noncitizen",
                       "Republican Party ID", "Conservative Ideology",
-                      "Church Attendance", 
+                      "Church Attendance",
                       "Income/Capita", "Percent Black",
                       "Bush Vote, 2004", "Population")) +
      theme_bw() + xlab("Coefficient Estimate") + ylab("") +
@@ -726,10 +724,10 @@ grid::grid.draw(m123_cz_plot)
 dev.off()
 @
 
-Despite the change in the unit of local context and the addition of these control variables, the conclusions reached in the text are still supported.  In all three specifications, the estimated coefficient for income inequality on rejection of meritocracy is negative and statistically significant for at least all of those with income below \$40,000, which corresponds to the poorest two quintiles of the sample.
+Despite the change in the unit of local context and the addition of these control variables, the conclusions reached in the text are still supported.  In all three specifications, the estimated coefficient for income inequality on rejection of meritocracy is negative and statistically significant for at least all of those with income below \$50,000, which corresponds to the bottom half of the sample.
 Lower-income people in local contexts with greater income inequality are less likely to reject meritocracy than those in more equal settings, supporting the relative power theory.
 
-\begin{figure}[!hbtp] 
+\begin{figure}[!hbtp]
   \caption{Predicting Rejection of Meritocracy Controlling for Relative Mobility}
   \label{F:b_m123_cz}
   \begin{center}
@@ -744,7 +742,7 @@ Lower-income people in local contexts with greater income inequality are less li
 
 <<label=b_m1_cz_gini>>==
 m1_cz_gini <- interplot(m1_cz, "gini_cz", "income") +
-  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) + 
+  scale_x_continuous(breaks = seq(length(inc_labels)), labels = inc_labels) +
   coord_cartesian(ylim = c(-2, 1)) +
   labs(x = "Income", y = "Coefficient of Income Inequality\n on Rejecting Meritocracy") +
   theme_bw() +
@@ -787,7 +785,7 @@ multiplot(m1_cz_gini, m2_cz_gini, m3_cz_gini, layout = matrix(1:3, nrow=1))
 dev.off()
 @
 
-\begin{figure}[!hbtp] 
+\begin{figure}[!hbtp]
   \caption{Estimated Coefficients of Income Inequality by Income on Rejection of Meritocracy, Controlling for Relative Mobility}
   \label{F:b_m123_cz_gini}
   \begin{center}
