@@ -65,7 +65,7 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 \begin{spacing}{2}
 \begin{abstract}
 How does the context of income inequality in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  
-One prominent recent study, \citet{Newman2015}, argues that, consistent with the conflict theory, exposure to higher levels of local income inequality lead lower-income people to become more likely to reject---and higher-income people to become more likely to accept---the dominant U.S. ideology of meritocracy.  
+One prominent recent study, \citet{Newman2015}, argues that, consistent with the conflict theory, exposure to higher levels of local income inequality leads lower-income people to become more likely to reject---and higher-income people to become more likely to accept---the dominant U.S. ideology of meritocracy.  
 Here, we show that this conclusion is not supported by the study's own reported results and that even these results depend on pooling three different measures of meritocracy into a single analysis.
 We then demonstrate that analysis of a larger and more representative survey employing a single consistent measure of the dependent variable yields the opposite conclusion.  
 Consistent with the relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard. %161 (<200) words
@@ -556,6 +556,10 @@ mdf_mi_list <- lapply(mdf_mi_list, function(df)
 mdf_mi_list <- imputationList(mdf_mi_list)
 @
 
+<<label=mi_save>>==
+# retain mi data for appendix analyses of commuting zones
+save(mdf_mi_list, file = "appendix/mdf_mi_list.rda")
+@
 
 <<label=m1>>==
 m1 <- suppressMessages(with(mdf_mi_list, 
@@ -645,7 +649,6 @@ For people with incomes between \$40,000 to \$50,000 and otherwise median charac
 For those with the highest incomes, given the confidence intervals, the predicted probabilities of rejecting meritocracy are consistent with no change across all levels of local income inequality.
 These results are contrary to the predictions of the conflict theory, but consistent with those of the relative power theory.
  <<label=predprob, include=FALSE>>==
- # replace pred_probs code with code from interplot::predprob_mlm
 pred_probs <- function(m, var1, var2, var2_vals,
                        times = 20, sims = 1000) {
 
