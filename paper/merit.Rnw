@@ -66,12 +66,13 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 \begin{abstract}
 How does the context of income inequality in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  
 One prominent recent study, \citet{Newman2015}, argues that, consistent with the conflict theory, exposure to higher levels of local income inequality leads lower-income people to become more likely to reject---and higher-income people to become more likely to accept---the dominant U.S. ideology of meritocracy.  
-Here, we show that this conclusion is not supported by the study's own reported results and that even these results depend on pooling three different measures of meritocracy into a single analysis.
+Here, we show that this conclusion is not supported by the study's own reported results and that even these results depend on pooling three distinctly different measures of meritocracy into a single analysis.
 We then demonstrate that analysis of a larger and more representative survey employing a single consistent measure of the dependent variable yields the opposite conclusion.  
 Consistent with the relative power theory, among those with lower incomes, local contexts of greater inequality are associated with more widespread belief that people can get ahead if they are willing to work hard. %161 (<200) words
 \end{abstract}
 
 \newpage
+
 
 Meritocracy---the idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
 How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.\footnote{\doublespacing On the negative relationship between belief in the American Dream and preferences for redistributive policies, see, e.g., \citet{Brooks2014}.}
