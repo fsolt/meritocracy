@@ -44,25 +44,24 @@ opts_chunk$set(concordance=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=
 
 \title{Economic Inequality and\\ Belief in Meritocracy in the United States\thanks{Earlier versions of this work were presented the 2016 Annual Meeting of the Southern Political Science Association and the 2016 Annual Meeting of the Midwest Political Science Association.  We thank Larry Bartels and Amber Wichowsky for helpful comments.  The paper's revision history and the materials needed to reproduce its analyses can be found \href{https://github.com/fsolt/meritocracy}{on Github here}.}}
 \author{
-%   Frederick Solt\\
-%   \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
-%   \and
-%   Yue Hu\\
-%   \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
-%     \and
-% 	Kevan Hudson\\
-% 	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
-% 	\and
-% 	Jungmin Song\\
-%     \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
-% 	\and
-% 	Dong `Erico' Yu\\
-%     \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
+  Frederick Solt\\
+  \href{mailto:frederick-solt@uiowa.edu}{frederick-solt@uiowa.edu}
+  \and
+  Yue Hu\\
+  \href{mailto:yue-hu-1@uiowa.edu}{yue-hu-1@uiowa.edu}
+    \and
+	Kevan Hudson\\
+	\href{mailto:kevan-hudson@uiowa.edu}{kevan-hudson@uiowa.edu}
+	\and
+	Jungmin Song\\
+    \href{mailto:jungmin-song@uiowa.edu}{jungmin-song@uiowa.edu}
+	\and
+	Dong `Erico' Yu\\
+    \href{mailto:dong-yu@uiowa.edu}{dong-yu@uiowa.edu}
 }
 \date{\today}				
 \maketitle
 
-\begin{spacing}{2}
 \begin{abstract}
 How does the context of income inequality in which people live affect their belief in meritocracy, the ability to get ahead through hard work?  
 One prominent recent study, \citet{Newman2015}, argues that, consistent with the conflict theory, exposure to higher levels of local income inequality leads lower-income people to become more likely to reject---and higher-income people to become more likely to accept---the dominant U.S. ideology of meritocracy.  
@@ -73,6 +72,7 @@ Consistent with the relative power theory, among those with lower incomes, local
 
 \newpage
 
+\begin{spacing}{2}
 
 Meritocracy---the idea that if one works hard, one can get ahead---is a core tenet of the American Dream \citep[see, e.g.,][21-23]{Hochschild1995}.  
 How belief in meritocracy, and in turn the country's dominant ideology, fares in the face of the stark economic inequality that has come to characterize life in the United States is therefore crucial to understanding not only support for redistributive policies to address this inequality but also the continuing legitimacy of the U.S. economic system as a whole.\footnote{\doublespacing On the negative relationship between belief in the American Dream and preferences for redistributive policies, see, e.g., \citet{Brooks2014}.}
