@@ -95,7 +95,7 @@ As we write at page 5: ``we were able to reproduce a close approximation of the 
 The real issue, we have always maintained, is how these results are interpreted.  
 R2 insists that because the estimated effect of inequality for the lowest-income individuals approaches statistical significance, we are making ``a mountain out of a molehill of minor data coding errors.''  
 R2 did not reply to our responses to this line of argument that (a) only 4\% of respondents in the sample fell into the lowest income category, and so per \citet{Berry2012} even if the coefficient were significant it would provide only minimal support for the conflict theory (which we had included in the manuscript as a footnote) and (b) there is no hint of support for NJL's claim that its results support the conflict theory's prediction that \emph{higher}-income individuals will be \emph{less} likely to reject meritocracy in contexts of greater income inequality (which admittedly was only directed to her or his attention in our memo to reviewers).  
-We have now brought both of these responses to the text to ensure that they are not overlooked.  
+We have now brought both of these responses to the text for the benefit of other readers.  
 At the \emph{RaP} editor's suggestion, we also incorporated a histogram into Figure 1 to underscore that the share of respondents who fell into the lowest-income category is very small.
 
 \item R2 again pointed us to the NJL plot of predicted probabilities.  We had addressed this issue in the memo to reviewers we submitted with our previous revisions: 
@@ -107,7 +107,7 @@ Neither mean nor median values---the most easily justified and commonly assumed 
 But more importantly, even if we could reproduce these predicted probabilities, they would still be based on results from an untrustworthy mixture of three different measures of the dependent variable, a critique that R2 accepts as among the ``weaknesses'' of NJL.
 To ensure that this important implication is not missed by other readers, we have given our discussion of the measurement issue its own section and worked to highlight it in other parts of the paper.
 
-\item The \emph{RaP} editor suggested that we explain in the introduction that we are ``not just doing a replication.''  \href{https://politicalsciencereplication.wordpress.com/2014/05/08/learning-about-reproducible-research-on-coursera-recap-week-1/}{Given the multiple meanings given the word `replication,'} we have revised our language to avoid the term entirely.  We have revised the introduction and throughout to make clear that we are reanalyzing the NJL data and results and that we are also bringing new data to the question that corrects the article's measurement problems.
+\item The \emph{RaP} editor suggested that we explain in the introduction that we are ``not just doing a replication.''  \href{https://politicalsciencereplication.wordpress.com/2014/05/08/learning-about-reproducible-research-on-coursera-recap-week-1/}{Given the multiple meanings given the word `replication,'} we have revised our language to avoid the term entirely.  We have revised the introduction and throughout to make clear that we are reanalyzing the NJL data and results and that we are also bringing new data to the question that correct the article's measurement problems.
 
 \end{enumerate}
 
