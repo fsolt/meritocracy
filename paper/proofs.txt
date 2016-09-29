@@ -1,0 +1,21 @@
+- [ ] Please check if the correct license type (CC-BY-NC/CC-BY/CC-BY-NC-ND) appears on your article and matches with what you had specified in the license agreement form.
+- [ ] Please confirm that all author information, including names, affiliations, sequence, and contact details, is correct.
+- [ ] Please review the entire document for typographical errors, mathematical errors, and any other necessary corrections; check headings, tables, and figures.
+- [ ] Please ensure that you have obtained and enclosed all necessary permissions for the reproduction of art works (e.g. illustrations, photographs, charts, maps, other visual material, etc.) not owned by yourself. Please refer to your publishing agreement for further information.
+- [ ] Please note that this proof represents your final opportunity to review your article prior to publication, so please do send all of your changes now.
+- [ ] Please confirm that the Funding and Conflict of Interest statements are accurate.
+
+- [ ] 1 Citations should not appear in the Abstract, and so Newman, Johnston, and Lown publication year ‘2015a’ has been removed. Please check you are happy with the rewording
+
+FS: I suggest we change "One" to "A" given their other changes.
+
+- [ ] 2 Please define/expand ‘ACS’
+- [ ] 3 Brooks and Manza (2014): Please provide the journal title and volume, issue and page numbers
+- [ ] 4 Newman (2016): Please provide the issue and page numbers
+- [ ] 5 Newman et al. (2015b): Please provide the journal title and the volume, issue and page numbers
+- [ ] 6 Solt (2014): Please provide editor name(s), and place of publisher
+- [ ] 7 Solt and Hu (2015a): Please provide a recent date of access to the URL
+- [ ] 8 Solt and Hu (2015b): Please provide a recent date of access to the URL
+- [ ] 9 Solt et al. (2016): Please provide a recent date of access to the URL
+- [ ] 10 Su et al. (2011): Please provide the page numbers
+- [ ] 11 In the Figure 1 footnotes, should the citation ‘...estimated from the data and model provided in Newman et al. (2015b)’ be changed to ‘2015a’, as per citation in the caption?
