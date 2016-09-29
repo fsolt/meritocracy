@@ -10,12 +10,50 @@
 FS: I suggest we change "One" to "A" given their other changes.
 
 - [ ] 2 Please define/expand ‘ACS’
+
+Jungmin: American Community Survey (ACS)
+
 - [ ] 3 Brooks and Manza (2014): Please provide the journal title and volume, issue and page numbers
+
+Jungmin: Brooks C and Manza J (2014) Prisoners of the American Dream? Americans’ attitudes towards taxes and inequality in a new gilded age. Manuscript submitted for publication. 
+
 - [ ] 4 Newman (2016): Please provide the issue and page numbers
+
+Jungmin: Newman BJ (2015) Breaking the Glass Ceiling: Local Gender-Based Earnings Inequality and Women's Belief in the American Dream. American Journal of Political Science. Advance online publication. doi:10.1111/ajps.12195
+
 - [ ] 5 Newman et al. (2015b): Please provide the journal title and the volume, issue and page numbers
+
+Jungmin: I think we can ignore this one.
+
 - [ ] 6 Solt (2014): Please provide editor name(s), and place of publisher
+
+Jungmin: Solt F (2014) Reversing the arrow? Economic inequality’s effect on religiosity. In Lisa A Keister & Darren E Sherkat (Eds.), Religion and Inequality in America: Research and Theory on Religion’s Role in Stratification. Cambridge University Press, pp.337–353.
+
 - [ ] 7 Solt and Hu (2015a): Please provide a recent date of access to the URL
+
+Jungmin: Solt F and Hu Y (2015a) dotwhisker: Dot-and-whisker plots of
+regression results. Retrieved September 29, 2016, from http://CRAN.R-project.org/
+package=dotwhisker.
+
 - [ ] 8 Solt and Hu (2015b): Please provide a recent date of access to the URL
+
+Jungmin: Solt F and Hu Y (2015b) interplot: Plot the effects of variables in
+interaction terms. Retrieved September 29, 2016, from http://CRAN.R-project.org/
+package=interplot.
+
 - [ ] 9 Solt et al. (2016): Please provide a recent date of access to the URL
+
+Jungmin: Solt F, Hu Y, Hudson K, et al. (2016) Economic inequality and
+class consciousness. Open Science Framework. Retrieved September 29, 2016, from
+https://osf.io/k4ghw/.
+
 - [ ] 10 Su et al. (2011): Please provide the page numbers
+
+Jungmin: Su Y-S, Gelman A, Hill J, et al. (2011) Multiple imputation with
+diagnostics (mi) in R: Opening Windows into the Black Box.
+Journal of Statistical Software 45(2): 1-31.
+
+
 - [ ] 11 In the Figure 1 footnotes, should the citation ‘...estimated from the data and model provided in Newman et al. (2015b)’ be changed to ‘2015a’, as per citation in the caption?
+
+Jungmin: 
