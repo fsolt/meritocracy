@@ -1,5 +1,7 @@
 - [ ] Please check if the correct license type (CC-BY-NC/CC-BY/CC-BY-NC-ND) appears on your article and matches with what you had specified in the license agreement form.
 - [ ] Please confirm that all author information, including names, affiliations, sequence, and contact details, is correct.
+**Hu**: Fred, do you want your office number as 341?
+
 - [ ] Please review the entire document for typographical errors, mathematical errors, and any other necessary corrections; check headings, tables, and figures.
 - [ ] Please ensure that you have obtained and enclosed all necessary permissions for the reproduction of art works (e.g. illustrations, photographs, charts, maps, other visual material, etc.) not owned by yourself. Please refer to your publishing agreement for further information.
 - [ ] Please note that this proof represents your final opportunity to review your article prior to publication, so please do send all of your changes now.
@@ -9,30 +11,32 @@
 
 FS: I suggest we change "One" to "A" given their other changes.
 Note(1-Erico) I agree with Fred.
+**Hu**: Ditto.
 
 - [ ] 2 Please define/expand ‘ACS’
 
 Jungmin: American Community Survey (ACS)
 Note(2-Erico) footnote 5: 'ACS' is the abbreviation of American Community Survey; agree with Jungmin
+**Hu**: Ditto.
 
 - [ ] 3 Brooks and Manza (2014): Please provide the journal title and volume, issue and page numbers
 
 Jungmin: Brooks C and Manza J (2014) Prisoners of the American Dream? Americans’ attitudes towards taxes and inequality in a new gilded age. Manuscript submitted for publication. 
 Note(3-Erico) footnote 1: their paper, is not yet published on any jounral to date, and it can only be accessed online (http://as.nyu.edu/docs/IO/3858/PrisonersoftheAmericanDream.pdf).  We should either cite another published work of them or directly cite with the online address, and I suggest the previous way.
+**Hu**: Manza, Jeff and Clem Brooks (2014). "Prisoners of the American Dream? Americans' Attitudes Towards Inequality and Taxes in the New Gilded Age." Unpublished. URL:http://as.nyu.edu/docs/IO/3858/PrisonersoftheAmericanDream.pdf.
 
 
 - [ ] 4 Newman (2016): Please provide the issue and page numbers
 
 Jungmin: Newman BJ (2015) Breaking the Glass Ceiling: Local Gender-Based Earnings Inequality and Women's Belief in the American Dream. American Journal of Political Science. Advance online publication. doi:10.1111/ajps.12195
 Note(4-Erico) footnote 1: Not yet published. Agree with Jungming that we should use its DOI(10.1111/ajps.12195) insted?
-
+**Hu**: Newman BJ (2015) Breaking the Glass Ceiling: Local Gender-Based Earnings Inequality and Women's Belief in the American Dream. American Journal of Political Science. Forthcoming. 
 
 - [ ] 5 Newman et al. (2015b): Please provide the journal title and the volume, issue and page numbers
 
 Jungmin: I think we can ignore this one.
-Note(5-Erico): it is just a site for date replication; I think we can change our description of the data (on p.6) and just refer it to Newman 2015a (as the editors suggest in no.11? 
-
-meanwhile, I also find that Newman made two corrections to their paper on Volume 60(3).
+Note(5-Erico): it is just a site for date replication; I think we can change our description of the data (on p.6) and just refer it to Newman 2015a (as the editors suggest in no.11? Meanwhile, I also find that Newman made two corrections to their paper on Volume 60(3).
+**Hu**: Newman BJ, Johnston CD and Lown PL (2015b) Replication data for: False consciousness or class awareness? Local income inequality, personal economic position, and belief in American meritocracy. American Journal of Political Science 59(2) 326-40. URL: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26584.
 
 - [ ] 6 Solt (2014): Please provide editor name(s), and place of publisher
 
@@ -40,6 +44,7 @@ Jungmin: Solt F (2014) Reversing the arrow? Economic inequality’s effect on re
 
 Note(6-Erico): Solt, Frederick. 2014. "Reversing the Arrow? Economic Inequality's Effect on Religiosity", in Religion and Inequality in America: Research and Theory on Religion's Role in Stratification, ed. Lisa A. Keister and Darren E. Sherkat. New York: Cambridge University Press pp.337-353
 
+**Hu**: Agree with Jungmin, esp. "Solt F". 
 
 - [ ] 7 Solt and Hu (2015a): Please provide a recent date of access to the URL
 
@@ -49,6 +54,8 @@ package=dotwhisker.
 
 Note(7-Erico) agree 
 
+**Hu**: Ditto.
+
 - [ ] 8 Solt and Hu (2015b): Please provide a recent date of access to the URL
 
 Jungmin: Solt F and Hu Y (2015b) interplot: Plot the effects of variables in
@@ -56,6 +63,7 @@ interaction terms. Retrieved September 29, 2016, from http://CRAN.R-project.org/
 package=interplot.
 
 Note(8-Erico) agree 
+**Hu**: Ditto.
 
 - [ ] 9 Solt et al. (2016): Please provide a recent date of access to the URL
 
@@ -64,17 +72,20 @@ class consciousness. Open Science Framework. Retrieved September 29, 2016, from
 https://osf.io/k4ghw/.
 
 Note(9-Erico) agree 
+**Hu**: Ditto.
 
 - [ ] 10 Su et al. (2011): Please provide the page numbers
 
-Jungmin: Su Y-S, Gelman A, Hill J, et al. (2011) Multiple imputation with
-diagnostics (mi) in R: Opening Windows into the Black Box.
-Journal of Statistical Software 45(2): 1-31.
+Jungmin: Su Y-S, Gelman A, Hill J, et al. (2011) Multiple imputation with diagnostics (mi) in R: Opening Windows into the Black Box. Journal of Statistical Software 45(2): 1-31.
 
 Note(10-Erico): I believe it's an open access journal (and do not have a print copy?) the citation guide of "page 1-31" is probably the length of the paper, not the actual page numbers in the "printed journal". Should use DOI instead: 10.18637/jss.v045.i02; 
+
+**Hu**: Agree to Jungmin.
 
 - [ ] 11 In the Figure 1 footnotes, should the citation ‘...estimated from the data and model provided in Newman et al. (2015b)’ be changed to ‘2015a’, as per citation in the caption?
 
 Jungmin: 
 
 Note(11-Erico): This is what I mean in note 5. I agree the change proposed by the editors here.
+
+**Hu**: Ditto.

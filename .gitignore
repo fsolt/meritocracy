@@ -17,3 +17,11 @@
 .DS_Store
 paper/cache/*
 paper/appendix/cache/*
+data/
+*.bak
+*_Hu*
+debug.R
+.gitignore
+*_templet*
+review/memo.synctex.gz
+review/reviewofRAP-16-0059.pdf
