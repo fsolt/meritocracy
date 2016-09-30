@@ -12,6 +12,7 @@
 FS: I suggest we change "One" to "A" given their other changes.
 Note(1-Erico) I agree with Fred.
 **Hu**: Ditto.
+Jungmin: Agree.
 
 - [ ] 2 Please define/expand ‘ACS’
 
@@ -50,6 +51,7 @@ Note(6-Erico): Solt, Frederick. 2014. "Reversing the Arrow? Economic Inequality'
 
 **Hu**: Agree with Jungmin, esp. "Solt F". 
 KH: Erico's citation looks right to me (includes location as asked for).
+Jungmin: The reason why I used "Solt F" is consistency. For the rule of citing a book chapter, I followed the APA rule.
 
 - [ ] 7 Solt and Hu (2015a): Please provide a recent date of access to the URL
 
@@ -93,9 +95,8 @@ KH: Not sure using the doi provides the answer the editors are after - probably 
 
 - [ ] 11 In the Figure 1 footnotes, should the citation ‘...estimated from the data and model provided in Newman et al. (2015b)’ be changed to ‘2015a’, as per citation in the caption?
 
-Jungmin: 
-
 Note(11-Erico): This is what I mean in note 5. I agree the change proposed by the editors here.
 
 **Hu**: Ditto.
 KH: I think we should stick with the separate citations for the article and the data, but am fine if we choose to collapse into one.
+Jungmin: Agree to KH.
