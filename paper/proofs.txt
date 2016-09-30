@@ -18,12 +18,14 @@ Note(1-Erico) I agree with Fred.
 Jungmin: American Community Survey (ACS)
 Note(2-Erico) footnote 5: 'ACS' is the abbreviation of American Community Survey; agree with Jungmin
 **Hu**: Ditto.
+KH: Agreed.
 
 - [ ] 3 Brooks and Manza (2014): Please provide the journal title and volume, issue and page numbers
 
 Jungmin: Brooks C and Manza J (2014) Prisoners of the American Dream? Americans’ attitudes towards taxes and inequality in a new gilded age. Manuscript submitted for publication. 
 Note(3-Erico) footnote 1: their paper, is not yet published on any jounral to date, and it can only be accessed online (http://as.nyu.edu/docs/IO/3858/PrisonersoftheAmericanDream.pdf).  We should either cite another published work of them or directly cite with the online address, and I suggest the previous way.
 **Hu**: Manza, Jeff and Clem Brooks (2014). "Prisoners of the American Dream? Americans' Attitudes Towards Inequality and Taxes in the New Gilded Age." Unpublished. URL:http://as.nyu.edu/docs/IO/3858/PrisonersoftheAmericanDream.pdf.
+KH: Not sure what the precedent is for this, but I like linking to the paper.
 
 
 - [ ] 4 Newman (2016): Please provide the issue and page numbers
@@ -31,12 +33,14 @@ Note(3-Erico) footnote 1: their paper, is not yet published on any jounral to da
 Jungmin: Newman BJ (2015) Breaking the Glass Ceiling: Local Gender-Based Earnings Inequality and Women's Belief in the American Dream. American Journal of Political Science. Advance online publication. doi:10.1111/ajps.12195
 Note(4-Erico) footnote 1: Not yet published. Agree with Jungming that we should use its DOI(10.1111/ajps.12195) insted?
 **Hu**: Newman BJ (2015) Breaking the Glass Ceiling: Local Gender-Based Earnings Inequality and Women's Belief in the American Dream. American Journal of Political Science. Forthcoming. 
+KH: Using the doi seems wise.
 
 - [ ] 5 Newman et al. (2015b): Please provide the journal title and the volume, issue and page numbers
 
 Jungmin: I think we can ignore this one.
 Note(5-Erico): it is just a site for date replication; I think we can change our description of the data (on p.6) and just refer it to Newman 2015a (as the editors suggest in no.11? Meanwhile, I also find that Newman made two corrections to their paper on Volume 60(3).
 **Hu**: Newman BJ, Johnston CD and Lown PL (2015b) Replication data for: False consciousness or class awareness? Local income inequality, personal economic position, and belief in American meritocracy. American Journal of Political Science 59(2) 326-40. URL: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26584.
+KH: I agress with Jungmin - this seems like a non-issue. I think it makes sense to keep the separate citations for the article and the replication data.
 
 - [ ] 6 Solt (2014): Please provide editor name(s), and place of publisher
 
@@ -45,6 +49,7 @@ Jungmin: Solt F (2014) Reversing the arrow? Economic inequality’s effect on re
 Note(6-Erico): Solt, Frederick. 2014. "Reversing the Arrow? Economic Inequality's Effect on Religiosity", in Religion and Inequality in America: Research and Theory on Religion's Role in Stratification, ed. Lisa A. Keister and Darren E. Sherkat. New York: Cambridge University Press pp.337-353
 
 **Hu**: Agree with Jungmin, esp. "Solt F". 
+KH: Erico's citation looks right to me (includes location as asked for).
 
 - [ ] 7 Solt and Hu (2015a): Please provide a recent date of access to the URL
 
@@ -55,6 +60,7 @@ package=dotwhisker.
 Note(7-Erico) agree 
 
 **Hu**: Ditto.
+KH: This seems like a silly request, but the above looks good
 
 - [ ] 8 Solt and Hu (2015b): Please provide a recent date of access to the URL
 
@@ -64,6 +70,7 @@ package=interplot.
 
 Note(8-Erico) agree 
 **Hu**: Ditto.
+KH: Same as above.
 
 - [ ] 9 Solt et al. (2016): Please provide a recent date of access to the URL
 
@@ -73,6 +80,7 @@ https://osf.io/k4ghw/.
 
 Note(9-Erico) agree 
 **Hu**: Ditto.
+KH: Same as above
 
 - [ ] 10 Su et al. (2011): Please provide the page numbers
 
@@ -81,6 +89,7 @@ Jungmin: Su Y-S, Gelman A, Hill J, et al. (2011) Multiple imputation with diagno
 Note(10-Erico): I believe it's an open access journal (and do not have a print copy?) the citation guide of "page 1-31" is probably the length of the paper, not the actual page numbers in the "printed journal". Should use DOI instead: 10.18637/jss.v045.i02; 
 
 **Hu**: Agree to Jungmin.
+KH: Not sure using the doi provides the answer the editors are after - probably a good idea all the same given the journal's electronic format, but I also think including the page numbers (1-31) satifies the editors' request.
 
 - [ ] 11 In the Figure 1 footnotes, should the citation ‘...estimated from the data and model provided in Newman et al. (2015b)’ be changed to ‘2015a’, as per citation in the caption?
 
@@ -89,3 +98,4 @@ Jungmin:
 Note(11-Erico): This is what I mean in note 5. I agree the change proposed by the editors here.
 
 **Hu**: Ditto.
+KH: I think we should stick with the separate citations for the article and the data, but am fine if we choose to collapse into one.
